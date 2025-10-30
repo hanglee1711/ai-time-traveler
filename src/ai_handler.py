@@ -7,6 +7,22 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# Helper function to get environment variables from both sources
+def get_env(key: str, default: str = None) -> str:
+    """
+    Get environment variable from Streamlit secrets or os.environ
+    Supports both local (.env) and Streamlit Cloud deployment
+    """
+    try:
+        import streamlit as st
+        # Try Streamlit secrets first (for Streamlit Cloud)
+        if hasattr(st, 'secrets') and key in st.secrets:
+            return st.secrets[key]
+    except:
+        pass
+    # Fall back to os.environ (for local development)
+    return os.getenv(key, default)
+
 
 class AIHandler:
     """Handle interactions with different AI providers"""
@@ -37,11 +53,11 @@ class AIHandler:
         """Initialize OpenAI client"""
         try:
             from openai import OpenAI
-            api_key = os.getenv("OPENAI_API_KEY")
+            api_key = get_env("OPENAI_API_KEY")
             if not api_key:
                 raise ValueError("OPENAI_API_KEY not found in environment variables")
             self.client = OpenAI(api_key=api_key)
-            self.model = os.getenv("OPENAI_MODEL", "gpt-4")
+            self.model = get_env("OPENAI_MODEL", "gpt-4")
         except ImportError:
             raise ImportError("OpenAI package not installed. Run: pip install openai")
 
@@ -49,19 +65,19 @@ class AIHandler:
         """Initialize Google Gemini client"""
         try:
             import google.generativeai as genai
-            api_key = os.getenv("GEMINI_API_KEY")
+            api_key = get_env("GEMINI_API_KEY")
             if not api_key:
                 raise ValueError("GEMINI_API_KEY not found in environment variables")
             genai.configure(api_key=api_key)
-            self.model = os.getenv("GEMINI_MODEL", "gemini-1.5-pro")
+            self.model = get_env("GEMINI_MODEL", "gemini-1.5-pro")
             self.client = genai.GenerativeModel(self.model)
         except ImportError:
             raise ImportError("Google Generative AI package not installed. Run: pip install google-generativeai")
 
     def _init_llama(self):
         """Initialize Llama client (via API)"""
-        self.api_url = os.getenv("LLAMA_API_URL")
-        self.api_key = os.getenv("LLAMA_API_KEY")
+        self.api_url = get_env("LLAMA_API_URL")
+        self.api_key = get_env("LLAMA_API_KEY")
         if not self.api_url:
             raise ValueError("LLAMA_API_URL not found in environment variables")
 
@@ -182,6 +198,6 @@ def get_ai_handler(provider: Optional[str] = None) -> AIHandler:
         AIHandler instance
     """
     if provider is None:
-        provider = os.getenv("AI_PROVIDER", "openai")
+        provider = get_env("AI_PROVIDER", "openai")
 
     return AIHandler(provider=provider)
