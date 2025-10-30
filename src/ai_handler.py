@@ -69,7 +69,8 @@ class AIHandler:
             if not api_key:
                 raise ValueError("GEMINI_API_KEY not found in environment variables")
             genai.configure(api_key=api_key)
-            self.model = get_env("GEMINI_MODEL", "gemini-pro")
+            # Use the latest stable model name
+            self.model = get_env("GEMINI_MODEL", "gemini-1.5-flash")
             self.client = genai.GenerativeModel(self.model)
         except ImportError:
             raise ImportError("Google Generative AI package not installed. Run: pip install google-generativeai")
