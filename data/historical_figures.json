@@ -1,0 +1,113 @@
+{
+  "figures": [
+    {
+      "name": "Hai Bà Trưng",
+      "alt_names": ["Trưng Trắc", "Trưng Nhị", "Hai Bà"],
+      "period": "40-43 AD",
+      "role": "Nữ tướng, lãnh đạo khởi nghĩa chống Bắc thuộc",
+      "personality": "Dũng cảm, kiên cường, yêu nước, quyết liệt",
+      "famous_quotes": [
+        "Tôi chỉ muốn cưỡi cơn gió mạnh, đạp luồng sóng dữ, chém cá kình ở biển Đông, quét sạch bờ cõi để cứu dân ra khỏi nơi đầm lầy, há để mình cúi đầu, còng lưng làm tì thiếp cho người sao!"
+      ],
+      "context": "Lãnh đạo cuộc khởi nghĩa chống nhà Hán năm 40, giành độc lập cho Việt Nam trong 3 năm."
+    },
+    {
+      "name": "Lý Thường Kiệt",
+      "alt_names": ["Lý Thường Kiệt", "Ngô Tuấn"],
+      "period": "1019-1105",
+      "role": "Đại tướng triều Lý, nhà thơ",
+      "personality": "Chiến lược gia tài ba, dũng mãnh, yêu nước",
+      "famous_quotes": [
+        "Nam quốc sơn hà Nam đế cư, Tiệt nhiên định phận tại thiên thư, Như hà nghịch lỗ lai xâm phạm, Nhữ đẳng hành khan thủ bại hư!"
+      ],
+      "context": "Tướng tài tiếng của triều Lý, nổi tiếng với chiến thắng quân Tống và bài thơ 'Nam quốc sơn hà'."
+    },
+    {
+      "name": "Trần Hưng Đạo",
+      "alt_names": ["Trần Quốc Tuấn", "Hưng Đạo Vương"],
+      "period": "1228-1300",
+      "role": "Đại tướng triều Trần, anh hùng dân tộc",
+      "personality": "Thông minh, dũng cảm, khiêm nhường, yêu dân yêu nước",
+      "famous_quotes": [
+        "Giặc đến nhà đàn bà cũng đánh",
+        "Việc nhà không thể không làm, lẽ trời không thể không giữ"
+      ],
+      "context": "Chỉ huy ba lần đánh thắng quân Nguyên-Mông xâm lược (1258, 1285, 1288), bảo vệ độc lập dân tộc."
+    },
+    {
+      "name": "Nguyễn Trãi",
+      "alt_names": ["Ức Trai", "Trạng nguyên"],
+      "period": "1380-1442",
+      "role": "Danh thần, nhà thơ, nhà tư tưởng",
+      "personality": "Thông thái, uyên bác, chính trực, tài hoa",
+      "famous_quotes": [
+        "Thuận thiên giả tồn, nghịch thiên giả vong",
+        "Dĩ nhân thắng bạo"
+      ],
+      "context": "Quân sư tài ba của Lê Lợi, tác giả 'Bình Ngô đại cáo', góp phần lớn vào thắng lợi khởi nghĩa Lam Sơn."
+    },
+    {
+      "name": "Lê Lợi",
+      "alt_names": ["Lê Thái Tổ", "Bình Định Vương"],
+      "period": "1385-1433",
+      "role": "Vua, lãnh tụ khởi nghĩa Lam Sơn",
+      "personality": "Kiên trì, khôn khéo, nhân đạo, anh minh",
+      "famous_quotes": [
+        "Việc người thì ta làm, việc trời thì trời làm"
+      ],
+      "context": "Lãnh đạo khởi nghĩa Lam Sơn 10 năm (1418-1428) chống quân Minh, lập ra triều đại Lê."
+    },
+    {
+      "name": "Quang Trung",
+      "alt_names": ["Nguyễn Huệ", "Quang Trung Hoàng đế"],
+      "period": "1753-1792",
+      "role": "Hoàng đế, danh tướng",
+      "personality": "Anh minh, dũng mãnh, cách tân, quyết đoán",
+      "famous_quotes": [
+        "Cổ chi thành đại sự giả, bất duy hữu siêu thế chi tài, diệc tất hữu kiên nhẫn bất bạt chi chí"
+      ],
+      "context": "Lãnh đạo cuộc khởi nghĩa Tây Sơn, đánh tan 29 vạn quân Thanh trong 7 ngày Tết Kỷ Dậu 1789."
+    },
+    {
+      "name": "Hồ Chí Minh",
+      "alt_names": ["Bác Hồ", "Nguyễn Sinh Cung", "Nguyễn Tất Thành", "Nguyễn Ái Quốc"],
+      "period": "1890-1969",
+      "role": "Chủ tịch, lãnh tụ cách mạng",
+      "personality": "Giản dị, thông thái, nhân ái, kiên trì",
+      "famous_quotes": [
+        "Không có gì quý hơn độc lập tự do",
+        "Đoàn kết, đoàn kết, đại đoàn kết. Thành công, thành công, đại thành công"
+      ],
+      "context": "Lãnh tụ của cách mạng Việt Nam, đọc Tuyên ngôn Độc lập ngày 2/9/1945, dẫn dắt dân tộc đến độc lập."
+    },
+    {
+      "name": "Võ Nguyên Giáp",
+      "alt_names": ["Đại tướng Võ Nguyên Giáp", "Tướng Giáp"],
+      "period": "1911-2013",
+      "role": "Đại tướng, nhà quân sự",
+      "personality": "Thông minh, quyết đoán, tài ba, khiêm tốn",
+      "famous_quotes": [
+        "Không có gì quý hơn độc lập tự do"
+      ],
+      "context": "Tổng tư lệnh các chiến dịch lớn: Biên giới 1950, Điện Biên Phủ 1954, Tổng tiến công 1975."
+    },
+    {
+      "name": "Ngô Quyền",
+      "alt_names": ["Tiền Ngô Vương"],
+      "period": "897-944",
+      "role": "Vua đầu tiên của Việt Nam độc lập",
+      "personality": "Dũng mãnh, sáng suốt, tài ba",
+      "famous_quotes": [],
+      "context": "Đánh thắng quân Nam Hán tại sông Bạch Đằng năm 938, chấm dứt 1000 năm Bắc thuộc."
+    },
+    {
+      "name": "Lý Công Uẩn",
+      "alt_names": ["Lý Thái Tổ"],
+      "period": "974-1028",
+      "role": "Vua, nhà sáng lập triều Lý",
+      "personality": "Anh minh, nhân từ, có tầm nhìn",
+      "famous_quotes": [],
+      "context": "Dời đô về Thăng Long năm 1010, mở ra thời kỳ phát triển rực rỡ của đất nước."
+    }
+  ]
+}

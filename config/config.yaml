@@ -1,0 +1,41 @@
+# AI Time Traveler Configuration
+
+app:
+  title: "🚀 AI Time Traveler - Cỗ máy du hành thời gian lịch sử"
+  subtitle: "Trò chuyện với các nhân vật lịch sử hoặc du hành đến các mốc thời gian quan trọng"
+  icon: "⏳"
+  language: "vi"
+
+ai_settings:
+  temperature: 0.8
+  max_tokens: 1000
+  top_p: 0.9
+
+supported_providers:
+  - openai
+  - gemini
+  - llama
+
+historical_periods:
+  - name: "Thời Bắc thuộc"
+    years: [111, 938]
+  - name: "Thời tự chủ"
+    years: [938, 1858]
+  - name: "Thời Pháp thuộc"
+    years: [1858, 1945]
+  - name: "Chiến tranh Việt Nam"
+    years: [1945, 1975]
+  - name: "Đổi mới"
+    years: [1986, 2024]
+
+countries:
+  - "Việt Nam"
+  - "Trung Quốc"
+  - "Nhật Bản"
+  - "Châu Âu"
+  - "Hoa Kỳ"
+
+ui_theme:
+  primary_color: "#8B4513"
+  background_color: "#FFF8DC"
+  text_color: "#2C1810"

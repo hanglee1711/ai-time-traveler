@@ -1,0 +1,95 @@
+{
+  "events": [
+    {
+      "year": 938,
+      "name": "Trận Bạch Đằng lần 1",
+      "description": "Ngô Quyền đánh thắng quân Nam Hán tại sông Bạch Đằng, chấm dứt 1000 năm Bắc thuộc, mở ra thời kỳ tự chủ cho Việt Nam.",
+      "key_figures": ["Ngô Quyền"],
+      "importance": "Mốc son chói lọi trong lịch sử dân tộc, đánh dấu sự độc lập của Việt Nam."
+    },
+    {
+      "year": 1010,
+      "name": "Dời đô về Thăng Long",
+      "description": "Vua Lý Thái Tổ ban chiếu Thiên đô, dời đô từ Hoa Lư về Đại La (Thăng Long), mở ra thời kỳ phát triển rực rỡ của đất nước.",
+      "key_figures": ["Lý Công Uẩn"],
+      "importance": "Thăng Long trở thành trung tâm chính trị, kinh tế, văn hóa suốt gần 800 năm."
+    },
+    {
+      "year": 1076,
+      "name": "Chiến thắng Như Nguyệt",
+      "description": "Lý Thường Kiệt chỉ huy quân Đại Việt đánh bại quân Tống, bảo vệ biên cương phía Bắc.",
+      "key_figures": ["Lý Thường Kiệt"],
+      "importance": "Khẳng định sức mạnh quân sự triều Lý, bài thơ 'Nam quốc sơn hà' ra đời."
+    },
+    {
+      "year": 1288,
+      "name": "Trận Bạch Đằng lần 3",
+      "description": "Trần Hưng Đạo chỉ huy đại thắng quân Nguyên-Mông lần thứ ba tại sông Bạch Đằng, bảo vệ độc lập dân tộc.",
+      "key_figures": ["Trần Hưng Đạo", "Trần Nhân Tông"],
+      "importance": "Chiến thắng vang dội nhất lịch sử chống Nguyên-Mông, khẳng định tinh thần bất굴 của dân tộc."
+    },
+    {
+      "year": 1428,
+      "name": "Khởi nghĩa Lam Sơn thành công",
+      "description": "Sau 10 năm kháng chiến, Lê Lợi và Nguyễn Trãi đánh đuổi quân Minh, giành lại độc lập cho đất nước.",
+      "key_figures": ["Lê Lợi", "Nguyễn Trãi"],
+      "importance": "Chấm dứt 20 năm đô hộ của nhà Minh, mở ra triều đại Lê hùng mạnh."
+    },
+    {
+      "year": 1789,
+      "name": "Chiến thắng Ngọc Hồi - Đống Đa",
+      "description": "Quang Trung Nguyễn Huệ chỉ huy quân Tây Sơn đánh tan 29 vạn quân Thanh trong 7 ngày Tết, giải phóng Thăng Long.",
+      "key_figures": ["Quang Trung", "Nguyễn Huệ"],
+      "importance": "Chiến thắng vang dội nhất lịch sử chống phương Bắc, thể hiện thiên tài quân sự của Quang Trung."
+    },
+    {
+      "year": 1858,
+      "name": "Pháp tấn công Đà Nẵng",
+      "description": "Hải quân Pháp tấn công Đà Nẵng, mở đầu cuộc xâm lược Việt Nam của thực dân Pháp.",
+      "key_figures": [],
+      "importance": "Đánh dấu bước ngoặt lịch sử, Việt Nam bước vào thời kỳ thuộc địa Pháp gần 100 năm."
+    },
+    {
+      "year": 1930,
+      "name": "Thành lập Đảng Cộng sản Việt Nam",
+      "description": "Nguyễn Ái Quốc (Hồ Chí Minh) thành lập Đảng Cộng sản Việt Nam tại Hương Cảng, lãnh đạo cách mạng giải phóng dân tộc.",
+      "key_figures": ["Hồ Chí Minh", "Nguyễn Ái Quốc"],
+      "importance": "Mốc son chói lọi của cách mạng Việt Nam, tạo nền tảng cho độc lập dân tộc."
+    },
+    {
+      "year": 1945,
+      "name": "Cách mạng tháng Tám thành công",
+      "description": "Cách mạng tháng Tám thành công, Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập ngày 2/9/1945 tại Quảng trường Ba Đình, tuyên bố nước Việt Nam Dân chủ Cộng hòa ra đời.",
+      "key_figures": ["Hồ Chí Minh"],
+      "importance": "Sự kiện vĩ đại nhất thế kỷ 20, Việt Nam giành lại độc lập sau gần 100 năm thuộc Pháp."
+    },
+    {
+      "year": 1954,
+      "name": "Chiến thắng Điện Biên Phủ",
+      "description": "Quân dân ta đánh thắng quân Pháp tại Điện Biên Phủ, buộc Pháp ký Hiệp định Genève, chấm dứt chiến tranh.",
+      "key_figures": ["Hồ Chí Minh", "Võ Nguyên Giáp"],
+      "importance": "'Điện chấn địa cầu' - chiến thắng vĩ đại nhất lịch sử quân sự Việt Nam hiện đại."
+    },
+    {
+      "year": 1975,
+      "name": "Giải phóng miền Nam, thống nhất đất nước",
+      "description": "Chiến dịch Hồ Chí Minh thắng lợi, xe tăng húc đổ cổng Dinh Độc Lập ngày 30/4/1975, thống nhất đất nước.",
+      "key_figures": ["Võ Nguyên Giáp", "Văn Tiến Dũng"],
+      "importance": "Hoàn thành sự nghiệp giải phóng dân tộc, thống nhất đất nước sau 21 năm chia cắt."
+    },
+    {
+      "year": 1986,
+      "name": "Đổi mới",
+      "description": "Đại hội Đảng VI khởi xướng công cuộc Đổi mới, chuyển sang nền kinh tế thị trường định hướng xã hội chủ nghĩa.",
+      "key_figures": ["Nguyễn Văn Linh"],
+      "importance": "Bước ngoặt lịch sử, đưa Việt Nam phát triển mạnh mẽ, hội nhập quốc tế."
+    },
+    {
+      "year": 40,
+      "name": "Khởi nghĩa Hai Bà Trưng",
+      "description": "Hai Bà Trưng (Trưng Trắc, Trưng Nhị) khởi nghĩa chống nhà Hán, giành độc lập cho Việt Nam trong 3 năm.",
+      "key_figures": ["Hai Bà Trưng", "Trưng Trắc", "Trưng Nhị"],
+      "importance": "Cuộc khởi nghĩa đầu tiên chống Bắc thuộc, biểu tượng tinh thần bất khuất của phụ nữ Việt Nam."
+    }
+  ]
+}

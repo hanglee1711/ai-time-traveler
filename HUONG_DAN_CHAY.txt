@@ -1,0 +1,137 @@
+╔═══════════════════════════════════════════════════════════════╗
+║     HƯỚNG DẪN CHẠY AI TIME TRAVELER - SIÊU ĐỠN GIẢN         ║
+╚═══════════════════════════════════════════════════════════════╝
+
+📍 BƯỚC 1: LẤY API KEY MIỄN PHÍ (2 PHÚT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔹 Cách 1: Google Gemini (MIỄN PHÍ 100% - KHUYẾN NGHỊ)
+
+   1. Mở trình duyệt, vào: https://aistudio.google.com/app/apikey
+
+   2. Đăng nhập bằng Gmail của bạn
+
+   3. Click nút "Create API Key" hoặc "Get API key"
+
+   4. Chọn "Create API key in new project"
+
+   5. Copy cái key ra (dạng: AIzaSy...)
+
+   6. LƯU KEY NÀY LẠI!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📍 BƯỚC 2: ĐIỀN API KEY VÀO FILE .ENV (1 PHÚT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+   1. Vào thư mục: C:\MINDX
+
+   2. Tìm file tên: .env
+
+   3. Mở bằng Notepad (chuột phải -> Open with -> Notepad)
+
+   4. Xóa HẾT nội dung cũ
+
+   5. Copy-paste 3 dòng này vào:
+
+AI_PROVIDER=gemini
+GEMINI_API_KEY=dán-api-key-ở-đây
+GEMINI_MODEL=gemini-1.5-pro
+
+   6. Thay chữ "dán-api-key-ở-đây" bằng API key bạn vừa copy
+
+   7. LƯU LẠI (Ctrl+S)
+
+   📌 VÍ DỤ file .env sau khi sửa:
+
+AI_PROVIDER=gemini
+GEMINI_API_KEY=AIzaSyABcD1234xyz...
+GEMINI_MODEL=gemini-1.5-pro
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📍 BƯỚC 3: CHẠY APP (2 PHÚT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔹 Cách 1: Dùng Script Tự Động (SIÊU DỄ)
+
+   1. Vào thư mục C:\MINDX
+
+   2. Double-click vào file: run.bat
+
+   3. Đợi cửa sổ đen chạy xong
+
+   4. Trình duyệt tự động mở app!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔹 Cách 2: Chạy Thủ Công (Nếu cách 1 không work)
+
+   1. Nhấn phím Windows + R
+
+   2. Gõ: cmd rồi Enter
+
+   3. Gõ từng lệnh sau (mỗi lệnh xong nhấn Enter):
+
+cd C:\MINDX
+
+pip install streamlit google-generativeai python-dotenv pyyaml
+
+streamlit run app.py
+
+   4. Đợi vài giây, trình duyệt tự mở!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ APP ĐÃ CHẠY! GIỜ THỬ NGAY:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+   👉 App mở tại: http://localhost:8501
+
+   👉 Nếu không tự mở, copy link trên vào trình duyệt
+
+   🎮 THỬ NGAY:
+
+   - Gõ: Xin chào Quang Trung
+   - Gõ: Đưa tôi đến năm 1945
+   - Gõ: Tại sao Quang Trung đánh vào Tết?
+
+   AI sẽ trả lời bạn!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+❓ GẶP LỖI? XEM NGAY!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔴 Lỗi: "pip is not recognized"
+   ➜ Python chưa cài. Tải tại: https://www.python.org/downloads/
+   ➜ Khi cài NHỚ TICK: "Add Python to PATH"
+
+🔴 Lỗi: "Invalid API key"
+   ➜ Kiểm tra lại API key trong file .env
+   ➜ Đảm bảo không có dấu cách thừa
+
+🔴 Lỗi: "Port 8501 already in use"
+   ➜ Gõ: streamlit run app.py --server.port 8502
+
+🔴 Lỗi: "Module not found"
+   ➜ Chạy lại: pip install -r requirements.txt
+
+🔴 App không mở trình duyệt
+   ➜ Mở thủ công: http://localhost:8501
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 TÓM TẮT NHANH:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+   1. Lấy API key: https://aistudio.google.com/app/apikey
+   2. Điền vào file .env
+   3. Double-click run.bat
+   4. XONG! 🎉
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📞 Cần trợ giúp thêm? Xem file: TROUBLESHOOTING.md
+
+Chúc bạn khám phá lịch sử vui vẻ! 🚀⏳

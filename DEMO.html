@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 AI Time Traveler - Demo Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-family: Georgia, serif;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            color: #555;
+            text-align: center;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .banner {
+            text-align: center;
+            padding: 1rem;
+            background: linear-gradient(90deg, #ffeaa7 0%, #fdcb6e 100%);
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .banner h4 {
+            color: #2d3436;
+            margin: 0;
+        }
+
+        .main-content {
+            display: flex;
+            gap: 20px;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-radius: 15px;
+            height: fit-content;
+        }
+
+        .sidebar h3 {
+            text-align: left;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .sidebar-section {
+            margin-bottom: 25px;
+        }
+
+        .sidebar-section h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .quick-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            text-align: left;
+        }
+
+        .quick-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .chat-area {
+            flex: 1;
+        }
+
+        .chat-messages {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            min-height: 400px;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 15px;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .user-message {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            margin-left: 50px;
+        }
+
+        .bot-message {
+            background: rgba(255, 248, 220, 0.7);
+            margin-right: 50px;
+        }
+
+        .message-label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .context-indicator {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #1976d2;
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .chat-input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.2);
+        }
+
+        .send-button {
+            padding: 15px 30px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .send-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .welcome-card {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+
+        .welcome-card h2 {
+            color: #1565c0;
+            margin-bottom: 15px;
+        }
+
+        .welcome-card p {
+            font-size: 1.2rem;
+            color: #424242;
+            margin: 1rem 0;
+        }
+
+        .slider-container {
+            margin: 15px 0;
+        }
+
+        .slider {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        select, input[type="range"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .user-message, .bot-message {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 AI Time Traveler</h1>
+        <h3>⏳ Cỗ máy du hành thời gian lịch sử</h3>
+
+        <div class="banner">
+            <h4>✨ Trò chuyện với các nhân vật lịch sử hoặc du hành đến các mốc thời gian quan trọng! ✨</h4>
+        </div>
+
+        <div class="main-content">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>⚙️ Cài đặt</h3>
+                    <label style="display: block; margin: 10px 0; color: #555;">🤖 Chọn AI Provider</label>
+                    <select>
+                        <option>openai</option>
+                        <option>gemini</option>
+                        <option>llama</option>
+                    </select>
+
+                    <div class="slider-container">
+                        <label style="color: #555;">Độ sáng tạo: 0.8</label>
+                        <input type="range" class="slider" min="0" max="100" value="80">
+                    </div>
+
+                    <div class="slider-container">
+                        <label style="color: #555;">Độ dài phản hồi: 1000</label>
+                        <input type="range" class="slider" min="100" max="2000" value="1000">
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4>🎯 Du hành nhanh</h4>
+                    <button class="quick-button" onclick="sendMessage('Đưa tôi đến năm 938')">938 - Trận Bạch Đằng</button>
+                    <button class="quick-button" onclick="sendMessage('Đưa tôi đến năm 1010')">1010 - Dời đô Thăng Long</button>
+                    <button class="quick-button" onclick="sendMessage('Đưa tôi đến năm 1288')">1288 - Trận Bạch Đằng lần 3</button>
+                    <button class="quick-button" onclick="sendMessage('Đưa tôi đến năm 1789')">1789 - Ngọc Hồi Đống Đa</button>
+                    <button class="quick-button" onclick="sendMessage('Đưa tôi đến năm 1945')">1945 - Độc lập</button>
+                    <button class="quick-button" onclick="sendMessage('Đưa tôi đến năm 1954')">1954 - Điện Biên Phủ</button>
+                    <button class="quick-button" onclick="sendMessage('Đưa tôi đến năm 1975')">1975 - Thống nhất</button>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4>👥 Nhân vật nổi tiếng</h4>
+                    <button class="quick-button" onclick="sendMessage('Xin chào Hai Bà Trưng')">💬 Hai Bà Trưng</button>
+                    <button class="quick-button" onclick="sendMessage('Xin chào Trần Hưng Đạo')">💬 Trần Hưng Đạo</button>
+                    <button class="quick-button" onclick="sendMessage('Xin chào Quang Trung')">💬 Quang Trung</button>
+                    <button class="quick-button" onclick="sendMessage('Xin chào Hồ Chí Minh')">💬 Hồ Chí Minh</button>
+                    <button class="quick-button" onclick="sendMessage('Xin chào Võ Nguyên Giáp')">💬 Võ Nguyên Giáp</button>
+                </div>
+
+                <button class="quick-button" style="background: linear-gradient(90deg, #e74c3c 0%, #c0392b 100%);" onclick="clearChat()">🗑️ Xóa lịch sử chat</button>
+
+                <div class="sidebar-section" style="margin-top: 20px; font-size: 0.85rem; color: #666;">
+                    <h4>📖 Hướng dẫn</h4>
+                    <p>• Nhập tên nhân vật lịch sử để trò chuyện</p>
+                    <p>• Nhập năm lịch sử để du hành</p>
+                    <p>• Hoặc hỏi bất kỳ câu hỏi lịch sử nào!</p>
+                </div>
+            </div>
+
+            <!-- Chat Area -->
+            <div class="chat-area">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="welcome-card">
+                        <h2>🌟 Chào mừng đến với AI Time Traveler! 🌟</h2>
+                        <p>Hãy bắt đầu cuộc hành trình khám phá lịch sử của bạn!</p>
+                        <div style="margin-top: 2rem;">
+                            <p style="font-size: 1rem; color: #616161;">
+                                ✨ Thử nói: "Xin chào Quang Trung" hoặc "Đưa tôi đến năm 1945"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-area">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="💬 Nhập tin nhắn của bạn..." onkeypress="handleKeyPress(event)">
+                    <button class="send-button" onclick="sendMessage()">Gửi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const demoResponses = {
+            'xin chào quang trung': {
+                type: 'figure',
+                figure: 'Quang Trung (1753-1792)',
+                response: 'Ta chào ngươi! Ta là Nguyễn Huệ, người đời sau tôn là Quang Trung Hoàng đế. Sinh thời ta từng lãnh đạo nghĩa quân Tây Sơn, đánh đuổi quân Thanh 29 vạn trong 7 ngày Tết, giải phóng Thăng Long. Ngươi muốn hỏi ta điều gì về cuộc đời và chiến công của ta?'
+            },
+            'đưa tôi đến năm 1945': {
+                type: 'year',
+                year: '1945 - Cách mạng tháng Tám thành công',
+                response: 'Bạn đang đứng giữa Quảng trường Ba Đình, Hà Nội vào ngày 2 tháng 9 năm 1945. Không khí tràn ngập niềm hân hoan và xúc động. Hàng vạn người dân từ khắp nơi đổ về, khuôn mặt ai cũng rạng rỡ. Trên bục diễn đàn, một người đàn ông gầy gò, râu tóc hoa râm, mặc quần áo giản dị đang bước lên. Đó là Chủ tịch Hồ Chí Minh. Giọng nói trầm ấm của Người vang lên: "Tất cả mọi người đều sinh ra có quyền bình đẳng. Tạo hóa cho họ những quyền không ai có thể xâm phạm được..." Đây là khoảnh khắc lịch sử, đánh dấu nước Việt Nam Dân chủ Cộng hòa ra đời!'
+            },
+            'default': 'Xin lỗi, đây là phiên bản demo HTML. Để sử dụng đầy đủ tính năng AI, vui lòng chạy app Streamlit thực tế với API key!'
+        };
+
+        function clearChat() {
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.innerHTML = `
+                <div class="welcome-card">
+                    <h2>🌟 Chào mừng đến với AI Time Traveler! 🌟</h2>
+                    <p>Hãy bắt đầu cuộc hành trình khám phá lịch sử của bạn!</p>
+                    <div style="margin-top: 2rem;">
+                        <p style="font-size: 1rem; color: #616161;">
+                            ✨ Thử nói: "Xin chào Quang Trung" hoặc "Đưa tôi đến năm 1945"
+                        </p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function sendMessage(predefinedMessage) {
+            const input = document.getElementById('chatInput');
+            const message = predefinedMessage || input.value.trim();
+
+            if (!message) return;
+
+            const chatMessages = document.getElementById('chatMessages');
+
+            // Remove welcome card if exists
+            const welcomeCard = chatMessages.querySelector('.welcome-card');
+            if (welcomeCard) {
+                welcomeCard.remove();
+            }
+
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user-message';
+            userMsg.innerHTML = `
+                <div class="message-label">👤 Bạn</div>
+                <div>${message}</div>
+            `;
+            chatMessages.appendChild(userMsg);
+
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Clear input
+            input.value = '';
+
+            // Simulate thinking
+            setTimeout(() => {
+                const normalizedMessage = message.toLowerCase().trim();
+                let responseData = demoResponses['default'];
+
+                // Check for matching responses
+                for (let key in demoResponses) {
+                    if (normalizedMessage.includes(key)) {
+                        responseData = demoResponses[key];
+                        break;
+                    }
+                }
+
+                // Add context indicator if applicable
+                if (responseData.type === 'figure') {
+                    const contextDiv = document.createElement('div');
+                    contextDiv.className = 'context-indicator';
+                    contextDiv.innerHTML = `💭 Đang trò chuyện với: <strong>${responseData.figure}</strong>`;
+                    chatMessages.appendChild(contextDiv);
+                } else if (responseData.type === 'year') {
+                    const contextDiv = document.createElement('div');
+                    contextDiv.className = 'context-indicator';
+                    contextDiv.innerHTML = `⏰ Du hành đến năm: <strong>${responseData.year}</strong>`;
+                    chatMessages.appendChild(contextDiv);
+                }
+
+                // Add bot message
+                const botMsg = document.createElement('div');
+                botMsg.className = 'message bot-message';
+                botMsg.innerHTML = `
+                    <div class="message-label">🤖 AI Time Traveler</div>
+                    <div>${responseData.response || responseData}</div>
+                `;
+                chatMessages.appendChild(botMsg);
+
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1000);
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+    </script>
+</body>
+</html>
