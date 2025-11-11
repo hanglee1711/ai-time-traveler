@@ -100,22 +100,22 @@ def journey():
     return send_from_directory(str(base_dir / 'frontend'), 'journey.html')
 
 @app.route('/login.html')
-def login():
+def login_page():
     """Serve login page"""
     return send_from_directory(str(base_dir / 'frontend'), 'login.html')
 
 @app.route('/register.html')
-def register():
+def register_page():
     """Serve register page"""
     return send_from_directory(str(base_dir / 'frontend'), 'register.html')
 
 @app.route('/forgot-password.html')
-def forgot_password():
+def forgot_password_page():
     """Serve forgot password page"""
     return send_from_directory(str(base_dir / 'frontend'), 'forgot-password.html')
 
 @app.route('/reset-password.html')
-def reset_password():
+def reset_password_page():
     """Serve reset password page"""
     return send_from_directory(str(base_dir / 'frontend'), 'reset-password.html')
 
