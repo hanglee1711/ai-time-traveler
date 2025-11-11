@@ -790,6 +790,14 @@
                     sessionStorage.setItem('hasSeenLoadingScreen', 'true');
                     console.log('💾 Saved to sessionStorage - will not show again in this session');
 
+                    // Auto-play background music khi bắt đầu hành trình
+                    setTimeout(() => {
+                        if (window.MusicController && !window.MusicController.isPlaying) {
+                            window.MusicController.play();
+                            console.log('🎵 Background music auto-started!');
+                        }
+                    }, 1500); // Sau 1.5s (sau khi warp effect xong)
+
                     hideLoadingScreen();
                 });
 
