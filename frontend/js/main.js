@@ -3,8 +3,10 @@
  * Common functions and utilities for all pages
  */
 
-// API Configuration
-const API_BASE_URL = 'http://localhost:5000/api';
+// API Configuration - Auto-detect based on environment
+const API_BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    ? 'http://localhost:5000/api'  // Local development
+    : window.location.origin + '/api';  // Production (same domain)
 
 // User data management
 const UserData = {

@@ -2,10 +2,12 @@
  * VIỆT SỬ KÝ - Chatbot Page JavaScript
  */
 
-// Force define API_BASE_URL
-window.API_BASE_URL = 'http://localhost:5000/api';
-const API_BASE_URL = 'http://localhost:5000/api';
+// Auto-detect API URL based on environment
+const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? 'http://localhost:5000/api'  // Local development
+    : window.location.origin + '/api';  // Production (same domain)
 
+window.API_BASE_URL = API_BASE_URL;
 console.log('🚀 Chatbot.js loaded - API_BASE_URL:', API_BASE_URL);
 
 // State management
