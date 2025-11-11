@@ -45,6 +45,7 @@ nul
 *.jpg
 *.jpeg
 *.png
+!frontend/hero*.png
 !frontend/assets/**/*.png
 !frontend/assets/**/*.jpg
 !frontend/images/**/*.png
