@@ -196,6 +196,24 @@
             // Hide error
             errorMessage.style.display = 'none';
 
+            // Validate password strength (must have both letters and numbers)
+            const hasLetter = /[a-zA-Z]/.test(password);
+            const hasNumber = /[0-9]/.test(password);
+
+            if (password.length < 6) {
+                errorMessage.className = 'error-message';
+                errorMessage.textContent = 'Mật khẩu phải có ít nhất 6 ký tự';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            if (!hasLetter || !hasNumber) {
+                errorMessage.className = 'error-message';
+                errorMessage.textContent = 'Mật khẩu phải có cả chữ cái và số';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
             // Validate passwords match
             if (password !== confirmPassword) {
                 errorMessage.className = 'error-message';

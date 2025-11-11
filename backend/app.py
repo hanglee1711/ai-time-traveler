@@ -679,6 +679,13 @@ def register():
     }
     """
     try:
+        # Rate limiting for auth endpoints
+        protection = get_protection()
+        client_ip = request.remote_addr or 'unknown'
+        is_allowed, error_msg = protection.check_rate_limit(client_ip)
+        if not is_allowed:
+            return jsonify({'error': error_msg}), 429
+
         data = request.json
 
         username = data.get('username', '').strip()
@@ -754,6 +761,13 @@ def login():
     }
     """
     try:
+        # Rate limiting for auth endpoints
+        protection = get_protection()
+        client_ip = request.remote_addr or 'unknown'
+        is_allowed, error_msg = protection.check_rate_limit(client_ip)
+        if not is_allowed:
+            return jsonify({'error': error_msg}), 429
+
         data = request.json
 
         username_or_email = data.get('username', '').strip()
@@ -913,12 +927,12 @@ def forgot_password():
         db.session.commit()
 
         # In production, send email here
-        # For now, just return the token (in production, this should be sent via email)
-        print(f"Password reset token for {email}: {reset_token}")
+        # For development: Print token to console (in production, send via email)
+        print(f"[DEV MODE] Password reset token for {email}: {reset_token}")
+        print(f"[DEV MODE] Reset link: http://localhost:5000/reset-password.html?token={reset_token}")
 
         return jsonify({
-            'message': 'Nếu email tồn tại, link reset mật khẩu đã được gửi',
-            'reset_token': reset_token  # Remove this in production
+            'message': 'Nếu email tồn tại, link reset mật khẩu đã được gửi'
         })
 
     except Exception as e:
