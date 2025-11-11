@@ -159,10 +159,30 @@ def serve_hero_image():
     """Serve hero image"""
     return send_from_directory(str(base_dir / 'frontend'), 'hero-image.png')
 
+@app.route('/hero-character.png')
+def serve_hero_character():
+    """Serve hero character image"""
+    return send_from_directory(str(base_dir / 'frontend'), 'hero-character.png')
+
 @app.route('/background-music.mp3')
 def serve_background_music():
     """Serve background music"""
     return send_from_directory(str(base_dir / 'frontend'), 'background-music.mp3', mimetype='audio/mpeg')
+
+@app.route('/images/<path:filename>')
+def serve_images(filename):
+    """Serve image files"""
+    return send_from_directory(str(base_dir / 'frontend' / 'images'), filename)
+
+@app.route('/assets/<path:filename>')
+def serve_assets(filename):
+    """Serve asset files"""
+    return send_from_directory(str(base_dir / 'frontend' / 'assets'), filename)
+
+@app.route('/audio/<path:filename>')
+def serve_audio(filename):
+    """Serve audio files"""
+    return send_from_directory(str(base_dir / 'frontend' / 'audio'), filename)
 
 
 @app.route('/api/health', methods=['GET'])
