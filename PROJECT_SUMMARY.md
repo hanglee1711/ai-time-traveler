@@ -1,8 +1,8 @@
-# 📊 AI Time Traveler - Tóm tắt dự án
+﻿# 📊 Việt Sử Ký - Tóm tắt dự án
 
 ## 🎯 Tổng quan
 
-**AI Time Traveler** là một chatbot web công khai cho phép người dùng:
+**Việt Sử Ký** là một chatbot web công khai cho phép người dùng:
 - Trò chuyện với các nhân vật lịch sử Việt Nam
 - Du hành đến các mốc thời gian quan trọng
 - Học lịch sử một cách sinh động và thú vị

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trò Chơi - VIỆT SỬ KÝ</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">⏳</span>
+                <span>VIỆT SỬ KÝ</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                <li><a href="chatbot.html" class="nav-link">Chatbot</a></li>
+                <li><a href="timeline.html" class="nav-link">Dòng thời gian</a></li>
+                <li><a href="map.html" class="nav-link">Bản đồ</a></li>
+                <li><a href="game.html" class="nav-link active">Trò chơi</a></li>
+                <li><a href="journey.html" class="nav-link">Hành trình của tôi</a></li>
+                <li class="auth-login-btn"><a href="login.html" class="nav-link btn-gold" style="padding: 0.5rem 1.5rem;">Đăng nhập</a></li>
+                <li class="auth-register-btn"><a href="register.html" class="nav-link" style="padding: 0.5rem 1.5rem;">Đăng ký</a></li>
+                <li class="auth-user-info" style="display: none;">
+                    <span class="nav-link" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem;">
+                        <span class="auth-user-avatar">👤</span>
+                        <span class="auth-user-name">User</span>
+                    </span>
+                </li>
+                <li class="auth-logout-btn" style="display: none;"><a href="#" class="nav-link btn-gold" style="padding: 0.5rem 1.5rem;">Đăng xuất</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <div class="game-container">
+        <!-- Game Menu (Default View) -->
+        <div id="gameMenu">
+            <h1 class="section-title">Trò Chơi & Thử Thách</h1>
+            <p style="text-align: center; color: var(--text-gray); margin: 0 auto 2rem auto; width: 100%; display: block;">
+                Khám phá lịch sử qua các trò chơi thú vị và thử thách hàng ngày!
+            </p>
+
+            <!-- Learning Streak Section -->
+            <div id="streakSection" class="streak-section">
+                <div class="streak-header">
+                    <div class="streak-main">
+                        <div class="streak-flame">🔥</div>
+                        <div class="streak-info">
+                            <div class="streak-count" id="streakCount">0</div>
+                            <div class="streak-label">ngày liên tục</div>
+                        </div>
+                    </div>
+                    <div class="streak-record">
+                        <div class="record-value" id="longestStreak">0</div>
+                        <div class="record-label">🏆 Kỷ lục</div>
+                    </div>
+                </div>
+
+                <!-- 7-Day Calendar -->
+                <div class="streak-calendar" id="streakCalendar">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+
+                <!-- Milestones -->
+                <div class="streak-milestones">
+                    <div class="milestone-card" data-days="7">
+                        <div class="milestone-icon">🥉</div>
+                        <div class="milestone-info">
+                            <div class="milestone-title">Người học chăm chỉ</div>
+                            <div class="milestone-days">7 ngày</div>
+                        </div>
+                        <div class="milestone-reward">+50 XP</div>
+                        <div class="milestone-status" id="milestone7">🔒</div>
+                    </div>
+                    <div class="milestone-card" data-days="14">
+                        <div class="milestone-icon">🥈</div>
+                        <div class="milestone-info">
+                            <div class="milestone-title">Nhà sử học nhí</div>
+                            <div class="milestone-days">14 ngày</div>
+                        </div>
+                        <div class="milestone-reward">+100 XP</div>
+                        <div class="milestone-status" id="milestone14">🔒</div>
+                    </div>
+                    <div class="milestone-card" data-days="30">
+                        <div class="milestone-icon">🥇</div>
+                        <div class="milestone-info">
+                            <div class="milestone-title">Bậc thầy lịch sử</div>
+                            <div class="milestone-days">30 ngày</div>
+                        </div>
+                        <div class="milestone-reward">+200 XP</div>
+                        <div class="milestone-status" id="milestone30">🔒</div>
+                    </div>
+                </div>
+
+                <!-- Streak Tips -->
+                <div class="streak-tips">
+                    <div class="tip-item">
+                        <span class="tip-icon">💡</span>
+                        <span class="tip-text">Hoàn thành 1 quiz hoặc nhiệm vụ mỗi ngày để giữ streak!</span>
+                    </div>
+                    <div class="tip-item">
+                        <span class="tip-icon">💎</span>
+                        <span class="tip-text">Dùng 50 XP để "đóng băng" streak nếu bỏ 1 ngày (Coming soon)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Cards Grid -->
+            <div class="game-grid">
+                <!-- Mini Quiz -->
+                <div class="game-card" data-game="quiz">
+                    <div class="game-icon">❓</div>
+                    <h3 class="game-title">Mini Quiz</h3>
+                    <p class="game-description">Kiểm tra kiến thức lịch sử của bạn với 10 câu hỏi thú vị. Trả lời đúng để nhận điểm và XP!</p>
+                    <button class="btn-quiz btn-primary" onclick="startQuiz()">
+                        Bắt đầu ngay
+                    </button>
+                </div>
+
+                <!-- Quiz Battle -->
+                <div class="game-card" data-game="battle" style="border: 2px solid rgba(212, 175, 55, 0.5); background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(255, 165, 0, 0.05));">
+                    <div class="game-icon">⚔️</div>
+                    <h3 class="game-title" style="color: var(--gold);">Đấu Trí Lịch Sử</h3>
+                    <p class="game-description">Đấu trường quiz battle! Sử dụng thẻ bài chiến thuật, đánh bại AI và trở thành bậc thầy lịch sử!</p>
+                    <button class="btn-quiz btn-primary" onclick="window.location.href='quiz-battle.html'">
+                        Vào đấu trường →
+                    </button>
+                </div>
+
+                <!-- Daily Missions -->
+                <div class="game-card">
+                    <div class="game-icon">🎯</div>
+                    <h3 class="game-title">Nhiệm Vụ Hàng Ngày</h3>
+                    <p class="game-description">Hoàn thành nhiệm vụ để nhận XP và huy hiệu đặc biệt!</p>
+                    <button class="btn-quiz btn-primary" onclick="document.getElementById('missionsSection').scrollIntoView({behavior: 'smooth'})">
+                        Xem nhiệm vụ
+                    </button>
+                </div>
+
+                <!-- Leaderboard -->
+                <div class="game-card">
+                    <div class="game-icon">🏆</div>
+                    <h3 class="game-title">Bảng Xếp Hạng</h3>
+                    <p class="game-description">Cạnh tranh với người chơi khác để lên top và trở thành bậc thầy lịch sử!</p>
+                    <button class="btn-quiz btn-primary" onclick="document.getElementById('leaderboardSection').scrollIntoView({behavior: 'smooth'})">
+                        Xem bảng xếp hạng
+                    </button>
+                </div>
+            </div>
+
+            <!-- Daily Missions Section -->
+            <div id="missionsSection" style="margin-top: 4rem;">
+                <h2 class="section-title"> Nhiệm Vụ Hàng Ngày</h2>
+                <p style="text-align: center; color: var(--text-gray); margin: 0 auto 2rem auto; max-width: 800px; font-size: 1.1rem; line-height: 1.6;">
+                    Hoàn thành nhiệm vụ để nhận thưởng XP mỗi ngày!
+                </p>
+                <div id="missionsContainer" class="missions-container">
+                    <!-- Missions will be loaded here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Leaderboard Section -->
+            <div id="leaderboardSection" style="margin-top: 4rem;">
+                <h2 class="section-title">🏆 Bảng Xếp Hạng</h2>
+                <p style="text-align: center; color: var(--text-gray); margin: 0 auto 2rem auto; max-width: 800px; font-size: 1.1rem; line-height: 1.6;">
+                    Top người chơi xuất sắc nhất!
+                </p>
+                <div class="leaderboard-container">
+                    <div id="leaderboardList" class="leaderboard-list">
+                        <!-- Leaderboard will be loaded here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Container (Hidden by default) -->
+        <div id="quizContainer" style="display: none;">
+            <!-- Topic Selection Screen -->
+            <div id="topicSelection" style="display: block;">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <h1 class="section-title">Chọn Chủ Đề Quiz</h1>
+                    <p style="color: var(--text-gray); margin-bottom: 2rem;">
+                        Chọn một chủ đề để bắt đầu quiz 10 câu hỏi
+                    </p>
+                    <button class="btn-quiz btn-secondary" id="backToMenuFromTopic" style="margin-top: 1rem;">
+                        ← Quay lại menu
+                    </button>
+                </div>
+
+                <!-- Topic Grid -->
+                <div id="topicGrid">
+                    <!-- Topics will be loaded here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Quiz Playing Screen -->
+            <div id="quizPlayScreen" style="display: none;">
+                <!-- Quiz Header -->
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <h1 class="section-title">Mini Quiz Lịch Sử</h1>
+                    <div id="currentTopicDisplay" style="margin-top: 1rem; color: var(--gold); font-size: 1.2rem;"></div>
+                    <button class="btn-quiz btn-secondary" id="backToTopics" style="margin-top: 1rem;">
+                        ← Chọn lại chủ đề
+                    </button>
+                </div>
+
+            <!-- Quiz Section -->
+            <div id="quizSection" class="quiz-section active">
+                <div class="quiz-header">
+                    <div class="quiz-progress">
+                        <span style="color: var(--text-gray);">Tiến độ:</span>
+                        <div class="progress-bar">
+                            <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span id="questionNumber" style="color: var(--gold); font-weight: 700;">1/10</span>
+                    </div>
+
+                    <div class="quiz-stats">
+                        <div class="stat-item">
+                            <div id="correctAnswers" class="stat-value">0</div>
+                            <div class="stat-label">✅ Đúng</div>
+                        </div>
+                        <div class="stat-item">
+                            <div id="wrongAnswers" class="stat-value">0</div>
+                            <div class="stat-label">❌ Sai</div>
+                        </div>
+                        <div class="stat-item">
+                            <div id="currentScore" class="stat-value">0</div>
+                            <div class="stat-label">⭐ Điểm</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question Card -->
+                <div class="question-card">
+                    <div id="questionDifficulty" class="question-difficulty difficulty-medium">Trung bình</div>
+                    <div id="questionNumber2" class="question-number">Câu hỏi 1/10</div>
+                    <div id="questionText" class="question-text">
+                        Đang tải câu hỏi...
+                    </div>
+
+                    <!-- Options -->
+                    <div id="optionsContainer" class="options-grid">
+                        <!-- Options will be loaded here by JavaScript -->
+                    </div>
+
+                    <!-- Explanation Box -->
+                    <div id="explanationBox" class="explanation-box">
+                        <div id="explanationTitle" class="explanation-title">💡 Giải thích</div>
+                        <div id="explanationText" class="explanation-text"></div>
+                    </div>
+                </div>
+
+                <!-- Quiz Controls -->
+                <div class="quiz-controls">
+                    <button class="btn-quiz btn-secondary" onclick="handleExitQuiz()">
+                        Thoát
+                    </button>
+                    <button id="nextBtn" class="btn-quiz btn-primary" onclick="nextQuestion()" disabled>
+                        Câu tiếp theo →
+                    </button>
+                    <button id="submitBtn" class="btn-quiz btn-primary" onclick="submitQuiz()" disabled style="display: none;">
+                        Nộp bài ✓
+                    </button>
+                </div>
+            </div>
+            </div>
+            <!-- End Quiz Playing Screen -->
+
+            <!-- Results Screen (Hidden by default) -->
+            <div id="resultsScreen" class="quiz-section" style="display: none;">
+                <div class="results-screen">
+                    <h2 style="color: var(--gold); font-size: 2.5rem; margin-bottom: 1rem;">
+                        Kết Quả
+                    </h2>
+
+                    <div id="resultsScore" class="results-score">0%</div>
+                    <div id="resultsMessage" class="results-message">
+                        Tuyệt vời!
+                    </div>
+
+                    <div class="xp-earned">
+                        <span id="xpEarned">+0 XP</span>
+                    </div>
+
+                    <div class="results-details">
+                        <div class="result-stat">
+                            <div id="correctCount" class="result-stat-value">0</div>
+                            <div class="result-stat-label">Câu đúng</div>
+                        </div>
+                        <div class="result-stat">
+                            <div id="wrongCount" class="result-stat-value">0</div>
+                            <div class="result-stat-label">Câu sai</div>
+                        </div>
+                        <div class="result-stat">
+                            <div id="totalScore" class="result-stat-value">0</div>
+                            <div class="result-stat-label">Tổng điểm</div>
+                        </div>
+                        <div class="result-stat">
+                            <div id="timeSpent" class="result-stat-value">0s</div>
+                            <div class="result-stat-label">Thời gian</div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+                        <button class="btn-quiz btn-primary" onclick="restartQuiz()">
+                            Làm lại
+                        </button>
+                        <button class="btn-quiz btn-secondary" onclick="showGameMenu()">
+                            Về menu
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/game.js"></script>
+
+    <style>
+        /* Animation keyframes */
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+    </style>
+</body>
+</html>

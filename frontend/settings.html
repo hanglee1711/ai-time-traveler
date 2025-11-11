@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cài đặt - VIỆT SỬ KÝ</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <style>
+        .settings-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .settings-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .settings-header h1 {
+            color: #2c3e50;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .settings-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .settings-section h2 {
+            color: #34495e;
+            font-size: 1.3rem;
+            margin: 0 0 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .settings-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .settings-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .settings-item label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        .settings-item input,
+        .settings-item select,
+        .settings-item textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .settings-item input:focus,
+        .settings-item select:focus,
+        .settings-item textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .settings-item .help-text {
+            font-size: 0.85rem;
+            color: #777;
+            margin-top: 0.25rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            background: #5a6268;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            background: #c82333;
+        }
+
+        .checkin-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .checkin-card h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1.5rem;
+        }
+
+        .streak-display {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .checkin-btn {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 1rem;
+        }
+
+        .checkin-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .checkin-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: #667eea;
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        .avatar-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .avatar-option {
+            font-size: 2rem;
+            padding: 0.5rem;
+            text-align: center;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .avatar-option:hover {
+            border-color: #667eea;
+            transform: scale(1.1);
+        }
+
+        .avatar-option.selected {
+            border-color: #667eea;
+            background: #f0f0ff;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            z-index: 9999;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .notification.success {
+            background: #28a745;
+        }
+
+        .notification.error {
+            background: #dc3545;
+        }
+
+        .notification.info {
+            background: #17a2b8;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">⏳</span>
+                <span>VIỆT SỬ KÝ</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                <li><a href="chatbot.html" class="nav-link">Chatbot</a></li>
+                <li><a href="timeline.html" class="nav-link">Dòng thời gian</a></li>
+                <li><a href="map.html" class="nav-link">Bản đồ</a></li>
+                <li><a href="game.html" class="nav-link">Trò chơi</a></li>
+                <li><a href="journey.html" class="nav-link">Hành trình</a></li>
+                <li class="auth-login-btn"><a href="login.html" class="nav-link btn-gold">Đăng nhập</a></li>
+                <li class="auth-register-btn"><a href="register.html" class="nav-link">Đăng ký</a></li>
+                <li class="auth-user-dropdown" style="display: none;">
+                    <button class="user-dropdown-btn nav-link">
+                        <span class="auth-user-name">User</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="user-dropdown-menu">
+                        <a href="journey.html" class="dropdown-item">📊 Hồ sơ</a>
+                        <a href="settings.html" class="dropdown-item">⚙️ Cài đặt</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item auth-logout-link">🚪 Đăng xuất</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="settings-container">
+        <div class="settings-header">
+            <h1>⚙️ Cài đặt</h1>
+            <p>Quản lý tài khoản và tùy chọn của bạn</p>
+        </div>
+
+        <!-- DAILY CHECK-IN -->
+        <div class="settings-section">
+            <h2>🔥 Điểm danh hàng ngày</h2>
+            <div class="checkin-card">
+                <h3>Streak của bạn</h3>
+                <div class="streak-display" id="streakDisplay">0 🔥</div>
+                <p>Streak dài nhất: <strong id="longestStreak">0</strong> ngày</p>
+                <button class="checkin-btn" id="checkinBtn">
+                    Điểm danh hôm nay
+                </button>
+                <p id="checkinMessage" style="margin-top: 1rem; font-size: 0.9rem;"></p>
+            </div>
+        </div>
+
+        <!-- PROFILE SETTINGS -->
+        <div class="settings-section">
+            <h2>👤 Thông tin cá nhân</h2>
+            <div class="settings-item">
+                <label>Tên đăng nhập</label>
+                <input type="text" id="username" readonly disabled>
+                <p class="help-text">Tên đăng nhập không thể thay đổi</p>
+            </div>
+            <div class="settings-item">
+                <label>Tên hiển thị</label>
+                <input type="text" id="displayName" placeholder="Nhập tên hiển thị">
+                <p class="help-text">Tên này sẽ hiển thị cho người dùng khác</p>
+            </div>
+            <div class="settings-item">
+                <label>Avatar</label>
+                <div class="avatar-selector">
+                    <div class="avatar-option" data-avatar="👤">👤</div>
+                    <div class="avatar-option" data-avatar="👨">👨</div>
+                    <div class="avatar-option" data-avatar="👩">👩</div>
+                    <div class="avatar-option" data-avatar="🧑">🧑</div>
+                    <div class="avatar-option" data-avatar="👦">👦</div>
+                    <div class="avatar-option" data-avatar="👧">👧</div>
+                    <div class="avatar-option" data-avatar="🎓">🎓</div>
+                    <div class="avatar-option" data-avatar="📚">📚</div>
+                    <div class="avatar-option" data-avatar="⚔️">⚔️</div>
+                    <div class="avatar-option" data-avatar="🏆">🏆</div>
+                </div>
+                <p class="help-text">Chọn icon đại diện cho bạn</p>
+            </div>
+            <button class="btn-primary" id="saveProfileBtn">💾 Lưu thay đổi</button>
+        </div>
+
+        <!-- ACCOUNT STATS -->
+        <div class="settings-section">
+            <h2>📊 Thống kê tài khoản</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="userLevel">1</div>
+                    <div class="stat-label">Level</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="userXP">0</div>
+                    <div class="stat-label">XP</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalPoints">0</div>
+                    <div class="stat-label">Tổng điểm</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="currentStreak">0</div>
+                    <div class="stat-label">Streak hiện tại</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECURITY -->
+        <div class="settings-section">
+            <h2>🔒 Bảo mật</h2>
+            <div class="settings-item">
+                <label>Mật khẩu hiện tại</label>
+                <input type="password" id="currentPassword" placeholder="Nhập mật khẩu hiện tại">
+            </div>
+            <div class="settings-item">
+                <label>Mật khẩu mới</label>
+                <input type="password" id="newPassword" placeholder="Nhập mật khẩu mới">
+            </div>
+            <div class="settings-item">
+                <label>Xác nhận mật khẩu mới</label>
+                <input type="password" id="confirmPassword" placeholder="Nhập lại mật khẩu mới">
+            </div>
+            <button class="btn-secondary" id="changePasswordBtn">🔑 Đổi mật khẩu</button>
+        </div>
+
+        <!-- PREFERENCES -->
+        <div class="settings-section">
+            <h2>🎨 Tùy chỉnh</h2>
+            <div class="settings-item">
+                <label>Âm thanh</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="soundEnabled" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+                <p class="help-text">Bật/tắt hiệu ứng âm thanh</p>
+            </div>
+            <div class="settings-item">
+                <label>Thông báo</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="notificationsEnabled" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+                <p class="help-text">Nhận thông báo về streak và thành tích</p>
+            </div>
+            <div class="settings-item">
+                <label>Chế độ tối</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="darkMode">
+                    <span class="toggle-slider"></span>
+                </label>
+                <p class="help-text">Chuyển sang giao diện tối (đang phát triển)</p>
+            </div>
+        </div>
+
+        <!-- ABOUT -->
+        <div class="settings-section">
+            <h2>ℹ️ Về ứng dụng</h2>
+            <p><strong>Việt Sử Ký</strong> - Cỗ máy du hành thời gian lịch sử</p>
+            <p>Version: 1.0.0</p>
+            <p>Phát triển bởi: MindX Team</p>
+            <p style="margin-top: 1rem;">
+                <a href="https://github.com/yourusername/viet-su-ky" target="_blank" style="color: #667eea;">GitHub</a> |
+                <a href="#" style="color: #667eea;">Điều khoản</a> |
+                <a href="#" style="color: #667eea;">Chính sách</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Require login
+            if (!Auth.isLoggedIn()) {
+                window.location.href = 'login.html?redirect=settings.html';
+                return;
+            }
+
+            // Initialize auth UI
+            await Auth.initAuthUI();
+
+            // Load user data
+            await loadUserData();
+
+            // Setup event listeners
+            setupEventListeners();
+        });
+
+        // Load user data
+        async function loadUserData() {
+            const user = Auth.getUser();
+            if (!user) return;
+
+            // Fill profile fields
+            document.getElementById('username').value = user.username || '';
+            document.getElementById('displayName').value = user.display_name || user.username || '';
+
+            // Select avatar
+            const avatarOptions = document.querySelectorAll('.avatar-option');
+            avatarOptions.forEach(option => {
+                if (option.dataset.avatar === user.avatar) {
+                    option.classList.add('selected');
+                }
+            });
+
+            // Fill stats
+            document.getElementById('userLevel').textContent = user.level || 1;
+            document.getElementById('userXP').textContent = user.xp || 0;
+            document.getElementById('totalPoints').textContent = user.total_points || 0;
+            document.getElementById('currentStreak').textContent = user.current_streak || 0;
+            document.getElementById('streakDisplay').textContent = `${user.current_streak || 0} 🔥`;
+            document.getElementById('longestStreak').textContent = user.longest_streak || 0;
+
+            // Load preferences
+            const settings = JSON.parse(localStorage.getItem('vietsuky_settings') || '{}');
+            document.getElementById('soundEnabled').checked = settings.sound !== false;
+            document.getElementById('notificationsEnabled').checked = settings.notifications !== false;
+            document.getElementById('darkMode').checked = settings.darkMode === true;
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Avatar selection
+            document.querySelectorAll('.avatar-option').forEach(option => {
+                option.addEventListener('click', () => {
+                    document.querySelectorAll('.avatar-option').forEach(o => o.classList.remove('selected'));
+                    option.classList.add('selected');
+                });
+            });
+
+            // Save profile
+            document.getElementById('saveProfileBtn').addEventListener('click', saveProfile);
+
+            // Change password
+            document.getElementById('changePasswordBtn').addEventListener('click', changePassword);
+
+            // Daily check-in
+            document.getElementById('checkinBtn').addEventListener('click', dailyCheckin);
+
+            // Save preferences on change
+            ['soundEnabled', 'notificationsEnabled', 'darkMode'].forEach(id => {
+                document.getElementById(id).addEventListener('change', savePreferences);
+            });
+        }
+
+        // Save profile
+        async function saveProfile() {
+            const displayName = document.getElementById('displayName').value.trim();
+            const selectedAvatar = document.querySelector('.avatar-option.selected');
+            const avatar = selectedAvatar ? selectedAvatar.dataset.avatar : '👤';
+
+            if (!displayName) {
+                showNotification('Vui lòng nhập tên hiển thị', 'error');
+                return;
+            }
+
+            const result = await Auth.updateProfile({
+                display_name: displayName,
+                avatar: avatar
+            });
+
+            if (result.success) {
+                showNotification('Cập nhật thông tin thành công!', 'success');
+                await loadUserData();
+            } else {
+                showNotification(result.error || 'Có lỗi xảy ra', 'error');
+            }
+        }
+
+        // Change password
+        async function changePassword() {
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (!currentPassword || !newPassword || !confirmPassword) {
+                showNotification('Vui lòng điền đầy đủ thông tin', 'error');
+                return;
+            }
+
+            if (newPassword !== confirmPassword) {
+                showNotification('Mật khẩu mới không khớp', 'error');
+                return;
+            }
+
+            if (newPassword.length < 6) {
+                showNotification('Mật khẩu mới phải có ít nhất 6 ký tự', 'error');
+                return;
+            }
+
+            const result = await Auth.changePassword(currentPassword, newPassword);
+
+            if (result.success) {
+                showNotification('Đổi mật khẩu thành công!', 'success');
+                document.getElementById('currentPassword').value = '';
+                document.getElementById('newPassword').value = '';
+                document.getElementById('confirmPassword').value = '';
+            } else {
+                showNotification(result.error || 'Có lỗi xảy ra', 'error');
+            }
+        }
+
+        // Daily check-in
+        async function dailyCheckin() {
+            const btn = document.getElementById('checkinBtn');
+            btn.disabled = true;
+            btn.textContent = 'Đang xử lý...';
+
+            try {
+                const response = await Auth.authenticatedFetch('/streak/checkin', {
+                    method: 'POST'
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    if (data.already_checked_in) {
+                        showNotification(data.message, 'info');
+                    } else {
+                        showNotification(data.message, 'success');
+                        // Update UI
+                        document.getElementById('streakDisplay').textContent = `${data.current_streak} 🔥`;
+                        document.getElementById('currentStreak').textContent = data.current_streak;
+                        document.getElementById('longestStreak').textContent = data.longest_streak;
+                        document.getElementById('userXP').textContent = data.total_xp;
+                        document.getElementById('userLevel').textContent = data.level;
+
+                        if (data.leveled_up) {
+                            showNotification(`Chúc mừng! Bạn đã lên cấp ${data.level}! 🎉`, 'success');
+                        }
+                    }
+
+                    btn.textContent = 'Đã điểm danh';
+                    document.getElementById('checkinMessage').textContent = `Nhận ${data.xp_earned} XP`;
+                } else {
+                    showNotification(data.error || 'Có lỗi xảy ra', 'error');
+                    btn.disabled = false;
+                    btn.textContent = 'Điểm danh hôm nay';
+                }
+            } catch (error) {
+                console.error('Check-in error:', error);
+                showNotification('Không thể kết nối đến máy chủ', 'error');
+                btn.disabled = false;
+                btn.textContent = 'Điểm danh hôm nay';
+            }
+        }
+
+        // Save preferences
+        function savePreferences() {
+            const settings = {
+                sound: document.getElementById('soundEnabled').checked,
+                notifications: document.getElementById('notificationsEnabled').checked,
+                darkMode: document.getElementById('darkMode').checked
+            };
+
+            localStorage.setItem('vietsuky_settings', JSON.stringify(settings));
+            showNotification('Đã lưu tùy chỉnh', 'success');
+
+            // Apply dark mode (if implemented)
+            if (settings.darkMode) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

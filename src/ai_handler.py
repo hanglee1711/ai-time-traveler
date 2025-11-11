@@ -62,16 +62,19 @@ class AIHandler:
             raise ImportError("OpenAI package not installed. Run: pip install openai")
 
     def _init_gemini(self):
-        """Initialize Google Gemini client"""
+        """Initialize Google Gemini client - SIMPLIFIED (no safety settings)"""
         try:
             import google.generativeai as genai
             api_key = get_env("GEMINI_API_KEY")
             if not api_key:
                 raise ValueError("GEMINI_API_KEY not found in environment variables")
             genai.configure(api_key=api_key)
-            # Use the stable model name that works with current API
-            self.model = get_env("GEMINI_MODEL", "gemini-pro")
-            self.client = genai.GenerativeModel(self.model)
+
+            # Use gemini-2.5-flash
+            self.model_name = get_env("GEMINI_MODEL", "gemini-2.5-flash")
+
+            # SIMPLIFIED: No safety settings - let Gemini use defaults
+            self.client = genai.GenerativeModel(model_name=self.model_name)
         except ImportError:
             raise ImportError("Google Generative AI package not installed. Run: pip install google-generativeai")
 
@@ -137,23 +140,30 @@ class AIHandler:
         temperature: float,
         max_tokens: int
     ) -> str:
-        """Generate response using Google Gemini"""
+        """Generate response using Google Gemini - ULTRA SIMPLIFIED"""
         try:
-            # Combine system prompt and user message for Gemini
-            full_prompt = f"{system_prompt}\n\nNgười dùng: {user_message}\n\nTrả lời:"
+            # ULTRA SIMPLE - Just combine prompt and question
+            full_prompt = f"""{system_prompt}
 
-            generation_config = {
-                "temperature": temperature,
-                "max_output_tokens": max_tokens,
-            }
+{user_message}"""
 
-            response = self.client.generate_content(
-                full_prompt,
-                generation_config=generation_config
-            )
+            # SIMPLE API call - no complex config
+            response = self.client.generate_content(full_prompt)
+
+            # Get text from response - simple and direct
             return response.text
+
         except Exception as e:
-            return f"Lỗi khi gọi Gemini API: {str(e)}"
+            error_msg = str(e).lower()
+            print(f"[ERROR] Gemini API: {str(e)}")
+
+            # Provide helpful error messages
+            if "blocked" in error_msg or "safety" in error_msg:
+                return "Xin lỗi, câu hỏi này có vấn đề với hệ thống. Hãy thử hỏi theo cách khác nhé!"
+            elif "quota" in error_msg or "limit" in error_msg:
+                return "Xin lỗi, hệ thống đang quá tải. Vui lòng thử lại sau ít phút."
+            else:
+                return "Xin lỗi, đang gặp chút vấn đề kỹ thuật. Hãy thử lại nhé!"
 
     def _generate_llama(
         self,

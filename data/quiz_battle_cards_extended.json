@@ -1,0 +1,438 @@
+{
+  "new_cards": [
+    {
+      "id": 11,
+      "name": "Độc Dược Thần Nông",
+      "type": "attack",
+      "rarity": "rare",
+      "icon": "☠️",
+      "description": "Gây 5 sát thương, thêm 3 sát thương mỗi lượt trong 2 lượt tiếp (Poison)",
+      "flavor_text": "Y học cổ truyền - vừa cứu người, vừa trừ gian!",
+      "cost": 2,
+      "cooldown": 3,
+      "effect": {
+        "type": "poison",
+        "immediate_damage": 5,
+        "poison_damage": 3,
+        "poison_duration": 2,
+        "target": "opponent",
+        "timing": "immediate"
+      },
+      "usage_instructions": "Damage theo thời gian - hiệu quả với trận dài"
+    },
+    {
+      "id": 12,
+      "name": "Phản Gương Âm Dương",
+      "type": "defense",
+      "rarity": "epic",
+      "icon": "🪞",
+      "description": "Phản lại 50% sát thương nhận vào trong 2 lượt",
+      "flavor_text": "Lấy đường người, trị thân người!",
+      "cost": 2,
+      "cooldown": 3,
+      "effect": {
+        "type": "reflect_damage",
+        "reflect_percentage": 50,
+        "duration": 2,
+        "target": "self",
+        "timing": "reactive"
+      },
+      "usage_instructions": "Sử dụng khi bị tấn công nhiều"
+    },
+    {
+      "id": 13,
+      "name": "Sét Đánh Trời Giáng",
+      "type": "attack",
+      "rarity": "epic",
+      "icon": "⚡",
+      "description": "Gây 20 sát thương, mất hết năng lượng",
+      "flavor_text": "Thiên lôi giáng phúc!",
+      "cost": 0,
+      "cooldown": 5,
+      "effect": {
+        "type": "massive_damage",
+        "value": 20,
+        "side_effect": "lose_all_energy",
+        "target": "opponent",
+        "timing": "immediate"
+      },
+      "usage_instructions": "Nuke mạnh nhưng mất hết energy - dùng để finish"
+    },
+    {
+      "id": 14,
+      "name": "Hồn Hải Mã",
+      "type": "special",
+      "rarity": "legendary",
+      "icon": "🐴",
+      "description": "Copy 1 lá bài ngẫu nhiên từ đối thủ vào tay",
+      "flavor_text": "Học hỏi từ kẻ thù để chiến thắng!",
+      "cost": 3,
+      "cooldown": 4,
+      "effect": {
+        "type": "steal_card",
+        "value": 1,
+        "target": "opponent",
+        "timing": "immediate"
+      },
+      "usage_instructions": "Ăn cắp strategy của đối thủ"
+    },
+    {
+      "id": 15,
+      "name": "Liên Hoàn Kế",
+      "type": "special",
+      "rarity": "rare",
+      "icon": "🔗",
+      "description": "Lá bài tiếp theo bạn dùng cost 0 và gấp đôi hiệu ứng",
+      "flavor_text": "36 kế, kế liên hoàn!",
+      "cost": 2,
+      "cooldown": 4,
+      "effect": {
+        "type": "combo_boost",
+        "next_card_cost": 0,
+        "next_card_multiplier": 2,
+        "duration": 1,
+        "target": "self",
+        "timing": "immediate"
+      },
+      "usage_instructions": "Setup cho combo mạnh"
+    },
+    {
+      "id": 16,
+      "name": "Mưa Tên Bách Bộ Xuyên Dương",
+      "type": "attack",
+      "rarity": "rare",
+      "icon": "🏹",
+      "description": "Gây 15 sát thương, ignore shield",
+      "flavor_text": "Tên nào dầu tái giỏi, gặp ta đều ngã!",
+      "cost": 3,
+      "cooldown": 3,
+      "effect": {
+        "type": "piercing_damage",
+        "value": 15,
+        "ignore_shield": true,
+        "target": "opponent",
+        "timing": "immediate"
+      },
+      "usage_instructions": "Phá shield địch"
+    },
+    {
+      "id": 17,
+      "name": "Thiên Ấn",
+      "type": "attack",
+      "rarity": "rare",
+      "icon": "📜",
+      "description": "Đối thủ không thể dùng lá bài ở lượt tiếp theo",
+      "flavor_text": "Triệu chỉ thiên tử, phong ấn địch quân!",
+      "cost": 2,
+      "cooldown": 3,
+      "effect": {
+        "type": "silence",
+        "duration": 1,
+        "target": "opponent",
+        "timing": "immediate"
+      },
+      "usage_instructions": "Chặn combo của đối thủ"
+    },
+    {
+      "id": 18,
+      "name": "Tái Sinh Phượng Hoàng",
+      "type": "defense",
+      "rarity": "legendary",
+      "icon": "🔥",
+      "description": "Nếu HP xuống 0, hồi về 30 HP (chỉ 1 lần)",
+      "flavor_text": "Phượng hoàng tái sinh từ tro tàn!",
+      "cost": 3,
+      "cooldown": 999,
+      "effect": {
+        "type": "revive",
+        "revive_hp": 30,
+        "one_time_use": true,
+        "target": "self",
+        "timing": "reactive"
+      },
+      "usage_instructions": "Insurance card - cứu mạng 1 lần"
+    },
+    {
+      "id": 19,
+      "name": "Biến Hóa Khôn Lường",
+      "type": "knowledge",
+      "rarity": "epic",
+      "icon": "🎭",
+      "description": "Xem được 3 đáp án: 2 sai và 1 đúng, nhưng không biết cái nào đúng",
+      "flavor_text": "Trong 3 có 1, hãy tin vào trực giác!",
+      "cost": 1,
+      "cooldown": 2,
+      "effect": {
+        "type": "partial_reveal",
+        "reveal_count": 3,
+        "has_correct": true,
+        "target": "self",
+        "timing": "before_answer"
+      },
+      "usage_instructions": "Giúp loại bỏ 1 đáp án sai chắc chắn"
+    },
+    {
+      "id": 20,
+      "name": "Nhất Tiễn Song Điêu",
+      "type": "attack",
+      "rarity": "rare",
+      "icon": "🎯",
+      "description": "Gây 8 sát thương, +8 nếu đối thủ đang có shield",
+      "flavor_text": "Một tên hai đích!",
+      "cost": 2,
+      "cooldown": 2,
+      "effect": {
+        "type": "conditional_bonus_damage",
+        "base_damage": 8,
+        "bonus_damage": 8,
+        "condition": "opponent_has_shield",
+        "target": "opponent",
+        "timing": "immediate"
+      },
+      "usage_instructions": "Counter shield cards"
+    },
+    {
+      "id": 21,
+      "name": "Ma Thuật Cổ Việt",
+      "type": "special",
+      "rarity": "rare",
+      "icon": "✨",
+      "description": "Random 1 hiệu ứng: Heal 20, Damage 15, hoặc Draw 3 cards",
+      "flavor_text": "Ma lực của tổ tiên không thể đoán trước!",
+      "cost": 2,
+      "cooldown": 3,
+      "effect": {
+        "type": "random_effect",
+        "possible_effects": [
+          {"type": "heal", "value": 20},
+          {"type": "immediate_damage", "value": 15},
+          {"type": "draw_cards", "value": 3}
+        ],
+        "target": "random",
+        "timing": "immediate"
+      },
+      "usage_instructions": "High risk, high reward"
+    },
+    {
+      "id": 22,
+      "name": "Trống Đồng Nghìn Năm",
+      "type": "defense",
+      "rarity": "rare",
+      "icon": "🥁",
+      "description": "Immune mọi damage trong lượt này",
+      "flavor_text": "Âm thanh trống đồng vang vọng ngàn đời!",
+      "cost": 2,
+      "cooldown": 4,
+      "effect": {
+        "type": "invulnerable",
+        "duration": 1,
+        "target": "self",
+        "timing": "immediate"
+      },
+      "usage_instructions": "Ultimate defense cho 1 lượt"
+    },
+    {
+      "id": 23,
+      "name": "Hỏa Hoàn",
+      "type": "attack",
+      "rarity": "common",
+      "icon": "💥",
+      "description": "Gây damage bằng số energy hiện tại x5",
+      "flavor_text": "Hỏa lực đầy đủ!",
+      "cost": 1,
+      "cooldown": 2,
+      "effect": {
+        "type": "energy_damage",
+        "multiplier": 5,
+        "consume_energy": false,
+        "target": "opponent",
+        "timing": "immediate"
+      },
+      "usage_instructions": "Mạnh nhất khi có 3 energy (15 damage)"
+    },
+    {
+      "id": 24,
+      "name": "Tri Kỷ",
+      "type": "knowledge",
+      "rarity": "rare",
+      "icon": "💭",
+      "description": "Xem câu hỏi kế tiếp trước khi trả lời câu hiện tại",
+      "flavor_text": "Biết trước một nước, thắng cả ván cờ!",
+      "cost": 1,
+      "cooldown": 3,
+      "effect": {
+        "type": "preview_next",
+        "target": "self",
+        "timing": "before_answer"
+      },
+      "usage_instructions": "Strategic planning"
+    },
+    {
+      "id": 25,
+      "name": "Hào Khí Đông A",
+      "type": "special",
+      "rarity": "epic",
+      "icon": "🌏",
+      "description": "+1 Max Energy (permanent), +10 HP",
+      "flavor_text": "Người Việt Nam ta, ông cha ta đây!",
+      "cost": 3,
+      "cooldown": 999,
+      "effect": {
+        "type": "permanent_upgrade",
+        "max_energy_bonus": 1,
+        "immediate_heal": 10,
+        "target": "self",
+        "timing": "immediate"
+      },
+      "usage_instructions": "Game changer - 4 energy max!"
+    },
+    {
+      "id": 26,
+      "name": "Bẫy Tre Núi Rừng",
+      "type": "attack",
+      "rarity": "common",
+      "icon": "🪤",
+      "description": "Set trap: Đối thủ trả lời sai → 12 damage. Trả lời đúng → trap disarmed",
+      "flavor_text": "Địch cẩn thận chân!",
+      "cost": 1,
+      "cooldown": 2,
+      "effect": {
+        "type": "trap",
+        "trap_damage": 12,
+        "condition": "opponent_wrong_answer",
+        "duration": 2,
+        "target": "opponent",
+        "timing": "delayed"
+      },
+      "usage_instructions": "Passive damage - đặt và chờ"
+    },
+    {
+      "id": 27,
+      "name": "Âm Phù",
+      "type": "special",
+      "rarity": "rare",
+      "icon": "📿",
+      "description": "Swap HP với đối thủ",
+      "flavor_text": "Đổi chỗ cho nhau một lần!",
+      "cost": 3,
+      "cooldown": 5,
+      "effect": {
+        "type": "swap_hp",
+        "target": "both",
+        "timing": "immediate"
+      },
+      "usage_instructions": "Comeback card khi HP thấp hơn địch"
+    },
+    {
+      "id": 28,
+      "name": "Quân Lương",
+      "type": "special",
+      "rarity": "common",
+      "icon": "🍚",
+      "description": "+2 Energy ngay lập tức",
+      "flavor_text": "Quân no, chiến thắng!",
+      "cost": 0,
+      "cooldown": 4,
+      "effect": {
+        "type": "energy_boost",
+        "value": 2,
+        "target": "self",
+        "timing": "immediate"
+      },
+      "usage_instructions": "Energy ramp cho big plays"
+    },
+    {
+      "id": 29,
+      "name": "Địa Linh",
+      "type": "defense",
+      "rarity": "rare",
+      "icon": "🌳",
+      "description": "Hồi 5 HP mỗi lượt trong 3 lượt",
+      "flavor_text": "Đất mẹ nuôi dưỡng con!",
+      "cost": 2,
+      "cooldown": 3,
+      "effect": {
+        "type": "regeneration",
+        "heal_per_turn": 5,
+        "duration": 3,
+        "target": "self",
+        "timing": "immediate"
+      },
+      "usage_instructions": "Sustainable healing"
+    },
+    {
+      "id": 30,
+      "name": "Toàn Lực Tấn Công",
+      "type": "attack",
+      "rarity": "legendary",
+      "icon": "💪",
+      "description": "Gây damage = số câu đúng bạn đã trả lời x4",
+      "flavor_text": "Tri thức là vũ khí mạnh nhất!",
+      "cost": 2,
+      "cooldown": 3,
+      "effect": {
+        "type": "knowledge_damage",
+        "multiplier": 4,
+        "based_on": "correct_answers",
+        "target": "opponent",
+        "timing": "immediate"
+      },
+      "usage_instructions": "Càng chơi tốt càng mạnh"
+    }
+  ],
+
+  "extended_starter_deck": {
+    "description": "Bộ bài mở rộng cho progression system",
+    "card_ids": [1, 2, 4, 7, 11, 16, 23, 26, 28]
+  },
+
+  "deck_templates": {
+    "aggressive": {
+      "name": "Hung Hăng",
+      "description": "Tấn công liên tục, finish nhanh",
+      "card_ids": [4, 5, 6, 11, 13, 16, 20, 23, 26, 30]
+    },
+    "defensive": {
+      "name": "Phòng Thủ",
+      "description": "Tank damage, hồi máu, chơi lâu dài",
+      "card_ids": [7, 8, 12, 18, 22, 29, 2, 3, 9, 28]
+    },
+    "combo": {
+      "name": "Combo Bùng Nổ",
+      "description": "Setup rồi burst damage",
+      "card_ids": [15, 25, 28, 13, 30, 16, 1, 2, 9, 10]
+    },
+    "control": {
+      "name": "Kiểm Soát",
+      "description": "Chặn đối thủ, chơi chiến thuật",
+      "card_ids": [5, 6, 17, 14, 10, 24, 3, 7, 12, 27]
+    }
+  },
+
+  "balance_notes_extended": {
+    "version": "2.0.0-Extended",
+    "last_updated": "2025-11-05",
+    "new_mechanics": [
+      "Poison (Damage over time)",
+      "Reflect (Counter damage)",
+      "Silence (Prevent card usage)",
+      "Revive (Second chance)",
+      "Trap (Delayed conditional damage)",
+      "Swap (Exchange stats)",
+      "Regeneration (Healing over time)",
+      "Scaling damage (Based on game state)"
+    ],
+    "rarity_distribution": {
+      "common": "20 cards (Cards 1-10 + new commons)",
+      "rare": "12 cards",
+      "epic": "6 cards",
+      "legendary": "2 cards"
+    },
+    "power_level_notes": [
+      "Legendary cards are game-changers but high cost/cooldown",
+      "Epic cards offer unique mechanics",
+      "Rare cards are efficient and versatile",
+      "Common cards are always useful"
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+/*
+ * VIỆT SỬ KÝ - User Dropdown Menu
+ * Dropdown menu for authenticated users
+ */
+
+/* User Dropdown Container */
+.auth-user-dropdown {
+    position: relative;
+}
+
+/* Dropdown Button */
+.user-dropdown-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.5rem 0.8rem;
+    color: #d4af37;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+.user-dropdown-btn:hover {
+    background: rgba(212, 175, 55, 0.1);
+    transform: translateY(-2px);
+}
+
+.user-dropdown-btn:active {
+    transform: translateY(0);
+}
+
+/* Dropdown Arrow Animation */
+.dropdown-arrow {
+    font-size: 0.7em;
+    transition: transform 0.3s ease;
+}
+
+.user-dropdown-btn.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.user-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0.5rem;
+    min-width: 220px;
+    background: linear-gradient(135deg, rgba(26, 31, 58, 0.98), rgba(15, 20, 40, 0.98));
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6),
+                0 0 20px rgba(212, 175, 55, 0.2);
+    backdrop-filter: blur(20px);
+    padding: 0.5rem;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.user-dropdown-menu.show {
+    display: block !important;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Dropdown Items */
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background: rgba(212, 175, 55, 0.15);
+    color: #d4af37;
+    transform: translateX(5px);
+}
+
+.dropdown-item:active {
+    transform: translateX(3px);
+}
+
+/* Dropdown Icon */
+.dropdown-icon {
+    font-size: 1.2em;
+    width: 24px;
+    text-align: center;
+}
+
+/* Dropdown Divider */
+.dropdown-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+    margin: 0.5rem 0;
+}
+
+/* Special styling for logout */
+.auth-logout-link {
+    color: rgba(239, 83, 80, 0.9);
+}
+
+.auth-logout-link:hover {
+    background: rgba(239, 83, 80, 0.1);
+    color: #ef5350;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .user-dropdown-menu {
+        right: -1rem;
+        min-width: 200px;
+    }
+
+    .dropdown-item {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Animation for dropdown appearance */
+@keyframes dropdownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.user-dropdown-menu.show {
+    animation: dropdownFadeIn 0.3s ease forwards;
+}

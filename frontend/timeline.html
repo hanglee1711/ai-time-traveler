@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dòng Thời Gian - VIỆT KÝ SỬ</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/timeline.css">
+</head>
+<body>
+    <!-- HEADER & NAVIGATION -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">⏳</span>
+                <span>VIỆT KÝ SỬ</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                <li><a href="chatbot.html" class="nav-link">Chatbot</a></li>
+                <li><a href="timeline.html" class="nav-link active">Dòng thời gian</a></li>
+                <li><a href="map.html" class="nav-link">Bản đồ</a></li>
+                <li><a href="game.html" class="nav-link">Trò chơi</a></li>
+                <li><a href="journey.html" class="nav-link">Hành trình của tôi</a></li>
+                <li class="auth-login-btn"><a href="login.html" class="nav-link btn-gold" style="padding: 0.5rem 1.5rem;">Đăng nhập</a></li>
+                <li class="auth-register-btn"><a href="register.html" class="nav-link" style="padding: 0.5rem 1.5rem;">Đăng ký</a></li>
+                <li class="auth-user-info" style="display: none;">
+                    <span class="nav-link" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem;">
+                        <span class="auth-user-avatar">👤</span>
+                        <span class="auth-user-name">User</span>
+                    </span>
+                </li>
+                <li class="auth-logout-btn" style="display: none;"><a href="#" class="nav-link btn-gold" style="padding: 0.5rem 1.5rem;">Đăng xuất</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- TIMELINE SECTION -->
+    <section class="timeline-section">
+        <!-- Particles Background -->
+        <div class="timeline-particles" id="timeline-particles"></div>
+
+        <div class="timeline-header">
+            <h1 class="section-title"> Dòng Thời Gian Lịch Sử Việt Nam</h1>
+            <p class="timeline-subtitle">Khám phá hành trình lịch sử hào hùng của dân tộc</p>
+
+            <!-- Search & Controls -->
+            <div class="timeline-controls">
+                <div class="search-container">
+                    <input type="text"
+                           class="search-input"
+                           id="search-input"
+                           placeholder="🔍 Tìm kiếm sự kiện, năm, nhân vật...">
+                    <div class="search-overlay" id="search-overlay"></div>
+                    <div class="search-results" id="search-results"></div>
+                </div>
+
+                <div class="view-controls">
+                    <button class="control-btn" id="zoom-in" title="Phóng to (+ hoặc Ctrl+Plus)">
+                        <span>+</span>
+                    </button>
+                    <button class="control-btn" id="zoom-out" title="Thu nhỏ (- hoặc Ctrl+Minus)">
+                        <span>−</span>
+                    </button>
+                    <button class="control-btn" id="reset-zoom" title="Đặt lại (0 hoặc Ctrl+0)">
+                        <span>↺</span>
+                    </button>
+                    <button class="control-btn" id="toggle-view" title="Chế độ xem (V)">
+                        <span>⊞</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Period Filter -->
+            <div class="period-filter">
+                <button class="filter-btn active" data-period="all">Tất cả</button>
+                <button class="filter-btn" data-period="ancient">Thời cổ đại</button>
+                <button class="filter-btn" data-period="medieval">Thời trung đại</button>
+                <button class="filter-btn" data-period="modern">Thời cận đại</button>
+                <button class="filter-btn" data-period="contemporary">Thời hiện đại</button>
+            </div>
+        </div>
+
+        <!-- Timeline Container -->
+        <div class="timeline-container">
+            <!-- Progress Indicator -->
+            <div class="timeline-progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+                <div class="progress-indicator" id="progress-indicator">
+                    <span class="progress-year"></span>
+                </div>
+            </div>
+
+            <div class="timeline-scroll" id="timeline-scroll">
+                <div class="timeline-events" id="timeline-events">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-line-glow"></div>
+                    <!-- Events will be populated by JavaScript -->
+                    <div class="timeline-loading">
+                        <div class="spinner"></div>
+                        <p>Đang tải dòng thời gian...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll controls -->
+            <button class="timeline-nav timeline-nav-left" id="scroll-left" title="Trái (←)">
+                <span>←</span>
+            </button>
+            <button class="timeline-nav timeline-nav-right" id="scroll-right" title="Phải (→)">
+                <span>→</span>
+            </button>
+
+            <!-- Jump to Year -->
+            <div class="year-jump" id="year-jump">
+                <input type="text"
+                       class="year-input"
+                       id="year-input"
+                       placeholder="Nhảy đến năm...">
+                <button class="jump-btn" id="jump-btn">→</button>
+            </div>
+        </div>
+
+        <!-- Minimap -->
+        <div class="timeline-minimap" id="timeline-minimap">
+            <div class="minimap-label">MINIMAP</div>
+            <div class="minimap-container">
+                <canvas id="minimap-canvas" width="400" height="60"></canvas>
+                <div class="minimap-viewport" id="minimap-viewport"></div>
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="timeline-legend">
+            <div class="legend-item">
+                <span class="legend-icon battle">⚔️</span>
+                <span>Trận chiến</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-icon founding">👑</span>
+                <span>Lập quốc</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-icon revolution">🔥</span>
+                <span>Cách mạng</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-icon independence">⭐</span>
+                <span>Độc lập</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Modal -->
+    <div class="modal" id="event-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">×</button>
+            <div class="modal-nav">
+                <button class="modal-nav-btn" id="prev-event" title="Sự kiện trước (←)">
+                    <span>← Trước</span>
+                </button>
+                <button class="modal-nav-btn" id="next-event" title="Sự kiện sau (→)">
+                    <span>Sau →</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/timeline.js"></script>
+</body>
+</html>

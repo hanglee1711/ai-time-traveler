@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký - VIỆT SỬ KÝ</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">⏳</span>
+                <span>VIỆT SỬ KÝ</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                <li><a href="chatbot.html" class="nav-link">Chatbot</a></li>
+                <li><a href="timeline.html" class="nav-link">Dòng thời gian</a></li>
+                <li><a href="map.html" class="nav-link">Bản đồ</a></li>
+                <li><a href="game.html" class="nav-link">Trò chơi</a></li>
+                <li><a href="journey.html" class="nav-link">Hành trình của tôi</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Auth Container -->
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-icon">✨</div>
+                <h1 class="auth-title">Đăng ký</h1>
+                <p class="auth-subtitle">Tạo tài khoản để bắt đầu hành trình khám phá lịch sử!</p>
+            </div>
+
+            <!-- Register Form -->
+            <form id="registerForm" class="auth-form">
+                <div class="form-group">
+                    <label for="username" class="form-label">Tên đăng nhập *</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        class="form-input"
+                        placeholder="Chỉ chứa chữ, số và dấu gạch dưới (3-20 ký tự)"
+                        required
+                        autocomplete="username"
+                        minlength="3"
+                        maxlength="20"
+                        pattern="[a-zA-Z0-9_]+"
+                    >
+                    <small class="form-hint">Ví dụ: nguoi_yeu_lich_su</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Email *</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="form-input"
+                        placeholder="your.email@example.com"
+                        required
+                        autocomplete="email"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="display_name" class="form-label">Tên hiển thị</label>
+                    <input
+                        type="text"
+                        id="display_name"
+                        name="display_name"
+                        class="form-input"
+                        placeholder="Tên của bạn (tùy chọn)"
+                        autocomplete="name"
+                        maxlength="100"
+                    >
+                    <small class="form-hint">Nếu để trống, sẽ dùng tên đăng nhập</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Mật khẩu *</label>
+                    <div class="password-input">
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            class="form-input"
+                            placeholder="Tối thiểu 6 ký tự, có cả chữ và số"
+                            required
+                            autocomplete="new-password"
+                            minlength="6"
+                        >
+                        <button type="button" class="password-toggle" id="togglePassword">
+                            <span class="eye-icon">👁️</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm_password" class="form-label">Xác nhận mật khẩu *</label>
+                    <div class="password-input">
+                        <input
+                            type="password"
+                            id="confirm_password"
+                            name="confirm_password"
+                            class="form-input"
+                            placeholder="Nhập lại mật khẩu"
+                            required
+                            autocomplete="new-password"
+                            minlength="6"
+                        >
+                        <button type="button" class="password-toggle" id="toggleConfirmPassword">
+                            <span class="eye-icon">👁️</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Error Message -->
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn-auth btn-primary" id="submitBtn">
+                    <span class="btn-text">Đăng ký</span>
+                    <span class="btn-loader" style="display: none;">⏳ Đang xử lý...</span>
+                </button>
+            </form>
+
+            <!-- Auth Footer -->
+            <div class="auth-footer">
+                <p class="auth-link-text">
+                    Đã có tài khoản?
+                    <a href="login.html" class="auth-link">Đăng nhập ngay</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="auth-decoration">
+            <div class="decoration-circle circle-1"></div>
+            <div class="decoration-circle circle-2"></div>
+            <div class="decoration-circle circle-3"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/auth.js"></script>
+    <script>
+        // Password toggle for password field
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const eyeIcon = this.querySelector('.eye-icon');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.textContent = '🙈';
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.textContent = '👁️';
+            }
+        });
+
+        // Password toggle for confirm password field
+        document.getElementById('toggleConfirmPassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('confirm_password');
+            const eyeIcon = this.querySelector('.eye-icon');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.textContent = '🙈';
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.textContent = '👁️';
+            }
+        });
+
+        // Handle register form submission
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnLoader = submitBtn.querySelector('.btn-loader');
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Get form data
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const displayName = document.getElementById('display_name').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+
+            // Hide error
+            errorMessage.style.display = 'none';
+
+            // Validate passwords match
+            if (password !== confirmPassword) {
+                errorMessage.className = 'error-message';
+                errorMessage.textContent = 'Mật khẩu xác nhận không khớp';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            // Disable button
+            submitBtn.disabled = true;
+            btnText.style.display = 'none';
+            btnLoader.style.display = 'inline';
+
+            try {
+                const result = await Auth.register(username, email, password, displayName);
+
+                if (result.success) {
+                    // Show success message
+                    errorMessage.className = 'success-message';
+                    errorMessage.textContent = '✓ Đăng ký thành công! Đang chuyển hướng...';
+                    errorMessage.style.display = 'block';
+
+                    // Redirect after 1 second
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1000);
+                } else {
+                    // Show error
+                    errorMessage.className = 'error-message';
+                    errorMessage.textContent = result.error || 'Đăng ký thất bại';
+                    errorMessage.style.display = 'block';
+
+                    // Re-enable button
+                    submitBtn.disabled = false;
+                    btnText.style.display = 'inline';
+                    btnLoader.style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Register error:', error);
+                errorMessage.className = 'error-message';
+                errorMessage.textContent = 'Đã xảy ra lỗi, vui lòng thử lại';
+                errorMessage.style.display = 'block';
+
+                // Re-enable button
+                submitBtn.disabled = false;
+                btnText.style.display = 'inline';
+                btnLoader.style.display = 'none';
+            }
+        });
+
+        // Check if already logged in
+        if (Auth.isLoggedIn()) {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

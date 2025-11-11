@@ -1,95 +1,378 @@
 {
   "events": [
     {
-      "year": 938,
-      "name": "Trận Bạch Đằng lần 1",
-      "description": "Ngô Quyền đánh thắng quân Nam Hán tại sông Bạch Đằng, chấm dứt 1000 năm Bắc thuộc, mở ra thời kỳ tự chủ cho Việt Nam.",
-      "key_figures": ["Ngô Quyền"],
-      "importance": "Mốc son chói lọi trong lịch sử dân tộc, đánh dấu sự độc lập của Việt Nam."
+      "year": "2879 TCN",
+      "name": "Lập quốc Văn Lang",
+      "type": "founding",
+      "icon": "👑",
+      "period": "ancient",
+      "description": "Hùng Vương dựng nước Văn Lang, khởi đầu lịch sử dựng nước và giữ nước của dân tộc Việt Nam.",
+      "details": "Văn Lang là quốc gia đầu tiên trong lịch sử Việt Nam, được thành lập bởi các vua Hùng tại vùng đất Phong Châu (nay thuộc Phú Thọ). Đây là thời kỳ đầu của nền văn minh nông nghiệp trồng lúa nước, với tổ chức xã hội bộ lạc. Các vua Hùng đã xây dựng chế độ phong kiến sơ khai, chia đất thành 15 bộ do các lạc tướng cai quản.",
+      "key_figures": ["Hùng Vương", "Lạc Long Quân", "Âu Cơ"],
+      "importance": "Nền tảng cho sự phát triển lâu dài của dân tộc Việt Nam"
     },
     {
-      "year": 1010,
-      "name": "Dời đô về Thăng Long",
-      "description": "Vua Lý Thái Tổ ban chiếu Thiên đô, dời đô từ Hoa Lư về Đại La (Thăng Long), mở ra thời kỳ phát triển rực rỡ của đất nước.",
-      "key_figures": ["Lý Công Uẩn"],
-      "importance": "Thăng Long trở thành trung tâm chính trị, kinh tế, văn hóa suốt gần 800 năm."
+      "year": "257 TCN",
+      "name": "Thục Phán lập nước Âu Lạc",
+      "type": "founding",
+      "icon": "🏰",
+      "period": "ancient",
+      "description": "Thục Phán đánh bại nhà Hùng, lập nước Âu Lạc, xây thành Cổ Loa.",
+      "details": "Thục Phán, vua nước Âu Việt ở phía Bắc, đã tiến đánh và thôn tính Văn Lang, lập nên nước Âu Lạc. Ông xây dựng thành Cổ Loa rộng lớn với ba vòng thành kiên cố, là kinh đô trọng yếu. Thời kỳ này đánh dấu bước phát triển mới về tổ chức nhà nước và công nghệ quân sự.",
+      "key_figures": ["Thục Phán", "An Dương Vương"],
+      "importance": "Thống nhất các bộ lạc, xây dựng nhà nước tập quyền đầu tiên"
     },
     {
-      "year": 1076,
-      "name": "Chiến thắng Như Nguyệt",
-      "description": "Lý Thường Kiệt chỉ huy quân Đại Việt đánh bại quân Tống, bảo vệ biên cương phía Bắc.",
-      "key_figures": ["Lý Thường Kiệt"],
-      "importance": "Khẳng định sức mạnh quân sự triều Lý, bài thơ 'Nam quốc sơn hà' ra đời."
+      "year": "111 TCN",
+      "name": "Bắt đầu Bắc thuộc lần 1",
+      "type": "general",
+      "icon": "⛓️",
+      "period": "ancient",
+      "description": "Nhà Hán đánh chiếm Việt Nam, bắt đầu 1000 năm Bắc thuộc.",
+      "details": "Năm 111 TCN, quân Hán do Lộ Bác Đức chỉ huy đánh chiếm Âu Lạc, đặt làm quận hạt của Trung Quốc. Đây là lần đầu tiên Việt Nam rơi vào tình trạng mất nước hoàn toàn. Trong 1000 năm Bắc thuộc sau đó, dân tộc Việt Nam không ngừng đấu tranh giữ gìn bản sắc văn hóa và đòi độc lập.",
+      "key_figures": ["Lộ Bác Đức"],
+      "importance": "Mở đầu thời kỳ Bắc thuộc kéo dài 1000 năm"
     },
     {
-      "year": 1288,
-      "name": "Trận Bạch Đằng lần 3",
-      "description": "Trần Hưng Đạo chỉ huy đại thắng quân Nguyên-Mông lần thứ ba tại sông Bạch Đằng, bảo vệ độc lập dân tộc.",
-      "key_figures": ["Trần Hưng Đạo", "Trần Nhân Tông"],
-      "importance": "Chiến thắng vang dội nhất lịch sử chống Nguyên-Mông, khẳng định tinh thần bất굴 của dân tộc."
-    },
-    {
-      "year": 1428,
-      "name": "Khởi nghĩa Lam Sơn thành công",
-      "description": "Sau 10 năm kháng chiến, Lê Lợi và Nguyễn Trãi đánh đuổi quân Minh, giành lại độc lập cho đất nước.",
-      "key_figures": ["Lê Lợi", "Nguyễn Trãi"],
-      "importance": "Chấm dứt 20 năm đô hộ của nhà Minh, mở ra triều đại Lê hùng mạnh."
-    },
-    {
-      "year": 1789,
-      "name": "Chiến thắng Ngọc Hồi - Đống Đa",
-      "description": "Quang Trung Nguyễn Huệ chỉ huy quân Tây Sơn đánh tan 29 vạn quân Thanh trong 7 ngày Tết, giải phóng Thăng Long.",
-      "key_figures": ["Quang Trung", "Nguyễn Huệ"],
-      "importance": "Chiến thắng vang dội nhất lịch sử chống phương Bắc, thể hiện thiên tài quân sự của Quang Trung."
-    },
-    {
-      "year": 1858,
-      "name": "Pháp tấn công Đà Nẵng",
-      "description": "Hải quân Pháp tấn công Đà Nẵng, mở đầu cuộc xâm lược Việt Nam của thực dân Pháp.",
-      "key_figures": [],
-      "importance": "Đánh dấu bước ngoặt lịch sử, Việt Nam bước vào thời kỳ thuộc địa Pháp gần 100 năm."
-    },
-    {
-      "year": 1930,
-      "name": "Thành lập Đảng Cộng sản Việt Nam",
-      "description": "Nguyễn Ái Quốc (Hồ Chí Minh) thành lập Đảng Cộng sản Việt Nam tại Hương Cảng, lãnh đạo cách mạng giải phóng dân tộc.",
-      "key_figures": ["Hồ Chí Minh", "Nguyễn Ái Quốc"],
-      "importance": "Mốc son chói lọi của cách mạng Việt Nam, tạo nền tảng cho độc lập dân tộc."
-    },
-    {
-      "year": 1945,
-      "name": "Cách mạng tháng Tám thành công",
-      "description": "Cách mạng tháng Tám thành công, Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập ngày 2/9/1945 tại Quảng trường Ba Đình, tuyên bố nước Việt Nam Dân chủ Cộng hòa ra đời.",
-      "key_figures": ["Hồ Chí Minh"],
-      "importance": "Sự kiện vĩ đại nhất thế kỷ 20, Việt Nam giành lại độc lập sau gần 100 năm thuộc Pháp."
-    },
-    {
-      "year": 1954,
-      "name": "Chiến thắng Điện Biên Phủ",
-      "description": "Quân dân ta đánh thắng quân Pháp tại Điện Biên Phủ, buộc Pháp ký Hiệp định Genève, chấm dứt chiến tranh.",
-      "key_figures": ["Hồ Chí Minh", "Võ Nguyên Giáp"],
-      "importance": "'Điện chấn địa cầu' - chiến thắng vĩ đại nhất lịch sử quân sự Việt Nam hiện đại."
-    },
-    {
-      "year": 1975,
-      "name": "Giải phóng miền Nam, thống nhất đất nước",
-      "description": "Chiến dịch Hồ Chí Minh thắng lợi, xe tăng húc đổ cổng Dinh Độc Lập ngày 30/4/1975, thống nhất đất nước.",
-      "key_figures": ["Võ Nguyên Giáp", "Văn Tiến Dũng"],
-      "importance": "Hoàn thành sự nghiệp giải phóng dân tộc, thống nhất đất nước sau 21 năm chia cắt."
-    },
-    {
-      "year": 1986,
-      "name": "Đổi mới",
-      "description": "Đại hội Đảng VI khởi xướng công cuộc Đổi mới, chuyển sang nền kinh tế thị trường định hướng xã hội chủ nghĩa.",
-      "key_figures": ["Nguyễn Văn Linh"],
-      "importance": "Bước ngoặt lịch sử, đưa Việt Nam phát triển mạnh mẽ, hội nhập quốc tế."
-    },
-    {
-      "year": 40,
+      "year": "40",
       "name": "Khởi nghĩa Hai Bà Trưng",
-      "description": "Hai Bà Trưng (Trưng Trắc, Trưng Nhị) khởi nghĩa chống nhà Hán, giành độc lập cho Việt Nam trong 3 năm.",
-      "key_figures": ["Hai Bà Trưng", "Trưng Trắc", "Trưng Nhị"],
-      "importance": "Cuộc khởi nghĩa đầu tiên chống Bắc thuộc, biểu tượng tinh thần bất khuất của phụ nữ Việt Nam."
+      "type": "battle",
+      "icon": "⚔️",
+      "period": "ancient",
+      "description": "Hai Bà Trưng khởi nghĩa chống Đông Hán, lập nước tự chủ trong 3 năm.",
+      "details": "Sau khi chồng Trưng Trắc là Thi Sách bị Tô Định giết hại, hai chị em Trưng Trắc và Trưng Nhị phát động khởi nghĩa tại Mê Linh năm 40. Cuộc khởi nghĩa lan rộng, giải phóng 65 thành trì. Hai Bà tự xưng là Nữ Vương, lập nên nước tự chủ. Năm 43, quân Hán do Mã Viện chỉ huy đàn áp, hai Bà hy sinh tiết nghĩa tại sông Hát.",
+      "key_figures": ["Trưng Trắc", "Trưng Nhị", "Thi Sách"],
+      "importance": "Cuộc khởi nghĩa đầu tiên chống Bắc thuộc, biểu tượng tinh thần bất khuất"
+    },
+    {
+      "year": "542-548",
+      "name": "Khởi nghĩa Lý Bí",
+      "type": "battle",
+      "icon": "🗡️",
+      "period": "ancient",
+      "description": "Lý Bí lãnh đạo khởi nghĩa, lập nước Vạn Xuân độc lập.",
+      "details": "Lý Bí (Lý Bôn) lãnh đạo khởi nghĩa năm 542, đánh đuổi quân Lương, lập nước Vạn Xuân và xưng đế. Đây là lần đầu tiên có một triều đại độc lập với niên hiệu riêng. Mặc dù chỉ tồn tại 6 năm, Vạn Xuân đã khẳng định ý chí độc lập và khả năng tự chủ của dân tộc.",
+      "key_figures": ["Lý Bí", "Triệu Quang Phục"],
+      "importance": "Lần đầu lập triều đại độc lập với niên hiệu riêng"
+    },
+    {
+      "year": "938",
+      "name": "Trận Bạch Đằng - Ngô Quyền",
+      "type": "battle",
+      "icon": "⚔️",
+      "period": "medieval",
+      "description": "Ngô Quyền đánh thắng quân Nam Hán, chấm dứt 1000 năm Bắc thuộc.",
+      "details": "Năm 938, quân Nam Hán do Lưu Hoằng Tháo chỉ huy tiến đánh Việt Nam. Ngô Quyền sử dụng chiến thuật cọc ngầm dưới nước tại sông Bạch Đằng, chọn thời điểm thủy triều xuống để tấn công. Quân Nam Hán bị tiêu diệt hoàn toàn, Lưu Hoằng Tháo chết trận. Chiến thắng này chấm dứt 1000 năm Bắc thuộc, mở ra kỷ nguyên độc lập.",
+      "key_figures": ["Ngô Quyền", "Lưu Hoằng Tháo"],
+      "importance": "Chấm dứt 1000 năm Bắc thuộc, mở ra kỷ nguyên độc lập"
+    },
+    {
+      "year": "968",
+      "name": "Đinh Bộ Lĩnh thống nhất đất nước",
+      "type": "founding",
+      "icon": "👑",
+      "period": "medieval",
+      "description": "Đinh Bộ Lĩnh dẹp loạn 12 sứ quân, lập nước Đại Cồ Việt.",
+      "details": "Sau thời kỳ loạn 12 sứ quân, Đinh Bộ Lĩnh đã thống nhất đất nước, lập nước Đại Cồ Việt và xưng đế. Ông thiết lập bộ máy nhà nước, quân đội, hệ thống luật pháp, thiết lập quan hệ ngoại giao với Tống. Đây là nền móng cho các triều đại phong kiến độc lập sau này.",
+      "key_figures": ["Đinh Bộ Lĩnh", "Đinh Tiên Hoàng"],
+      "importance": "Thống nhất đất nước, thiết lập nhà nước phong kiến đầu tiên"
+    },
+    {
+      "year": "981",
+      "name": "Trận Bạch Đằng - Lê Hoàn",
+      "type": "battle",
+      "icon": "⚔️",
+      "period": "medieval",
+      "description": "Lê Hoàn đánh bại quân Tống xâm lược.",
+      "details": "Năm 981, nhà Tống xâm lược với 300.000 quân. Lê Hoàn chỉ huy quân dân đánh trả quyết liệt. Tại trận Bạch Đằng, quân ta tiêu diệt 60.000 quân Tống, bắt được tướng Tống. Đây là chiến thắng quan trọng bảo vệ nền độc lập non trẻ.",
+      "key_figures": ["Lê Hoàn", "Lê Đại Hành"],
+      "importance": "Bảo vệ nền độc lập non trẻ trước quân Tống"
+    },
+    {
+      "year": "1010",
+      "name": "Dời đô về Thăng Long",
+      "type": "founding",
+      "icon": "🏛️",
+      "period": "medieval",
+      "description": "Lý Thái Tổ dời đô về Thăng Long, mở đầu triều Lý hưng thịnh.",
+      "details": "Năm 1010, vua Lý Công Uẩn (Lý Thái Tổ) ban chiếu Thiên đô, dời kinh đô từ Hoa Lư về Đại La (Thăng Long, nay là Hà Nội). Trong chiếu có câu nổi tiếng: 'Đất Đại La chân thành là nơi kinh đô của địa thế, có thể tụ tập vạn quốc'. Thăng Long trở thành trung tâm chính trị, kinh tế, văn hóa suốt 800 năm.",
+      "key_figures": ["Lý Công Uẩn", "Lý Thái Tổ"],
+      "importance": "Đặt nền móng cho kinh đô Hà Nội ngàn năm văn hiến"
+    },
+    {
+      "year": "1075-1077",
+      "name": "Chiến thắng quân Tống",
+      "type": "battle",
+      "icon": "🗡️",
+      "period": "medieval",
+      "description": "Lý Thường Kiệt đánh thắng quân Tống, viết bài thơ 'Nam quốc sơn hà'.",
+      "details": "Năm 1075, Lý Thường Kiệt chủ động tiến đánh vào đất Tống, chiếm Ung Châu, Khâm Châu. Năm 1076, quân Tống phản công với lực lượng hùng hậu nhưng bị đánh bại tại Như Nguyệt. Trước trận, Lý Thường Kiệt viết bài thơ 'Nam quốc sơn hà' thể hiện tinh thần độc lập: 'Nam quốc sơn hà Nam đế cư...'",
+      "key_figures": ["Lý Thường Kiệt", "Lý Nhân Tông"],
+      "importance": "Khẳng định sức mạnh quân sự, tinh thần độc lập dân tộc"
+    },
+    {
+      "year": "1258",
+      "name": "Đánh thắng quân Nguyên lần 1",
+      "type": "battle",
+      "icon": "⚔️",
+      "period": "medieval",
+      "description": "Trần Hưng Đạo lần đầu đánh bại quân Nguyên-Mông xâm lược.",
+      "details": "Năm 1257-1258, quân Nguyên do Ngột Lương Hợp Thai chỉ huy xâm lược Đại Việt. Tướng Trần Quốc Tuấn (Trần Hưng Đạo) chỉ huy quân dân kháng chiến, sử dụng chiến thuật vườn không nhà trống. Quân Nguyên bị đói, bệnh, phải rút lui và bị quân ta đánh úp tiêu diệt nhiều.",
+      "key_figures": ["Trần Hưng Đạo", "Trần Thái Tông"],
+      "importance": "Lần đầu đánh bại đế quốc Mông Cổ hùng mạnh"
+    },
+    {
+      "year": "1285",
+      "name": "Đánh thắng quân Nguyên lần 2",
+      "type": "battle",
+      "icon": "⚔️",
+      "period": "medieval",
+      "description": "Trần Hưng Đạo tiếp tục đánh bại cuộc xâm lược thứ hai của quân Nguyên.",
+      "details": "Năm 1285, quân Nguyên xâm lược lần hai với 500.000 quân, chia làm ba đường. Trần Hưng Đạo chỉ huy quân dân kiên cường kháng chiến, đánh úp, phá hậu cần. Quân Nguyên thiệt hại nặng, phải rút lui. Đây là thắng lợi quan trọng củng cố nền độc lập.",
+      "key_figures": ["Trần Hưng Đạo", "Trần Nhân Tông"],
+      "importance": "Tiếp tục bảo vệ độc lập trước đế quốc Mông Cổ"
+    },
+    {
+      "year": "1288",
+      "name": "Trận Bạch Đằng - Trần Hưng Đạo",
+      "type": "battle",
+      "icon": "⚔️",
+      "period": "medieval",
+      "description": "Chiến thắng vĩ đại nhất, tiêu diệt hoàn toàn quân Nguyên-Mông.",
+      "details": "Năm 1287-1288, quân Nguyên xâm lược lần ba với lực lượng lớn hơn. Trần Hưng Đạo ban Hịch tướng sĩ nổi tiếng 'Giặc đến nhà đàn bà cũng đánh'. Tháng 4/1288, sử dụng chiến thuật cọc ngầm tại sông Bạch Đằng, quân ta đại thắng, tiêu diệt hoàn toàn thủy quân Nguyên. Đây là chiến thắng vang dội nhất lịch sử.",
+      "key_figures": ["Trần Hưng Đạo", "Trần Nhân Tông", "Trần Quang Khải"],
+      "importance": "Chiến thắng vĩ đại nhất chống Nguyên-Mông, lừng danh thiên hạ"
+    },
+    {
+      "year": "1407",
+      "name": "Nhà Minh xâm lược",
+      "type": "general",
+      "icon": "⛓️",
+      "period": "medieval",
+      "description": "Nhà Minh xâm chiếm Đại Việt, bắt đầu 20 năm đô hộ.",
+      "details": "Năm 1407, lợi dụng nội chiến nhà Hồ, quân Minh do Trương Phụ chỉ huy xâm chiếm Đại Việt, đặt làm quận hạt. Nhà Minh thực hiện chính sách đồng hóa khốc liệt: cướp của cải, sách vở, thay đổi phong tục. Đây là thời kỳ đen tối nhất lịch sử Việt Nam thời trung đại.",
+      "key_figures": ["Trương Phụ"],
+      "importance": "20 năm đô hộ khốc liệt của nhà Minh"
+    },
+    {
+      "year": "1418",
+      "name": "Khởi nghĩa Lam Sơn",
+      "type": "battle",
+      "icon": "🗡️",
+      "period": "medieval",
+      "description": "Lê Lợi phất cờ khởi nghĩa tại Lam Sơn, bắt đầu 10 năm kháng chiến.",
+      "details": "Năm 1418, Lê Lợi cùng Nguyễn Trãi và các nghĩa quân phất cờ khởi nghĩa tại Lam Sơn (Thanh Hóa) với chỉ vài trăm người. Sau 10 năm chiến đấu gian khổ, sử dụng chiến lược 'lấy nhỏ thắng lớn', 'vỗ yếu đánh mạnh', nghĩa quân lớn mạnh dần và giành thắng lợi.",
+      "key_figures": ["Lê Lợi", "Nguyễn Trãi"],
+      "importance": "Khởi đầu cuộc kháng chiến vĩ đại 10 năm"
+    },
+    {
+      "year": "1428",
+      "name": "Khởi nghĩa Lam Sơn thành công",
+      "type": "independence",
+      "icon": "⭐",
+      "period": "medieval",
+      "description": "Lê Lợi đánh đuổi quân Minh, lập triều Lê, ban 'Bình Ngô đại cáo'.",
+      "details": "Năm 1428, sau chiến thắng Tốt Động-Chúc Động, quân Minh phải đầu hàng. Lê Lợi khoan hồng cho quân Minh về nước. Nguyễn Trãi soạn 'Bình Ngô đại cáo' - văn kiện độc lập nổi tiếng với tư tưởng nhân văn 'Dĩ nhân thắng bạo'. Lê Lợi lên ngôi, lập triều Hậu Lê kéo dài gần 400 năm.",
+      "key_figures": ["Lê Lợi", "Nguyễn Trãi", "Lê Thái Tổ"],
+      "importance": "Giải phóng đất nước, lập triều đại Lê hùng mạnh"
+    },
+    {
+      "year": "1471",
+      "name": "Chiến thắng Chiêm Thành",
+      "type": "battle",
+      "icon": "⚔️",
+      "period": "medieval",
+      "description": "Lê Thánh Tông đánh bại Chiêm Thành, mở rộng lãnh thổ.",
+      "details": "Năm 1471, vua Lê Thánh Tông chỉ huy chiến dịch Nam tiến lớn nhất lịch sử, đánh chiếm được thủ đô Chiêm Thành Vijaya. Đất đai được mở rộng đến Bình Thuận. Đây là bước ngoặt trong quá trình Nam tiến của dân tộc.",
+      "key_figures": ["Lê Thánh Tông"],
+      "importance": "Mở rộng lãnh thổ về phía Nam đáng kể"
+    },
+    {
+      "year": "1771",
+      "name": "Khởi nghĩa Tây Sơn",
+      "type": "revolution",
+      "icon": "🔥",
+      "period": "modern",
+      "description": "Ba anh em nhà Tây Sơn khởi nghĩa, lật đổ chúa Nguyễn và Trịnh.",
+      "details": "Năm 1771, ba anh em Nguyễn Nhạc, Nguyễn Lữ, Nguyễn Huệ khởi nghĩa tại Tây Sơn (Bình Định), phản đối sự thối nát của chúa Nguyễn. Cuộc khởi nghĩa nhanh chóng lan rộng, lật đổ cả chúa Nguyễn và chúa Trịnh, thống nhất đất nước.",
+      "key_figures": ["Nguyễn Nhạc", "Nguyễn Lữ", "Nguyễn Huệ"],
+      "importance": "Phong trào nông dân lớn nhất lịch sử phong kiến Việt Nam"
+    },
+    {
+      "year": "1789",
+      "name": "Chiến thắng Ngọc Hồi - Đống Đa",
+      "type": "battle",
+      "icon": "🐉",
+      "period": "modern",
+      "description": "Quang Trung đánh tan 290.000 quân Thanh trong 5 ngày Tết.",
+      "details": "Năm 1788, quân Thanh với 290.000 quân xâm lược, chiếm Thăng Long. Tết Kỷ Dậu 1789, Quang Trung Nguyễn Huệ chỉ huy quân Tây Sơn tiến quân thần tốc từ Phú Xuân ra Bắc. Chỉ trong 5 ngày (từ 30 Tết đến mùng 5), quân ta đại thắng tại Ngọc Hồi, Đống Đa, tiêu diệt hoàn toàn quân Thanh. Đây là chiến thắng vĩ đại nhất lịch sử chống phương Bắc.",
+      "key_figures": ["Quang Trung", "Nguyễn Huệ"],
+      "importance": "Chiến thắng vĩ đại nhất lịch sử, thể hiện thiên tài quân sự"
+    },
+    {
+      "year": "1858",
+      "name": "Pháp tấn công Đà Nẵng",
+      "type": "general",
+      "icon": "⚓",
+      "period": "modern",
+      "description": "Thực dân Pháp bắt đầu xâm lược Việt Nam.",
+      "details": "Ngày 31/8/1858, hạm đội Pháp-Tây Ban Nha tấn công Đà Nẵng, mở đầu cuộc xâm lược thực dân. Năm 1859, Pháp chiếm Sài Gòn. Đây là bước ngoặt đưa Việt Nam vào thời kỳ thuộc địa gần 100 năm với nhiều cuộc kháng chiến anh dũng.",
+      "key_figures": ["Nguyễn Tri Phương"],
+      "importance": "Bắt đầu thời kỳ thuộc địa Pháp"
+    },
+    {
+      "year": "1862",
+      "name": "Ký Hòa ước Nhâm Tuất",
+      "type": "general",
+      "icon": "📜",
+      "period": "modern",
+      "description": "Triều đình Huế phải nhượng 3 tỉnh miền Đông Nam Bộ cho Pháp.",
+      "details": "Sau khi thất bại trước quân Pháp, triều đình Huế ký Hòa ước Nhâm Tuất, nhượng 3 tỉnh Gia Định, Biên Hòa, Định Tường cho Pháp, bồi thường chiến phí, mở cửa cảng Đà Nẵng, Balat, Quảng Yên. Đây là bước đầu của việc mất nước từng phần.",
+      "key_figures": ["Tự Đức"],
+      "importance": "Mất 3 tỉnh Nam Bộ, bắt đầu thời kỳ thuộc địa"
+    },
+    {
+      "year": "1873",
+      "name": "Pháp tấn công Hà Nội lần 1",
+      "type": "battle",
+      "icon": "⚔️",
+      "period": "modern",
+      "description": "Quân Pháp tấn công Hà Nội, Nguyễn Tri Phương hy sinh.",
+      "details": "Tháng 11/1873, Pháp do Francis Garnier chỉ huy tấn công Hà Nội. Tổng đốc Hoàng Diệu và Cai thống Nguyễn Tri Phương anh dũng kháng chiến. Nguyễn Tri Phương hy sinh, Hoàng Diệu tự vẫn để giữ tiết. Đây là tấm gương sáng ngời của tinh thần yêu nước.",
+      "key_figures": ["Nguyễn Tri Phương", "Hoàng Diệu", "Francis Garnier"],
+      "importance": "Tinh thần bất khuất của các sĩ phu yêu nước"
+    },
+    {
+      "year": "1883",
+      "name": "Ký Hòa ước Quý Mùi - Giáp Thân",
+      "type": "general",
+      "icon": "📜",
+      "period": "modern",
+      "description": "Việt Nam hoàn toàn trở thành thuộc địa của Pháp.",
+      "details": "Năm 1883-1884, triều đình Huế ký hai hòa ước Quý Mùi và Giáp Thân, công nhận chủ quyền của Pháp trên toàn bộ Việt Nam. Từ đây, cả nước chính thức trở thành thuộc địa Pháp với 3 kỳ: Bắc Kỳ, Trung Kỳ, Nam Kỳ.",
+      "key_figures": ["Tôn Thất Thuyết"],
+      "importance": "Hoàn toàn mất nước, trở thành thuộc địa Pháp"
+    },
+    {
+      "year": "1885-1896",
+      "name": "Phong trào Cần Vương",
+      "type": "battle",
+      "icon": "🗡️",
+      "period": "modern",
+      "description": "Các sĩ phu khởi nghĩa chống Pháp dưới cờ Cần Vương.",
+      "details": "Sau khi triều đình đầu hàng Pháp, các sĩ phu yêu nước như Tôn Thất Thuyết, Phan Đình Phùng, Hoàng Hoa Thám phát động phong trào Cần Vương (giúp vua). Các nghĩa quân chiến đấu anh dũng khắp cả nước, mặc dù thất bại nhưng để lại tinh thần kháng chiến quý báu.",
+      "key_figures": ["Tôn Thất Thuyết", "Phan Đình Phùng", "Hoàng Hoa Thám"],
+      "importance": "Phong trào kháng chiến của sĩ phu yêu nước"
+    },
+    {
+      "year": "1930",
+      "name": "Thành lập Đảng Cộng sản Việt Nam",
+      "type": "founding",
+      "icon": "🚩",
+      "period": "contemporary",
+      "description": "Nguyễn Ái Quốc thành lập Đảng Cộng sản Việt Nam.",
+      "details": "Ngày 3/2/1930, tại Hương Cảng (Trung Quốc), dưới sự chủ trì của Nguyễn Ái Quốc (Hồ Chí Minh), ba tổ chức cộng sản ở Việt Nam hợp nhất thành Đảng Cộng sản Việt Nam. Đây là sự kiện có ý nghĩa lịch sử to lớn, mở ra kỷ nguyên mới cho cách mạng Việt Nam dưới sự lãnh đạo của Đảng.",
+      "key_figures": ["Hồ Chí Minh", "Nguyễn Ái Quốc"],
+      "importance": "Mốc son chói lọi, nền tảng cho độc lập dân tộc"
+    },
+    {
+      "year": "1941",
+      "name": "Việt Minh thành lập",
+      "type": "founding",
+      "icon": "🚩",
+      "period": "contemporary",
+      "description": "Mặt trận Việt Minh được thành lập, chuẩn bị khởi nghĩa.",
+      "details": "Tháng 5/1941, Hội nghị lần thứ 8 BCH TW Đảng họp tại Pác Bó (Cao Bằng), quyết định thành lập Mặt trận Việt Nam Độc lập Đồng minh (Việt Minh). Đây là tổ chức đoàn kết rộng rãi các tầng lớp nhân dân, chuẩn bị cho tổng khởi nghĩa giành chính quyền.",
+      "key_figures": ["Hồ Chí Minh"],
+      "importance": "Chuẩn bị lực lượng cho Cách mạng tháng Tám"
+    },
+    {
+      "year": "1945",
+      "name": "Cách mạng tháng Tám thành công",
+      "type": "revolution",
+      "icon": "⭐",
+      "period": "contemporary",
+      "description": "Giành chính quyền, nước Việt Nam Dân chủ Cộng hòa ra đời.",
+      "details": "Tháng 8/1945, sau khi Nhật đầu hàng, Đảng và Chủ tịch Hồ Chí Minh phát động tổng khởi nghĩa giành chính quyền trong cả nước. Ngày 2/9/1945, tại Quảng trường Ba Đình, Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập, tuyên bố nước Việt Nam Dân chủ Cộng hòa ra đời. Đây là sự kiện vĩ đại nhất thế kỷ 20.",
+      "key_figures": ["Hồ Chí Minh", "Võ Nguyên Giáp"],
+      "importance": "Độc lập dân tộc sau gần 100 năm thuộc Pháp"
+    },
+    {
+      "year": "1946-1954",
+      "name": "Kháng chiến chống Pháp",
+      "type": "battle",
+      "icon": "⚔️",
+      "period": "contemporary",
+      "description": "9 năm kháng chiến toàn quốc chống thực dân Pháp.",
+      "details": "Từ 1946-1954, toàn dân ta tiến hành cuộc kháng chiến toàn quốc, toàn diện chống thực dân Pháp xâm lược. Với tinh thần 'Quyết tử để Tổ quốc quyết sinh', nhân dân ta đã chiến đấu anh dũng, góp phần tạo nên chiến thắng Điện Biên Phủ lừng lẫy.",
+      "key_figures": ["Hồ Chí Minh", "Võ Nguyên Giáp"],
+      "importance": "Cuộc kháng chiến toàn dân vĩ đại"
+    },
+    {
+      "year": "1954",
+      "name": "Chiến thắng Điện Biên Phủ",
+      "type": "battle",
+      "icon": "🎖️",
+      "period": "contemporary",
+      "description": "Chiến thắng 'lừng lẫy năm châu, chấn động địa cầu'.",
+      "details": "Từ 13/3 đến 7/5/1954, quân và dân ta tiến hành chiến dịch Điện Biên Phủ 56 ngày đêm. Với khẩu hiệu 'Quyết chiến, quyết thắng', ta đã đánh bại tập đoàn cứ điểm mạnh nhất của Pháp, tiêu diệt 16.000 quân địch, bắt sống Tướng De Castries. Chiến thắng buộc Pháp phải ký Hiệp định Genève, chấm dứt chiến tranh.",
+      "key_figures": ["Võ Nguyên Giáp", "Hồ Chí Minh"],
+      "importance": "Chiến thắng chấn động thế giới, kết thúc thời đại thuộc địa"
+    },
+    {
+      "year": "1964-1973",
+      "name": "Kháng chiến chống Mỹ",
+      "type": "battle",
+      "icon": "⚔️",
+      "period": "contemporary",
+      "description": "Cuộc kháng chiến chống đế quốc Mỹ xâm lược.",
+      "details": "Từ 1964, Mỹ leo thang chiến tranh xâm lược miền Bắc, đưa quân vào miền Nam. Nhân dân ta tiến hành cuộc kháng chiến trường kỳ, gian khổ nhưng anh dũng. Các chiến thắng như Vạn Tường, Đường 9-Khe Sanh, Tết Mậu Thân đã buộc Mỹ phải ký Hiệp định Paris 1973.",
+      "key_figures": ["Hồ Chí Minh", "Võ Nguyên Giáp", "Lê Duẩn"],
+      "importance": "Đánh bại đế quốc Mỹ hùng mạnh nhất"
+    },
+    {
+      "year": "1975",
+      "name": "Giải phóng miền Nam, thống nhất đất nước",
+      "type": "independence",
+      "icon": "🎊",
+      "period": "contemporary",
+      "description": "Chiến dịch Hồ Chí Minh thắng lợi, hoàn thành thống nhất.",
+      "details": "Ngày 30/4/1975, xe tăng 843 của Trung đoàn 203 húc đổ cổng Dinh Độc Lập, chính quyền Sài Gòn đầu hàng vô điều kiện. Miền Nam hoàn toàn giải phóng, đất nước thống nhất sau 21 năm chia cắt. Đây là thắng lợi vĩ đại của dân tộc Việt Nam dưới sự lãnh đạo của Đảng và Chủ tịch Hồ Chí Minh.",
+      "key_figures": ["Võ Nguyên Giáp", "Văn Tiến Dũng", "Lê Duẩn"],
+      "importance": "Hoàn thành sự nghiệp giải phóng, thống nhất Tổ quốc"
+    },
+    {
+      "year": "1986",
+      "name": "Đổi mới",
+      "type": "revolution",
+      "icon": "🌟",
+      "period": "contemporary",
+      "description": "Đại hội VI khởi xướng công cuộc Đổi mới.",
+      "details": "Tháng 12/1986, Đại hội Đảng lần thứ VI họp tại Hà Nội, quyết định khởi xướng công cuộc Đổi mới toàn diện đất nước. Chuyển sang nền kinh tế thị trường định hướng xã hội chủ nghĩa, mở cửa, hội nhập quốc tế. Đổi mới đã đưa Việt Nam phát triển mạnh mẽ, thoát khỏi khủng hoảng.",
+      "key_figures": ["Nguyễn Văn Linh", "Võ Chí Công"],
+      "importance": "Bước ngoặt lịch sử, đưa Việt Nam phát triển mạnh mẽ"
+    },
+    {
+      "year": "1995",
+      "name": "Việt Nam gia nhập ASEAN",
+      "type": "general",
+      "icon": "🤝",
+      "period": "contemporary",
+      "description": "Việt Nam trở thành thành viên thứ 7 của ASEAN.",
+      "details": "Ngày 28/7/1995, Việt Nam chính thức trở thành thành viên thứ 7 của Hiệp hội các quốc gia Đông Nam Á (ASEAN). Đây là bước quan trọng trong chính sách hội nhập quốc tế, mở rộng quan hệ hợp tác với các nước trong khu vực.",
+      "key_figures": [],
+      "importance": "Hội nhập khu vực, mở rộng hợp tác quốc tế"
+    },
+    {
+      "year": "2007",
+      "name": "Việt Nam gia nhập WTO",
+      "type": "general",
+      "icon": "🌍",
+      "period": "contemporary",
+      "description": "Việt Nam trở thành thành viên thứ 150 của WTO.",
+      "details": "Ngày 11/1/2007, Việt Nam chính thức gia nhập Tổ chức Thương mại Thế giới (WTO) sau 11 năm đàm phán. Đây là cột mốc quan trọng đánh dấu Việt Nam hội nhập sâu rộng vào kinh tế thế giới, thúc đẩy xuất khẩu và phát triển kinh tế.",
+      "key_figures": [],
+      "importance": "Hội nhập kinh tế thế giới toàn diện"
     }
   ]
 }

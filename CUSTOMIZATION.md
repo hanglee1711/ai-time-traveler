@@ -1,4 +1,4 @@
-# 🎨 Hướng dẫn tùy chỉnh AI Time Traveler
+﻿# 🎨 Hướng dẫn tùy chỉnh Việt Sử Ký
 
 ## 📝 Thêm nhân vật lịch sử mới
 
@@ -170,7 +170,7 @@ Font options:
 
 ```yaml
 app:
-  title: "🚀 AI Time Traveler"  # Đổi title
+  title: "🚀 Việt Sử Ký"  # Đổi title
   subtitle: "Subtitle của bạn"   # Đổi subtitle
   language: "vi"                  # Ngôn ngữ (vi/en)
 
@@ -191,12 +191,12 @@ Tạo file `src/translations.py`:
 ```python
 TRANSLATIONS = {
     'vi': {
-        'welcome': 'Chào mừng đến với AI Time Traveler!',
+        'welcome': 'Chào mừng đến với Việt Sử Ký!',
         'chat_placeholder': 'Nhập tin nhắn của bạn...',
         'sidebar_title': '⚙️ Cài đặt',
     },
     'en': {
-        'welcome': 'Welcome to AI Time Traveler!',
+        'welcome': 'Welcome to Việt Sử Ký!',
         'chat_placeholder': 'Type your message...',
         'sidebar_title': '⚙️ Settings',
     }

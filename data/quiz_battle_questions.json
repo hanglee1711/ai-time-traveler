@@ -1,0 +1,946 @@
+{
+  "categories": {
+    "dynasty": {
+      "name": "Triều Đại & Nhà Nước",
+      "icon": "👑",
+      "color": "#D4AF37"
+    },
+    "war": {
+      "name": "Chiến Tranh & Kháng Chiến",
+      "icon": "⚔️",
+      "color": "#FF4444"
+    },
+    "figures": {
+      "name": "Nhân Vật Lịch Sử",
+      "icon": "🎭",
+      "color": "#00E0FF"
+    },
+    "culture": {
+      "name": "Văn Hóa & Văn Học",
+      "icon": "📜",
+      "color": "#FFD700"
+    },
+    "heritage": {
+      "name": "Di Sản & Di Tích",
+      "icon": "🏛️",
+      "color": "#B59762"
+    },
+    "diplomacy": {
+      "name": "Ngoại Giao & Quan Hệ",
+      "icon": "🌍",
+      "color": "#4CAF50"
+    },
+    "science": {
+      "name": "Khoa Học & Kỹ Thuật",
+      "icon": "🔬",
+      "color": "#9C27B0"
+    },
+    "art": {
+      "name": "Nghệ Thuật & Kiến Trúc",
+      "icon": "🎨",
+      "color": "#FF9800"
+    }
+  },
+  "questions": [
+    {
+      "id": 1,
+      "category": "dynasty",
+      "difficulty": "easy",
+      "question": "Nước Văn Lang được thành lập vào năm nào?",
+      "answers": ["2879 TCN", "938", "1010", "1428"],
+      "correct": 0,
+      "explanation": "Nước Văn Lang được dựng nên bởi Hùng Vương vào khoảng năm 2879 TCN, là quốc gia đầu tiên trong lịch sử Việt Nam."
+    },
+    {
+      "id": 2,
+      "category": "dynasty",
+      "difficulty": "medium",
+      "question": "Triều đại nào tồn tại lâu nhất trong lịch sử Việt Nam?",
+      "answers": ["Nhà Lý", "Nhà Trần", "Nhà Lê", "Nhà Nguyễn"],
+      "correct": 2,
+      "explanation": "Nhà Lê (1428-1789) tồn tại 361 năm, là triều đại tồn tại lâu nhất, mặc dù có giai đoạn suy yếu và bị Mạc chiếm đoạt."
+    },
+    {
+      "id": 3,
+      "category": "dynasty",
+      "difficulty": "easy",
+      "question": "Lý Thái Tổ dời đô về Thăng Long vào năm nào?",
+      "answers": ["938", "1010", "1428", "1802"],
+      "correct": 1,
+      "explanation": "Năm 1010, vua Lý Công Uẩn (Lý Thái Tổ) dời đô từ Hoa Lư về Đại La và đổi tên thành Thăng Long."
+    },
+    {
+      "id": 4,
+      "category": "dynasty",
+      "difficulty": "hard",
+      "question": "Triều đại nào đã ban hành bộ luật Hồng Đức?",
+      "answers": ["Nhà Lý", "Nhà Trần", "Nhà Lê", "Nhà Nguyễn"],
+      "correct": 2,
+      "explanation": "Bộ luật Hồng Đức được ban hành dưới triều Lê Thánh Tông (1460-1497), là bộ luật tiến bộ nhất thời kỳ phong kiến."
+    },
+    {
+      "id": 5,
+      "category": "dynasty",
+      "difficulty": "medium",
+      "question": "Ai là hoàng đế cuối cùng của Việt Nam?",
+      "answers": ["Khải Định", "Duy Tân", "Bảo Đại", "Thành Thái"],
+      "correct": 2,
+      "explanation": "Bảo Đại là hoàng đế cuối cùng của Việt Nam, thoái vị năm 1945 sau Cách mạng Tháng Tám."
+    },
+    {
+      "id": 6,
+      "category": "dynasty",
+      "difficulty": "easy",
+      "question": "Nhà Nguyễn có bao nhiêu đời vua?",
+      "answers": ["10", "11", "13", "15"],
+      "correct": 2,
+      "explanation": "Nhà Nguyễn (1802-1945) có 13 đời vua, từ Gia Long đến Bảo Đại."
+    },
+    {
+      "id": 7,
+      "category": "dynasty",
+      "difficulty": "medium",
+      "question": "Triều đại nào đã 3 lần đánh thắng quân Nguyên Mông?",
+      "answers": ["Nhà Lý", "Nhà Trần", "Nhà Lê Sơ", "Nhà Hồ"],
+      "correct": 1,
+      "explanation": "Nhà Trần đã 3 lần đánh thắng quân Nguyên Mông (1258, 1285, 1288) dưới sự lãnh đạo của Trần Hưng Đạo."
+    },
+    {
+      "id": 8,
+      "category": "dynasty",
+      "difficulty": "hard",
+      "question": "Nước Đại Cồ Việt được lập ra bởi ai?",
+      "answers": ["Ngô Quyền", "Đinh Bộ Lĩnh", "Lê Hoàn", "Lý Công Uẩn"],
+      "correct": 1,
+      "explanation": "Đinh Bộ Lĩnh (Đinh Tiên Hoàng) lập nước Đại Cồ Việt năm 968, thống nhất đất nước sau loạn 12 sứ quân."
+    },
+    {
+      "id": 9,
+      "category": "dynasty",
+      "difficulty": "medium",
+      "question": "Kinh đô của nhà Nguyễn được đặt ở đâu?",
+      "answers": ["Thăng Long", "Phú Xuân (Huế)", "Gia Định", "Thành Đô"],
+      "correct": 1,
+      "explanation": "Phú Xuân (nay là Huế) là kinh đô của nhà Nguyễn từ 1802-1945."
+    },
+    {
+      "id": 10,
+      "category": "dynasty",
+      "difficulty": "easy",
+      "question": "Triều đại nào có vua trị vì lâu nhất (55 năm)?",
+      "answers": ["Nhà Lý", "Nhà Trần", "Nhà Lê", "Nhà Nguyễn"],
+      "correct": 2,
+      "explanation": "Lê Thánh Tông trị vì 37 năm (1460-1497), nhưng Lê Hiến Tông và Tự Đức trị vì 35-36 năm. Thực ra Gia Long trị vì từ khi thống nhất đến khi mất khoảng 18 năm."
+    },
+    {
+      "id": 11,
+      "category": "dynasty",
+      "difficulty": "hard",
+      "question": "Nhà Mạc đã chiếm đoạt ngôi vua nhà Lê vào năm nào?",
+      "answers": ["1400", "1527", "1592", "1627"],
+      "correct": 1,
+      "explanation": "Năm 1527, Mạc Đăng Dung buộc vua Lê Cung Hoàng nhường ngôi, lập ra nhà Mạc."
+    },
+    {
+      "id": 12,
+      "category": "dynasty",
+      "difficulty": "medium",
+      "question": "Ai là người sáng lập triều Tây Sơn?",
+      "answers": ["Nguyễn Huệ", "Nguyễn Nhạc", "Nguyễn Lữ", "Cả 3"],
+      "correct": 3,
+      "explanation": "Ba anh em Nguyễn Nhạc, Nguyễn Lữ, Nguyễn Huệ cùng khởi nghĩa tại Tây Sơn (Bình Định) và lập nên triều Tây Sơn."
+    },
+    {
+      "id": 13,
+      "category": "war",
+      "difficulty": "easy",
+      "question": "Trận Bạch Đằng 938 do ai chỉ huy?",
+      "answers": ["Ngô Quyền", "Trần Hưng Đạo", "Lý Thường Kiệt", "Lê Lợi"],
+      "correct": 0,
+      "explanation": "Ngô Quyền chỉ huy quân ta đánh thắng quân Nam Hán trên sông Bạch Đằng năm 938, chấm dứt 1000 năm Bắc thuộc."
+    },
+    {
+      "id": 14,
+      "category": "war",
+      "difficulty": "medium",
+      "question": "Chiến thuật 'cọc ngầm' được sử dụng trong trận nào?",
+      "answers": ["Trận Như Nguyệt", "Trận Bạch Đằng", "Trận Chi Lăng", "Trận Điện Biên Phủ"],
+      "correct": 1,
+      "explanation": "Chiến thuật cọc ngầm được sử dụng trong các trận Bạch Đằng (938, 1288), đánh quân địch khi thủy triều xuống."
+    },
+    {
+      "id": 15,
+      "category": "war",
+      "difficulty": "hard",
+      "question": "Trận Điện Biên Phủ diễn ra trong bao nhiêu ngày?",
+      "answers": ["56 ngày", "57 ngày", "81 ngày", "169 ngày"],
+      "correct": 0,
+      "explanation": "Chiến dịch Điện Biên Phủ kéo dài 56 ngày đêm (13/3 - 7/5/1954), kết thúc bằng chiến thắng lịch sử."
+    },
+    {
+      "id": 16,
+      "category": "war",
+      "difficulty": "easy",
+      "question": "Ai là tổng tư lệnh trong chiến dịch Điện Biên Phủ?",
+      "answers": ["Hồ Chí Minh", "Võ Nguyên Giáp", "Trường Chinh", "Lê Duẩn"],
+      "correct": 1,
+      "explanation": "Đại tướng Võ Nguyên Giáp là Tổng Tư lệnh trong chiến dịch Điện Biên Phủ 1954."
+    },
+    {
+      "id": 17,
+      "category": "war",
+      "difficulty": "medium",
+      "question": "Khởi nghĩa Hai Bà Trưng diễn ra vào năm nào?",
+      "answers": ["40", "248", "542", "938"],
+      "correct": 0,
+      "explanation": "Khởi nghĩa Hai Bà Trưng nổ ra năm 40, giải phóng 65 thành trì khỏi ách đô hộ của Đông Hán."
+    },
+    {
+      "id": 18,
+      "category": "war",
+      "difficulty": "hard",
+      "question": "Trận Chi Lăng năm 1427 do ai chỉ huy?",
+      "answers": ["Lê Lợi", "Nguyễn Trãi", "Lê Lai", "Trần Nguyên Hãn"],
+      "correct": 0,
+      "explanation": "Lê Lợi chỉ huy quân ta đại thắng 20 vạn quân Minh tại Chi Lăng, buộc quân Minh phải rút về."
+    },
+    {
+      "id": 19,
+      "category": "war",
+      "difficulty": "medium",
+      "question": "Cuộc kháng chiến chống Mỹ kéo dài bao nhiêu năm?",
+      "answers": ["9 năm", "11 năm", "21 năm", "30 năm"],
+      "correct": 2,
+      "explanation": "Cuộc kháng chiến chống Mỹ kéo dài 21 năm (1954-1975), từ sau Hiệp định Genève đến khi giải phóng hoàn toàn miền Nam."
+    },
+    {
+      "id": 20,
+      "category": "war",
+      "difficulty": "easy",
+      "question": "Ngày giải phóng miền Nam, thống nhất đất nước là ngày nào?",
+      "answers": ["2/9/1945", "7/5/1954", "30/4/1975", "22/12/1946"],
+      "correct": 2,
+      "explanation": "Ngày 30/4/1975 là ngày giải phóng hoàn toàn miền Nam, thống nhất đất nước."
+    },
+    {
+      "id": 21,
+      "category": "war",
+      "difficulty": "hard",
+      "question": "Quân Mông Cổ xâm lược Việt Nam bao nhiêu lần?",
+      "answers": ["2 lần", "3 lần", "4 lần", "5 lần"],
+      "correct": 1,
+      "explanation": "Quân Nguyên Mông xâm lược 3 lần (1258, 1285, 1288) và đều bị quân nhà Trần đánh bại."
+    },
+    {
+      "id": 22,
+      "category": "war",
+      "difficulty": "medium",
+      "question": "Chiến thắng Rạch Gầm - Xoài Mút năm 1785 do ai chỉ huy?",
+      "answers": ["Nguyễn Huệ", "Nguyễn Nhạc", "Nguyễn Ánh", "Quang Trung"],
+      "correct": 0,
+      "explanation": "Nguyễn Huệ (Quang Trung) chỉ huy đánh thắng quân Xiêm tại Rạch Gầm - Xoài Mút."
+    },
+    {
+      "id": 23,
+      "category": "war",
+      "difficulty": "easy",
+      "question": "Ngày Cách mạng Tháng Tám thành công là ngày nào?",
+      "answers": ["19/8/1945", "2/9/1945", "23/9/1945", "6/1/1946"],
+      "correct": 1,
+      "explanation": "Ngày 2/9/1945, Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập, khai sinh nước Việt Nam Dân chủ Cộng hòa."
+    },
+    {
+      "id": 24,
+      "category": "war",
+      "difficulty": "medium",
+      "question": "Nghĩa quân Lam Sơn được thành lập ở đâu?",
+      "answers": ["Thanh Hóa", "Nghệ An", "Hà Tĩnh", "Quảng Bình"],
+      "correct": 0,
+      "explanation": "Nghĩa quân Lam Sơn được Lê Lợi thành lập tại Lam Sơn, Thanh Hóa năm 1418 để chống quân Minh."
+    },
+    {
+      "id": 25,
+      "category": "figures",
+      "difficulty": "easy",
+      "question": "Ai được tôn là 'Cha già dân tộc'?",
+      "answers": ["Lý Thường Kiệt", "Trần Hưng Đạo", "Hồ Chí Minh", "Võ Nguyên Giáp"],
+      "correct": 2,
+      "explanation": "Chủ tịch Hồ Chí Minh được nhân dân tôn kính gọi là 'Bác Hồ' hay 'Cha già dân tộc'."
+    },
+    {
+      "id": 26,
+      "category": "figures",
+      "difficulty": "medium",
+      "question": "Trần Hưng Đạo có tên thật là gì?",
+      "answers": ["Trần Quốc Tuấn", "Trần Quang Khải", "Trần Nhật Duật", "Trần Khánh Dư"],
+      "correct": 0,
+      "explanation": "Trần Hưng Đạo có tên thật là Trần Quốc Tuấn, là vị tướng tài ba nhất thời Trần."
+    },
+    {
+      "id": 27,
+      "category": "figures",
+      "difficulty": "hard",
+      "question": "Nguyễn Trãi viết tác phẩm nào sau chiến thắng quân Minh?",
+      "answers": ["Quốc Âm Thi Tập", "Ức Trai Thi Tập", "Bình Ngô Đại Cáo", "Hịch Tướng Sĩ"],
+      "correct": 2,
+      "explanation": "Bình Ngô Đại Cáo do Nguyễn Trãi viết năm 1428 sau khi đánh đuổi quân Minh, khẳng định độc lập dân tộc."
+    },
+    {
+      "id": 28,
+      "category": "figures",
+      "difficulty": "easy",
+      "question": "Ai là nữ tướng cưỡi voi kháng chiến chống Đông Ngô?",
+      "answers": ["Trưng Trắc", "Trưng Nhị", "Bà Triệu", "Phùng Thị Chính"],
+      "correct": 2,
+      "explanation": "Bà Triệu (Triệu Thị Trinh) cưỡi voi kháng chiến chống Đông Ngô năm 248 khi mới 23 tuổi."
+    },
+    {
+      "id": 29,
+      "category": "figures",
+      "difficulty": "medium",
+      "question": "Lý Thường Kiệt nổi tiếng với chiến thắng nào?",
+      "answers": ["Trận Bạch Đằng", "Trận Như Nguyệt", "Trận Chi Lăng", "Trận Đống Đa"],
+      "correct": 1,
+      "explanation": "Lý Thường Kiệt đại thắng 30 vạn quân Tống tại trận Như Nguyệt (1077), giữ vững biên cương phía Bắc."
+    },
+    {
+      "id": 30,
+      "category": "figures",
+      "difficulty": "hard",
+      "question": "Ai là tác giả của 'Nam quốc sơn hà'?",
+      "answers": ["Lý Thường Kiệt", "Nguyễn Trãi", "Trần Hưng Đạo", "Phan Bội Châu"],
+      "correct": 0,
+      "explanation": "'Nam quốc sơn hà Nam đế cư' là câu thơ nổi tiếng của Lý Thường Kiệt, khẳng định chủ quyền dân tộc."
+    },
+    {
+      "id": 31,
+      "category": "figures",
+      "difficulty": "medium",
+      "question": "Quang Trung có tên thật là gì?",
+      "answers": ["Nguyễn Huệ", "Nguyễn Nhạc", "Nguyễn Lữ", "Nguyễn Văn Huệ"],
+      "correct": 0,
+      "explanation": "Quang Trung tên thật là Nguyễn Huệ, là hoàng đế của triều Tây Sơn."
+    },
+    {
+      "id": 32,
+      "category": "figures",
+      "difficulty": "easy",
+      "question": "Lê Lợi lập ra triều đại nào?",
+      "answers": ["Nhà Lý", "Nhà Trần", "Nhà Lê", "Nhà Hồ"],
+      "correct": 2,
+      "explanation": "Lê Lợi lập ra nhà Lê (Lê Sơ) năm 1428 sau khi đánh đuổi quân Minh."
+    },
+    {
+      "id": 33,
+      "category": "figures",
+      "difficulty": "hard",
+      "question": "Phan Bội Châu sáng lập phong trào nào?",
+      "answers": ["Đông Du", "Duy Tân", "Đông Kinh Nghĩa Thục", "Cả 3"],
+      "correct": 3,
+      "explanation": "Phan Bội Châu là người sáng lập và tham gia nhiều phong trào yêu nước đầu thế kỷ 20."
+    },
+    {
+      "id": 34,
+      "category": "figures",
+      "difficulty": "medium",
+      "question": "Ai được mệnh danh 'Anh hùng áo vải'?",
+      "answers": ["Phan Đình Phùng", "Hoàng Hoa Thám", "Nguyễn Trung Trực", "Trương Định"],
+      "correct": 1,
+      "explanation": "Hoàng Hoa Thám (Đề Thám) được mệnh danh 'Anh hùng áo vải', kháng chiến chống Pháp ở Yên Thế."
+    },
+    {
+      "id": 35,
+      "category": "figures",
+      "difficulty": "easy",
+      "question": "Chủ tịch Hồ Chí Minh sinh năm nào?",
+      "answers": ["1890", "1892", "1900", "1905"],
+      "correct": 0,
+      "explanation": "Chủ tịch Hồ Chí Minh sinh ngày 19/5/1890 tại làng Kim Liên, Nam Đàn, Nghệ An."
+    },
+    {
+      "id": 36,
+      "category": "figures",
+      "difficulty": "medium",
+      "question": "Ai viết 'Tuyên ngôn Độc lập' năm 1945?",
+      "answers": ["Hồ Chí Minh", "Trường Chinh", "Phạm Văn Đồng", "Võ Nguyên Giáp"],
+      "correct": 0,
+      "explanation": "Chủ tịch Hồ Chí Minh là người viết và đọc Tuyên ngôn Độc lập ngày 2/9/1945."
+    },
+    {
+      "id": 37,
+      "category": "culture",
+      "difficulty": "easy",
+      "question": "Chữ Nôm ra đời vào thời kỳ nào?",
+      "answers": ["Thời Lý", "Thời Trần", "Thời Lê", "Thế kỷ 13-14"],
+      "correct": 3,
+      "explanation": "Chữ Nôm được hình thành và phát triển vào khoảng thế kỷ 13-14 để ghi chép tiếng Việt."
+    },
+    {
+      "id": 38,
+      "category": "culture",
+      "difficulty": "medium",
+      "question": "Tác phẩm 'Truyện Kiều' có bao nhiêu câu?",
+      "answers": ["3254 câu", "3000 câu", "3500 câu", "4000 câu"],
+      "correct": 0,
+      "explanation": "'Đoạn Trường Tân Thanh' (Truyện Kiều) của Nguyễn Du có 3254 câu thơ lục bát."
+    },
+    {
+      "id": 39,
+      "category": "culture",
+      "difficulty": "hard",
+      "question": "Ca Trù được UNESCO công nhận là Di sản năm nào?",
+      "answers": ["2003", "2009", "2011", "2015"],
+      "correct": 1,
+      "explanation": "Ca Trù được UNESCO công nhận là Di sản văn hóa phi vật thể cần được bảo vệ khẩn cấp năm 2009."
+    },
+    {
+      "id": 40,
+      "category": "culture",
+      "difficulty": "easy",
+      "question": "Truyện Kiều được Nguyễn Du viết vào thời nào?",
+      "answers": ["Thời Lê", "Thời Tây Sơn", "Thời Nguyễn", "Đầu thế kỷ 19"],
+      "correct": 3,
+      "explanation": "Truyện Kiều được Nguyễn Du viết vào đầu thế kỷ 19 (khoảng 1813-1820), dưới triều Gia Long."
+    },
+    {
+      "id": 41,
+      "category": "culture",
+      "difficulty": "medium",
+      "question": "Hát Xoan Phú Thọ được UNESCO công nhận năm nào?",
+      "answers": ["2009", "2011", "2012", "2017"],
+      "correct": 2,
+      "explanation": "Hát Xoan Phú Thọ được UNESCO công nhận là Di sản văn hóa phi vật thể đại diện của nhân loại năm 2011, sau đó 2017 rút khỏi danh sách cần bảo vệ khẩn cấp."
+    },
+    {
+      "id": 42,
+      "category": "culture",
+      "difficulty": "hard",
+      "question": "Ai là tác giả của 'Quốc Âm Thi Tập'?",
+      "answers": ["Nguyễn Trãi", "Nguyễn Du", "Hồ Xuân Hương", "Nguyễn Bỉnh Khiêm"],
+      "correct": 0,
+      "explanation": "Quốc Âm Thi Tập là tập thơ Nôm của Nguyễn Trãi, thể hiện tình yêu quê hương đất nước."
+    },
+    {
+      "id": 43,
+      "category": "culture",
+      "difficulty": "easy",
+      "question": "Lễ hội nào được tổ chức vào ngày 10/3 âm lịch?",
+      "answers": ["Lễ hội chùa Hương", "Lễ hội Đền Hùng", "Lễ hội Gióng", "Lễ hội Hạ Long"],
+      "correct": 1,
+      "explanation": "Giỗ Tổ Hùng Vương (10/3 âm lịch) là lễ hội lớn tưởng nhớ các Vua Hùng dựng nước."
+    },
+    {
+      "id": 44,
+      "category": "culture",
+      "difficulty": "medium",
+      "question": "Ai được mệnh danh 'Bà chúa thơ Nôm'?",
+      "answers": ["Hồ Xuân Hương", "Đoàn Thị Điểm", "Bà Huyện Thanh Quan", "Nguyễn Thị Hinh"],
+      "correct": 0,
+      "explanation": "Hồ Xuân Hương được mệnh danh 'Bà chúa thơ Nôm' với phong cách táo bạo, châm biếm."
+    },
+    {
+      "id": 45,
+      "category": "culture",
+      "difficulty": "hard",
+      "question": "Tác phẩm nào KHÔNG phải của Nguyễn Du?",
+      "answers": ["Truyện Kiều", "Nam Quốc Sơn Hà", "Văn Tế Thập Loại Chúng Sinh", "Độc Tiểu Thanh Ký"],
+      "correct": 1,
+      "explanation": "'Nam Quốc Sơn Hà' là của Lý Thường Kiệt, không phải Nguyễn Du."
+    },
+    {
+      "id": 46,
+      "category": "culture",
+      "difficulty": "medium",
+      "question": "Trống đồng Đông Sơn thuộc thời kỳ nào?",
+      "answers": ["Thời đồ đá", "Thời đồ đồng", "Thời đồ sắt", "Thời Văn Lang"],
+      "correct": 1,
+      "explanation": "Trống đồng Đông Sơn thuộc văn hóa đồ đồng thời Văn Lang - Âu Lạc (khoảng 700 TCN - 100)."
+    },
+    {
+      "id": 47,
+      "category": "culture",
+      "difficulty": "easy",
+      "question": "Nghệ thuật múa rối nước có nguồn gốc từ đâu?",
+      "answers": ["Đồng bằng sông Hồng", "Miền núi phía Bắc", "Miền Trung", "Miền Nam"],
+      "correct": 0,
+      "explanation": "Múa rối nước có nguồn gốc từ vùng đồng bằng sông Hồng, gắn với văn hóa lúa nước."
+    },
+    {
+      "id": 48,
+      "category": "culture",
+      "difficulty": "medium",
+      "question": "Áo dài Việt Nam hiện đại được cải tiến bởi ai?",
+      "answers": ["Cát Tường", "Lê Phổ", "Nguyễn Cát Tường", "Trần Kim of Thiết Lập"],
+      "correct": 2,
+      "explanation": "Họa sĩ Nguyễn Cát Tường (Cát Tường) cải tiến áo dài thành kiểu áo dài hiện đại năm 1934."
+    },
+    {
+      "id": 49,
+      "category": "heritage",
+      "difficulty": "easy",
+      "question": "Di sản nào của Việt Nam được UNESCO công nhận đầu tiên?",
+      "answers": ["Vịnh Hạ Long", "Cố đô Huế", "Phố cổ Hội An", "Thánh địa Mỹ Sơn"],
+      "correct": 0,
+      "explanation": "Vịnh Hạ Long được UNESCO công nhận là Di sản Thiên nhiên Thế giới năm 1994, là di sản đầu tiên của VN."
+    },
+    {
+      "id": 50,
+      "category": "heritage",
+      "difficulty": "medium",
+      "question": "Thành nhà Hồ nằm ở tỉnh nào?",
+      "answers": ["Thanh Hóa", "Nghệ An", "Hà Tĩnh", "Quảng Bình"],
+      "correct": 0,
+      "explanation": "Thành nhà Hồ nằm ở Thanh Hóa, được UNESCO công nhận là Di sản văn hóa thế giới năm 2011."
+    },
+    {
+      "id": 51,
+      "category": "heritage",
+      "difficulty": "hard",
+      "question": "Việt Nam có bao nhiêu di sản thế giới được UNESCO công nhận?",
+      "answers": ["6", "8", "10", "12"],
+      "correct": 1,
+      "explanation": "Tính đến 2024, Việt Nam có 8 di sản thế giới (5 văn hóa, 2 thiên nhiên, 1 hỗn hợp)."
+    },
+    {
+      "id": 52,
+      "category": "heritage",
+      "difficulty": "easy",
+      "question": "Chùa Một Cột được xây dựng dưới triều đại nào?",
+      "answers": ["Nhà Lý", "Nhà Trần", "Nhà Lê", "Nhà Nguyễn"],
+      "correct": 0,
+      "explanation": "Chùa Một Cột được vua Lý Thái Tông xây dựng năm 1049 tại Thăng Long."
+    },
+    {
+      "id": 53,
+      "category": "heritage",
+      "difficulty": "medium",
+      "question": "Thánh địa Mỹ Sơn là di tích của nền văn minh nào?",
+      "answers": ["Champa", "Khmer", "Việt", "Óc Eo"],
+      "correct": 0,
+      "explanation": "Thánh địa Mỹ Sơn là quần thể đền tháp Chăm Pa, được UNESCO công nhận năm 1999."
+    },
+    {
+      "id": 54,
+      "category": "heritage",
+      "difficulty": "hard",
+      "question": "Văn Miếu Quốc Tử Giám được xây dựng năm nào?",
+      "answers": ["1010", "1070", "1076", "1802"],
+      "correct": 2,
+      "explanation": "Văn Miếu được xây năm 1070 dưới thời Lý Thánh Tông, Quốc Tử Giám được thành lập năm 1076."
+    },
+    {
+      "id": 55,
+      "category": "heritage",
+      "difficulty": "medium",
+      "question": "Cố đô Huế có bao nhiêu công trình được UNESCO công nhận?",
+      "answers": ["Toàn bộ quần thể", "9 di tích", "Chỉ Hoàng thành", "Chỉ Đại Nội"],
+      "correct": 0,
+      "explanation": "Quần thể di tích Cố đô Huế (bao gồm Đại Nội, Hoàng thành, Kinh thành và các lăng tẩm) được công nhận năm 1993."
+    },
+    {
+      "id": 56,
+      "category": "heritage",
+      "difficulty": "easy",
+      "question": "Phố cổ Hội An nằm ở tỉnh nào?",
+      "answers": ["Đà Nẵng", "Quảng Nam", "Quảng Ngãi", "Bình Định"],
+      "correct": 1,
+      "explanation": "Phố cổ Hội An thuộc tỉnh Quảng Nam, được UNESCO công nhận năm 1999."
+    },
+    {
+      "id": 57,
+      "category": "heritage",
+      "difficulty": "hard",
+      "question": "Động Phong Nha - Kẻ Bàng có chiều dài bao nhiêu km?",
+      "answers": ["31 km", "44,5 km", "50 km", "65 km"],
+      "correct": 1,
+      "explanation": "Động Phong Nha có chiều dài 44,5 km với hệ thống sông ngầm dài nhất thế giới."
+    },
+    {
+      "id": 58,
+      "category": "heritage",
+      "difficulty": "medium",
+      "question": "Khu vực nào được gọi là 'Vịnh Hạ Long trên cạn'?",
+      "answers": ["Tam Cốc - Bích Động", "Tràng An", "Bái Đính", "Cúc Phương"],
+      "correct": 1,
+      "explanation": "Quần thể danh thắng Tràng An (Ninh Bình) được mệnh danh 'Vịnh Hạ Long trên cạn', là di sản hỗn hợp."
+    },
+    {
+      "id": 59,
+      "category": "heritage",
+      "difficulty": "easy",
+      "question": "Thành Cổ Loa nằm ở đâu?",
+      "answers": ["Hà Nội", "Bắc Ninh", "Hưng Yên", "Hải Dương"],
+      "correct": 0,
+      "explanation": "Thành Cổ Loa nằm ở huyện Đông Anh, Hà Nội, do An Dương Vương xây dựng."
+    },
+    {
+      "id": 60,
+      "category": "heritage",
+      "difficulty": "medium",
+      "question": "Lăng Khải Định được xây dựng trong bao nhiêu năm?",
+      "answers": ["9 năm", "11 năm", "15 năm", "20 năm"],
+      "correct": 1,
+      "explanation": "Lăng Khải Định được xây dựng từ 1920-1931 (11 năm), kết hợp kiến trúc Đông Tây."
+    },
+    {
+      "id": 61,
+      "category": "diplomacy",
+      "difficulty": "easy",
+      "question": "Việt Nam gia nhập ASEAN vào năm nào?",
+      "answers": ["1995", "1996", "1997", "2000"],
+      "correct": 0,
+      "explanation": "Việt Nam chính thức gia nhập ASEAN ngày 28/7/1995, trở thành thành viên thứ 7."
+    },
+    {
+      "id": 62,
+      "category": "diplomacy",
+      "difficulty": "medium",
+      "question": "Hiệp định Paris về chấm dứt chiến tranh được ký năm nào?",
+      "answers": ["1968", "1973", "1975", "1976"],
+      "correct": 1,
+      "explanation": "Hiệp định Paris về chấm dứt chiến tranh và lập lại hòa bình ở Việt Nam được ký ngày 27/1/1973."
+    },
+    {
+      "id": 63,
+      "category": "diplomacy",
+      "difficulty": "hard",
+      "question": "Việt Nam gia nhập WTO vào năm nào?",
+      "answers": ["2004", "2006", "2007", "2008"],
+      "correct": 2,
+      "explanation": "Việt Nam chính thức gia nhập WTO (Tổ chức Thương mại Thế giới) ngày 11/1/2007, là thành viên thứ 150."
+    },
+    {
+      "id": 64,
+      "category": "diplomacy",
+      "difficulty": "easy",
+      "question": "Việt Nam bình thường hóa quan hệ với Mỹ năm nào?",
+      "answers": ["1991", "1995", "2000", "2001"],
+      "correct": 1,
+      "explanation": "Việt Nam và Mỹ bình thường hóa quan hệ ngoại giao ngày 11/7/1995."
+    },
+    {
+      "id": 65,
+      "category": "diplomacy",
+      "difficulty": "medium",
+      "question": "Hội nghị Genève 1954 kéo dài bao lâu?",
+      "answers": ["2 tháng", "3 tháng", "4 tháng", "5 tháng"],
+      "correct": 1,
+      "explanation": "Hội nghị Genève diễn ra từ 26/4 đến 21/7/1954 (gần 3 tháng), công nhận độc lập của Việt Nam."
+    },
+    {
+      "id": 66,
+      "category": "diplomacy",
+      "difficulty": "hard",
+      "question": "Việt Nam là ủy viên không thường trực Hội đồng Bảo an LHQ lần thứ mấy?",
+      "answers": ["1 lần", "2 lần", "3 lần", "4 lần"],
+      "correct": 1,
+      "explanation": "Việt Nam đã 2 lần là ủy viên không thường trực HĐBA LHQ: 2008-2009 và 2020-2021."
+    },
+    {
+      "id": 67,
+      "category": "diplomacy",
+      "difficulty": "medium",
+      "question": "Việt Nam thiết lập quan hệ ngoại giao với bao nhiêu quốc gia?",
+      "answers": ["Hơn 150", "Hơn 170", "Hơn 190", "Hơn 200"],
+      "correct": 2,
+      "explanation": "Tính đến 2024, Việt Nam có quan hệ ngoại giao với hơn 190 quốc gia và vùng lãnh thổ."
+    },
+    {
+      "id": 68,
+      "category": "diplomacy",
+      "difficulty": "easy",
+      "question": "Chính sách đối ngoại của Việt Nam là gì?",
+      "answers": ["Độc lập tự chủ", "Đa phương hóa, đa dạng hóa", "Bạn với tất cả", "Cả 3"],
+      "correct": 3,
+      "explanation": "Chính sách đối ngoại VN: Độc lập tự chủ, đa phương hóa đa dạng hóa, là bạn với tất cả các nước."
+    },
+    {
+      "id": 69,
+      "category": "diplomacy",
+      "difficulty": "hard",
+      "question": "Việt Nam đăng cai APEC năm nào?",
+      "answers": ["2006", "2008", "2012", "2017"],
+      "correct": 3,
+      "explanation": "Việt Nam đăng cai Hội nghị Cấp cao APEC 2017 tại Đà Nẵng với chủ đề 'Tạo động lực mới, cùng vun đắp tương lai chung'."
+    },
+    {
+      "id": 70,
+      "category": "diplomacy",
+      "difficulty": "medium",
+      "question": "Việt Nam gia nhập Liên Hợp Quốc năm nào?",
+      "answers": ["1975", "1976", "1977", "1978"],
+      "correct": 2,
+      "explanation": "Việt Nam gia nhập Liên Hợp Quốc ngày 20/9/1977, trở thành thành viên thứ 149."
+    },
+    {
+      "id": 71,
+      "category": "science",
+      "difficulty": "medium",
+      "question": "Nhà bác học nào sáng chế ra thuốc chữa sốt rét từ cây thanh hao?",
+      "answers": ["Đặng Văn Ngữ", "Hoàng Thúy Nguyên", "Lưu Trọng Lư", "Tạ Quang Bửu"],
+      "correct": 1,
+      "explanation": "GS.VS Hoàng Thúy Nguyên nghiên cứu và sản xuất thuốc chữa sốt rét từ artemisinin trong cây thanh hao."
+    },
+    {
+      "id": 72,
+      "category": "science",
+      "difficulty": "hard",
+      "question": "Ai là nhà toán học Việt Nam đầu tiên đoạt Giải thưởng Fields?",
+      "answers": ["Ngô Bảo Châu", "Đặng Thúc Thắng", "Hoàng Tụy", "Lê Văn Thiêm"],
+      "correct": 0,
+      "explanation": "Ngô Bảo Châu là người Việt Nam đầu tiên đoạt Huy chương Fields (giải Nobel Toán học) năm 2010."
+    },
+    {
+      "id": 73,
+      "category": "science",
+      "difficulty": "easy",
+      "question": "Trường Đại học đầu tiên của Việt Nam được thành lập năm nào?",
+      "answers": ["1902", "1906", "1918", "1945"],
+      "correct": 1,
+      "explanation": "Đại học Đông Dương (tiền thân ĐH Quốc gia Hà Nội) được thành lập năm 1906 tại Hà Nội."
+    },
+    {
+      "id": 74,
+      "category": "science",
+      "difficulty": "medium",
+      "question": "Ai là cha đẻ của ngành vật lý Việt Nam?",
+      "answers": ["Tạ Quang Bửu", "Nguyễn Văn Hiệu", "Đặng Văn Ngữ", "Hoàng Tụy"],
+      "correct": 0,
+      "explanation": "Giáo sư Tạ Quang Bửu được xem là cha đẻ của ngành vật lý hiện đại Việt Nam."
+    },
+    {
+      "id": 75,
+      "category": "science",
+      "difficulty": "hard",
+      "question": "Tàu ngầm mini đầu tiên của Việt Nam mang tên gì?",
+      "answers": ["Trường Sa", "Hoàng Sa", "Trường Sơn", "Trường Long"],
+      "correct": 2,
+      "explanation": "Tàu ngầm mini 'Trường Sơn' do kỹ sư Yuri Phạm Xuân Vĩnh chế tạo năm 1995."
+    },
+    {
+      "id": 76,
+      "category": "science",
+      "difficulty": "medium",
+      "question": "Viện Hàn lâm Khoa học và Công nghệ VN được thành lập năm nào?",
+      "answers": ["1945", "1956", "1975", "1981"],
+      "correct": 1,
+      "explanation": "Viện Hàn lâm Khoa học và Công nghệ Việt Nam được thành lập ngày 18/5/1956."
+    },
+    {
+      "id": 77,
+      "category": "science",
+      "difficulty": "easy",
+      "question": "Vệ tinh đầu tiên của Việt Nam là gì?",
+      "answers": ["VINASAT-1", "VNREDSat-1", "MicroDragon", "LOTUSat-1"],
+      "correct": 0,
+      "explanation": "VINASAT-1 là vệ tinh thông tin địa tĩnh đầu tiên của Việt Nam, phóng lên quỹ đạo năm 2008."
+    },
+    {
+      "id": 78,
+      "category": "science",
+      "difficulty": "hard",
+      "question": "GS Hoàng Tụy nổi tiếng với đóng góp nào?",
+      "answers": ["Tối ưu hóa toàn cục", "Vật lý hạt nhân", "Hóa dược", "Sinh học phân tử"],
+      "correct": 0,
+      "explanation": "GS Hoàng Tụy là nhà toán học nổi tiếng với các nghiên cứu về tối ưu hóa toàn cục."
+    },
+    {
+      "id": 79,
+      "category": "science",
+      "difficulty": "medium",
+      "question": "Vaccine phòng COVID-19 đầu tiên của VN là gì?",
+      "answers": ["Nanocovax", "Covivac", "Abdala", "Sputnik V"],
+      "correct": 0,
+      "explanation": "Nanocovax do Công ty Nanogen phát triển là vaccine COVID-19 'made in Vietnam' đầu tiên."
+    },
+    {
+      "id": 80,
+      "category": "science",
+      "difficulty": "easy",
+      "question": "Khu Công nghệ cao đầu tiên của VN nằm ở đâu?",
+      "answers": ["Hà Nội", "TP.HCM", "Đà Nẵng", "Hải Phòng"],
+      "correct": 1,
+      "explanation": "Khu Công nghệ cao TP.HCM được thành lập năm 2002, là khu công nghệ cao đầu tiên của Việt Nam."
+    },
+    {
+      "id": 81,
+      "category": "art",
+      "difficulty": "easy",
+      "question": "Họa sĩ nào được mệnh danh 'ông tổ tranh sơn mài Việt Nam'?",
+      "answers": ["Nguyễn Gia Trí", "Bùi Xuân Phái", "Nguyễn Phan Chánh", "Tô Ngọc Vân"],
+      "correct": 0,
+      "explanation": "Nguyễn Gia Trí (1908-1993) được xem là cha đẻ của tranh sơn mài hiện đại Việt Nam."
+    },
+    {
+      "id": 82,
+      "category": "art",
+      "difficulty": "medium",
+      "question": "Bức tranh 'Thiếu nữ bên hoa huệ' của ai?",
+      "answers": ["Tô Ngọc Vân", "Bùi Xuân Phái", "Nguyễn Gia Trí", "Lương Xuân Nhị"],
+      "correct": 0,
+      "explanation": "'Thiếu nữ bên hoa huệ' (1943) là kiệt tác của họa sĩ Tô Ngọc Vân."
+    },
+    {
+      "id": 83,
+      "category": "art",
+      "difficulty": "hard",
+      "question": "Trường Cao đẳng Mỹ thuật Đông Dương được thành lập năm nào?",
+      "answers": ["1913", "1924", "1925", "1930"],
+      "correct": 2,
+      "explanation": "Trường Cao đẳng Mỹ thuật Đông Dương (nay là ĐH Mỹ thuật VN) được thành lập năm 1925 tại Hà Nội."
+    },
+    {
+      "id": 84,
+      "category": "art",
+      "difficulty": "easy",
+      "question": "Bùi Xuân Phái nổi tiếng với đề tài gì?",
+      "answers": ["Phố phường Hà Nội", "Phong cảnh miền Trung", "Chân dung", "Tĩnh vật"],
+      "correct": 0,
+      "explanation": "Họa sĩ Bùi Xuân Phái nổi tiếng với tranh vẽ phố phường Hà Nội, đặc biệt là hàng cây phượng."
+    },
+    {
+      "id": 85,
+      "category": "art",
+      "difficulty": "medium",
+      "question": "Nhà hát Lớn Hà Nội được xây dựng theo kiến trúc nào?",
+      "answers": ["Kiến trúc Pháp", "Kiến trúc Gothic", "Kiến trúc Baroque", "Kiến trúc Rococo"],
+      "correct": 0,
+      "explanation": "Nhà hát Lớn Hà Nội (1911) được xây theo kiến trúc Pháp, mô phỏng Nhà hát Opera Paris thu nhỏ."
+    },
+    {
+      "id": 86,
+      "category": "art",
+      "difficulty": "hard",
+      "question": "Bộ tranh tứ bình 'Tứ Linh' thường gồm những con vật nào?",
+      "answers": ["Rồng, Lân, Quy, Phượng", "Hổ, Báo, Cọp, Sư tử", "Công, Chim, Hạc, Công", "Long, Mã, Hổ, Báo"],
+      "correct": 0,
+      "explanation": "Tứ Linh trong văn hóa Việt Nam gồm: Rồng, Lân (kỳ lân), Quy (rùa), Phượng (phượng hoàng)."
+    },
+    {
+      "id": 87,
+      "category": "art",
+      "difficulty": "medium",
+      "question": "Cầu Vàng Đà Nẵng (Golden Bridge) được khánh thành năm nào?",
+      "answers": ["2016", "2017", "2018", "2019"],
+      "correct": 2,
+      "explanation": "Cầu Vàng (Cầu Bàn Tay) tại Bà Nà Hills, Đà Nẵng được khánh thành tháng 6/2018."
+    },
+    {
+      "id": 88,
+      "category": "art",
+      "difficulty": "easy",
+      "question": "Chùa Vàng (Pagoda) ở Myanmar được dựng theo kiến trúc nào?",
+      "answers": ["Phật giáo Theravada", "Phật giáo Mahayana", "Hindu", "Islam"],
+      "correct": 0,
+      "explanation": "Đây là câu hỏi sai về VN. Chùa Bà Thiên Hậu TP.HCM theo kiến trúc Trung Hoa, chùa Bút Tháp theo kiến trúc VN truyền thống."
+    },
+    {
+      "id": 89,
+      "category": "art",
+      "difficulty": "hard",
+      "question": "Ai là kiến trúc sư thiết kế Landmark 81?",
+      "answers": ["Atkins", "Zaha Hadid", "Norman Foster", "I.M. Pei"],
+      "correct": 0,
+      "explanation": "Landmark 81 (TP.HCM) được thiết kế bởi công ty kiến trúc Atkins (Anh)."
+    },
+    {
+      "id": 90,
+      "category": "art",
+      "difficulty": "medium",
+      "question": "Nhạc sĩ nào sáng tác 'Diễm xưa'?",
+      "answers": ["Trịnh Công Sơn", "Phạm Duy", "Văn Cao", "Lưu Hữu Phước"],
+      "correct": 0,
+      "explanation": "'Diễm xưa' là một trong những tác phẩm nổi tiếng của nhạc sĩ Trịnh Công Sơn."
+    },
+    {
+      "id": 91,
+      "category": "dynasty",
+      "difficulty": "medium",
+      "question": "Sau khi Ngô Quyền mất, Việt Nam rơi vào thời kỳ nào?",
+      "answers": ["12 sứ quân", "Loạn Trần - Hồ", "Nam - Bắc triều", "Trịnh - Nguyễn phân tranh"],
+      "correct": 0,
+      "explanation": "Sau khi Ngô Quyền mất (944), Việt Nam rơi vào thời kỳ loạn 12 sứ quân kéo dài đến 968."
+    },
+    {
+      "id": 92,
+      "category": "war",
+      "difficulty": "medium",
+      "question": "Chiến dịch Hồ Chí Minh kéo dài bao lâu?",
+      "answers": ["43 ngày", "55 ngày", "60 ngày", "75 ngày"],
+      "correct": 1,
+      "explanation": "Chiến dịch Hồ Chí Minh (26/4 - 30/4/1975) kéo dài 55 ngày, giải phóng hoàn toàn miền Nam."
+    },
+    {
+      "id": 93,
+      "category": "figures",
+      "difficulty": "hard",
+      "question": "Lê Lợi khởi nghĩa từ năm nào?",
+      "answers": ["1418", "1420", "1425", "1428"],
+      "correct": 0,
+      "explanation": "Lê Lợi khởi nghĩa chống quân Minh từ năm 1418 tại Lam Sơn, thành công năm 1427."
+    },
+    {
+      "id": 94,
+      "category": "culture",
+      "difficulty": "medium",
+      "question": "Quan họ Bắc Ninh được UNESCO công nhận năm nào?",
+      "answers": ["2003", "2005", "2009", "2011"],
+      "correct": 2,
+      "explanation": "Dân ca Quan họ Bắc Ninh được UNESCO công nhận là Di sản văn hóa phi vật thể đại diện năm 2009."
+    },
+    {
+      "id": 95,
+      "category": "heritage",
+      "difficulty": "easy",
+      "question": "Hang Sơn Đoòng được phát hiện năm nào?",
+      "answers": ["1991", "2001", "2009", "2013"],
+      "correct": 0,
+      "explanation": "Hang Sơn Đoòng được người dân địa phương phát hiện năm 1991, khảo sát chính thức năm 2009."
+    },
+    {
+      "id": 96,
+      "category": "diplomacy",
+      "difficulty": "medium",
+      "question": "Việt Nam bắt đầu công cuộc Đổi Mới từ năm nào?",
+      "answers": ["1975", "1980", "1986", "1990"],
+      "correct": 2,
+      "explanation": "Đại hội Đảng lần thứ VI (12/1986) đánh dấu bắt đầu công cuộc Đổi Mới toàn diện đất nước."
+    },
+    {
+      "id": 97,
+      "category": "science",
+      "difficulty": "hard",
+      "question": "Ai là người Việt đầu tiên bay vào vũ trụ?",
+      "answers": ["Phạm Tuân", "Bùi Thanh Liêm", "Nguyễn Văn Cừ", "Chưa có"],
+      "correct": 0,
+      "explanation": "Phạm Tuân là phi hành gia đầu tiên của Việt Nam, bay vào vũ trụ ngày 23/7/1980 trên tàu Soyuz 37."
+    },
+    {
+      "id": 98,
+      "category": "art",
+      "difficulty": "medium",
+      "question": "Ai sáng tác bài hát 'Tiến quân ca' (Quốc ca VN)?",
+      "answers": ["Văn Cao", "Phạm Tuyên", "Lưu Hữu Phước", "Đỗ Nhuận"],
+      "correct": 0,
+      "explanation": "Nhạc sĩ Văn Cao sáng tác 'Tiến quân ca' năm 1944, trở thành Quốc ca từ 1945."
+    },
+    {
+      "id": 99,
+      "category": "war",
+      "difficulty": "easy",
+      "question": "Ngày Quốc khánh Việt Nam là ngày nào?",
+      "answers": ["19/8", "2/9", "30/4", "10/10"],
+      "correct": 1,
+      "explanation": "Ngày Quốc khánh Việt Nam là 2/9 - ngày Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập (1945)."
+    },
+    {
+      "id": 100,
+      "category": "figures",
+      "difficulty": "medium",
+      "question": "Vua Quang Trung đánh tan 29 vạn quân Thanh trong bao nhiêu ngày Tết?",
+      "answers": ["3 ngày", "5 ngày", "7 ngày", "10 ngày"],
+      "correct": 1,
+      "explanation": "Chiến thắng Ngọc Hồi - Đống Đa (Xuân Mậu Thân 1789) diễn ra trong 5 ngày Tết, đánh tan 29 vạn quân Thanh."
+    }
+  ]
+}

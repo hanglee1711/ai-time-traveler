@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 DEMO GIAO DIỆN - VIỆT KÝ SỬ</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        body {
+            background: var(--matte-black);
+            padding: 2rem;
+        }
+
+        .demo-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 2px solid var(--gold);
+        }
+
+        .demo-title {
+            font-size: 3rem;
+            color: var(--gold);
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+            margin-bottom: 1rem;
+        }
+
+        .demo-subtitle {
+            font-size: 1.3rem;
+            color: var(--electric-blue);
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .demo-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .demo-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        .demo-preview {
+            height: 300px;
+            background: linear-gradient(135deg, var(--dark-navy), var(--charcoal-gray));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(0, 217, 255, 0.03) 10px,
+                    rgba(0, 217, 255, 0.03) 20px
+                );
+        }
+
+        .demo-preview-icon {
+            position: relative;
+            z-index: 1;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .demo-info {
+            padding: 2rem;
+        }
+
+        .demo-page-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .demo-page-desc {
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .demo-features {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .demo-features li {
+            color: var(--electric-blue);
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+        }
+
+        .demo-features li:before {
+            content: "✓ ";
+            color: var(--gold);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .demo-link {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, var(--gold), var(--brass));
+            color: var(--matte-black);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .demo-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.6);
+        }
+
+        .color-palette {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid var(--gold);
+            margin-top: 2rem;
+        }
+
+        .color-palette h2 {
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .colors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .color-box {
+            text-align: center;
+        }
+
+        .color-swatch {
+            width: 100%;
+            height: 100px;
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .color-name {
+            color: var(--text-white);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .color-code {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .navigation-demo {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid var(--gold);
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @media (max-width: 768px) {
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+            .demo-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-header">
+        <div class="demo-title">🎨 DEMO GIAO DIỆN</div>
+        <div class="demo-subtitle">VIỆT KÝ SỬ - Khám phá tất cả các trang</div>
+    </div>
+
+    <div class="demo-grid">
+        <!-- Home Page -->
+        <div class="demo-card" onclick="location.href='index.html'">
+            <div class="demo-preview">
+                <div class="demo-preview-icon">🏠</div>
+            </div>
+            <div class="demo-info">
+                <div class="demo-page-name">Trang Chủ (Home)</div>
+                <div class="demo-page-desc">Giao diện chào mừng với thiết kế hiện đại</div>
+                <ul class="demo-features">
+                    <li>Hero section với gradient background</li>
+                    <li>Floating avatars nhân vật lịch sử</li>
+                    <li>4 Feature cards với icon đẹp</li>
+                    <li>Statistics section</li>
+                    <li>CTA buttons với glow effect</li>
+                </ul>
+                <a href="index.html" class="demo-link">Xem trang 🚀</a>
+            </div>
+        </div>
+
+        <!-- Chatbot Page -->
+        <div class="demo-card" onclick="location.href='chatbot.html'">
+            <div class="demo-preview">
+                <div class="demo-preview-icon">💬</div>
+            </div>
+            <div class="demo-info">
+                <div class="demo-page-name">Chatbot Nhân Vật</div>
+                <div class="demo-page-desc">Trò chuyện với các anh hùng dân tộc</div>
+                <ul class="demo-features">
+                    <li>Sidebar danh sách nhân vật</li>
+                    <li>Khung ảnh AI với viền Neon Blue</li>
+                    <li>Chat bubbles: Xanh lá (user), Trắng ngà (AI)</li>
+                    <li>Quick action buttons màu Vàng kim</li>
+                    <li>Status bar XP & badges</li>
+                </ul>
+                <a href="chatbot.html" class="demo-link">Xem trang 💬</a>
+            </div>
+        </div>
+
+        <!-- Timeline Page -->
+        <div class="demo-card" onclick="location.href='timeline.html'">
+            <div class="demo-preview">
+                <div class="demo-preview-icon">⏰</div>
+            </div>
+            <div class="demo-info">
+                <div class="demo-page-name">Dòng Thời Gian</div>
+                <div class="demo-page-desc">Timeline ngang tương tác</div>
+                <ul class="demo-features">
+                    <li>Dòng thời gian màu Vàng đồng</li>
+                    <li>Event markers với icon & màu phân loại</li>
+                    <li>Modal popup chi tiết sự kiện</li>
+                    <li>Filter theo giai đoạn</li>
+                    <li>Navigation arrows</li>
+                </ul>
+                <a href="timeline.html" class="demo-link">Xem trang ⏰</a>
+            </div>
+        </div>
+
+        <!-- My Journey Page -->
+        <div class="demo-card" onclick="location.href='journey.html'">
+            <div class="demo-preview">
+                <div class="demo-preview-icon">📔</div>
+            </div>
+            <div class="demo-info">
+                <div class="demo-page-name">Hành Trình Của Tôi</div>
+                <div class="demo-page-desc">Profile & achievements</div>
+                <ul class="demo-features">
+                    <li>Avatar với viền Neon</li>
+                    <li>Level badge & XP progress bar</li>
+                    <li>Stats grid (4 columns)</li>
+                    <li>Badges collection</li>
+                    <li>Visited figures & events</li>
+                </ul>
+                <a href="journey.html" class="demo-link">Xem trang 📔</a>
+            </div>
+        </div>
+
+        <!-- Map Page -->
+        <div class="demo-card" onclick="location.href='map.html'">
+            <div class="demo-preview">
+                <div class="demo-preview-icon">🗺️</div>
+            </div>
+            <div class="demo-info">
+                <div class="demo-page-name">Bản Đồ Tương Tác</div>
+                <div class="demo-page-desc">Địa danh lịch sử trên bản đồ</div>
+                <ul class="demo-features">
+                    <li>Bản đồ Việt Nam dark style</li>
+                    <li>Pin markers địa danh</li>
+                    <li>Popup thông tin</li>
+                    <li>Filter sidebar</li>
+                    <li>(Đang phát triển)</li>
+                </ul>
+                <a href="map.html" class="demo-link">Xem trang 🗺️</a>
+            </div>
+        </div>
+
+        <!-- Game Page -->
+        <div class="demo-card" onclick="location.href='game.html'">
+            <div class="demo-preview">
+                <div class="demo-preview-icon">🎮</div>
+            </div>
+            <div class="demo-info">
+                <div class="demo-page-name">Trò Chơi & Thử Thách</div>
+                <div class="demo-page-desc">Quiz, nhiệm vụ, xếp hạng</div>
+                <ul class="demo-features">
+                    <li>Mini quiz trắc nghiệm</li>
+                    <li>Nhiệm vụ hàng ngày</li>
+                    <li>Bảng xếp hạng</li>
+                    <li>Rewards system</li>
+                    <li>(Đang phát triển)</li>
+                </ul>
+                <a href="game.html" class="demo-link">Xem trang 🎮</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Color Palette -->
+    <div class="color-palette">
+        <h2>🎨 Bảng Màu Chủ Đạo</h2>
+        <div class="colors">
+            <div class="color-box">
+                <div class="color-swatch" style="background: #0a1929;"></div>
+                <div class="color-name">Dark Navy</div>
+                <div class="color-code">#0a1929</div>
+            </div>
+            <div class="color-box">
+                <div class="color-swatch" style="background: #0d1117;"></div>
+                <div class="color-name">Matte Black</div>
+                <div class="color-code">#0d1117</div>
+            </div>
+            <div class="color-box">
+                <div class="color-swatch" style="background: #d4af37;"></div>
+                <div class="color-name">Gold</div>
+                <div class="color-code">#d4af37</div>
+            </div>
+            <div class="color-box">
+                <div class="color-swatch" style="background: #00d9ff;"></div>
+                <div class="color-name">Electric Blue</div>
+                <div class="color-code">#00d9ff</div>
+            </div>
+            <div class="color-box">
+                <div class="color-swatch" style="background: #cc5500;"></div>
+                <div class="color-name">Burnt Orange</div>
+                <div class="color-code">#cc5500</div>
+            </div>
+            <div class="color-box">
+                <div class="color-swatch" style="background: #e6edf3;"></div>
+                <div class="color-name">Text White</div>
+                <div class="color-code">#e6edf3</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation-demo">
+        <h2 style="color: var(--gold); margin-bottom: 1rem;">🧭 Điều Hướng Nhanh</h2>
+        <p style="color: var(--text-gray);">Khám phá tất cả các trang của ứng dụng</p>
+        <div class="nav-buttons">
+            <a href="index.html" class="btn btn-gold">🏠 Trang chủ</a>
+            <a href="chatbot.html" class="btn btn-primary">💬 Chatbot</a>
+            <a href="timeline.html" class="btn btn-secondary">⏰ Timeline</a>
+            <a href="map.html" class="btn btn-gold">🗺️ Bản đồ</a>
+            <a href="game.html" class="btn btn-primary">🎮 Trò chơi</a>
+            <a href="journey.html" class="btn btn-secondary">📔 Hành trình</a>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 3rem; padding: 2rem; color: var(--text-gray);">
+        <p style="font-size: 1.2rem;">✨ Tất cả các trang đều có:</p>
+        <p style="margin-top: 1rem;">
+            • Theme Dark Navy + Gold + Electric Blue •<br>
+            • Responsive design •<br>
+            • Smooth animations •<br>
+            • Glow effects •<br>
+            • Modern UI/UX •
+        </p>
+        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(212, 175, 55, 0.2);">
+            <p style="color: var(--gold); font-weight: 600;">🚀 Made with ❤️ for Vietnamese History Education</p>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

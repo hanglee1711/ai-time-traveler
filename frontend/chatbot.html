@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot - VIỆT SỬ KÝ</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+</head>
+<body>
+    <!-- HEADER & NAVIGATION -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">⏳</span>
+                <span>VIỆT SỬ KÝ</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                <li><a href="chatbot.html" class="nav-link active">Chatbot</a></li>
+                <li><a href="timeline.html" class="nav-link">Dòng thời gian</a></li>
+                <li><a href="map.html" class="nav-link">Bản đồ</a></li>
+                <li><a href="game.html" class="nav-link">Trò chơi</a></li>
+                <li><a href="journey.html" class="nav-link">Hành trình của tôi</a></li>
+                <li class="auth-login-btn"><a href="login.html" class="nav-link btn-gold" style="padding: 0.5rem 1.5rem;">Đăng nhập</a></li>
+                <li class="auth-register-btn"><a href="register.html" class="nav-link" style="padding: 0.5rem 1.5rem;">Đăng ký</a></li>
+                <li class="auth-user-info" style="display: none;">
+                    <span class="nav-link" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem;">
+                        <span class="auth-user-avatar">👤</span>
+                        <span class="auth-user-name">User</span>
+                    </span>
+                </li>
+                <li class="auth-logout-btn" style="display: none;"><a href="#" class="nav-link btn-gold" style="padding: 0.5rem 1.5rem;">Đăng xuất</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- STATUS BAR -->
+    <div class="status-bar-container">
+        <div class="status-bar">
+            <div class="status-item">
+                <span class="status-icon">⭐</span>
+                <span id="user-level">Level 1</span>
+            </div>
+            <div class="status-item">
+                <span class="status-icon">💫</span>
+                <span id="user-xp">0 XP</span>
+            </div>
+            <div class="status-item">
+                <span class="status-icon">🏆</span>
+                <span id="user-badges">0 Huy hiệu</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CHAT SECTION -->
+    <div class="chat-container">
+        <!-- SIDEBAR - Historical Figures -->
+        <aside class="figures-sidebar">
+            <h3 class="sidebar-title">
+                <span>👥</span>
+                Nhân vật lịch sử
+            </h3>
+
+            <div class="search-box">
+                <input type="text" id="figure-search" placeholder="🔍 Tìm kiếm nhân vật..." />
+            </div>
+
+            <div class="figures-list" id="figures-list">
+                <div class="figure-item-loading">
+                    <div class="spinner"></div>
+                    <p>Đang tải nhân vật...</p>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <button class="btn btn-secondary" id="clear-chat-btn" style="width: 100%;">
+                    🗑️ Xóa cuộc trò chuyện
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAIN CHAT AREA -->
+        <main class="chat-main">
+            <!-- Figure Profile -->
+            <div class="figure-profile" id="figure-profile">
+                <div class="profile-placeholder">
+                    <h3>Chọn một nhân vật để bắt đầu</h3>
+                    <p>Chọn nhân vật từ danh sách bên trái để bắt đầu trò chuyện</p>
+                </div>
+            </div>
+
+            <!-- Chat Messages -->
+            <div class="chat-messages" id="chat-messages">
+                <div class="welcome-message">
+                    <h2>✨ Chào mừng đến với Việt Sử Ký!</h2>
+                    <p>Bạn có thể:</p>
+                    <ul>
+                        <li>💬 Trò chuyện với các nhân vật lịch sử Việt Nam</li>
+                        <li>📚 Đặt câu hỏi về cuộc đời và sự nghiệp của họ</li>
+                        <li>🎯 Tìm hiểu về các sự kiện lịch sử quan trọng</li>
+                        <li>⭐ Nhận XP và huy hiệu khi hoàn thành cuộc trò chuyện</li>
+                    </ul>
+                    <p><strong>Hãy chọn một nhân vật để bắt đầu!</strong></p>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions" id="quick-actions" style="display: none;">
+                <button class="quick-action-btn">Hỏi về sự kiện nổi bật</button>
+                <button class="quick-action-btn">Nghe kể chuyện đời</button>
+                <button class="quick-action-btn">Triết lý sống</button>
+                <button class="quick-action-btn">Chiến thuật quân sự</button>
+            </div>
+
+            <!-- Chat Input -->
+            <div class="chat-input-container">
+                <div class="chat-input-wrapper">
+                    <textarea
+                        id="chat-input"
+                        placeholder="💬 Nhập tin nhắn của bạn..."
+                        rows="1"
+                    ></textarea>
+                    <button class="send-btn" id="send-btn">
+                        <span class="send-icon">➤</span>
+                    </button>
+                </div>
+                <div class="input-hint">
+                    <span>💡 Mẹo: Nhấn Enter để gửi, Shift+Enter để xuống dòng</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- SIMPLIFIED INLINE JAVASCRIPT -->
+    <script>
+        // ==================== CONFIG ====================
+        const API_BASE_URL = 'http://localhost:5000/api';
+
+        // ==================== STATE ====================
+        let currentFigure = null;
+        let figures = [];
+
+        // ==================== DOM ELEMENTS ====================
+        let figuresList, figureProfile, chatMessages, chatInput, sendBtn, quickActions, clearChatBtn, figureSearch;
+
+        // ==================== INIT ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Chatbot initialized');
+
+            // Get DOM elements
+            figuresList = document.getElementById('figures-list');
+            figureProfile = document.getElementById('figure-profile');
+            chatMessages = document.getElementById('chat-messages');
+            chatInput = document.getElementById('chat-input');
+            sendBtn = document.getElementById('send-btn');
+            quickActions = document.getElementById('quick-actions');
+            clearChatBtn = document.getElementById('clear-chat-btn');
+            figureSearch = document.getElementById('figure-search');
+
+            initEventListeners();
+            loadFigures();
+        });
+
+        // ==================== LOAD FIGURES ====================
+        async function loadFigures() {
+            console.log('📡 Loading figures...');
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/figures`);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+                const data = await response.json();
+                figures = data.figures || [];
+                console.log(`✅ Loaded ${figures.length} figures`);
+
+                displayFigures(figures);
+            } catch (error) {
+                console.error('❌ Error:', error);
+                figuresList.innerHTML = `<div style="padding: 1rem; text-align: center; color: #ff6b6b;">
+                    ❌ Không thể tải nhân vật<br>
+                    <button onclick="location.reload()" style="margin-top: 10px; padding: 10px; background: #FFD700; border: none; border-radius: 5px; cursor: pointer;">Thử lại</button>
+                </div>`;
+            }
+        }
+
+        // ==================== DISPLAY FIGURES ====================
+        function displayFigures(figuresToDisplay) {
+            if (!figuresList) return;
+
+            figuresList.innerHTML = '';
+
+            figuresToDisplay.forEach((figure, index) => {
+                const figureItem = document.createElement('div');
+                figureItem.className = 'figure-item';
+
+                figureItem.innerHTML = `
+                    <div class="figure-avatar-small">${figure.icon || '👤'}</div>
+                    <div class="figure-info">
+                        <div class="figure-name">${figure.name}</div>
+                        <div class="figure-period">${figure.period}</div>
+                    </div>
+                `;
+
+                figureItem.addEventListener('click', () => selectFigure(figure));
+                figuresList.appendChild(figureItem);
+            });
+        }
+
+        // ==================== SELECT FIGURE ====================
+        function selectFigure(figure) {
+            console.log('👤 Selected:', figure.name);
+            currentFigure = figure;
+
+            // Update active state
+            document.querySelectorAll('.figure-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+
+            // Show profile
+            figureProfile.innerHTML = `
+                <div class="figure-profile-active">
+                    <div class="figure-avatar-large">${figure.icon || '👤'}</div>
+                    <div class="figure-details">
+                        <h2>${figure.name}</h2>
+                        <p>${figure.period}</p>
+                        ${figure.description ? `<p class="figure-description">${figure.description}</p>` : ''}
+                    </div>
+                </div>
+            `;
+
+            // Clear chat
+            chatMessages.innerHTML = '';
+
+            // Show quick actions
+            quickActions.style.display = 'flex';
+
+            // Send greeting
+            sendGreeting();
+        }
+
+        // ==================== SEND GREETING ====================
+        async function sendGreeting() {
+            const message = `Xin chào ${currentFigure.name}!`;
+
+            addMessage('user', message);
+            showTyping();
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message, figure: currentFigure.name })
+                });
+
+                const data = await response.json();
+                hideTyping();
+                addMessage('assistant', data.message);
+            } catch (error) {
+                console.error('Chat error:', error);
+                hideTyping();
+                addMessage('assistant', `Xin chào! Ta là ${currentFigure.name}. Hãy hỏi ta điều gì!`);
+            }
+        }
+
+        // ==================== SEND MESSAGE ====================
+        async function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            // Nếu chưa chọn nhân vật, tự động phát hiện từ tin nhắn
+            let figureName = currentFigure ? currentFigure.name : null;
+
+            if (!figureName) {
+                // Tìm tên nhân vật trong tin nhắn
+                const messageLower = message.toLowerCase();
+                const foundFigure = figures.find(fig =>
+                    messageLower.includes(fig.name.toLowerCase()) ||
+                    (fig.alt_names && fig.alt_names.some(alt => messageLower.includes(alt.toLowerCase())))
+                );
+
+                if (foundFigure) {
+                    // Tự động chọn nhân vật và hiển thị
+                    selectFigure(foundFigure);
+                    figureName = foundFigure.name;
+                } else {
+                    // Không tìm thấy nhân vật, gửi tin nhắn chung (backend sẽ tự phát hiện)
+                    figureName = null;
+                }
+            }
+
+            chatInput.value = '';
+            chatInput.disabled = true;
+            sendBtn.disabled = true;
+
+            addMessage('user', message);
+            showTyping();
+
+            try {
+                const body = { message };
+                if (figureName) {
+                    body.figure = figureName;
+                }
+
+                const response = await fetch(`${API_BASE_URL}/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                });
+
+                const data = await response.json();
+                hideTyping();
+
+                // Nếu backend trả về figure mới, tự động chọn
+                if (data.figure && !currentFigure) {
+                    const detectedFigure = figures.find(f => f.name === data.figure);
+                    if (detectedFigure) {
+                        selectFigure(detectedFigure);
+                    }
+                }
+
+                addMessage('assistant', data.message);
+            } catch (error) {
+                console.error('Chat error:', error);
+                hideTyping();
+                addMessage('assistant', 'Xin lỗi, có lỗi xảy ra. Vui lòng thử lại!');
+            } finally {
+                chatInput.disabled = false;
+                sendBtn.disabled = false;
+                chatInput.focus();
+            }
+        }
+
+        // ==================== ADD MESSAGE ====================
+        function addMessage(role, content) {
+            const welcome = chatMessages.querySelector('.welcome-message');
+            if (welcome) welcome.remove();
+
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${role}`;
+
+            const time = new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
+
+            messageDiv.innerHTML = `
+                <div class="message-avatar">${role === 'user' ? '👤' : (currentFigure?.icon || '🤖')}</div>
+                <div class="message-content">
+                    <div class="message-bubble">${content}</div>
+                    <div class="message-time">${time}</div>
+                </div>
+            `;
+
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // ==================== TYPING INDICATOR ====================
+        let typingDiv = null;
+
+        function showTyping() {
+            typingDiv = document.createElement('div');
+            typingDiv.className = 'message assistant';
+            typingDiv.innerHTML = `
+                <div class="message-avatar">${currentFigure?.icon || '🤖'}</div>
+                <div class="message-content">
+                    <div class="message-bubble">
+                        <div class="typing-indicator"><span></span><span></span><span></span></div>
+                    </div>
+                </div>
+            `;
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function hideTyping() {
+            if (typingDiv) {
+                typingDiv.remove();
+                typingDiv = null;
+            }
+        }
+
+        // ==================== EVENT LISTENERS ====================
+        function initEventListeners() {
+            sendBtn.addEventListener('click', sendMessage);
+
+            chatInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+
+            chatInput.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = this.scrollHeight + 'px';
+            });
+
+            clearChatBtn.addEventListener('click', () => {
+                if (confirm('Bạn có chắc muốn xóa cuộc trò chuyện?')) {
+                    chatMessages.innerHTML = '<div class="welcome-message"><h2>✨ Chọn nhân vật để bắt đầu lại</h2></div>';
+                    currentFigure = null;
+                    quickActions.style.display = 'none';
+                    document.querySelectorAll('.figure-item').forEach(item => item.classList.remove('active'));
+                }
+            });
+
+            if (figureSearch) {
+                figureSearch.addEventListener('input', () => {
+                    const term = figureSearch.value.toLowerCase();
+                    const filtered = term ? figures.filter(f =>
+                        f.name.toLowerCase().includes(term) ||
+                        f.period.toLowerCase().includes(term)
+                    ) : figures;
+                    displayFigures(filtered);
+                });
+            }
+
+            // Quick actions
+            quickActions.addEventListener('click', (e) => {
+                if (e.target.classList.contains('quick-action-btn')) {
+                    chatInput.value = e.target.textContent;
+                    chatInput.focus();
+                }
+            });
+        }
+
+        console.log('✅ Chatbot ready!');
+    </script>
+
+    <!-- Load enhancements for better UX -->
+    <script src="js/chatbot-enhancements.js"></script>
+
+    <!-- Load auth for user status -->
+    <script src="js/auth.js"></script>
+</body>
+</html>

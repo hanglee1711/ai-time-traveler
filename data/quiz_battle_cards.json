@@ -1,0 +1,276 @@
+{
+  "card_types": {
+    "knowledge": {
+      "name": "Tri Thức",
+      "color": "#4A90E2",
+      "description": "Hỗ trợ trả lời câu hỏi"
+    },
+    "attack": {
+      "name": "Tấn Công",
+      "color": "#E94B3C",
+      "description": "Gây sát thương cho đối thủ"
+    },
+    "defense": {
+      "name": "Phòng Thủ",
+      "color": "#50C878",
+      "description": "Bảo vệ và hồi phục"
+    },
+    "special": {
+      "name": "Đặc Biệt",
+      "color": "#9B59B6",
+      "description": "Hiệu ứng đặc biệt"
+    }
+  },
+
+  "rarity_levels": {
+    "common": {
+      "name": "Thường",
+      "color": "#95A5A6",
+      "drop_rate": 60
+    },
+    "rare": {
+      "name": "Hiếm",
+      "color": "#3498DB",
+      "drop_rate": 30
+    },
+    "epic": {
+      "name": "Sử Thi",
+      "color": "#9B59B6",
+      "drop_rate": 8
+    },
+    "legendary": {
+      "name": "Huyền Thoại",
+      "color": "#F39C12",
+      "drop_rate": 2
+    }
+  },
+
+  "cards": [
+    {
+      "id": 1,
+      "name": "Gợi Ý 50-50",
+      "type": "knowledge",
+      "rarity": "common",
+      "icon": "💡",
+      "description": "Loại bỏ 2 đáp án sai, chỉ còn lại 2 đáp án đúng và sai",
+      "flavor_text": "Nghe lời người xưa, tránh được họa tai!",
+      "cost": 1,
+      "cooldown": 0,
+      "effect": {
+        "type": "eliminate_answers",
+        "value": 2,
+        "target": "self",
+        "timing": "before_answer"
+      },
+      "usage_instructions": "Sử dụng trước khi trả lời câu hỏi để tăng cơ hội đoán đúng"
+    },
+    {
+      "id": 2,
+      "name": "Gia Hạn Thời Gian",
+      "type": "knowledge",
+      "rarity": "common",
+      "icon": "⏰",
+      "description": "Thêm 15 giây vào đồng hồ đếm ngược của bạn",
+      "flavor_text": "Thời gian vàng bạc, nhưng tri thức vô giá!",
+      "cost": 1,
+      "cooldown": 0,
+      "effect": {
+        "type": "add_time",
+        "value": 15,
+        "target": "self",
+        "timing": "during_question"
+      },
+      "usage_instructions": "Sử dụng khi cần thêm thời gian suy nghĩ"
+    },
+    {
+      "id": 3,
+      "name": "Hỏi Khán Giả",
+      "type": "knowledge",
+      "rarity": "rare",
+      "icon": "👥",
+      "description": "Xem phân bố % lựa chọn phổ biến của câu hỏi này",
+      "flavor_text": "Dân trí là nguồn sức mạnh vô địch!",
+      "cost": 2,
+      "cooldown": 1,
+      "effect": {
+        "type": "show_statistics",
+        "value": "percentage_distribution",
+        "target": "self",
+        "timing": "before_answer"
+      },
+      "usage_instructions": "Hiển thị biểu đồ % đáp án được chọn nhiều nhất"
+    },
+    {
+      "id": 4,
+      "name": "Kiếm Bách Việt",
+      "type": "attack",
+      "rarity": "common",
+      "icon": "⚔️",
+      "description": "Gây 10 sát thương cho đối thủ khi họ trả lời sai",
+      "flavor_text": "Kiếm gươm Bách Việt, chém tan quân thù!",
+      "cost": 1,
+      "cooldown": 0,
+      "effect": {
+        "type": "conditional_damage",
+        "value": 10,
+        "target": "opponent",
+        "timing": "on_opponent_wrong_answer",
+        "condition": "opponent_wrong"
+      },
+      "usage_instructions": "Sử dụng trước lượt đối thủ trả lời"
+    },
+    {
+      "id": 5,
+      "name": "Đốt Năng Lượng",
+      "type": "attack",
+      "rarity": "rare",
+      "icon": "🔥",
+      "description": "Đối thủ mất 1 điểm năng lượng, không thể sử dụng thẻ đắt",
+      "flavor_text": "Đốt nhà kho của địch, cắt đứt tiếp tế!",
+      "cost": 2,
+      "cooldown": 2,
+      "effect": {
+        "type": "reduce_energy",
+        "value": 1,
+        "target": "opponent",
+        "timing": "immediate"
+      },
+      "usage_instructions": "Hạn chế khả năng sử dụng thẻ của đối thủ"
+    },
+    {
+      "id": 6,
+      "name": "Tâm Lý Chiến",
+      "type": "attack",
+      "rarity": "common",
+      "icon": "😰",
+      "description": "Giảm 5 giây thời gian trả lời của đối thủ ở câu tiếp theo",
+      "flavor_text": "Làm loạn hậu phương, địch tự loạn!",
+      "cost": 1,
+      "cooldown": 1,
+      "effect": {
+        "type": "reduce_time",
+        "value": 5,
+        "target": "opponent",
+        "timing": "next_question",
+        "duration": 1
+      },
+      "usage_instructions": "Tạo áp lực thời gian cho đối thủ"
+    },
+    {
+      "id": 7,
+      "name": "Lá Chắn Đồng",
+      "type": "defense",
+      "rarity": "common",
+      "icon": "🛡️",
+      "description": "Chặn hoàn toàn 1 đòn tấn công tiếp theo",
+      "flavor_text": "Lấy đồng làm lá chắn, giữ vững giang san!",
+      "cost": 1,
+      "cooldown": 0,
+      "effect": {
+        "type": "block_attack",
+        "value": 1,
+        "target": "self",
+        "timing": "reactive",
+        "duration": 1
+      },
+      "usage_instructions": "Bảo vệ khỏi thẻ tấn công của đối thủ"
+    },
+    {
+      "id": 8,
+      "name": "Thuốc Nam Thần Kỳ",
+      "type": "defense",
+      "rarity": "rare",
+      "icon": "💊",
+      "description": "Hồi phục 15 HP ngay lập tức",
+      "flavor_text": "Y thuật cổ truyền, chữa bá bệnh!",
+      "cost": 2,
+      "cooldown": 2,
+      "effect": {
+        "type": "heal",
+        "value": 15,
+        "target": "self",
+        "timing": "immediate"
+      },
+      "usage_instructions": "Phục hồi HP khi bị tấn công nhiều"
+    },
+    {
+      "id": 9,
+      "name": "Bình Định Thiên Hạ",
+      "type": "special",
+      "rarity": "epic",
+      "icon": "🎴",
+      "description": "Rút 2 thẻ bài mới từ bộ bài của bạn",
+      "flavor_text": "Binh pháp thần diệu, biến hóa khôn lường!",
+      "cost": 2,
+      "cooldown": 3,
+      "effect": {
+        "type": "draw_cards",
+        "value": 2,
+        "target": "self",
+        "timing": "immediate"
+      },
+      "usage_instructions": "Tăng lựa chọn chiến thuật trong tay"
+    },
+    {
+      "id": 10,
+      "name": "Đổi Vận Đảo Càn Khôn",
+      "type": "special",
+      "rarity": "epic",
+      "icon": "🔄",
+      "description": "Đổi câu hỏi hiện tại sang câu hỏi khác cùng độ khó",
+      "flavor_text": "Thiên thời, địa lợi, nhân hòa - ta chọn cả ba!",
+      "cost": 3,
+      "cooldown": 3,
+      "effect": {
+        "type": "change_question",
+        "value": "same_difficulty",
+        "target": "self",
+        "timing": "before_answer"
+      },
+      "usage_instructions": "Sử dụng khi gặp câu hỏi quá khó hoặc không biết"
+    }
+  ],
+
+  "starter_deck": {
+    "description": "Bộ bài khởi đầu cho người chơi mới - 30 thẻ cho game 10 vòng",
+    "total_cards": 30,
+    "composition": {
+      "knowledge": 9,
+      "attack": 9,
+      "defense": 6,
+      "special": 6
+    },
+    "card_ids": [
+      1, 1, 1, 2, 2, 2, 3, 3, 3,
+      4, 4, 4, 5, 5, 5, 6, 6, 6,
+      7, 7, 7, 8, 8, 8,
+      9, 9, 9, 10, 10, 10
+    ]
+  },
+
+  "game_rules": {
+    "max_hand_size": 5,
+    "max_deck_size": 30,
+    "starting_cards": 3,
+    "energy_per_turn": 1,
+    "max_energy": 3,
+    "card_usage": {
+      "knowledge": "Sử dụng trong lượt của bạn trước khi trả lời",
+      "attack": "Sử dụng bất kỳ lúc nào trong trận đấu",
+      "defense": "Sử dụng khi bị tấn công hoặc cần hồi phục",
+      "special": "Sử dụng theo timing cụ thể ghi trong thẻ"
+    }
+  },
+
+  "balance_notes": {
+    "version": "1.0.0-MVP",
+    "last_updated": "2025-11-05",
+    "notes": [
+      "Knowledge cards: Giúp tăng tỷ lệ trả lời đúng, cost thấp (1-2 energy)",
+      "Attack cards: Gây pressure cho đối thủ, balanced damage và effect",
+      "Defense cards: Quan trọng để survive, cooldown cao để tránh spam",
+      "Special cards: High cost, high impact, cần sử dụng đúng thời điểm",
+      "Energy system: Bắt đầu với 0, mỗi lượt +1, max 3 - yêu cầu quản lý tài nguyên"
+    ]
+  }
+}

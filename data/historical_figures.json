@@ -2,112 +2,811 @@
   "figures": [
     {
       "name": "Hai Bà Trưng",
-      "alt_names": ["Trưng Trắc", "Trưng Nhị", "Hai Bà"],
-      "period": "40-43 AD",
+      "alt_names": [
+        "Trưng Trắc",
+        "Trưng Nhị",
+        "Hai Bà"
+      ],
+      "period": "Thời Đông Hán (40-43)",
       "role": "Nữ tướng, lãnh đạo khởi nghĩa chống Bắc thuộc",
       "personality": "Dũng cảm, kiên cường, yêu nước, quyết liệt",
+      "icon": "⚔️",
+      "image": "https://via.placeholder.com/150/FFD700/000000?text=HBT",
+      "description": "Anh hùng dân tộc - Hai nữ tướng dũng mãnh khởi nghĩa chống Đông Hán",
+      "biography": "Hai Bà Trưng là hai chị em Trưng Trắc và Trưng Nhị, sinh ra trong gia đình võ tướng tại Mê Linh (nay thuộc Hà Nội). Năm 40, sau khi chồng Trưng Trắc là Thi Sách bị Tô Định giết hại, hai chị em đã phát động cuộc khởi nghĩa chống ách đô hộ của nhà Hán. Cuộc khởi nghĩa nhanh chóng lan rộng, giải phóng 65 thành trì và lập nên nước tự chủ trong 3 năm. Hai Bà đã trở thành biểu tượng của lòng yêu nước và tinh thần bất khuất của phụ nữ Việt Nam.",
+      "achievements": [
+        "Lãnh đạo khởi nghĩa chống Đông Hán năm 40",
+        "Giải phóng 65 thành trì miền Bắc Việt Nam",
+        "Lập nước tự chủ và tự xưng là Nữ Vương",
+        "Biểu tượng tinh thần chống ngoại xâm và quyền phụ nữ"
+      ],
       "famous_quotes": [
         "Tôi chỉ muốn cưỡi cơn gió mạnh, đạp luồng sóng dữ, chém cá kình ở biển Đông, quét sạch bờ cõi để cứu dân ra khỏi nơi đầm lầy, há để mình cúi đầu, còng lưng làm tì thiếp cho người sao!"
       ],
-      "context": "Lãnh đạo cuộc khởi nghĩa chống nhà Hán năm 40, giành độc lập cho Việt Nam trong 3 năm."
+      "context": "Lãnh đạo cuộc khởi nghĩa chống nhà Hán năm 40, giành độc lập cho Việt Nam trong 3 năm. Sau khi thất bại, hai bà đã hy sinh tiết nghĩa tại sông Hát (Hà Tây)."
+    },
+    {
+      "name": "Ngô Quyền",
+      "alt_names": [
+        "Tiền Ngô Vương",
+        "Ngô Vương"
+      ],
+      "period": "Thời Ngô (897-944)",
+      "role": "Vua đầu tiên của Việt Nam độc lập",
+      "personality": "Dũng mãnh, sáng suốt, tài ba trong binh pháp",
+      "icon": "🛡️",
+      "image": "https://via.placeholder.com/150/4169E1/FFFFFF?text=NQ",
+      "description": "Anh hùng chấm dứt 1000 năm Bắc thuộc",
+      "biography": "Ngô Quyền sinh ra trong một gia đình quý tộc tại Đường Lâm (Hà Tây). Năm 938, ông chỉ huy cuộc chiến trên sông Bạch Đằng, sử dụng chiến thuật cọc ngầm xuất sắc để đánh bại hoàn toàn đội quân Nam Hán do Lưu Hoằng Tháo chỉ huy. Chiến thắng này đã chấm dứt 1000 năm Bắc thuộc, mở ra kỷ nguyên độc lập cho Việt Nam. Năm 939, Ngô Quyền lên ngôi vua, lập nên nhà nước phong kiến độc lập đầu tiên.",
+      "achievements": [
+        "Đánh thắng quân Nam Hán tại Bạch Đằng năm 938",
+        "Chấm dứt 1000 năm Bắc thuộc",
+        "Lập nên nhà nước phong kiến độc lập",
+        "Phát minh chiến thuật cọc ngầm nổi tiếng"
+      ],
+      "famous_quotes": [],
+      "context": "Đánh thắng quân Nam Hán tại sông Bạch Đằng năm 938 bằng chiến thuật cọc ngầm, chấm dứt 1000 năm Bắc thuộc và mở ra kỷ nguyên độc lập."
+    },
+    {
+      "name": "Lý Công Uẩn",
+      "alt_names": [
+        "Lý Thái Tổ",
+        "Thái Tổ"
+      ],
+      "period": "Nhà Lý (974-1028)",
+      "role": "Vua, nhà sáng lập triều Lý",
+      "personality": "Anh minh, nhân từ, có tầm nhìn xa",
+      "icon": "👑",
+      "image": "https://via.placeholder.com/150/FFD700/000000?text=LCU",
+      "description": "Vị vua sáng lập triều đại Lý hưng thịnh",
+      "biography": "Lý Công Uẩn sinh ra tại chùa Cổ Pháp (Bắc Ninh), được nuôi dưỡng trong môi trường Phật giáo. Năm 1009, sau khi nhà Lê suy tàn, ông được quần thần suy tôn lên ngôi, lập ra nhà Lý - triều đại kéo dài 216 năm. Năm 1010, ông ban chiếu Thiên đô, dời kinh đô từ Hoa Lư về Đại La (Thăng Long), mở ra thời kỳ phát triển rực rỡ. Dưới triều Lý, đất nước yên ổn, kinh tế phát triển, văn hóa Phật giáo thịnh hành.",
+      "achievements": [
+        "Lập nên triều Lý kéo dài 216 năm",
+        "Dời đô về Thăng Long năm 1010",
+        "Ban chiếu Thiên đô nổi tiếng",
+        "Xây dựng nền tảng cho thời kỳ thịnh trị"
+      ],
+      "famous_quotes": [
+        "Đất Đại La chân thành là nơi kinh đô của địa thế, có thể tụ tập vạn quốc..."
+      ],
+      "context": "Dời đô về Thăng Long năm 1010 với chiếu Thiên đô, mở ra thời kỳ phát triển rực rỡ của đất nước."
     },
     {
       "name": "Lý Thường Kiệt",
-      "alt_names": ["Lý Thường Kiệt", "Ngô Tuấn"],
-      "period": "1019-1105",
+      "alt_names": [
+        "Ngô Tuấn"
+      ],
+      "period": "Nhà Lý (1019-1105)",
       "role": "Đại tướng triều Lý, nhà thơ",
       "personality": "Chiến lược gia tài ba, dũng mãnh, yêu nước",
+      "icon": "🗡️",
+      "image": "https://via.placeholder.com/150/DC143C/FFFFFF?text=LTK",
+      "description": "Đại tướng ba triều, tác giả bài thơ 'Nam quốc sơn hà'",
+      "biography": "Lý Thường Kiệt sinh ra trong hoàng tộc nhà Lý, là con nuôi của vua Lý Thái Tông. Ông trải qua ba triều vua (Thái Tông, Thánh Tông, Nhân Tông), lập nhiều chiến công hiển hách. Năm 1075-1077, ông chỉ huy cuộc chiến chống quân Tống xâm lược, bảo vệ biên cương phía Bắc. Ông nổi tiếng với bài thơ 'Nam quốc sơn hà' được khắc trên Cổ Loa thành, thể hiện tinh thần độc lập dân tộc.",
+      "achievements": [
+        "Đánh thắng quân Tống xâm lược (1075-1077)",
+        "Tác giả bài thơ 'Nam quốc sơn hà'",
+        "Xây dựng hệ thống phòng thủ biên cương",
+        "Phò tá ba đời vua nhà Lý"
+      ],
       "famous_quotes": [
         "Nam quốc sơn hà Nam đế cư, Tiệt nhiên định phận tại thiên thư, Như hà nghịch lỗ lai xâm phạm, Nhữ đẳng hành khan thủ bại hư!"
       ],
-      "context": "Tướng tài tiếng của triều Lý, nổi tiếng với chiến thắng quân Tống và bài thơ 'Nam quốc sơn hà'."
+      "context": "Tướng tài tiếng của triều Lý, nổi tiếng với chiến thắng quân Tống và bài thơ 'Nam quốc sơn hà' thể hiện tinh thần độc lập."
     },
     {
       "name": "Trần Hưng Đạo",
-      "alt_names": ["Trần Quốc Tuấn", "Hưng Đạo Vương"],
-      "period": "1228-1300",
+      "alt_names": [
+        "Trần Quốc Tuấn",
+        "Hưng Đạo Vương"
+      ],
+      "period": "Nhà Trần (1228-1300)",
       "role": "Đại tướng triều Trần, anh hùng dân tộc",
       "personality": "Thông minh, dũng cảm, khiêm nhường, yêu dân yêu nước",
+      "icon": "👑",
+      "image": "https://via.placeholder.com/150/8B4513/FFFFFF?text=THD",
+      "description": "Đại tướng ba lần đánh thắng quân Nguyên-Mông",
+      "biography": "Trần Hưng Đạo (tên thật Trần Quốc Tuấn) là hoàng tộc nhà Trần, con của Trần Liễu. Ông là một trong những vị đại tướng tài ba nhất lịch sử Việt Nam. Ba lần chỉ huy quân dân đánh thắng đội quân Nguyên-Mông hùng mạnh nhất thế giới thời bấy giờ (1258, 1285, 1288). Ông nổi tiếng với tài năng quân sự xuất chúng, sách lược 'binh bất yếm trá', và bản Hịch tướng sĩ nổi tiếng trước trận Bạch Đằng 1288. Ông còn là tác giả bộ binh thư 'Binh thư yếu lược'.",
+      "achievements": [
+        "Ba lần đánh thắng quân Nguyên-Mông (1258, 1285, 1288)",
+        "Chiến thắng Bạch Đằng 1288 lừng danh",
+        "Tác giả 'Binh thư yếu lược' và 'Hịch tướng sĩ'",
+        "Bảo vệ độc lập dân tộc trước đế quốc hùng mạnh nhất"
+      ],
       "famous_quotes": [
         "Giặc đến nhà đàn bà cũng đánh",
-        "Việc nhà không thể không làm, lẽ trời không thể không giữ"
+        "Việc nhà không thể không làm, lẽ trời không thể không giữ",
+        "Thà hy sinh tất cả, chứ nhất định không chịu mất nước"
       ],
-      "context": "Chỉ huy ba lần đánh thắng quân Nguyên-Mông xâm lược (1258, 1285, 1288), bảo vệ độc lập dân tộc."
+      "context": "Chỉ huy ba lần đánh thắng quân Nguyên-Mông xâm lược, bảo vệ độc lập dân tộc trong thời kỳ nguy nan nhất."
     },
     {
       "name": "Nguyễn Trãi",
-      "alt_names": ["Ức Trai", "Trạng nguyên"],
-      "period": "1380-1442",
+      "alt_names": [
+        "Ức Trai",
+        "Trạng nguyên Lam Sơn"
+      ],
+      "period": "Nhà Lê (1380-1442)",
       "role": "Danh thần, nhà thơ, nhà tư tưởng",
       "personality": "Thông thái, uyên bác, chính trực, tài hoa",
+      "icon": "📜",
+      "image": "https://via.placeholder.com/150/4682B4/FFFFFF?text=NT",
+      "description": "Quân sư tài ba, tác giả 'Bình Ngô đại cáo'",
+      "biography": "Nguyễn Trãi sinh ra trong gia đình nho học tại Hải Dương. Ông là người có học vấn uyên thâm, thông suốt cả Nho giáo và Phật giáo. Năm 1418, ông gia nhập khởi nghĩa Lam Sơn, trở thành quân sư thân cận của Lê Lợi. Trong 10 năm kháng chiến, ông đóng góp quyết định vào chiến lược 'vỗ yếu đánh mạnh', 'lấy nhỏ thắng lớn'. Sau khi thắng lợi, ông soạn 'Bình Ngô đại cáo' - văn kiện độc lập nổi tiếng. Ông còn là tác giả 'Quốc âm thi tập', 'Ức Trai thi tập' với nhiều tác phẩm xuất sắc.",
+      "achievements": [
+        "Quân sư trưởng khởi nghĩa Lam Sơn",
+        "Tác giả 'Bình Ngô đại cáo' - tuyên ngôn độc lập",
+        "Đề xuất chiến lược 'lấy nhỏ thắng lớn'",
+        "Tác giả 'Quốc âm thi tập', 'Ức Trai thi tập'"
+      ],
       "famous_quotes": [
         "Thuận thiên giả tồn, nghịch thiên giả vong",
-        "Dĩ nhân thắng bạo"
+        "Dĩ nhân thắng bạo",
+        "Giặc Minh thì phải diệt, nhưng dân Minh cũng là dân"
       ],
       "context": "Quân sư tài ba của Lê Lợi, tác giả 'Bình Ngô đại cáo', góp phần lớn vào thắng lợi khởi nghĩa Lam Sơn."
     },
     {
       "name": "Lê Lợi",
-      "alt_names": ["Lê Thái Tổ", "Bình Định Vương"],
-      "period": "1385-1433",
+      "alt_names": [
+        "Lê Thái Tổ",
+        "Bình Định Vương"
+      ],
+      "period": "Nhà Lê (1385-1433)",
       "role": "Vua, lãnh tụ khởi nghĩa Lam Sơn",
       "personality": "Kiên trì, khôn khéo, nhân đạo, anh minh",
+      "icon": "🗡️",
+      "image": "https://via.placeholder.com/150/228B22/FFFFFF?text=LL",
+      "description": "Lãnh tụ khởi nghĩa Lam Sơn - Người đuổi giặc Minh",
+      "biography": "Lê Lợi sinh ra trong gia đình phú hào tại Lam Sơn, Thanh Hóa. Chứng kiến sự tàn bạo của quân Minh, năm 1418 ông phất cờ khởi nghĩa tại Lam Sơn với chỉ vài trăm người. Sau 10 năm chiến đấu gian khổ, với sự trợ giúp của Nguyễn Trãi, ông đã đánh bại quân Minh, giải phóng đất nước. Năm 1428 ông lên ngôi, lập ra nhà Hậu Lê - triều đại kéo dài gần 400 năm. Ông nổi tiếng với tài năng quân sự, lòng khoan dung và chính sách 'dĩ nhân thắng bạo'.",
+      "achievements": [
+        "Lãnh đạo khởi nghĩa Lam Sơn 10 năm (1418-1428)",
+        "Đánh đuổi quân Minh xâm lược",
+        "Lập ra nhà Hậu Lê kéo dài gần 400 năm",
+        "Thực hiện chính sách khoan hồng với dân"
+      ],
       "famous_quotes": [
         "Việc người thì ta làm, việc trời thì trời làm"
       ],
-      "context": "Lãnh đạo khởi nghĩa Lam Sơn 10 năm (1418-1428) chống quân Minh, lập ra triều đại Lê."
+      "context": "Lãnh đạo khởi nghĩa Lam Sơn 10 năm chống quân Minh, lập ra triều đại Lê hùng mạnh."
     },
     {
       "name": "Quang Trung",
-      "alt_names": ["Nguyễn Huệ", "Quang Trung Hoàng đế"],
-      "period": "1753-1792",
+      "alt_names": [
+        "Nguyễn Huệ",
+        "Quang Trung Hoàng đế",
+        "Bắc Bình Vương"
+      ],
+      "period": "Tây Sơn (1753-1792)",
       "role": "Hoàng đế, danh tướng",
       "personality": "Anh minh, dũng mãnh, cách tân, quyết đoán",
+      "icon": "🐉",
+      "image": "https://via.placeholder.com/150/FF4500/FFFFFF?text=QT",
+      "description": "Hoàng đế Tây Sơn - Người đánh tan 29 vạn quân Thanh",
+      "biography": "Nguyễn Huệ sinh ra tại Tây Sơn, Bình Định, trong gia đình nghèo. Cùng hai anh em, ông phát động khởi nghĩa Tây Sơn năm 1771, chống lại sự thối nát của chúa Nguyễn và chúa Trịnh. Sau khi thống nhất cả nước, ông lên ngôi hoàng đế, lấy niên hiệu Quang Trung. Năm 1789, khi quân Thanh xâm lược với 290.000 quân, ông tiến quân thần tốc trong dịp Tết, đánh tan hoàn toàn quân thù chỉ trong 5 ngày, tạo nên chiến thắng Ngọc Hồi-Đống Đa lừng danh. Ông còn là nhà cải cách tài ba với nhiều chính sách tiến bộ.",
+      "achievements": [
+        "Lãnh đạo khởi nghĩa Tây Sơn thống nhất đất nước",
+        "Chiến thắng Ngọc Hồi-Đống Đa 1789 vĩ đại",
+        "Đánh tan 290.000 quân Thanh trong 5 ngày Tết",
+        "Thực hiện nhiều cải cách tiến bộ"
+      ],
       "famous_quotes": [
         "Cổ chi thành đại sự giả, bất duy hữu siêu thế chi tài, diệc tất hữu kiên nhẫn bất bạt chi chí"
       ],
-      "context": "Lãnh đạo cuộc khởi nghĩa Tây Sơn, đánh tan 29 vạn quân Thanh trong 7 ngày Tết Kỷ Dậu 1789."
+      "context": "Lãnh đạo khởi nghĩa Tây Sơn, đánh tan 29 vạn quân Thanh trong 7 ngày Tết Kỷ Dậu 1789, tạo nên chiến thắng vĩ đại nhất."
     },
     {
       "name": "Hồ Chí Minh",
-      "alt_names": ["Bác Hồ", "Nguyễn Sinh Cung", "Nguyễn Tất Thành", "Nguyễn Ái Quốc"],
-      "period": "1890-1969",
+      "alt_names": [
+        "Bác Hồ",
+        "Nguyễn Sinh Cung",
+        "Nguyễn Tất Thành",
+        "Nguyễn Ái Quốc"
+      ],
+      "period": "Thời hiện đại (1890-1969)",
       "role": "Chủ tịch, lãnh tụ cách mạng",
       "personality": "Giản dị, thông thái, nhân ái, kiên trì",
+      "icon": "⭐",
+      "image": "https://via.placeholder.com/150/FF0000/FFFFFF?text=HCM",
+      "description": "Lãnh tụ kính yêu - Người sáng lập nước Việt Nam Dân chủ Cộng hòa",
+      "biography": "Nguyễn Sinh Cung (sau này là Hồ Chí Minh) sinh ra tại làng Kim Liên, Nghệ An, trong gia đình nho học yêu nước. Năm 1911, ông ra đi tìm đường cứu nước, đi qua nhiều quốc gia trên thế giới, tìm hiểu các phong trào cách mạng. Năm 1920, ông là một trong những người sáng lập Đảng Cộng sản Pháp. Năm 1930, ông thành lập Đảng Cộng sản Việt Nam. Ngày 2/9/1945, ông đọc Tuyên ngôn Độc lập, khai sinh nước Việt Nam Dân chủ Cộng hòa. Ông dẫn dắt dân tộc qua hai cuộc kháng chiến chống Pháp và Mỹ, giành độc lập, thống nhất đất nước.",
+      "achievements": [
+        "Sáng lập Đảng Cộng sản Việt Nam (1930)",
+        "Đọc Tuyên ngôn Độc lập 2/9/1945",
+        "Lãnh đạo kháng chiến chống Pháp và Mỹ",
+        "Biểu tượng của độc lập dân tộc và hòa bình thế giới"
+      ],
       "famous_quotes": [
         "Không có gì quý hơn độc lập tự do",
-        "Đoàn kết, đoàn kết, đại đoàn kết. Thành công, thành công, đại thành công"
+        "Đoàn kết, đoàn kết, đại đoàn kết. Thành công, thành công, đại thành công",
+        "Dĩ bất biến, ứng vạn biến"
       ],
-      "context": "Lãnh tụ của cách mạng Việt Nam, đọc Tuyên ngôn Độc lập ngày 2/9/1945, dẫn dắt dân tộc đến độc lập."
+      "context": "Lãnh tụ của cách mạng Việt Nam, đọc Tuyên ngôn Độc lập ngày 2/9/1945, dẫn dắt dân tộc đến độc lập và thống nhất."
     },
     {
       "name": "Võ Nguyên Giáp",
-      "alt_names": ["Đại tướng Võ Nguyên Giáp", "Tướng Giáp"],
-      "period": "1911-2013",
+      "alt_names": [
+        "Đại tướng Võ Nguyên Giáp",
+        "Tướng Giáp",
+        "Anh Văn"
+      ],
+      "period": "Thời hiện đại (1911-2013)",
       "role": "Đại tướng, nhà quân sự",
       "personality": "Thông minh, quyết đoán, tài ba, khiêm tốn",
-      "famous_quotes": [
-        "Không có gì quý hơn độc lập tự do"
+      "icon": "🎖️",
+      "image": "https://via.placeholder.com/150/006400/FFFFFF?text=VNG",
+      "description": "Đại tướng - Nhà quân sự xuất sắc của dân tộc",
+      "biography": "Võ Nguyên Giáp sinh ra tại Quảng Bình trong gia đình nho học yêu nước. Ông sớm tham gia phong trào cách mạng, là học trò xuất sắc của Chủ tịch Hồ Chí Minh. Năm 1944, ông được giao nhiệm vụ thành lập Đội Việt Nam Tuyên truyền Giải phóng quân - tiền thân của Quân đội Nhân dân Việt Nam. Ông là Tổng Tư lệnh trong các chiến dịch lớn: Biên giới 1950, Điện Biên Phủ 1954, Tổng tiến công mùa Xuân 1975. Chiến thắng Điện Biên Phủ do ông chỉ huy đã 'lừng lẫy năm châu, chấn động địa cầu'.",
+      "achievements": [
+        "Thành lập Đội Việt Nam Tuyên truyền Giải phóng quân",
+        "Chỉ huy chiến dịch Điện Biên Phủ 1954",
+        "Tổng chỉ huy chiến dịch Hồ Chí Minh 1975",
+        "Xây dựng quân đội từ không thành lực lượng hùng mạnh"
       ],
-      "context": "Tổng tư lệnh các chiến dịch lớn: Biên giới 1950, Điện Biên Phủ 1954, Tổng tiến công 1975."
+      "famous_quotes": [
+        "Không có gì quý hơn độc lập tự do",
+        "Quyết chiến, quyết thắng"
+      ],
+      "context": "Tổng Tư lệnh các chiến dịch lớn, đặc biệt là Điện Biên Phủ 1954 và Tổng tiến công 1975, góp phần giải phóng đất nước."
     },
     {
-      "name": "Ngô Quyền",
-      "alt_names": ["Tiền Ngô Vương"],
-      "period": "897-944",
-      "role": "Vua đầu tiên của Việt Nam độc lập",
-      "personality": "Dũng mãnh, sáng suốt, tài ba",
+      "name": "Bà Triệu",
+      "alt_names": [
+        "Triệu Thị Trinh",
+        "Triệu Ẩu"
+      ],
+      "period": "Thời Đông Ngô (248)",
+      "role": "Nữ tướng, lãnh đạo khởi nghĩa chống Đông Ngô",
+      "personality": "Dũng mãnh, gan dạ, kiên cường, bất khuất",
+      "icon": "⚔️",
+      "description": "Nữ anh hùng khởi nghĩa chống Đông Ngô",
+      "achievements": [
+        "Lãnh đạo khởi nghĩa chống Đông Ngô năm 248",
+        "Chiến đấu gan dạ với quân thù",
+        "Biểu tượng nữ quyền và tinh thần bất khuất"
+      ],
+      "famous_quotes": [
+        "Tôi chỉ muốn cưỡi cơn gió mạnh đạp luồng sóng dữ, chém cá kình ở biển Đông, đánh đuổi giặc Ngô, giành lại sơn hà, làm sao chịu khom lưng làm tôi tớ cho người!"
+      ],
+      "context": "Khởi nghĩa chống quân Đông Ngô năm 248, 19 tuổi"
+    },
+    {
+      "name": "Lý Bí",
+      "alt_names": [
+        "Lý Nam Đế",
+        "Lý Bôn"
+      ],
+      "period": "Thời Nam Bắc triều (503-548)",
+      "role": "Hoàng đế, lãnh đạo nhà nước tự chủ",
+      "personality": "Can trường, quyết đoán, tài ba",
+      "icon": "👑",
+      "description": "Lập nên nhà nước Vạn Xuân tự chủ",
+      "achievements": [
+        "Khởi nghĩa chống nhà Lương năm 542",
+        "Lập nhà nước Vạn Xuân",
+        "Đánh bại quân Lương xâm lược"
+      ],
       "famous_quotes": [],
-      "context": "Đánh thắng quân Nam Hán tại sông Bạch Đằng năm 938, chấm dứt 1000 năm Bắc thuộc."
+      "context": "Lãnh đạo khởi nghĩa giành độc lập, lập nhà nước Vạn Xuân (542-602)"
     },
     {
-      "name": "Lý Công Uẩn",
-      "alt_names": ["Lý Thái Tổ"],
-      "period": "974-1028",
-      "role": "Vua, nhà sáng lập triều Lý",
+      "name": "Đinh Bộ Lĩnh",
+      "alt_names": [
+        "Đinh Tiên Hoàng",
+        "Đinh Công Uẩn"
+      ],
+      "period": "Nhà Đinh (924-979)",
+      "role": "Hoàng đế, người thống nhất đất nước",
+      "personality": "Anh minh, mưu lược, quyết đoán",
+      "icon": "👑",
+      "description": "Hoàng đế đầu tiên của nước Đại Cồ Việt",
+      "achievements": [
+        "Dẹp loạn 12 sứ quân",
+        "Lập quốc hiệu Đại Cồ Việt",
+        "Xây dựng bộ máy nhà nước",
+        "Thiết lập quan hệ ngoại giao với Tống"
+      ],
+      "famous_quotes": [],
+      "context": "Thống nhất đất nước sau loạn 12 sứ quân, lập ra triều Đinh 968"
+    },
+    {
+      "name": "Lê Hoàn",
+      "alt_names": [
+        "Lê Đại Hành",
+        "Lê Hoàn"
+      ],
+      "period": "Nhà Tiền Lê (941-1005)",
+      "role": "Hoàng đế, danh tướng",
+      "personality": "Dũng mãnh, khôn ngoan, chiến lược",
+      "icon": "🗡️",
+      "description": "Hoàng đế đánh thắng quân Tống xâm lược",
+      "achievements": [
+        "Đánh thắng quân Tống năm 981",
+        "Bảo vệ nền độc lập",
+        "Xây dựng đất nước hưng thịnh"
+      ],
+      "famous_quotes": [],
+      "context": "Lập ra nhà Tiền Lê, đánh bại quân Tống xâm lược 981"
+    },
+    {
+      "name": "Lý Nhân Tông",
+      "alt_names": [
+        "Lý Càn Đức"
+      ],
+      "period": "Nhà Lý (1066-1128)",
+      "role": "Hoàng đế triều Lý",
+      "personality": "Hiền lành, từ tâm, thông minh",
+      "icon": "👑",
+      "description": "Hoàng đế tài năng, trị nước nhân từ",
+      "achievements": [
+        "Triều đình hưng thịnh",
+        "Phát triển Phật giáo",
+        "Xây dựng Chùa Một Cột"
+      ],
+      "famous_quotes": [],
+      "context": "Vua thứ 4 triều Lý, trị vì 55 năm"
+    },
+    {
+      "name": "Lý Chiêu Hoàng",
+      "alt_names": [
+        "Phật Kim",
+        "Chiêu Thánh"
+      ],
+      "period": "Nhà Lý (1218-1278)",
+      "role": "Nữ hoàng duy nhất lịch sử Việt Nam",
+      "personality": "Hiền từ, khôn ngoan",
+      "icon": "👑",
+      "description": "Nữ hoàng cuối cùng triều Lý",
+      "achievements": [
+        "Nữ hoàng duy nhất lịch sử Việt Nam",
+        "Nhường ngôi cho Trần Thái Tông"
+      ],
+      "famous_quotes": [],
+      "context": "Nữ hoàng cuối cùng triều Lý, nhường ngôi cho Trần Cảnh 1225"
+    },
+    {
+      "name": "Trần Thái Tông",
+      "alt_names": [
+        "Trần Cảnh",
+        "Trần Nhật Duật"
+      ],
+      "period": "Nhà Trần (1218-1277)",
+      "role": "Hoàng đế, người sáng lập triều Trần",
       "personality": "Anh minh, nhân từ, có tầm nhìn",
+      "icon": "👑",
+      "description": "Hoàng đế sáng lập triều Trần",
+      "achievements": [
+        "Sáng lập triều Trần",
+        "Xây dựng triều đại hưng thịnh",
+        "Chuẩn bị lực lượng chống Nguyên"
+      ],
       "famous_quotes": [],
-      "context": "Dời đô về Thăng Long năm 1010, mở ra thời kỳ phát triển rực rỡ của đất nước."
+      "context": "Hoàng đế đầu tiên triều Trần, trị vì 33 năm"
+    },
+    {
+      "name": "Trần Nhân Tông",
+      "alt_names": [
+        "Trần Khâm"
+      ],
+      "period": "Nhà Trần (1258-1308)",
+      "role": "Hoàng đế, danh tướng, thiền sư",
+      "personality": "Anh minh, từ bi, sâu sắc",
+      "icon": "👑",
+      "description": "Hoàng đế đánh thắng quân Nguyên, sau xuất gia",
+      "achievements": [
+        "Đánh thắng quân Nguyên lần 2 và 3",
+        "Sáng lập phái Trúc Lâm Yên Tử",
+        "Là thiền sư nổi tiếng"
+      ],
+      "famous_quotes": [
+        "Phật pháp mênh mang, chẳng ngoài tâm tánh"
+      ],
+      "context": "Vua thứ 3 triều Trần, sau khi thoái vị xuất gia làm thiền sư"
+    },
+    {
+      "name": "Trần Quốc Toản",
+      "alt_names": [
+        "Hưng Đạo Vương"
+      ],
+      "period": "Nhà Trần (1262-1300)",
+      "role": "Danh tướng, anh hùng dân tộc",
+      "personality": "Dũng mãnh, trung thành, tài ba",
+      "icon": "🗡️",
+      "description": "Tướng tài ba, cháu Trần Hưng Đạo",
+      "achievements": [
+        "Chiến công hiển hách trong các trận chống Nguyên",
+        "Thống lĩnh hùng binh bảo vệ biên cương"
+      ],
+      "famous_quotes": [],
+      "context": "Tướng giỏi triều Trần, cháu ruột Trần Hưng Đạo"
+    },
+    {
+      "name": "Trần Bình Trọng",
+      "alt_names": [],
+      "period": "Nhà Trần (1259-1285)",
+      "role": "Danh tướng, anh hùng dân tộc",
+      "personality": "Dũng cảm, kiên cường, bất khuất",
+      "icon": "⚔️",
+      "description": "Anh hùng hy sinh vì Tổ quốc",
+      "achievements": [
+        "Chiến đấu dũng cảm chống quân Nguyên",
+        "Hy sinh anh dũng trong trận chiến",
+        "Tinh thần bất khuất trước kẻ thù"
+      ],
+      "famous_quotes": [
+        "Việc nhà không thể không làm, lẽ trời không thể không giữ. Dù đem thân phơi nắng, cũng nguyện được trên gươm Tống tướng!"
+      ],
+      "context": "Tướng trẻ hy sinh anh dũng trong chiến tranh chống Nguyên"
+    },
+    {
+      "name": "Hồ Quý Ly",
+      "alt_names": [
+        "Hồ Hán Thương",
+        "Lê Quý Ly"
+      ],
+      "period": "Nhà Hồ (1336-1407)",
+      "role": "Hoàng đế, nhà cải cách",
+      "personality": "Tài năng, quyết đoán, có tầm nhìn",
+      "icon": "👑",
+      "description": "Hoàng đế cải cách táo bạo",
+      "achievements": [
+        "Cải cách chính trị, kinh tế sâu rộng",
+        "Cải cách ruộng đất",
+        "Phát hành tiền giấy",
+        "Xây dựng thành Tây Đô"
+      ],
+      "famous_quotes": [],
+      "context": "Lập nhà Hồ, thực hiện nhiều cải cách táo bạo"
+    },
+    {
+      "name": "Mạc Đăng Dung",
+      "alt_names": [
+        "Mạc Thái Tổ"
+      ],
+      "period": "Nhà Mạc (1483-1541)",
+      "role": "Hoàng đế, danh tướng",
+      "personality": "Anh minh, tài ba, quyết đoán",
+      "icon": "👑",
+      "description": "Người sáng lập triều Mạc",
+      "achievements": [
+        "Lập nên triều Mạc",
+        "Đánh bại quân Lê",
+        "Xây dựng đất nước hưng thịnh"
+      ],
+      "famous_quotes": [],
+      "context": "Sáng lập triều Mạc (1527-1592)"
+    },
+    {
+      "name": "Lê Thánh Tông",
+      "alt_names": [
+        "Lê Tư Thành",
+        "Lê Hạo"
+      ],
+      "period": "Nhà Lê (1442-1497)",
+      "role": "Hoàng đế, nhà văn hóa vĩ đại",
+      "personality": "Anh minh, văn võ song toàn, nhân từ",
+      "icon": "👑",
+      "description": "Hoàng đế tài năng nhất lịch sử Việt Nam",
+      "achievements": [
+        "Thời kỳ Lê Trung Hưng cực thịnh",
+        "Ban hành Hồng Đức Bản Đồ",
+        "Cải cách luật pháp với Quốc Triều Hình Luật",
+        "Đánh bại Chiêm Thành"
+      ],
+      "famous_quotes": [],
+      "context": "Hoàng đế thứ 5 nhà Lê, thời kỳ đỉnh cao văn hóa Việt Nam"
+    },
+    {
+      "name": "Nguyễn Bỉnh Khiêm",
+      "alt_names": [
+        "Bạch Vân거사",
+        "Trạng Trình"
+      ],
+      "period": "Nhà Lê (1491-1585)",
+      "role": "Nhà tiên tri, học giả, nhà thơ",
+      "personality": "Thông thái, uyên thâm, nhân từ",
+      "icon": "🔮",
+      "description": "Nhà tiên tri, trí thức lớn thời Lê",
+      "achievements": [
+        "Trạng nguyên năm 1535",
+        "Tác giả nhiều tiên đoán nổi tiếng",
+        "Nhà thơ tài hoa",
+        "Học giả uyên bác"
+      ],
+      "famous_quotes": [
+        "Việc đời như cờ tướng, khôn lường",
+        "Trước mặt thật là chơn, sau lưng phải giữ cẩn"
+      ],
+      "context": "Nhà tiên tri nổi tiếng, từng làm quan đời Lê"
+    },
+    {
+      "name": "Nguyễn Du",
+      "alt_names": [
+        "Tố Như",
+        "Thanh Hiên"
+      ],
+      "period": "Thời Tây Sơn - Nguyễn (1765-1820)",
+      "role": "Nhà thơ, đại văn hào",
+      "personality": "Tài hoa, nhân văn, sâu sắc",
+      "icon": "📜",
+      "description": "Đại thi hào, tác giả Truyện Kiều",
+      "achievements": [
+        "Tác giả Truyện Kiều - kiệt tác văn học",
+        "Đại văn hào dân tộc",
+        "Nhiều tác phẩm văn học giá trị"
+      ],
+      "famous_quotes": [
+        "Trăm năm trong cõi người ta, chữ tài chữ mệnh khéo là ghét nhau"
+      ],
+      "context": "Đại văn hào dân tộc, tác giả Truyện Kiều"
+    },
+    {
+      "name": "Gia Long",
+      "alt_names": [
+        "Nguyễn Phúc Ánh",
+        "Nguyễn Ánh"
+      ],
+      "period": "Nhà Nguyễn (1762-1820)",
+      "role": "Hoàng đế, người thống nhất đất nước",
+      "personality": "Kiên trì, quyết đoán, tài ba",
+      "icon": "👑",
+      "description": "Hoàng đế đầu tiên nhà Nguyễn",
+      "achievements": [
+        "Thống nhất đất nước sau 30 năm chiến tranh",
+        "Lập triều Nguyễn",
+        "Xây dựng kinh đô Huế",
+        "Đặt tên nước là Việt Nam"
+      ],
+      "famous_quotes": [],
+      "context": "Sáng lập triều Nguyễn, thống nhất đất nước 1802"
+    },
+    {
+      "name": "Minh Mạng",
+      "alt_names": [
+        "Nguyễn Phúc Đảm"
+      ],
+      "period": "Nhà Nguyễn (1791-1841)",
+      "role": "Hoàng đế, nhà cải cách",
+      "personality": "Cương nghị, cầu thị, có tầm nhìn",
+      "icon": "👑",
+      "description": "Hoàng đế cải cách, xây dựng đất nước",
+      "achievements": [
+        "Cải cách hành chính",
+        "Xây dựng Kinh thành Huế",
+        "Phát triển giáo dục",
+        "Tổ chức bộ máy nhà nước"
+      ],
+      "famous_quotes": [],
+      "context": "Vua thứ 2 triều Nguyễn, thời kỳ hưng thịnh"
+    },
+    {
+      "name": "Lê Văn Duyệt",
+      "alt_names": [
+        "Tả quân công"
+      ],
+      "period": "Triều Nguyễn (1763-1832)",
+      "role": "Tổng trấn, danh tướng",
+      "personality": "Trung thành, dũng mãnh, tài ba",
+      "icon": "⚔️",
+      "description": "Danh tướng phò tá Gia Long",
+      "achievements": [
+        "Công thần phò tá Gia Long thống nhất đất nước",
+        "Tổng trấn Gia Định",
+        "Xây dựng miền Nam"
+      ],
+      "famous_quotes": [],
+      "context": "Tướng tài giỏi triều Nguyễn, công thần Gia Long"
+    },
+    {
+      "name": "Hoàng Hoa Thám",
+      "alt_names": [
+        "Đề Thám"
+      ],
+      "period": "Thời Pháp thuộc (1858-1913)",
+      "role": "Nghĩa quân, lãnh tụ kháng Pháp",
+      "personality": "Dũng cảm, kiên trì, thông minh",
+      "icon": "⚔️",
+      "description": "Nghĩa quân chống Pháp lừng danh",
+      "achievements": [
+        "Lãnh đạo phong trào Yên Thế chống Pháp hơn 20 năm",
+        "Nhiều chiến thắng vang dội",
+        "Tinh thần kiên cường"
+      ],
+      "famous_quotes": [],
+      "context": "Lãnh đạo phong trào Yên Thế chống Pháp (1887-1913)"
+    },
+    {
+      "name": "Phan Bội Châu",
+      "alt_names": [
+        "Phan Sào Nam",
+        "Phan Văn San"
+      ],
+      "period": "Thời Pháp thuộc (1867-1940)",
+      "role": "Nhà cách mạng, trí thức",
+      "personality": "Yêu nước, kiên định, uyên bác",
+      "icon": "✊",
+      "description": "Nhà cách mạng tiền bối",
+      "achievements": [
+        "Sáng lập phong trào Đông Du",
+        "Thành lập Việt Nam Quang Phục Hội",
+        "Tác giả nhiều tác phẩm yêu nước",
+        "Lãnh đạo phong trào cách mạng sơ khai"
+      ],
+      "famous_quotes": [
+        "Lửa thử vàng, gian nan thử sức"
+      ],
+      "context": "Nhà cách mạng tiền bối, lãnh đạo các phong trào kháng Pháp đầu thế kỷ 20"
+    },
+    {
+      "name": "Phan Châu Trinh",
+      "alt_names": [
+        "Phan Bá Châu"
+      ],
+      "period": "Thời Pháp thuộc (1872-1926)",
+      "role": "Nhà cải cách, trí thức",
+      "personality": "Khai phóng, dân chủ, nhân văn",
+      "icon": "📚",
+      "description": "Nhà cải cách văn hóa, giáo dục",
+      "achievements": [
+        "Ủng hộ phong trào Đông Kinh Nghĩa Thục",
+        "Vận động cải cách văn hóa - xã hội",
+        "Đấu tranh dân chủ, dân quyền"
+      ],
+      "famous_quotes": [
+        "Dân quyền là quyền tự do, bình đẳng của con người"
+      ],
+      "context": "Nhà cải cách văn hóa, giáo dục đầu thế kỷ 20"
+    },
+    {
+      "name": "Nguyễn Thái Học",
+      "alt_names": [],
+      "period": "Thời Pháp thuộc (1902-1930)",
+      "role": "Nhà cách mạng, lãnh tụ Việt Nam Quốc Dân Đảng",
+      "personality": "Dũng cảm, quyết tâm, hy sinh",
+      "icon": "⚔️",
+      "description": "Lãnh tụ khởi nghĩa Yên Bái",
+      "achievements": [
+        "Lãnh đạo khởi nghĩa Yên Bái 1930",
+        "Thành lập Việt Nam Quốc Dân Đảng",
+        "Hy sinh anh dũng vì Tổ quốc"
+      ],
+      "famous_quotes": [
+        "Toàn quốc đồng bào thương yêu tôi ơi! Thì ra cuộc cách mạng của tôi thất bại!"
+      ],
+      "context": "Lãnh đạo khởi nghĩa Yên Bái 1930, hy sinh năm 28 tuổi"
+    },
+    {
+      "name": "Phạm Hồng Thái",
+      "alt_names": [],
+      "period": "Thời Pháp thuộc (1893-1924)",
+      "role": "Liệt sĩ, anh hùng cách mạng",
+      "personality": "Dũng cảm, kiên quyết, hy sinh",
+      "icon": "💣",
+      "description": "Liệt sĩ ném bom Thống đốc Merlin",
+      "achievements": [
+        "Ném bom Thống đốc Pháp Merlin",
+        "Tinh thần cách mạng kiên cường",
+        "Hy sinh vì độc lập dân tộc"
+      ],
+      "famous_quotes": [],
+      "context": "Ném bom Thống đốc Pháp Merlin năm 1924, hy sinh vì Tổ quốc"
+    },
+    {
+      "name": "Trương Định",
+      "alt_names": [],
+      "period": "Thời Pháp thuộc (1820-1864)",
+      "role": "Nghĩa quân, lãnh tụ khởi nghĩa",
+      "personality": "Dũng cảm, bất khuất, kiên trì",
+      "icon": "⚔️",
+      "description": "Lãnh tụ khởi nghĩa miền Nam chống Pháp",
+      "achievements": [
+        "Lãnh đạo phong trào chống Pháp tại miền Nam",
+        "Chiến đấu bất khuất",
+        "Tinh thần yêu nước mãnh liệt"
+      ],
+      "famous_quotes": [],
+      "context": "Lãnh đạo phong trào kháng Pháp đầu tiên ở miền Nam (1861-1864)"
+    },
+    {
+      "name": "Hồ Xuân Hương",
+      "alt_names": [
+        "Bà Huyện Thanh Quan"
+      ],
+      "period": "Thời Lê - Nguyễn (1772-1822)",
+      "role": "Nữ thi sĩ, nhà thơ tài hoa",
+      "personality": "Táo bạo, tài hoa, phóng khoáng",
+      "icon": "✍️",
+      "description": "Nữ thi sĩ tài hoa, Bà chúa thơ Nôm",
+      "achievements": [
+        "Nữ thi sĩ xuất sắc nhất thời Lê - Nguyễn",
+        "Phong cách thơ độc đáo, táo bạo",
+        "Nhiều bài thơ kinh điển"
+      ],
+      "famous_quotes": [
+        "Vừa đục lỗ cho tròn vừa lấp lủng cho chặt"
+      ],
+      "context": "Bà chúa thơ Nôm, nữ thi sĩ tài hoa thời Lê - Nguyễn"
+    },
+    {
+      "name": "Hàn Mạc Tử",
+      "alt_names": [
+        "Nguyễn Trọng Quản"
+      ],
+      "period": "Thời Lê (1287-1324)",
+      "role": "Nhà thơ, danh sĩ",
+      "personality": "Phóng khoáng, tài hoa, cảm xúc",
+      "icon": "🎭",
+      "description": "Nhà thơ tài hoa thời Trần",
+      "achievements": [
+        "Tác giả nhiều bài thơ nổi tiếng",
+        "Phong cách thơ lãng mạn, bi tráng",
+        "Thơ ca cuộc sống và tình cảm"
+      ],
+      "famous_quotes": [
+        "Người ơi người ở đừng về, Cửa này đã có chủ rồi, về chi"
+      ],
+      "context": "Nhà thơ tài hoa thời Trần, phong cách lãng mạn"
+    },
+    {
+      "name": "Nguyễn Đình Chiểu",
+      "alt_names": [
+        "Đạo Ẩn Tử"
+      ],
+      "period": "Triều Nguyễn (1822-1888)",
+      "role": "Nhà thơ, nhà văn, nhà giáo dục",
+      "personality": "Kiên cường, tài hoa, yêu nước",
+      "icon": "📜",
+      "description": "Tác giả Lục Vân Tiên, nhà thơ mù",
+      "achievements": [
+        "Tác giả Lục Vân Tiên",
+        "Tác giả Chinh phụ ngâm",
+        "Nhà thơ, nhà giáo xuất sắc",
+        "Văn học yêu nước chống Pháp"
+      ],
+      "famous_quotes": [
+        "Kiến nên thành, như nên việc"
+      ],
+      "context": "Nhà thơ mù tài hoa, tác giả Lục Vân Tiên"
+    },
+    {
+      "name": "Tú Xương",
+      "alt_names": [
+        "Nguyễn Khắc Hiếu"
+      ],
+      "period": "Thời Pháp thuộc (1870-1907)",
+      "role": "Nhà thơ, nhà báo",
+      "personality": "Hài hước, châm biếm, tài hoa",
+      "icon": "😄",
+      "description": "Nhà thơ hài hước, châm biếm",
+      "achievements": [
+        "Phong cách thơ hài hước độc đáo",
+        "Châm biếm xã hội sắc sảo",
+        "Nhiều bài thơ nổi tiếng"
+      ],
+      "famous_quotes": [
+        "Đời là một chuỗi nước mắt cười"
+      ],
+      "context": "Nhà thơ hài hước, phong cách châm biếm thời Pháp thuộc"
+    },
+    {
+      "name": "Tản Đà",
+      "alt_names": [
+        "Nguyễn Khắc Hiếu"
+      ],
+      "period": "Thời Pháp thuộc (1888-1939)",
+      "role": "Nhà thơ, nhà báo",
+      "personality": "Lãng mạn, đa tài, phóng khoáng",
+      "icon": "🍷",
+      "description": "Thi sĩ lãng mạn, nhà báo tài ba",
+      "achievements": [
+        "Nhà thơ lãng mạn xuất sắc",
+        "Nhà báo tài ba",
+        "Phong cách thơ tự do, cảm xúc"
+      ],
+      "famous_quotes": [
+        "Đời vốn một trường tửu thất"
+      ],
+      "context": "Thi sĩ lãng mạn đầu thế kỷ 20, phong cách tự do"
     }
   ]
 }

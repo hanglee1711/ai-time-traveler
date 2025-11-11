@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bản Đồ Lịch Sử - VIỆT KÝ SỬ</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/map.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">⏳</span>
+                <span>VIỆT KÝ SỬ</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                <li><a href="chatbot.html" class="nav-link">Chatbot</a></li>
+                <li><a href="timeline.html" class="nav-link">Dòng thời gian</a></li>
+                <li><a href="map.html" class="nav-link active">Bản đồ</a></li>
+                <li><a href="game.html" class="nav-link">Trò chơi</a></li>
+                <li><a href="journey.html" class="nav-link">Hành trình của tôi</a></li>
+                <li class="auth-login-btn"><a href="login.html" class="nav-link btn-gold" style="padding: 0.5rem 1.5rem;">Đăng nhập</a></li>
+                <li class="auth-register-btn"><a href="register.html" class="nav-link" style="padding: 0.5rem 1.5rem;">Đăng ký</a></li>
+                <li class="auth-user-info" style="display: none;">
+                    <span class="nav-link" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem;">
+                        <span class="auth-user-avatar">👤</span>
+                        <span class="auth-user-name">User</span>
+                    </span>
+                </li>
+                <li class="auth-logout-btn" style="display: none;"><a href="#" class="nav-link btn-gold" style="padding: 0.5rem 1.5rem;">Đăng xuất</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="map-page-container">
+        <!-- Sidebar Filter -->
+        <aside class="map-sidebar">
+            <!-- Search Bar -->
+            <div class="map-search-container">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text"
+                           id="map-search-input"
+                           class="map-search-input"
+                           placeholder="Tìm kiếm địa danh, trận chiến...">
+                    <button class="search-clear-btn" id="search-clear-btn" style="display: none;">×</button>
+                </div>
+                <div class="search-suggestions" id="search-suggestions"></div>
+            </div>
+
+            <h3 class="sidebar-title">
+                <span></span>
+                Bộ Lọc
+            </h3>
+
+            <div class="filter-section">
+                <h4 class="filter-label">Giai đoạn lịch sử</h4>
+                <div class="filter-options">
+                    <label class="filter-checkbox">
+                        <input type="checkbox" value="ancient" checked> Thời cổ đại
+                    </label>
+                    <label class="filter-checkbox">
+                        <input type="checkbox" value="medieval" checked> Thời trung đại
+                    </label>
+                    <label class="filter-checkbox">
+                        <input type="checkbox" value="modern" checked> Thời cận đại
+                    </label>
+                    <label class="filter-checkbox">
+                        <input type="checkbox" value="contemporary" checked> Thời hiện đại
+                    </label>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h4 class="filter-label">Loại địa danh</h4>
+                <div class="filter-options">
+                    <label class="filter-checkbox">
+                        <input type="checkbox" value="battlefield" checked>
+                        <span class="marker-icon" style="color: #ef4444"></span>
+                        Trận địa
+                    </label>
+                    <label class="filter-checkbox">
+                        <input type="checkbox" value="capital" checked>
+                        <span class="marker-icon" style="color: #d4af37"></span>
+                        Kinh đô
+                    </label>
+                    <label class="filter-checkbox">
+                        <input type="checkbox" value="monument" checked>
+                        <span class="marker-icon" style="color: #3b82f6"></span>
+                        Di tích
+                    </label>
+                    <label class="filter-checkbox">
+                        <input type="checkbox" value="landmark" checked>
+                        <span class="marker-icon" style="color: #10b981"></span>
+                        Địa danh
+                    </label>
+                </div>
+            </div>
+
+            <button class="btn btn-gold" id="reset-filter" style="width: 100%; margin-top: 1rem;">
+                Đặt lại bộ lọc
+            </button>
+
+            <!-- Timeline Slider -->
+            <div class="timeline-slider-section">
+                <h4 class="filter-label">  Dòng thời gian</h4>
+                <div class="timeline-slider-container">
+                    <div class="timeline-track">
+                        <div class="timeline-progress" id="timeline-progress"></div>
+                        <input type="range"
+                               id="timeline-slider"
+                               class="timeline-range"
+                               min="0"
+                               max="100"
+                               value="100">
+                    </div>
+                    <div class="timeline-labels">
+                        <span class="timeline-label">2879 TCN</span>
+                        <span class="timeline-label">938</span>
+                        <span class="timeline-label">1945</span>
+                        <span class="timeline-label">Hiện tại</span>
+                    </div>
+                    <div class="timeline-current">
+                        <span id="timeline-current-year">Hiện tại</span>
+                        <span class="timeline-count" id="timeline-count">0 địa danh</span>
+                    </div>
+                    <button class="timeline-play-btn" id="timeline-play-btn" title="Play Timeline">
+                        <span class="play-icon"></span>
+                        <span class="play-text">Xem dòng thời gian</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="map-legend">
+                <h4> Chú thích</h4>
+                <p><span style="color: #ef4444">⚔️</span> Trận địa chiến đấu</p>
+                <p><span style="color: #d4af37">🏛️</span> Kinh đô - thủ phủ</p>
+                <p><span style="color: #3b82f6">🏰</span> Di tích lịch sử</p>
+                <p><span style="color: #10b981">📍</span> Địa danh quan trọng</p>
+            </div>
+        </aside>
+
+        <!-- Map Container -->
+        <main class="map-main">
+            <div id="map" class="map-container"></div>
+
+            <!-- Floating Control Panel -->
+            <div class="floating-controls">
+                <button class="control-btn" id="zoom-in-btn" title="Phóng to">
+                    <span class="control-plus">+</span>
+                </button>
+                <button class="control-btn" id="zoom-out-btn" title="Thu nhỏ">
+                    <span class="control-minus">−</span>
+                </button>
+                <button class="control-btn" id="reset-view-btn" title="Xem toàn bộ Việt Nam">
+                    <span class="control-icon">🏠</span>
+                </button>
+                <button class="control-btn" id="my-location-btn" title="Vị trí của tôi">
+                    <span class="control-icon">📍</span>
+                </button>
+                <div class="control-divider"></div>
+                <button class="control-btn" id="fullscreen-btn" title="Toàn màn hình">
+                    <span class="control-icon">⛶</span>
+                </button>
+                <button class="control-btn" id="layer-toggle-btn" title="Đổi kiểu bản đồ">
+                    <span class="control-icon">🗺️</span>
+                </button>
+            </div>
+
+            <div class="map-info">
+                <p>🗺️ <span id="marker-count">0</span> địa danh lịch sử |
+                   Phóng to/Thu nhỏ bằng nút +/- hoặc scroll chuột</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/map.js"></script>
+</body>
+</html>
+

@@ -1,4 +1,4 @@
-# 🚀 AI Time Traveler - Cỗ máy du hành thời gian lịch sử
+﻿# 🚀 Việt Sử Ký - Cỗ máy du hành thời gian lịch sử
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.31.0-red.svg)

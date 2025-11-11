@@ -1,0 +1,286 @@
+{
+  "title": "Quiz Lịch Sử Việt Nam",
+  "description": "Bộ câu hỏi về lịch sử Việt Nam từ thời kỳ dựng nước đến hiện đại",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Trận Bạch Đằng năm 938 do ai chỉ huy?",
+      "options": {
+        "A": "Ngô Quyền",
+        "B": "Trần Hưng Đạo",
+        "C": "Lý Thường Kiệt",
+        "D": "Lê Lợi"
+      },
+      "correct": "A",
+      "explanation": "Ngô Quyền đã chỉ huy chiến thắng trong trận Bạch Đằng năm 938, đánh bại quân Nam Hán và lập nên nhà nước Đại Việt độc lập, chấm dứt hơn 1000 năm Bắc thuộc.",
+      "difficulty": "easy",
+      "category": "ancient"
+    },
+    {
+      "id": 2,
+      "question": "Ai là người sáng lập ra triều đại nhà Lý?",
+      "options": {
+        "A": "Lý Thái Tổ",
+        "B": "Lý Thái Tông",
+        "C": "Lý Thánh Tông",
+        "D": "Lý Nhân Tông"
+      },
+      "correct": "A",
+      "explanation": "Lý Công Uẩn (Lý Thái Tổ) là người sáng lập triều đại nhà Lý năm 1009 và dời đô về Thăng Long (Hà Nội) năm 1010, mở ra thời kỳ phát triển rực rỡ của đất nước.",
+      "difficulty": "easy",
+      "category": "ancient"
+    },
+    {
+      "id": 3,
+      "question": "Trận Bạch Đằng lần thứ ba năm 1288 đánh bại quân xâm lược nào?",
+      "options": {
+        "A": "Quân Tống",
+        "B": "Quân Minh",
+        "C": "Quân Nguyên-Mông",
+        "D": "Quân Thanh"
+      },
+      "correct": "C",
+      "explanation": "Trận Bạch Đằng năm 1288 do Trần Hưng Đạo chỉ huy đã đánh bại quân Nguyên-Mông lần thứ ba, kết thúc cuộc kháng chiến chống Nguyên-Mông vĩ đại của dân tộc.",
+      "difficulty": "medium",
+      "category": "ancient"
+    },
+    {
+      "id": 4,
+      "question": "Cuộc khởi nghĩa Lam Sơn do ai lãnh đạo?",
+      "options": {
+        "A": "Quang Trung",
+        "B": "Lê Lợi",
+        "C": "Nguyễn Huệ",
+        "D": "Trần Quốc Tuấn"
+      },
+      "correct": "B",
+      "explanation": "Lê Lợi đã lãnh đạo cuộc khởi nghĩa Lam Sơn (1418-1427) chống quân Minh xâm lược, giải phóng đất nước và thành lập triều đại nhà Hậu Lê.",
+      "difficulty": "easy",
+      "category": "ancient"
+    },
+    {
+      "id": 5,
+      "question": "Trận Ngọc Hồi - Đống Đa diễn ra vào năm nào?",
+      "options": {
+        "A": "1785",
+        "B": "1789",
+        "C": "1802",
+        "D": "1788"
+      },
+      "correct": "B",
+      "explanation": "Trận Ngọc Hồi - Đống Đa diễn ra đêm giao thừa Tết Kỷ Dậu (1789), do Quang Trung Nguyễn Huệ chỉ huy đánh bại 29 vạn quân Thanh trong vòng 5 ngày 5 đêm.",
+      "difficulty": "medium",
+      "category": "medieval"
+    },
+    {
+      "id": 6,
+      "question": "Bác Hồ đọc Tuyên ngôn Độc lập vào ngày nào?",
+      "options": {
+        "A": "30/4/1975",
+        "B": "2/9/1945",
+        "C": "19/8/1945",
+        "D": "7/5/1954"
+      },
+      "correct": "B",
+      "explanation": "Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập tại Quảng trường Ba Đình, Hà Nội vào ngày 2/9/1945, khai sinh nước Việt Nam Dân chủ Cộng hòa.",
+      "difficulty": "easy",
+      "category": "modern"
+    },
+    {
+      "id": 7,
+      "question": "Chiến dịch Điện Biên Phủ kết thúc vào ngày nào?",
+      "options": {
+        "A": "7/5/1954",
+        "B": "19/12/1946",
+        "C": "30/4/1975",
+        "D": "2/9/1945"
+      },
+      "correct": "A",
+      "explanation": "Chiến dịch Điện Biên Phủ kết thúc ngày 7/5/1954 với chiến thắng lịch sử 'lừng lẫy năm châu, chấn động địa cầu', buộc thực dân Pháp phải ký Hiệp định Genève.",
+      "difficulty": "easy",
+      "category": "modern"
+    },
+    {
+      "id": 8,
+      "question": "Miền Nam được hoàn toàn giải phóng vào ngày nào?",
+      "options": {
+        "A": "19/12/1946",
+        "B": "7/5/1954",
+        "C": "30/4/1975",
+        "D": "2/9/1945"
+      },
+      "correct": "C",
+      "explanation": "Ngày 30/4/1975, Sài Gòn được giải phóng hoàn toàn, đất nước thống nhất, chấm dứt cuộc chiến tranh kéo dài 30 năm.",
+      "difficulty": "easy",
+      "category": "modern"
+    },
+    {
+      "id": 9,
+      "question": "Thời kỳ Bắc thuộc của Việt Nam kéo dài bao lâu?",
+      "options": {
+        "A": "Khoảng 500 năm",
+        "B": "Khoảng 800 năm",
+        "C": "Khoảng 1000 năm",
+        "D": "Khoảng 1500 năm"
+      },
+      "correct": "C",
+      "explanation": "Thời kỳ Bắc thuộc kéo dài khoảng 1000 năm (từ 111 TCN đến 938 SCN) với nhiều cuộc khởi nghĩa chống ách đô hộ như Hai Bà Trưng, Bà Triệu, Khúc Thừa Dụ...",
+      "difficulty": "hard",
+      "category": "ancient"
+    },
+    {
+      "id": 10,
+      "question": "Ai được mệnh danh là 'Anh hùng dân tộc' đánh giặc cứu nước?",
+      "options": {
+        "A": "Chỉ có Trần Hưng Đạo",
+        "B": "Chỉ có Quang Trung",
+        "C": "Chỉ có Lê Lợi",
+        "D": "Tất cả những người trên"
+      },
+      "correct": "D",
+      "explanation": "Việt Nam có nhiều anh hùng dân tộc qua các thời kỳ lịch sử như Hai Bà Trưng, Trần Hưng Đạo, Lê Lợi, Quang Trung, Hồ Chí Minh... đều có công đánh giặc cứu nước.",
+      "difficulty": "medium",
+      "category": "general"
+    },
+    {
+      "id": 11,
+      "question": "Ai là nữ tướng nổi tiếng khởi nghĩa chống Bắc thuộc vào thế kỷ I?",
+      "options": {
+        "A": "Bà Triệu",
+        "B": "Hai Bà Trưng",
+        "C": "Võ Thị Sáu",
+        "D": "Nguyễn Thị Minh Khai"
+      },
+      "correct": "B",
+      "explanation": "Hai Bà Trưng (Trưng Trắc và Trưng Nhị) khởi nghĩa năm 40 SCN chống đô hộ nhà Hán, lập nên nước Việt độc lập trong 3 năm.",
+      "difficulty": "easy",
+      "category": "ancient"
+    },
+    {
+      "id": 12,
+      "question": "Trận chiến nào được ví như 'Điện Biên Phủ trên không'?",
+      "options": {
+        "A": "Trận Hòa Bình",
+        "B": "Trận Điện Biên Phủ",
+        "C": "Chiến dịch Hồ Chí Minh",
+        "D": "Chiến thắng Hà Nội - Điện Biên Phủ trên không"
+      },
+      "correct": "D",
+      "explanation": "Chiến thắng Hà Nội 12 ngày đêm (19-30/12/1972) được gọi là 'Điện Biên Phủ trên không', bắn rơi nhiều máy bay B-52 của Mỹ.",
+      "difficulty": "medium",
+      "category": "modern"
+    },
+    {
+      "id": 13,
+      "question": "Vua nào của nhà Lý đã xây dựng chùa Một Cột?",
+      "options": {
+        "A": "Lý Thái Tổ",
+        "B": "Lý Thánh Tông",
+        "C": "Lý Thái Tông",
+        "D": "Lý Nhân Tông"
+      },
+      "correct": "C",
+      "explanation": "Lý Thái Tông (1028-1054) đã cho xây dựng chùa Một Cột (chùa Diên Hựu) vào năm 1049, một kiệt tác kiến trúc độc đáo của Việt Nam.",
+      "difficulty": "hard",
+      "category": "ancient"
+    },
+    {
+      "id": 14,
+      "question": "Cuộc cải cách Duy Tân diễn ra vào thời kỳ nào?",
+      "options": {
+        "A": "Thời Lê Sơ",
+        "B": "Thời Tây Sơn",
+        "C": "Cuối thế kỷ 19 - đầu thế kỷ 20",
+        "D": "Sau Cách mạng Tháng Tám"
+      },
+      "correct": "C",
+      "explanation": "Phong trào Duy Tân (Cải cách) diễn ra cuối thế kỷ 19 - đầu thế kỷ 20, với các nhà cải cách như Phan Bội Châu, Phan Chu Trinh đấu tranh cho độc lập dân tộc.",
+      "difficulty": "hard",
+      "category": "modern"
+    },
+    {
+      "id": 15,
+      "question": "Ai là người viết 'Bình Ngô đại cáo'?",
+      "options": {
+        "A": "Nguyễn Trãi",
+        "B": "Nguyễn Du",
+        "C": "Nguyễn Bỉnh Khiêm",
+        "D": "Hồ Xuân Hương"
+      },
+      "correct": "A",
+      "explanation": "Nguyễn Trãi viết 'Bình Ngô đại cáo' (1428) sau khi Lê Lợi đánh thắng quân Minh, tuyên bố độc lập của đất nước, được UNESCO công nhận là Di sản tư liệu thế giới.",
+      "difficulty": "medium",
+      "category": "ancient"
+    },
+    {
+      "id": 16,
+      "question": "Thủ đô Thăng Long được dời về vào năm nào?",
+      "options": {
+        "A": "939",
+        "B": "1009",
+        "C": "1010",
+        "D": "1054"
+      },
+      "correct": "C",
+      "explanation": "Năm 1010, vua Lý Thái Tổ dời đô từ Hoa Lư về Đại La và đổi tên thành Thăng Long. Đây là sự kiện quan trọng trong lịch sử Việt Nam.",
+      "difficulty": "medium",
+      "category": "ancient"
+    },
+    {
+      "id": 17,
+      "question": "Khởi nghĩa nào đánh dấu sự kết thúc của chế độ phong kiến ở Việt Nam?",
+      "options": {
+        "A": "Khởi nghĩa Lam Sơn",
+        "B": "Khởi nghĩa Tây Sơn",
+        "C": "Cách mạng Tháng Tám 1945",
+        "D": "Khởi nghĩa Yên Bái"
+      },
+      "correct": "C",
+      "explanation": "Cách mạng Tháng Tám 1945 thành công đã lật đổ chế độ phong kiến và thực dân, lập nên nước Việt Nam Dân chủ Cộng hòa - nhà nước công nông đầu tiên ở Đông Nam Á.",
+      "difficulty": "easy",
+      "category": "modern"
+    },
+    {
+      "id": 18,
+      "question": "Trần Quốc Tuấn là tên thật của anh hùng nào?",
+      "options": {
+        "A": "Trần Hưng Đạo",
+        "B": "Trần Quang Khải",
+        "C": "Trần Nhật Duật",
+        "D": "Trần Khánh Dư"
+      },
+      "correct": "A",
+      "explanation": "Trần Quốc Tuấn (1228-1300) là tên thật của Hưng Đạo Vương Trần Hưng Đạo, vị tướng tài ba đã ba lần đánh thắng quân Nguyên-Mông xâm lược.",
+      "difficulty": "hard",
+      "category": "ancient"
+    },
+    {
+      "id": 19,
+      "question": "Chiến dịch nào được coi là 'chiến dịch quyết định, quyết thắng' của cuộc kháng chiến chống Mỹ?",
+      "options": {
+        "A": "Chiến dịch Điện Biên Phủ",
+        "B": "Chiến dịch Hồ Chí Minh",
+        "C": "Tổng tiến công Tết Mậu Thân",
+        "D": "Chiến dịch Trường Sơn"
+      },
+      "correct": "B",
+      "explanation": "Chiến dịch Hồ Chí Minh (từ 26/4 đến 30/4/1975) là chiến dịch quyết định, giải phóng hoàn toàn miền Nam, thống nhất đất nước.",
+      "difficulty": "medium",
+      "category": "modern"
+    },
+    {
+      "id": 20,
+      "question": "Đảng Cộng sản Việt Nam được thành lập vào ngày nào?",
+      "options": {
+        "A": "19/5/1890",
+        "B": "3/2/1930",
+        "C": "19/8/1945",
+        "D": "2/9/1945"
+      },
+      "correct": "B",
+      "explanation": "Đảng Cộng sản Việt Nam (lúc đầu tên là Đảng Cộng sản Đông Dương) được thành lập ngày 3/2/1930 tại Hương Cảng do Nguyễn Ái Quốc (Hồ Chí Minh) chủ trì.",
+      "difficulty": "medium",
+      "category": "modern"
+    }
+  ]
+}

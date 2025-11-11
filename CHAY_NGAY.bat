@@ -4,7 +4,7 @@ color 0A
 
 echo.
 echo ╔═══════════════════════════════════════════════════════╗
-echo ║    🚀 AI TIME TRAVELER - CHẠY APP SIÊU DỄ           ║
+echo ║    🚀 VIỆT KÝ SỬ - CHẠY APP SIÊU DỄ           ║
 echo ╚═══════════════════════════════════════════════════════╝
 echo.
 

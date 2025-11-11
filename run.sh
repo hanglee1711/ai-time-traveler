@@ -1,7 +1,7 @@
-#!/bin/bash
+﻿#!/bin/bash
 
 echo "================================================"
-echo "    AI Time Traveler - Starting Application"
+echo "    Việt Sử Ký - Starting Application"
 echo "================================================"
 echo ""
 
@@ -50,7 +50,7 @@ fi
 # Run Streamlit
 echo ""
 echo "================================================"
-echo "    Starting AI Time Traveler..."
+echo "    Starting Việt Sử Ký..."
 echo "    App will open at: http://localhost:8501"
 echo "================================================"
 echo ""

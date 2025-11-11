@@ -1,0 +1,546 @@
+{
+  "title": "Quiz Lịch Sử Việt Nam - Theo Chủ Đề",
+  "description": "Bộ câu hỏi phân loại theo 8 chủ đề lịch sử",
+  "topics": {
+    "dynasty": {
+      "name": "Triều Đại & Nhà Nước",
+      "icon": "👑",
+      "color": "#D4AF37",
+      "description": "Các triều đại phong kiến và nhà nước Việt Nam"
+    },
+    "war": {
+      "name": "Chiến Tranh & Kháng Chiến",
+      "icon": "⚔️",
+      "color": "#FF4444",
+      "description": "Các cuộc chiến tranh và kháng chiến chống xâm lược"
+    },
+    "figures": {
+      "name": "Nhân Vật Lịch Sử",
+      "icon": "🎭",
+      "color": "#00E0FF",
+      "description": "Các anh hùng dân tộc và nhân vật nổi tiếng"
+    },
+    "culture": {
+      "name": "Văn Hóa & Văn Học",
+      "icon": "📜",
+      "color": "#FFD700",
+      "description": "Di sản văn hóa và văn học Việt Nam"
+    },
+    "heritage": {
+      "name": "Di Sản & Di Tích",
+      "icon": "🏛️",
+      "color": "#B59762",
+      "description": "Di sản thế giới và di tích lịch sử"
+    },
+    "modern": {
+      "name": "Lịch Sử Cận Hiện Đại",
+      "icon": "🌟",
+      "color": "#4CAF50",
+      "description": "Từ thế kỷ 20 đến nay"
+    },
+    "geography": {
+      "name": "Địa Lý Lịch Sử",
+      "icon": "🗺️",
+      "color": "#9C27B0",
+      "description": "Địa danh và biến đổi lãnh thổ"
+    },
+    "mixed": {
+      "name": "Tổng Hợp",
+      "icon": "🎯",
+      "color": "#FF9800",
+      "description": "Câu hỏi tổng hợp tất cả chủ đề"
+    }
+  },
+  "questions": [
+    {
+      "id": 1,
+      "topic": "dynasty",
+      "question": "Nước Văn Lang được thành lập vào thời gian nào?",
+      "options": {
+        "A": "2879 TCN",
+        "B": "938 SCN",
+        "C": "1010 SCN",
+        "D": "1428 SCN"
+      },
+      "correct": "A",
+      "explanation": "Nước Văn Lang được dựng nên bởi Hùng Vương vào khoảng năm 2879 TCN, là quốc gia đầu tiên trong lịch sử Việt Nam.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "topic": "dynasty",
+      "question": "Triều đại nào tồn tại lâu nhất trong lịch sử Việt Nam?",
+      "options": {
+        "A": "Nhà Lý (215 năm)",
+        "B": "Nhà Trần (175 năm)",
+        "C": "Nhà Lê (361 năm)",
+        "D": "Nhà Nguyễn (143 năm)"
+      },
+      "correct": "C",
+      "explanation": "Nhà Lê (1428-1789) tồn tại 361 năm, là triều đại tồn tại lâu nhất, mặc dù có giai đoạn suy yếu và bị Mạc chiếm đoạt.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 3,
+      "topic": "dynasty",
+      "question": "Lý Thái Tổ dời đô về Thăng Long vào năm nào?",
+      "options": {
+        "A": "938",
+        "B": "1010",
+        "C": "1428",
+        "D": "1802"
+      },
+      "correct": "B",
+      "explanation": "Năm 1010, vua Lý Công Uẩn (Lý Thái Tổ) dời đô từ Hoa Lư về Đại La và đổi tên thành Thăng Long, mở ra thời kỳ phát triển rực rỡ.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 4,
+      "topic": "dynasty",
+      "question": "Ai là hoàng đế cuối cùng của Việt Nam?",
+      "options": {
+        "A": "Khải Định",
+        "B": "Duy Tân",
+        "C": "Bảo Đại",
+        "D": "Thành Thái"
+      },
+      "correct": "C",
+      "explanation": "Bảo Đại là hoàng đế cuối cùng của Việt Nam, thoái vị năm 1945 sau Cách mạng Tháng Tám.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 5,
+      "topic": "dynasty",
+      "question": "Bộ luật Hồng Đức được ban hành dưới triều đại nào?",
+      "options": {
+        "A": "Nhà Lý",
+        "B": "Nhà Trần",
+        "C": "Nhà Lê",
+        "D": "Nhà Nguyễn"
+      },
+      "correct": "C",
+      "explanation": "Bộ luật Hồng Đức được ban hành dưới triều Lê Thánh Tông (1460-1497), là bộ luật tiến bộ nhất thời phong kiến.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 6,
+      "topic": "war",
+      "question": "Trận Bạch Đằng năm 938 do ai chỉ huy?",
+      "options": {
+        "A": "Ngô Quyền",
+        "B": "Trần Hưng Đạo",
+        "C": "Lý Thường Kiệt",
+        "D": "Lê Lợi"
+      },
+      "correct": "A",
+      "explanation": "Ngô Quyền đã chỉ huy chiến thắng trong trận Bạch Đằng năm 938, đánh bại quân Nam Hán, chấm dứt hơn 1000 năm Bắc thuộc.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "topic": "war",
+      "question": "Trận Bạch Đằng lần thứ 3 năm 1288 đánh bại quân nào?",
+      "options": {
+        "A": "Quân Tống",
+        "B": "Quân Minh",
+        "C": "Quân Nguyên-Mông",
+        "D": "Quân Thanh"
+      },
+      "correct": "C",
+      "explanation": "Trận Bạch Đằng năm 1288 do Trần Hưng Đạo chỉ huy đã đánh bại quân Nguyên-Mông lần thứ ba.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 8,
+      "topic": "war",
+      "question": "Cuộc khởi nghĩa Lam Sơn do ai lãnh đạo?",
+      "options": {
+        "A": "Quang Trung",
+        "B": "Lê Lợi",
+        "C": "Nguyễn Huệ",
+        "D": "Trần Quốc Tuấn"
+      },
+      "correct": "B",
+      "explanation": "Lê Lợi đã lãnh đạo cuộc khởi nghĩa Lam Sơn (1418-1427) chống quân Minh xâm lược và thành lập triều đại nhà Hậu Lê.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 9,
+      "topic": "war",
+      "question": "Trận Ngọc Hồi - Đống Đa diễn ra vào năm nào?",
+      "options": {
+        "A": "1785",
+        "B": "1788",
+        "C": "1789",
+        "D": "1802"
+      },
+      "correct": "C",
+      "explanation": "Trận Ngọc Hồi - Đống Đa diễn ra đêm giao thừa Tết Kỷ Dậu (1789), do Quang Trung chỉ huy đánh bại 29 vạn quân Thanh.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 10,
+      "topic": "war",
+      "question": "Chiến dịch Điện Biên Phủ kết thúc vào ngày nào?",
+      "options": {
+        "A": "7/5/1954",
+        "B": "19/12/1946",
+        "C": "30/4/1975",
+        "D": "2/9/1945"
+      },
+      "correct": "A",
+      "explanation": "Chiến dịch Điện Biên Phủ kết thúc ngày 7/5/1954 với thắng lợi lịch sử, buộc Pháp ký Hiệp định Genève.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 11,
+      "topic": "figures",
+      "question": "Ai được mệnh danh là 'Hổ tướng'?",
+      "options": {
+        "A": "Lê Lợi",
+        "B": "Trần Hưng Đạo",
+        "C": "Nguyễn Huệ",
+        "D": "Lý Thường Kiệt"
+      },
+      "correct": "B",
+      "explanation": "Trần Hưng Đạo được mệnh danh là 'Hổ tướng' nhờ tài năng quân sự xuất chúng trong 3 lần đánh Nguyên-Mông.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 12,
+      "topic": "figures",
+      "question": "Bác Hồ đọc Tuyên ngôn Độc lập vào ngày nào?",
+      "options": {
+        "A": "19/8/1945",
+        "B": "2/9/1945",
+        "C": "30/4/1975",
+        "D": "7/5/1954"
+      },
+      "correct": "B",
+      "explanation": "Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập tại Quảng trường Ba Đình, Hà Nội ngày 2/9/1945.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "topic": "figures",
+      "question": "Ai là tác giả của 'Bình Ngô đại cáo'?",
+      "options": {
+        "A": "Lê Lợi",
+        "B": "Nguyễn Trãi",
+        "C": "Trần Hưng Đạo",
+        "D": "Nguyễn Bỉnh Khiêm"
+      },
+      "correct": "B",
+      "explanation": "Nguyễn Trãi là tác giả của 'Bình Ngô đại cáo', một văn bia tuyệt tác văn học và chính trị.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 14,
+      "topic": "figures",
+      "question": "Nhà thơ nào được gọi là 'Thi hào dân tộc'?",
+      "options": {
+        "A": "Hồ Xuân Hương",
+        "B": "Nguyễn Du",
+        "C": "Hàn Mạc Tử",
+        "D": "Cao Bá Quát"
+      },
+      "correct": "B",
+      "explanation": "Nguyễn Du được tôn vinh là 'Thi hào dân tộc' với kiệt tác Truyện Kiều.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 15,
+      "topic": "figures",
+      "question": "Nữ tướng nào lãnh đạo khởi nghĩa chống Triệu?",
+      "options": {
+        "A": "Bà Triệu",
+        "B": "Hai Bà Trưng",
+        "C": "Bùi Thị Xuân",
+        "D": "Võ Thị Sáu"
+      },
+      "correct": "B",
+      "explanation": "Hai Bà Trưng (Trưng Trắc và Trưng Nhị) lãnh đạo khởi nghĩa chống nhà Hán năm 40 SCN.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 16,
+      "topic": "culture",
+      "question": "'Truyện Kiều' có bao nhiêu câu?",
+      "options": {
+        "A": "2.000 câu",
+        "B": "3.000 câu",
+        "C": "3.254 câu",
+        "D": "4.000 câu"
+      },
+      "correct": "C",
+      "explanation": "'Truyện Kiều' của Nguyễn Du có 3.254 câu thơ lục bát, là kiệt tác văn học Việt Nam.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 17,
+      "topic": "culture",
+      "question": "Ca Huế được UNESCO công nhận là di sản vào năm nào?",
+      "options": {
+        "A": "1999",
+        "B": "2003",
+        "C": "2007",
+        "D": "2010"
+      },
+      "correct": "B",
+      "explanation": "Ca Huế được UNESCO công nhận là Di sản văn hóa phi vật thể đại diện của nhân loại năm 2003.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 18,
+      "topic": "culture",
+      "question": "Hội An đậm nét văn hóa của nước nào?",
+      "options": {
+        "A": "Nhật Bản và Trung Quốc",
+        "B": "Pháp và Nhật",
+        "C": "Trung Quốc và Ấn Độ",
+        "D": "Nhật và Hàn Quốc"
+      },
+      "correct": "A",
+      "explanation": "Hội An mang đậm nét văn hóa giao thoa giữa Nhật Bản và Trung Quốc từ thế kỷ 16-17.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 19,
+      "topic": "culture",
+      "question": "Nghệ thuật 'Đờn ca tài tử' thuộc vùng nào?",
+      "options": {
+        "A": "Miền Bắc",
+        "B": "Miền Trung",
+        "C": "Nam Bộ",
+        "D": "Tây Bắc"
+      },
+      "correct": "C",
+      "explanation": "Đờn ca tài tử là nghệ thuật âm nhạc dân gian truyền thống của vùng Nam Bộ.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 20,
+      "topic": "culture",
+      "question": "Trống đồng Đông Sơn nổi tiếng với hình vẽ nào?",
+      "options": {
+        "A": "Hình rùa",
+        "B": "Hình mặt trời tỏa sáng",
+        "C": "Hình rồng",
+        "D": "Hình phượng hoàng"
+      },
+      "correct": "B",
+      "explanation": "Trống đồng Đông Sơn nổi tiếng với họa tiết mặt trời tỏa sáng, biểu tượng của nền văn minh cổ.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 21,
+      "topic": "heritage",
+      "question": "Vịnh Hạ Long được UNESCO công nhận lần đầu năm nào?",
+      "options": {
+        "A": "1991",
+        "B": "1994",
+        "C": "2000",
+        "D": "2003"
+      },
+      "correct": "B",
+      "explanation": "Vịnh Hạ Long được UNESCO công nhận là Di sản thiên nhiên thế giới lần đầu năm 1994.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 22,
+      "topic": "heritage",
+      "question": "Cố đô Huế là di sản văn hóa hay thiên nhiên?",
+      "options": {
+        "A": "Di sản văn hóa",
+        "B": "Di sản thiên nhiên",
+        "C": "Di sản hỗn hợp",
+        "D": "Di sản phi vật thể"
+      },
+      "correct": "A",
+      "explanation": "Quần thể di tích Cố đô Huế được UNESCO công nhận là Di sản văn hóa thế giới năm 1993.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 23,
+      "topic": "heritage",
+      "question": "Đền Mỹ Sơn là di tích của nền văn minh nào?",
+      "options": {
+        "A": "Văn minh Óc Eo",
+        "B": "Văn minh Chăm Pa",
+        "C": "Văn minh Đông Sơn",
+        "D": "Văn minh Angkor"
+      },
+      "correct": "B",
+      "explanation": "Thánh địa Mỹ Sơn là quần thể đền tháp của vương quốc Chăm Pa, di sản văn hóa thế giới.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 24,
+      "topic": "heritage",
+      "question": "Phong Nha - Kẻ Bàng nổi tiếng với gì?",
+      "options": {
+        "A": "Rừng nguyên sinh",
+        "B": "Hệ thống hang động karst",
+        "C": "Đảo san hô",
+        "D": "Ruộng bậc thang"
+      },
+      "correct": "B",
+      "explanation": "Phong Nha - Kẻ Bàng nổi tiếng với hệ thống hang động karst lớn nhất thế giới, có hang Sơn Đoòng.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 25,
+      "topic": "heritage",
+      "question": "Bao nhiêu di sản văn hóa phi vật thể của VN được UNESCO công nhận?",
+      "options": {
+        "A": "10",
+        "B": "13",
+        "C": "15",
+        "D": "18"
+      },
+      "correct": "C",
+      "explanation": "Việt Nam hiện có 15 di sản văn hóa phi vật thể được UNESCO công nhận (tính đến 2023).",
+      "difficulty": "hard"
+    },
+    {
+      "id": 26,
+      "topic": "modern",
+      "question": "Việt Nam tuyên bố độc lập vào năm nào?",
+      "options": {
+        "A": "1945",
+        "B": "1954",
+        "C": "1975",
+        "D": "1976"
+      },
+      "correct": "A",
+      "explanation": "Việt Nam tuyên bố độc lập ngày 2/9/1945 sau Cách mạng Tháng Tám thành công.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 27,
+      "topic": "modern",
+      "question": "Việt Nam thống nhất đất nước vào ngày nào?",
+      "options": {
+        "A": "2/9/1945",
+        "B": "7/5/1954",
+        "C": "30/4/1975",
+        "D": "2/7/1976"
+      },
+      "correct": "C",
+      "explanation": "Miền Nam được hoàn toàn giải phóng ngày 30/4/1975, đất nước thống nhất.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 28,
+      "topic": "modern",
+      "question": "Việt Nam gia nhập ASEAN vào năm nào?",
+      "options": {
+        "A": "1986",
+        "B": "1995",
+        "C": "2000",
+        "D": "2007"
+      },
+      "correct": "B",
+      "explanation": "Việt Nam chính thức gia nhập ASEAN (Hiệp hội các quốc gia Đông Nam Á) vào năm 1995.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 29,
+      "topic": "modern",
+      "question": "Đổi mới kinh tế bắt đầu từ Đại hội Đảng nào?",
+      "options": {
+        "A": "Đại hội V (1982)",
+        "B": "Đại hội VI (1986)",
+        "C": "Đại hội VII (1991)",
+        "D": "Đại hội VIII (1996)"
+      },
+      "correct": "B",
+      "explanation": "Chính sách Đổi mới được khởi xướng tại Đại hội Đảng lần thứ VI năm 1986.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 30,
+      "topic": "modern",
+      "question": "Việt Nam gia nhập WTO vào năm nào?",
+      "options": {
+        "A": "2000",
+        "B": "2005",
+        "C": "2007",
+        "D": "2010"
+      },
+      "correct": "C",
+      "explanation": "Việt Nam chính thức trở thành thành viên của Tổ chức Thương mại Thế giới (WTO) vào năm 2007.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 31,
+      "topic": "geography",
+      "question": "Việt Nam có bao nhiêu tỉnh thành hiện nay?",
+      "options": {
+        "A": "58",
+        "B": "63",
+        "C": "68",
+        "D": "70"
+      },
+      "correct": "B",
+      "explanation": "Việt Nam hiện có 63 tỉnh thành, bao gồm 58 tỉnh và 5 thành phố trực thuộc Trung ương.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 32,
+      "topic": "geography",
+      "question": "Núi cao nhất Việt Nam là gì?",
+      "options": {
+        "A": "Phan Xi Păng",
+        "B": "Ngọc Linh",
+        "C": "Bạch Mã",
+        "D": "Tà Xùa"
+      },
+      "correct": "A",
+      "explanation": "Phan Xi Păng (3.143m) ở Lào Cai là đỉnh núi cao nhất Việt Nam và Đông Dương.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 33,
+      "topic": "geography",
+      "question": "Sông Hồng bắt nguồn từ đâu?",
+      "options": {
+        "A": "Tây Tạng (Trung Quốc)",
+        "B": "Vân Nam (Trung Quốc)",
+        "C": "Cao nguyên Lào",
+        "D": "Tây Nguyên Việt Nam"
+      },
+      "correct": "B",
+      "explanation": "Sông Hồng bắt nguồn từ tỉnh Vân Nam, Trung Quốc, chảy qua Việt Nam ra Biển Đông.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 34,
+      "topic": "geography",
+      "question": "Đất nước hình chữ S dài bao nhiêu km từ Bắc vào Nam?",
+      "options": {
+        "A": "1.200 km",
+        "B": "1.500 km",
+        "C": "1.650 km",
+        "D": "2.000 km"
+      },
+      "correct": "C",
+      "explanation": "Việt Nam trải dài khoảng 1.650 km từ Bắc vào Nam, hình chữ S đặc trưng.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 35,
+      "topic": "geography",
+      "question": "Việt Nam có bao nhiêu di sản thế giới UNESCO?",
+      "options": {
+        "A": "5",
+        "B": "8",
+        "C": "12",
+        "D": "15"
+      },
+      "correct": "B",
+      "explanation": "Việt Nam có 8 di sản thế giới UNESCO (5 văn hóa, 2 thiên nhiên, 1 hỗn hợp).",
+      "difficulty": "hard"
+    }
+  ]
+}

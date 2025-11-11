@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trò Chơi Premium - VIỆT KÝ SỬ</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .games-hero {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(0, 224, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 70%, rgba(255, 215, 0, 0.08) 0%, transparent 50%);
+        }
+
+        .games-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--gold), var(--electric-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .games-hero p {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin-bottom: 2rem;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3rem;
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .game-card-premium {
+            background: linear-gradient(135deg, rgba(15, 22, 40, 0.95) 0%, rgba(11, 15, 25, 0.95) 100%);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .game-card-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--electric-blue) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .game-card-premium:hover {
+            transform: translateY(-12px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.4);
+        }
+
+        .game-card-premium:hover::before {
+            opacity: 0.05;
+        }
+
+        .game-card-premium > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .game-header {
+            padding: 2.5rem 2rem 1.5rem;
+            text-align: center;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .game-icon-large {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            display: block;
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6));
+        }
+
+        .game-title-premium {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+        }
+
+        .game-subtitle {
+            font-size: 1rem;
+            color: var(--electric-blue);
+            font-weight: 600;
+        }
+
+        .game-content {
+            padding: 2rem;
+        }
+
+        .game-description-premium {
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .game-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem 0;
+        }
+
+        .game-features li {
+            padding: 0.75rem 0;
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .game-features li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .game-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            padding: 0.4rem 0.9rem;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .game-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid var(--gold);
+            border-radius: 25px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(0.8); }
+        }
+
+        .btn-play {
+            width: 100%;
+            padding: 1.1rem;
+            background: linear-gradient(135deg, var(--gold), var(--brass));
+            border: none;
+            border-radius: 14px;
+            color: var(--matte-black);
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-play:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-play:disabled {
+            background: linear-gradient(135deg, rgba(100, 100, 100, 0.5), rgba(80, 80, 80, 0.5));
+            color: rgba(255, 255, 255, 0.5);
+            cursor: not-allowed;
+        }
+
+        .btn-learn-more {
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            border: 2px solid var(--electric-blue);
+            border-radius: 14px;
+            color: var(--electric-blue);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 0.75rem;
+        }
+
+        .btn-learn-more:hover {
+            background: rgba(0, 224, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .coming-soon-banner {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(0, 224, 255, 0.2));
+            padding: 1rem;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border: 2px dashed var(--electric-blue);
+        }
+
+        .coming-soon-banner h4 {
+            color: var(--electric-blue);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .coming-soon-banner p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 4rem auto;
+            max-width: 600px;
+        }
+
+        @media (max-width: 768px) {
+            .games-hero h1 {
+                font-size: 2rem;
+            }
+
+            .games-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem 1rem;
+            }
+
+            .game-card-premium {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">⏳</span>
+                <span>VIỆT KÝ SỬ</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                <li><a href="chatbot.html" class="nav-link">Chatbot</a></li>
+                <li><a href="timeline.html" class="nav-link">Dòng thời gian</a></li>
+                <li><a href="map.html" class="nav-link">Bản đồ</a></li>
+                <li><a href="game.html" class="nav-link">Trò chơi cơ bản</a></li>
+                <li><a href="games-premium.html" class="nav-link active">Games Premium</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="games-hero">
+        <h1>🎮 Trò Chơi Premium</h1>
+        <p>
+            Ba trò chơi đẳng cấp cao với gameplay sâu sắc, đồ họa đẹp mắt,
+            và giá trị giáo dục vượt trội về lịch sử Việt Nam
+        </p>
+    </section>
+
+    <!-- GAMES GRID -->
+    <div class="games-grid">
+
+        <!-- GAME 1: CHIẾN THUẬT LỊCH SỬ -->
+        <div class="game-card-premium">
+            <div class="game-header">
+                <span class="game-icon-large">⚔️</span>
+                <h2 class="game-title-premium">Chiến Thuật Lịch Sử</h2>
+                <p class="game-subtitle">Turn-Based Strategy Game</p>
+            </div>
+
+            <div class="game-content">
+                <div class="game-status">
+                    <span class="status-dot"></span>
+                    Đang phát triển
+                </div>
+
+                <p class="game-description-premium">
+                    Tái hiện các trận đánh lịch sử nổi tiếng của Việt Nam.
+                    Lên kế hoạch chiến thuật, điều khiển quân đội, và giành chiến thắng
+                    bằng trí tuệ và chiến lược!
+                </p>
+
+                <div class="game-tags">
+                    <span class="tag">Strategy</span>
+                    <span class="tag">Turn-Based</span>
+                    <span class="tag">Historical</span>
+                    <span class="tag">Tactical</span>
+                </div>
+
+                <ul class="game-features">
+                    <li>
+                        <span class="feature-icon">🗺️</span>
+                        <span>12+ trận đánh lịch sử thực tế</span>
+                    </li>
+                    <li>
+                        <span class="feature-icon">🎯</span>
+                        <span>Hệ thống hex map với địa hình đa dạng</span>
+                    </li>
+                    <li>
+                        <span class="feature-icon">👥</span>
+                        <span>5 loại quân khác nhau với stats độc đáo</span>
+                    </li>
+                    <li>
+                        <span class="feature-icon">⚡</span>
+                        <span>Chiến thuật lịch sử đặc biệt (Cọc Bạch Đằng...)</span>
+                    </li>
+                    <li>
+                        <span class="feature-icon">📈</span>
+                        <span>Progression system với unlockables</span>
+                    </li>
+                </ul>
+
+                <div class="coming-soon-banner">
+                    <h4>🚀 Phiên bản Alpha sắp ra mắt</h4>
+                    <p>Trận Bạch Đằng 938 - Demo có thể chơi</p>
+                </div>
+
+                <button class="btn-play" disabled>
+                    🔒 Coming Soon - Q2 2025
+                </button>
+                <button class="btn-learn-more" onclick="window.open('GAME_DESIGN_DOCUMENT.md', '_blank')">
+                    📖 Xem chi tiết thiết kế
+                </button>
+            </div>
+        </div>
+
+        <!-- GAME 2: HÀNH TRÌNH ANH HÙNG -->
+        <div class="game-card-premium">
+            <div class="game-header">
+                <span class="game-icon-large">🗺️</span>
+                <h2 class="game-title-premium">Hành Trình Anh Hùng</h2>
+                <p class="game-subtitle">Interactive Story Adventure</p>
+            </div>
+
+            <div class="game-content">
+                <div class="game-status">
+                    <span class="status-dot"></span>
+                    Đang phát triển
+                </div>
+
+                <p class="game-description-premium">
+                    Theo chân các anh hùng dân tộc, trải nghiệm cuộc đời họ qua
+                    interactive story với choices matter. Mỗi quyết định của bạn
+                    sẽ tạo nên những kết thúc khác nhau!
+                </p>
+
+                <div class="game-tags">
+                    <span class="tag">Visual Novel</span>
+                    <span class="tag">Story-Rich</span>
+                    <span class="tag">Choices Matter</span>
+                    <span class="tag">Adventure</span>
+                </div>
+
+                <ul class="game-features">
+                    <li>
+                        <span class="feature-icon">📖</span>
+                        <span>3 chapters với nhân vật khác nhau</span>
+                    </li>
+                    <li>
+                        <span class="feature-icon">💭</span>
+                        <span>Hệ thống choice branching phức tạp</span>
+                    </li>
+                    <li>
+                        <span class="feature-icon">🎮</span>
+                        <span>Minigames xen kẽ trong storyline</span>
+                    </li>
+                    <li>
+                        <span class="feature-icon">❤️</span>
+                        <span>Relationship system với NPCs</span>
+                    </li>
+                    <li>
+                        <span class="feature-icon">🌟</span>
+                        <span>Multiple endings (Good/Bad/True)</span>
+                    </li>
+                </ul>
+
+                <div class="coming-soon-banner">
+                    <h4>✨ Chapter 1 đang được viết</h4>
+                    <p>Hai Bà Trưng - Khởi Nghĩa Vì Dân</p>
+                </div>
+
+                <button class="btn-play" disabled>
+                    🔒 Coming Soon - Q3 2025
+                </button>
+                <button class="btn-learn-more" onclick="window.open('GAME_DESIGN_DOCUMENT.md', '_blank')">
+                    📖 Xem chi tiết thiết kế
+                </button>
+            </div>
+        </div>
+
+        <!-- GAME 3: ĐẤU TRÍ LỊCH SỬ -->
+        <div class="game-card-premium">
+            <div class="game-header">
+                <span class="game-icon-large">🎴</span>
+                <h2 class="game-title-premium">Đấu Trí Lịch Sử</h2>
+                <p class="game-subtitle">Quiz Battle Arena</p>
+            </div>
+
+            <div class="game-content">
+                <div class="game-status">
+                    <span class="status-dot"></span>
+                    Ưu tiên cao - MVP sớm nhất
+                </div>
+
+                <p class="game-description-premium">
+                    Quiz battle 1v1 với mechanics như card game! Trả lời đúng nhanh,
+                    sử dụng thẻ bài chiến thuật, và đánh bại đối thủ trong trận đấu
+                    tri thức kịch tính!
+                </p>
+
+                <div class="game-tags">
+                    <span class="tag">Quiz</span>
+                    <span class="tag">PvP</span>
+                    <span class="tag">Card Game</span>
+                    <span class="tag">Competitive</span>
+                </div>
+
+                <ul class="game-features">
+                    <li>
+                        <span class="feature-icon">⚡</span>
+                        <span>1v1 real-time quiz battles</span>
+                    </li>
+                    <li>
+                        <span class="feature-icon">🎴</span>
+                        <span>30+ thẻ bài chiến thuật độc đáo</span>
+                    </li>
+                    <li>
+                        <span class="feature-icon">📚</span>
+                        <span>500+ câu hỏi chia theo 8 categories</span>
+                    </li>
+                    <li>
+                        <span class="feature-icon">🏆</span>
+                        <span>Ranked mode với 6 tiers</span>
+                    </li>
+                    <li>
+                        <span class="feature-icon">🎁</span>
+                        <span>Deck building & card collection</span>
+                    </li>
+                </ul>
+
+                <div class="coming-soon-banner">
+                    <h4>🎉 MVP sắp hoàn thành</h4>
+                    <p>vs AI mode + 100 câu hỏi + 10 thẻ bài cơ bản</p>
+                </div>
+
+                <button class="btn-play" disabled>
+                    🔒 Beta Testing - Q1 2025
+                </button>
+                <button class="btn-learn-more" onclick="window.open('GAME_DESIGN_DOCUMENT.md', '_blank')">
+                    📖 Xem chi tiết thiết kế
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- INFO SECTION -->
+    <section style="max-width: 1000px; margin: 0 auto 4rem; padding: 0 2rem; text-align: center;">
+        <h2 class="section-title">💎 Tại sao chúng tôi tạo Games Premium?</h2>
+        <p style="color: var(--text-gray); font-size: 1.1rem; line-height: 1.8; margin-top: 1.5rem;">
+            Chúng tôi tin rằng học lịch sử không chỉ qua sách vở. Ba game trên được thiết kế
+            với mục tiêu mang lại <strong style="color: var(--gold);">trải nghiệm học tập sâu sắc</strong>
+            thông qua gameplay hấp dẫn. Mỗi game nhắm đến một phong cách chơi khác nhau:
+            <strong style="color: var(--electric-blue);">chiến thuật, kể chuyện, và cạnh tranh</strong>
+            - đảm bảo có game phù hợp cho mọi người!
+        </p>
+
+        <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-top: 3rem;">
+            <div style="flex: 1; min-width: 250px; padding: 1.5rem; background: rgba(212, 175, 55, 0.05); border-radius: 16px; border: 1px solid rgba(212, 175, 55, 0.2);">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎯</div>
+                <h3 style="color: var(--gold); margin-bottom: 0.75rem;">Gameplay Sâu</h3>
+                <p style="color: var(--text-gray); font-size: 0.95rem;">Mechanics phức tạp, nhiều tầng depth cho người chơi khám phá</p>
+            </div>
+
+            <div style="flex: 1; min-width: 250px; padding: 1.5rem; background: rgba(0, 224, 255, 0.05); border-radius: 16px; border: 1px solid rgba(0, 224, 255, 0.2);">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem;">📚</div>
+                <h3 style="color: var(--electric-blue); margin-bottom: 0.75rem;">Giáo Dục Cao</h3>
+                <p style="color: var(--text-gray); font-size: 0.95rem;">Nội dung lịch sử chính xác, được research kỹ lưỡng</p>
+            </div>
+
+            <div style="flex: 1; min-width: 250px; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎨</div>
+                <h3 style="color: var(--text-white); margin-bottom: 0.75rem;">Polish Cao</h3>
+                <p style="color: var(--text-gray); font-size: 0.95rem;">UI/UX đẹp, animations mượt, sound design chất lượng</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 3rem;">
+            <a href="GAME_DESIGN_DOCUMENT.md" target="_blank" class="btn btn-gold" style="display: inline-block; padding: 1.2rem 2.5rem; font-size: 1.1rem;">
+                📄 Đọc Game Design Document đầy đủ
+            </a>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

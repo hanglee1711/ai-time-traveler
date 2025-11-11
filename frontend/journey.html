@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hành Trình Của Tôi - VIỆT KÝ SỬ</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/journey.css">
+    <link rel="stylesheet" href="css/user-dropdown.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">⏳</span>
+                <span>VIỆT KÝ SỬ</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                <li><a href="chatbot.html" class="nav-link">Chatbot</a></li>
+                <li><a href="timeline.html" class="nav-link">Dòng thời gian</a></li>
+                <li><a href="map.html" class="nav-link">Bản đồ</a></li>
+                <li><a href="game.html" class="nav-link">Trò chơi</a></li>
+                <li><a href="journey.html" class="nav-link active">Hành trình của tôi</a></li>
+                <li class="auth-login-btn"><a href="login.html" class="nav-link btn-gold" style="padding: 0.5rem 1.5rem;">Đăng nhập</a></li>
+                <li class="auth-register-btn"><a href="register.html" class="nav-link" style="padding: 0.5rem 1.5rem;">Đăng ký</a></li>
+                <li class="auth-user-info" style="display: none;">
+                    <span class="nav-link" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem;">
+                        <span class="auth-user-avatar">👤</span>
+                        <span class="auth-user-name">User</span>
+                    </span>
+                </li>
+                <li class="auth-logout-btn" style="display: none;"><a href="#" class="nav-link btn-gold" style="padding: 0.5rem 1.5rem;">Đăng xuất</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="journey-container">
+        <h1 class="section-title"> Hành Trình Khám Phá Của Tôi</h1>
+
+        <!-- Profile Section -->
+        <section class="profile-section">
+            <div class="profile-card card">
+                <div class="profile-avatar" id="user-avatar">👤</div>
+                <div class="profile-info">
+                    <h2 id="username">Guest</h2>
+                    <div class="level-badge">
+                        <span class="level-icon">⭐</span>
+                        <span id="user-level">Level 1</span>
+                    </div>
+                    <div class="xp-bar">
+                        <div class="xp-fill" id="xp-fill"></div>
+                        <span class="xp-text" id="xp-text">0 / 100 XP</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stats-grid grid grid-4">
+                <div class="stat-box card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-value" id="figures-count">0</div>
+                    <div class="stat-label">Nhân vật đã gặp</div>
+                </div>
+                <div class="stat-box card">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-value" id="events-count">0</div>
+                    <div class="stat-label">Sự kiện đã khám phá</div>
+                </div>
+                <div class="stat-box card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-value" id="badges-count">0</div>
+                    <div class="stat-label">Huy hiệu</div>
+                </div>
+                <div class="stat-box card">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-value" id="quests-count">0</div>
+                    <div class="stat-label">Nhiệm vụ hoàn thành</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Badges Section -->
+        <section class="badges-section">
+            <h2 class="section-subtitle">🏆 Huy Hiệu Của Tôi</h2>
+            <div class="badges-grid" id="badges-grid">
+                <div class="empty-state">
+                    <p>Chưa có huy hiệu nào. Hãy khám phá để nhận&nbsp;huy&nbsp;hiệu!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visited Figures -->
+        <section class="figures-section">
+            <h2 class="section-subtitle">👥 Nhân Vật Đã Gặp</h2>
+            <div class="figures-grid" id="figures-grid">
+                <div class="empty-state">
+                    <p>Chưa trò chuyện với nhân vật nào. <a href="chatbot.html">Bắt&nbsp;đầu&nbsp;ngay!</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Explored Events -->
+        <section class="events-section">
+            <h2 class="section-subtitle">📅 Sự Kiện Đã Khám Phá</h2>
+            <div class="events-list" id="events-list">
+                <div class="empty-state">
+                    <p>Chưa khám phá sự kiện nào. <a href="timeline.html">Xem Timeline!</a></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/journey.js"></script>
+</body>
+</html>

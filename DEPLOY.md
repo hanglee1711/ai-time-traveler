@@ -1,4 +1,4 @@
-# 🚀 Hướng dẫn Deploy chi tiết
+﻿# 🚀 Hướng dẫn Deploy chi tiết
 
 ## 1. Deploy lên Streamlit Cloud (Miễn phí & Dễ nhất)
 
@@ -12,10 +12,10 @@ git init
 git add .
 
 # Commit
-git commit -m "Initial commit: AI Time Traveler"
+git commit -m "Initial commit: Việt Sử Ký"
 
 # Tạo repo mới trên GitHub và push
-git remote add origin https://github.com/YOUR_USERNAME/ai-time-traveler.git
+git remote add origin https://github.com/YOUR_USERNAME/viet-ky-su.git
 git branch -M main
 git push -u origin main
 ```
@@ -25,7 +25,7 @@ git push -u origin main
 1. Truy cập https://share.streamlit.io/
 2. Đăng nhập bằng GitHub account
 3. Click **"New app"**
-4. Chọn repository: `YOUR_USERNAME/ai-time-traveler`
+4. Chọn repository: `YOUR_USERNAME/viet-ky-su`
 5. Branch: `main`
 6. Main file path: `app.py`
 
@@ -65,7 +65,7 @@ https://your-app-name.streamlit.app
 1. Truy cập https://huggingface.co/spaces
 2. Click **Create new Space**
 3. Điền thông tin:
-   - Space name: `ai-time-traveler`
+   - Space name: `viet-ky-su`
    - License: MIT
    - SDK: **Streamlit**
    - Visibility: Public
@@ -76,8 +76,8 @@ https://your-app-name.streamlit.app
 
 ```bash
 # Clone space repository
-git clone https://huggingface.co/spaces/YOUR_USERNAME/ai-time-traveler
-cd ai-time-traveler
+git clone https://huggingface.co/spaces/YOUR_USERNAME/viet-ky-su
+cd viet-ky-su
 
 # Copy tất cả files từ MINDX vào đây
 # (Trừ .git folder)
@@ -130,7 +130,7 @@ Push lại, Space sẽ tự động rebuild!
 1. Truy cập https://railway.app/
 2. Sign up/Login với GitHub
 3. Click **New Project** > **Deploy from GitHub repo**
-4. Chọn repository `ai-time-traveler`
+4. Chọn repository `viet-ky-su`
 
 ### Bước 2: Cấu hình
 
@@ -156,7 +156,7 @@ python-3.11.0
 
 Railway sẽ tự động deploy. Domain sẽ có dạng:
 ```
-https://ai-time-traveler-production.up.railway.app/
+https://viet-ky-su-production.up.railway.app/
 ```
 
 ---
@@ -172,7 +172,7 @@ https://ai-time-traveler-production.up.railway.app/
 
 ### Bước 2: Cấu hình
 
-- **Name**: `ai-time-traveler`
+- **Name**: `viet-ky-su`
 - **Environment**: `Python 3`
 - **Build Command**: `pip install -r requirements.txt`
 - **Start Command**: `streamlit run app.py --server.port=$PORT --server.address=0.0.0.0 --server.headless=true`
@@ -188,7 +188,7 @@ Add:
 
 Click **Create Web Service**. Domain sẽ có dạng:
 ```
-https://ai-time-traveler.onrender.com
+https://viet-ky-su.onrender.com
 ```
 
 ---
@@ -216,13 +216,13 @@ CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0
 
 ```bash
 # Build image
-docker build -t ai-time-traveler .
+docker build -t viet-ky-su .
 
 # Run container
 docker run -p 8501:8501 \
   -e OPENAI_API_KEY=sk-your-key \
   -e AI_PROVIDER=openai \
-  ai-time-traveler
+  viet-ky-su
 ```
 
 Truy cập: http://localhost:8501

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đấu Trí Lịch Sử - VIỆT SỬ KÝ</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/quiz-battle.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">⏳</span>
+                <span>VIỆT SỬ KÝ</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                <li><a href="chatbot.html" class="nav-link">Chatbot</a></li>
+                <li><a href="timeline.html" class="nav-link">Dòng thời gian</a></li>
+                <li><a href="map.html" class="nav-link">Bản đồ</a></li>
+                <li><a href="game.html" class="nav-link active">Trò chơi</a></li>
+                <li><a href="journey.html" class="nav-link">Hành trình của tôi</a></li>
+                <li class="auth-login-btn"><a href="login.html" class="nav-link btn-gold" style="padding: 0.5rem 1.5rem;">Đăng nhập</a></li>
+                <li class="auth-register-btn"><a href="register.html" class="nav-link" style="padding: 0.5rem 1.5rem;">Đăng ký</a></li>
+                <li class="auth-user-info" style="display: none;">
+                    <span class="nav-link" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem;">
+                        <span class="auth-user-avatar">👤</span>
+                        <span class="auth-user-name">User</span>
+                    </span>
+                </li>
+                <li class="auth-logout-btn" style="display: none;"><a href="#" class="nav-link btn-gold" style="padding: 0.5rem 1.5rem;">Đăng xuất</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <div class="battle-container">
+        <!-- Sound Control -->
+        <div class="sound-control">
+            <button id="muteBtn" class="sound-btn" title="Toggle Mute">
+                🔊
+            </button>
+            <div class="volume-slider" id="volumeSlider" style="display: none;">
+                <label>Volume: <span id="volumeValue">70%</span></label>
+                <input type="range" id="masterVolume" min="0" max="100" value="70">
+            </div>
+        </div>
+
+        <!-- Start Screen -->
+        <div id="startScreen" class="start-screen">
+            <div class="start-content">
+                <h1 class="game-title">
+                    <span class="title-icon">⚔️</span>
+                    ĐẤU TRÍ LỊCH SỬ
+                </h1>
+                <p class="game-subtitle">Thử thách kiến thức trong đấu trường quiz battle!</p>
+
+                <div class="difficulty-selection">
+                    <h3>Chọn độ khó:</h3>
+                    <div class="difficulty-cards">
+                        <div class="difficulty-card" data-difficulty="easy">
+                            <div class="difficulty-icon">😊</div>
+                            <div class="difficulty-name">Dễ</div>
+                            <div class="difficulty-desc">
+                                AI 50% accuracy<br>
+                                Phù hợp người mới
+                            </div>
+                        </div>
+                        <div class="difficulty-card" data-difficulty="medium">
+                            <div class="difficulty-icon">😎</div>
+                            <div class="difficulty-name">Trung Bình</div>
+                            <div class="difficulty-desc">
+                                AI 70% accuracy<br>
+                                Thử thách cân bằng
+                            </div>
+                        </div>
+                        <div class="difficulty-card" data-difficulty="hard">
+                            <div class="difficulty-icon">🔥</div>
+                            <div class="difficulty-name">Khó</div>
+                            <div class="difficulty-desc">
+                                AI 85% accuracy<br>
+                                Cho bậc thầy
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="startBattleBtn" class="btn-battle btn-primary" disabled>
+                    Bắt đầu trận đấu
+                </button>
+
+                <div class="game-rules">
+                    <h4>📜 Luật chơi:</h4>
+                    <ul>
+                        <li>Trả lời 10 câu hỏi lịch sử, cạnh tranh với AI</li>
+                        <li>Mỗi câu đúng: +10 điểm (dễ), +20 điểm (trung bình), +30 điểm (khó)</li>
+                        <li>Trả lời nhanh để được điểm thưởng thêm</li>
+                        <li>Sử dụng thẻ bài để hỗ trợ hoặc tấn công đối thủ</li>
+                        <li>Mỗi lượt +1 năng lượng (max 3) để dùng thẻ</li>
+                        <li>Khi đối thủ trả lời sai, thẻ tấn công gây sát thương</li>
+                        <li>Chiến thắng khi hạ gục đối thủ hoặc điểm cao hơn sau 10 vòng</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Battle Arena -->
+        <div id="battleArena" class="battle-arena" style="display: none;">
+            <!-- Opponent Area (Top) -->
+            <div class="player-area opponent-area">
+                <div class="player-info">
+                    <div class="player-avatar opponent-avatar">🤖</div>
+                    <div class="player-details">
+                        <div class="player-name">AI Đối Thủ</div>
+                        <div class="player-stats">
+                            <div class="stat-bar">
+                                <div class="stat-label">HP</div>
+                                <div class="hp-bar">
+                                    <div id="opponentHpFill" class="hp-fill" style="width: 100%">
+                                        <span id="opponentHpText">100/100</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stat-row">
+                                <div class="stat-item">
+                                    <span class="stat-icon">⚡</span>
+                                    <span id="opponentEnergy">0</span>/3
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-icon">🛡️</span>
+                                    <span id="opponentShield">0</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-icon">⭐</span>
+                                    <span id="opponentScore">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="opponent-hand">
+                    <div class="card-back">?</div>
+                    <div class="card-back">?</div>
+                    <div class="card-back">?</div>
+                </div>
+            </div>
+
+            <!-- Battle Field (Center) -->
+            <div class="battle-field">
+                <!-- Turn Indicator -->
+                <div class="turn-indicator">
+                    <div class="turn-number">Turn <span id="turnNumber">1</span>/10</div>
+                </div>
+
+                <!-- Question Card -->
+                <div class="question-battle-card">
+                    <div class="question-header">
+                        <span id="questionCategory" class="question-category">📜 Triều Đại</span>
+                        <span id="questionDifficulty" class="question-difficulty">Trung bình</span>
+                    </div>
+
+                    <div id="questionText" class="question-text">
+                        Đang tải câu hỏi...
+                    </div>
+
+                    <div class="timer-container">
+                        <div class="timer-label">Thời gian:</div>
+                        <div class="timer-bar">
+                            <div id="timerFill" class="timer-fill" style="width: 100%"></div>
+                        </div>
+                        <div id="timerText" class="timer-text">30s</div>
+                    </div>
+
+                    <!-- Answer Options -->
+                    <div id="answersContainer" class="answers-grid">
+                        <!-- Answers will be loaded by JS -->
+                    </div>
+
+                    <!-- Explanation Box -->
+                    <div id="explanationBox" class="explanation-box" style="display: none;">
+                        <div class="explanation-title">💡 Giải thích</div>
+                        <div id="explanationText" class="explanation-text"></div>
+                    </div>
+
+                    <!-- Action Button -->
+                    <div class="question-actions">
+                        <button id="nextTurnBtn" class="btn-battle btn-primary" style="display: none;">
+                            Lượt tiếp theo →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Effects Display -->
+                <div id="effectsDisplay" class="effects-display" style="display: none;">
+                    <!-- Effects messages will appear here -->
+                </div>
+            </div>
+
+            <!-- Player Area (Bottom) -->
+            <div class="player-area player-area-self">
+                <div class="player-hand" id="playerHand">
+                    <!-- Cards will be loaded by JS -->
+                </div>
+
+                <div class="player-info">
+                    <div class="player-avatar player-avatar-self">👤</div>
+                    <div class="player-details">
+                        <div class="player-name">Bạn</div>
+                        <div class="player-stats">
+                            <div class="stat-bar">
+                                <div class="stat-label">HP</div>
+                                <div class="hp-bar">
+                                    <div id="playerHpFill" class="hp-fill player-hp" style="width: 100%">
+                                        <span id="playerHpText">100/100</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stat-row">
+                                <div class="stat-item">
+                                    <span class="stat-icon">⚡</span>
+                                    <span id="playerEnergy">0</span>/3
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-icon">🛡️</span>
+                                    <span id="playerShield">0</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-icon">⭐</span>
+                                    <span id="playerScore">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="gameOverScreen" class="game-over-screen" style="display: none;">
+            <div class="game-over-content">
+                <div id="victoryStatus" class="victory-status">
+                    <div class="victory-icon">🏆</div>
+                    <div class="victory-text">Chiến Thắng!</div>
+                </div>
+
+                <div class="final-stats">
+                    <div class="final-stat-card player-final">
+                        <h3>👤 Bạn</h3>
+                        <div class="final-stat-grid">
+                            <div class="final-stat-item">
+                                <div class="final-stat-value" id="finalPlayerScore">0</div>
+                                <div class="final-stat-label">Điểm</div>
+                            </div>
+                            <div class="final-stat-item">
+                                <div class="final-stat-value" id="finalPlayerHP">0</div>
+                                <div class="final-stat-label">HP còn lại</div>
+                            </div>
+                            <div class="final-stat-item">
+                                <div class="final-stat-value" id="finalPlayerCorrect">0</div>
+                                <div class="final-stat-label">Câu đúng</div>
+                            </div>
+                            <div class="final-stat-item">
+                                <div class="final-stat-value" id="finalPlayerAccuracy">0%</div>
+                                <div class="final-stat-label">Độ chính xác</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="final-stat-card opponent-final">
+                        <h3>🤖 AI Đối Thủ</h3>
+                        <div class="final-stat-grid">
+                            <div class="final-stat-item">
+                                <div class="final-stat-value" id="finalOpponentScore">0</div>
+                                <div class="final-stat-label">Điểm</div>
+                            </div>
+                            <div class="final-stat-item">
+                                <div class="final-stat-value" id="finalOpponentHP">0</div>
+                                <div class="final-stat-label">HP còn lại</div>
+                            </div>
+                            <div class="final-stat-item">
+                                <div class="final-stat-value" id="finalOpponentCorrect">0</div>
+                                <div class="final-stat-label">Câu đúng</div>
+                            </div>
+                            <div class="final-stat-item">
+                                <div class="final-stat-value">AI</div>
+                                <div class="final-stat-label">Đối thủ</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="xp-reward">
+                    <div class="xp-icon">✨</div>
+                    <div class="xp-text">
+                        <div class="xp-amount">+<span id="xpEarned">0</span> XP</div>
+                        <div class="xp-label">Kinh nghiệm nhận được</div>
+                    </div>
+                </div>
+
+                <div class="game-over-actions">
+                    <button id="playAgainBtn" class="btn-battle btn-primary">
+                        🔄 Chơi lại
+                    </button>
+                    <button id="backToMenuBtn" class="btn-battle btn-secondary">
+                        📋 Về menu game
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Detail Modal -->
+        <div id="cardModal" class="card-modal" style="display: none;">
+            <div class="card-modal-overlay"></div>
+            <div class="card-modal-content">
+                <button class="card-modal-close">×</button>
+                <div id="cardDetail">
+                    <!-- Card details will be loaded here -->
+                </div>
+                <button id="useCardBtn" class="btn-battle btn-primary">
+                    Sử dụng thẻ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/auth.js"></script>
+    <script src="js/animation_engine.js"></script>
+    <script src="js/sound_manager.js"></script>
+    <script src="js/smart_ai.js"></script>
+    <script src="js/quiz_battle_engine.js"></script>
+    <script src="js/quiz-battle.js"></script>
+    <script src="js/main.js"></script>
+
+    <style>
+        @keyframes slideInRight {
+            from { transform: translateX(400px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOutRight {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(400px); opacity: 0; }
+        }
+    </style>
+</body>
+</html>
