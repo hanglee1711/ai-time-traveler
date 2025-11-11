@@ -97,6 +97,12 @@ def index():
     """Serve main homepage"""
     return send_from_directory(str(base_dir / 'frontend'), 'index.html')
 
+@app.route('/index.html')
+def index_html():
+    """Redirect /index.html to / for compatibility"""
+    from flask import redirect, url_for
+    return redirect(url_for('index'))
+
 @app.route('/chatbot.html')
 def chatbot():
     """Serve chatbot page"""
