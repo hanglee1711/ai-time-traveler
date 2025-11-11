@@ -38,16 +38,49 @@ from backend.api_protection import get_protection
 
 # Initialize Flask app
 app = Flask(__name__)
+
+# Base directory - needed for paths
+base_dir = Path(__file__).parent.parent
+
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'viet-su-ky-secret-key')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + str(Path(__file__).parent.parent / 'vietsuky.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + str(base_dir / 'vietsuky.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize extensions
 CORS(app)  # Enable CORS for frontend
 db.init_app(app)
 
+# Initialize database tables and create test user
+with app.app_context():
+    # Create all database tables
+    db.create_all()
+    print("✓ Database tables created successfully")
+
+    # Create test user if not exists
+    try:
+        existing_user = User.query.filter_by(username='hangtri1711').first()
+        if not existing_user:
+            user = User(
+                username='hangtri1711',
+                email='hangtri1711@gmail.com',
+                display_name='Hằng Tri'
+            )
+            user.set_password('Hangtri1711@')
+            db.session.add(user)
+            db.session.flush()
+
+            # Create game stats
+            game_stats = GameStats(user_id=user.id)
+            db.session.add(game_stats)
+            db.session.commit()
+            print("✓ Test user 'hangtri1711' created successfully")
+        else:
+            print("✓ Test user 'hangtri1711' already exists")
+    except Exception as e:
+        print(f"⚠ Warning: Could not create test user: {e}")
+        db.session.rollback()
+
 # Initialize components
-base_dir = Path(__file__).parent.parent
 figures_path = base_dir / 'data' / 'historical_figures.json'
 events_path = base_dir / 'data' / 'historical_events.json'
 
