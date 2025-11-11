@@ -13,15 +13,20 @@ def get_env(key: str, default: str = None) -> str:
     Get environment variable from Streamlit secrets or os.environ
     Supports both local (.env) and Streamlit Cloud deployment
     """
+    # First try os.environ (works for Flask/Render and local)
+    env_value = os.getenv(key, default)
+    if env_value:
+        return env_value
+
+    # Then try Streamlit secrets (only for Streamlit deployment)
     try:
         import streamlit as st
-        # Try Streamlit secrets first (for Streamlit Cloud)
         if hasattr(st, 'secrets') and key in st.secrets:
             return st.secrets[key]
     except:
         pass
-    # Fall back to os.environ (for local development)
-    return os.getenv(key, default)
+
+    return default
 
 
 class AIHandler:
