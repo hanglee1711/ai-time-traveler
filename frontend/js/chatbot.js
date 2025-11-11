@@ -441,6 +441,36 @@ function detectFigureFromMessage(message) {
 }
 
 /**
+ * Create message element (for streaming)
+ */
+function createMessageElement(role, content = '') {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${role}`;
+
+    const time = new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
+
+    // Generate avatar HTML
+    let avatarHtml;
+    if (role === 'user') {
+        avatarHtml = '👤';
+    } else if (currentFigure && currentFigure.avatar) {
+        avatarHtml = `<img src="${currentFigure.avatar}" alt="${escapeHtml(currentFigure.name)}" class="avatar-img" onerror="this.style.display='none'; this.parentElement.innerHTML='${currentFigure.icon || '🤖'}';">`;
+    } else {
+        avatarHtml = currentFigure ? (currentFigure.icon || '🤖') : '🤖';
+    }
+
+    messageDiv.innerHTML = `
+        <div class="message-avatar">${avatarHtml}</div>
+        <div class="message-content">
+            <div class="message-bubble">${escapeHtml(content)}</div>
+            <div class="message-time">${time}</div>
+        </div>
+    `;
+
+    return messageDiv;
+}
+
+/**
  * Send message - UPGRADED: Auto-detect and roleplay without needing to select figure first
  */
 async function sendMessage() {
@@ -496,67 +526,100 @@ async function sendMessage() {
     const typingId = showTypingIndicator();
 
     try {
-        console.log('📤 Sending message to API:', {
+        console.log('📤 Sending streaming message to API:', {
             message: message.substring(0, 50) + '...',
             figure: currentFigure ? currentFigure.name : 'none',
             provider: 'gemini'
         });
 
-        // Call API - let backend detect intent automatically
-        const response = await API.chat(message, currentFigure ? currentFigure.name : null);
-
-        console.log('📥 Received response from API:', {
-            figure: response?.figure,
-            messageLength: response?.message?.length,
-            hasMessage: !!response?.message
-        });
-
-        // Remove typing indicator
+        // Remove typing indicator first (we'll show real-time streaming instead)
         removeTypingIndicator(typingId);
 
-        // Check if API returned a figure name (auto-detected)
-        if (response && response.figure && response.figure !== currentFigure?.name) {
-            console.log('🔍 Backend detected figure:', response.figure);
-            // Backend detected a new figure! Update UI automatically
-            const detectedFigure = figures.find(f => f.name === response.figure);
-            if (detectedFigure) {
-                currentFigure = detectedFigure;
-                showFigureProfile(detectedFigure);
-                quickActions.style.display = 'flex';
+        // Create AI message element for streaming
+        let assistantMessageElement = null;
+        let streamedText = '';
+        let streamMetadata = null;
 
-                // Update sidebar active state
-                document.querySelectorAll('.figure-item').forEach(item => {
-                    const itemName = item.querySelector('.figure-name').textContent;
-                    if (itemName === response.figure) {
-                        item.classList.add('active');
-                        item.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    } else {
-                        item.classList.remove('active');
+        // Call streaming API
+        await API.chatStream(
+            message,
+            currentFigure ? currentFigure.name : null,
+            null,
+            // onChunk callback
+            (chunk) => {
+                if (chunk.type === 'metadata') {
+                    streamMetadata = chunk.data;
+
+                    // Check if backend detected a new figure
+                    if (streamMetadata.figure && streamMetadata.figure !== currentFigure?.name) {
+                        console.log('🔍 Backend detected figure:', streamMetadata.figure);
+                        const detectedFigure = figures.find(f => f.name === streamMetadata.figure);
+                        if (detectedFigure) {
+                            currentFigure = detectedFigure;
+                            showFigureProfile(detectedFigure);
+                            quickActions.style.display = 'flex';
+
+                            // Update sidebar active state
+                            document.querySelectorAll('.figure-item').forEach(item => {
+                                const itemName = item.querySelector('.figure-name')?.textContent;
+                                if (itemName === streamMetadata.figure) {
+                                    item.classList.add('active');
+                                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                } else {
+                                    item.classList.remove('active');
+                                }
+                            });
+
+                            // Add XP for discovering figure
+                            UserData.visitFigure(streamMetadata.figure);
+                            updateStatusBar();
+                        }
                     }
-                });
+                } else if (chunk.type === 'chunk') {
+                    streamedText += chunk.content;
 
-                // Add XP for discovering figure
-                UserData.visitFigure(response.figure);
-                updateStatusBar();
+                    // Create message element on first chunk
+                    if (!assistantMessageElement) {
+                        assistantMessageElement = createMessageElement('assistant', streamedText);
+                        chatMessages.appendChild(assistantMessageElement);
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    } else {
+                        // Update existing message element
+                        const bubbleElement = assistantMessageElement.querySelector('.message-bubble');
+                        if (bubbleElement) {
+                            bubbleElement.innerHTML = escapeHtml(streamedText);
+                            chatMessages.scrollTop = chatMessages.scrollHeight;
+                        }
+                    }
+                }
+            },
+            // onComplete callback
+            (metadata) => {
+                console.log('✅ Streaming completed');
+
+                // Track chat activity and add XP
+                if (currentFigure) {
+                    console.log('🎯 Adding XP for chat with', currentFigure.name);
+                    XPTracker.addXP(5, 'chat', { figure: currentFigure.name });
+                } else {
+                    console.log('🎯 Adding XP for general chat');
+                    XPTracker.addXP(5, 'chat', {});
+                }
+            },
+            // onError callback
+            (error) => {
+                console.error('❌ Streaming error:', error);
+
+                // Show error message if no content was streamed
+                if (!streamedText) {
+                    const fallbackResponse = currentFigure
+                        ? `Xin chào! Ta là ${currentFigure.name}. Xin lỗi, ta gặp chút vấn đề kỹ thuật. Hãy thử lại sau nhé!`
+                        : 'Xin lỗi, hệ thống đang gặp sự cố. Vui lòng thử lại sau!';
+                    addMessage('assistant', fallbackResponse);
+                }
             }
-        }
+        );
 
-        // Add AI response
-        if (response && response.message) {
-            console.log('✅ Adding AI message to chat');
-            addMessage('assistant', response.message);
-
-            // Track chat activity and add XP
-            if (currentFigure) {
-                console.log('🎯 Adding XP for chat with', currentFigure.name);
-                XPTracker.addXP(5, 'chat', { figure: currentFigure.name });
-            } else {
-                console.log('🎯 Adding XP for general chat');
-                XPTracker.addXP(5, 'chat', {});
-            }
-        } else {
-            throw new Error('Invalid response: no message received');
-        }
     } catch (error) {
         console.error('❌ Chat error:', error);
         removeTypingIndicator(typingId);

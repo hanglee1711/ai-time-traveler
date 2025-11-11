@@ -209,6 +209,69 @@ const API = {
         }
     },
 
+    // Send streaming chat message (Server-Sent Events)
+    chatStream: async function(message, figureName = null, year = null, onChunk, onComplete, onError) {
+        try {
+            const response = await fetch(`${API_BASE_URL}/chat/stream`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: message,
+                    figure: figureName,
+                    year: year,
+                    provider: 'gemini'
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('API request failed');
+            }
+
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let buffer = '';
+            let metadata = null;
+
+            while (true) {
+                const { done, value } = await reader.read();
+
+                if (done) break;
+
+                buffer += decoder.decode(value, { stream: true });
+                const lines = buffer.split('\n');
+
+                // Keep the last incomplete line in buffer
+                buffer = lines.pop() || '';
+
+                for (const line of lines) {
+                    if (line.startsWith('data: ')) {
+                        try {
+                            const data = JSON.parse(line.slice(6));
+
+                            if (data.type === 'metadata') {
+                                metadata = data;
+                                if (onChunk) onChunk({ type: 'metadata', data: metadata });
+                            } else if (data.type === 'chunk') {
+                                if (onChunk) onChunk({ type: 'chunk', content: data.content });
+                            } else if (data.type === 'done') {
+                                if (onComplete) onComplete(metadata);
+                            } else if (data.type === 'error') {
+                                if (onError) onError(data.error);
+                            }
+                        } catch (e) {
+                            console.error('Failed to parse SSE data:', e);
+                        }
+                    }
+                }
+            }
+        } catch (error) {
+            console.error('Chat Stream API error:', error);
+            if (onError) onError(error.message);
+        }
+    },
+
     // Get historical figures
     getFigures: async function() {
         try {

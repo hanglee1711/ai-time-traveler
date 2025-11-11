@@ -3,10 +3,11 @@ VIỆT SỬ KÝ - Backend API
 Flask server to handle frontend requests and connect with AI handlers
 """
 
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, Response
 from flask_cors import CORS
 import sys
 import os
+import json
 from pathlib import Path
 from datetime import datetime
 
@@ -54,7 +55,7 @@ db.init_app(app)
 with app.app_context():
     # Create all database tables
     db.create_all()
-    print("✓ Database tables created successfully")
+    print("[OK] Database tables created successfully")
 
     # Create test user if not exists
     try:
@@ -73,9 +74,9 @@ with app.app_context():
             game_stats = GameStats(user_id=user.id)
             db.session.add(game_stats)
             db.session.commit()
-            print("✓ Test user 'hangtri1711' created successfully")
+            print("[OK] Test user 'hangtri1711' created successfully")
         else:
-            print("✓ Test user 'hangtri1711' already exists")
+            print("[OK] Test user 'hangtri1711' already exists")
     except Exception as e:
         print(f"⚠ Warning: Could not create test user: {e}")
         db.session.rollback()
@@ -394,6 +395,125 @@ def chat():
         traceback.print_exc()
         print(f"=" * 60)
         return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/chat/stream', methods=['POST'])
+def chat_stream():
+    """
+    Handle streaming chat requests (Server-Sent Events)
+    Body: {
+        "message": str,
+        "figure": str (optional),
+        "year": int (optional),
+        "provider": str (optional, default: gemini)
+    }
+    """
+    def generate():
+        try:
+            data = request.json
+            user_message = data.get('message', '')
+            figure_name = data.get('figure')
+            year = data.get('year')
+            provider = data.get('provider', DEFAULT_PROVIDER)
+
+            if not user_message:
+                yield f"data: {json.dumps({'error': 'Message is required'})}\n\n"
+                return
+
+            # Get API protection instance
+            protection = get_protection()
+            protection.record_request()
+
+            # Get client IP for rate limiting
+            client_ip = request.remote_addr or 'unknown'
+
+            # Check rate limit
+            is_allowed, error_msg = protection.check_rate_limit(client_ip)
+            if not is_allowed:
+                yield f"data: {json.dumps({'error': error_msg, 'rate_limited': True})}\n\n"
+                return
+
+            # Initialize AI handler
+            global ai_handler
+            if ai_handler is None or ai_handler.provider != provider:
+                ai_handler = get_ai_handler(provider)
+
+            # Detect intent if figure/year not provided
+            if not figure_name and not year:
+                intent, data_detected = detector.detect(user_message)
+
+                if intent == 'figure':
+                    figure_name = data_detected.get('name')
+                elif intent == 'year':
+                    year = data_detected.get('year')
+
+            # Send metadata first (figure info and avatar)
+            avatar_url = None
+            if figure_name:
+                figure_data = detector.get_figure_by_name(figure_name)
+                avatar_url = get_avatar_for_figure(figure_name, figure_data if figure_data else None, use_initials=False)
+
+            # Send initial metadata
+            yield f"data: {json.dumps({'type': 'metadata', 'figure': figure_name, 'year': year, 'avatar': avatar_url})}\n\n"
+
+            # Generate streaming response based on context
+            if figure_name:
+                # Roleplay mode
+                figure_data = detector.get_figure_by_name(figure_name)
+
+                if figure_data:
+                    system_prompt = get_roleplay_prompt(figure_data)
+                else:
+                    system_prompt = get_unknown_figure_prompt(figure_name)
+
+                # Stream response chunks
+                for chunk in ai_handler.generate_response_stream(
+                    system_prompt=system_prompt,
+                    user_message=user_message,
+                    temperature=0.9,
+                    max_tokens=200
+                ):
+                    yield f"data: {json.dumps({'type': 'chunk', 'content': chunk})}\n\n"
+
+            elif year:
+                # Time travel mode
+                event_data = detector.get_event_by_year(year)
+                system_prompt = get_time_travel_prompt(year, event_data)
+
+                for chunk in ai_handler.generate_response_stream(
+                    system_prompt=system_prompt,
+                    user_message=user_message,
+                    temperature=0.9,
+                    max_tokens=200
+                ):
+                    yield f"data: {json.dumps({'type': 'chunk', 'content': chunk})}\n\n"
+
+            else:
+                # General mode
+                system_prompt = get_general_prompt()
+
+                for chunk in ai_handler.generate_response_stream(
+                    system_prompt=system_prompt,
+                    user_message=user_message,
+                    temperature=0.9,
+                    max_tokens=200
+                ):
+                    yield f"data: {json.dumps({'type': 'chunk', 'content': chunk})}\n\n"
+
+            # Send completion signal
+            yield f"data: {json.dumps({'type': 'done'})}\n\n"
+
+        except Exception as e:
+            import traceback
+            print(f"=" * 60)
+            print(f"ERROR in chat_stream endpoint:")
+            print(f"Error: {str(e)}")
+            print(f"Traceback:")
+            traceback.print_exc()
+            print(f"=" * 60)
+            yield f"data: {json.dumps({'type': 'error', 'error': str(e)})}\n\n"
+
+    return Response(generate(), mimetype='text/event-stream')
 
 
 @app.route('/api/stats', methods=['GET'])
@@ -1179,7 +1299,7 @@ if __name__ == '__main__':
     # Create database tables
     with app.app_context():
         db.create_all()
-        print("✓ Database tables created successfully")
+        print("[OK] Database tables created successfully")
 
     print("=" * 60)
     print("VIỆT SỬ KÝ Backend API")

@@ -202,6 +202,95 @@ class AIHandler:
         except Exception as e:
             return f"Lỗi khi gọi Llama API: {str(e)}"
 
+    def generate_response_stream(
+        self,
+        system_prompt: str,
+        user_message: str,
+        temperature: float = 0.8,
+        max_tokens: int = 1000
+    ):
+        """
+        Generate streaming response from AI (yields chunks)
+
+        Args:
+            system_prompt: System prompt to set context
+            user_message: User's message
+            temperature: Creativity level (0-1)
+            max_tokens: Maximum response length
+
+        Yields:
+            Text chunks as they arrive
+        """
+        if self.provider == "gemini":
+            yield from self._generate_gemini_stream(system_prompt, user_message, temperature, max_tokens)
+        elif self.provider == "openai":
+            yield from self._generate_openai_stream(system_prompt, user_message, temperature, max_tokens)
+        else:
+            # Fallback: for non-streaming providers, yield the complete response
+            response = self.generate_response(system_prompt, user_message, temperature, max_tokens)
+            yield response
+
+    def _generate_gemini_stream(
+        self,
+        system_prompt: str,
+        user_message: str,
+        temperature: float,
+        max_tokens: int
+    ):
+        """Generate streaming response using Google Gemini"""
+        try:
+            # Combine prompt and question
+            full_prompt = f"""{system_prompt}
+
+{user_message}"""
+
+            # Call Gemini API with streaming enabled
+            response = self.client.generate_content(full_prompt, stream=True)
+
+            # Yield each chunk as it arrives
+            for chunk in response:
+                if chunk.text:
+                    yield chunk.text
+
+        except Exception as e:
+            error_msg = str(e).lower()
+            print(f"[ERROR] Gemini Streaming API: {str(e)}")
+
+            # Provide helpful error messages
+            if "blocked" in error_msg or "safety" in error_msg:
+                yield "Xin lỗi, câu hỏi này có vấn đề với hệ thống. Hãy thử hỏi theo cách khác nhé!"
+            elif "quota" in error_msg or "limit" in error_msg:
+                yield "Xin lỗi, hệ thống đang quá tải. Vui lòng thử lại sau ít phút."
+            else:
+                yield "Xin lỗi, đang gặp chút vấn đề kỹ thuật. Hãy thử lại nhé!"
+
+    def _generate_openai_stream(
+        self,
+        system_prompt: str,
+        user_message: str,
+        temperature: float,
+        max_tokens: int
+    ):
+        """Generate streaming response using OpenAI"""
+        try:
+            stream = self.client.chat.completions.create(
+                model=self.model,
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_message}
+                ],
+                temperature=temperature,
+                max_tokens=max_tokens,
+                stream=True
+            )
+
+            for chunk in stream:
+                if chunk.choices[0].delta.content:
+                    yield chunk.choices[0].delta.content
+
+        except Exception as e:
+            yield f"Lỗi khi gọi OpenAI API: {str(e)}"
+
 
 def get_ai_handler(provider: Optional[str] = None) -> AIHandler:
     """
