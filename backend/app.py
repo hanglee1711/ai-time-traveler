@@ -239,10 +239,51 @@ def serve_background_music():
     """Serve background music"""
     return send_from_directory(str(base_dir / 'frontend'), 'background-music.mp3', mimetype='audio/mpeg')
 
-@app.route('/traditional-music-vietnam.mp3')
+@app.route('/music/traditional', methods=['GET'])
 def serve_traditional_music():
     """Serve traditional Vietnamese music"""
-    return send_from_directory(str(base_dir / 'frontend'), 'traditional-music-vietnam.mp3', mimetype='audio/mpeg')
+    from flask import send_file
+    print("[MUSIC] Route handler called!")
+    full_path = base_dir / 'frontend' / 'traditional-music-vietnam.mp3'
+    print(f"[MUSIC] Full path: {full_path}")
+    print(f"[MUSIC] Exists: {full_path.exists()}")
+
+    if not full_path.exists():
+        return "Music file not found", 404
+
+    return send_file(
+        str(full_path),
+        mimetype='audio/mpeg'
+    )
+
+# Original implementation commented for now
+# @app.route('/traditional-music-vietnam.mp3')
+# def serve_traditional_music():
+#     """Serve traditional Vietnamese music"""
+#     from flask import send_file
+#     try:
+#         full_path = base_dir / 'frontend' / 'traditional-music-vietnam.mp3'
+#
+#         print(f"[MUSIC] Request for traditional music")
+#         print(f"[MUSIC] Full path: {full_path}")
+#         print(f"[MUSIC] Exists: {full_path.exists()}")
+#
+#         if not full_path.exists():
+#             print(f"[MUSIC ERROR] File not found!")
+#             return "Music file not found", 404
+#
+#         print(f"[MUSIC] Serving file...")
+#         return send_file(
+#             str(full_path),
+#             mimetype='audio/mpeg',
+#             as_attachment=False,
+#             download_name='traditional-music-vietnam.mp3'
+#         )
+#     except Exception as e:
+#         print(f"[MUSIC ERROR] {e}")
+#         import traceback
+#         traceback.print_exc()
+#         return str(e), 500
 
 @app.route('/images/<path:filename>')
 def serve_images(filename):
