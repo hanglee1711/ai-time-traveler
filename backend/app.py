@@ -99,6 +99,36 @@ def journey():
     """Serve journey page"""
     return send_from_directory(str(base_dir / 'frontend'), 'journey.html')
 
+@app.route('/login.html')
+def login():
+    """Serve login page"""
+    return send_from_directory(str(base_dir / 'frontend'), 'login.html')
+
+@app.route('/register.html')
+def register():
+    """Serve register page"""
+    return send_from_directory(str(base_dir / 'frontend'), 'register.html')
+
+@app.route('/forgot-password.html')
+def forgot_password():
+    """Serve forgot password page"""
+    return send_from_directory(str(base_dir / 'frontend'), 'forgot-password.html')
+
+@app.route('/reset-password.html')
+def reset_password():
+    """Serve reset password page"""
+    return send_from_directory(str(base_dir / 'frontend'), 'reset-password.html')
+
+@app.route('/settings.html')
+def settings():
+    """Serve settings page"""
+    return send_from_directory(str(base_dir / 'frontend'), 'settings.html')
+
+@app.route('/games-premium.html')
+def games_premium():
+    """Serve premium games page"""
+    return send_from_directory(str(base_dir / 'frontend'), 'games-premium.html')
+
 @app.route('/quiz-battle.html')
 def quiz_battle():
     """Serve quiz battle game"""
