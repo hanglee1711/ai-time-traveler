@@ -9,7 +9,7 @@ class BackgroundMusicController {
         this.audio = null;
         this.isPlaying = false;
         this.volume = 0.3; // Default 30% volume
-        this.musicFile = '/traditional-music-vietnam.mp3';
+        this.musicFile = '/music/traditional'; // Updated route
         this.shouldAutoPlay = false; // Flag for first-time autoplay
 
         // Load saved state from localStorage
@@ -21,8 +21,8 @@ class BackgroundMusicController {
         // Create UI controls
         this.createMusicControl();
 
-        // DON'T auto-play here - browser will block it
-        // Will be triggered by user interaction (loading button click)
+        // TỰ ĐỘNG PHÁT NHẠC nếu người dùng đã bật nhạc trước đó
+        this.autoPlayIfNeeded();
     }
 
     initAudio() {
@@ -412,6 +412,26 @@ class BackgroundMusicController {
             volumeValue.textContent = `${Math.round(this.volume * 100)}%`;
         }
     }
+
+    autoPlayIfNeeded() {
+        // Kiểm tra xem người dùng đã cho phép autoplay chưa (đã click button ở trang chủ)
+        const hasInteracted = localStorage.getItem('musicUserInteracted');
+        const shouldBePlaying = localStorage.getItem('musicPlaying') === 'true';
+
+        console.log('🎵 Auto-play check:', { hasInteracted, shouldBePlaying });
+
+        if (hasInteracted === 'true' && shouldBePlaying) {
+            // Người dùng đã tương tác trước đó và nhạc đang bật
+            console.log('🎵 Attempting to auto-play music...');
+
+            // Đợi một chút để đảm bảo audio đã load
+            setTimeout(() => {
+                this.play();
+            }, 100);
+        } else {
+            console.log('ℹ️ Music will not auto-play (no prior interaction or music was paused)');
+        }
+    }
 }
 
 // Initialize on page load
@@ -441,5 +461,13 @@ document.addEventListener('visibilitychange', () => {
         musicController.audio.play().catch(err => {
             console.log('Could not resume music:', err);
         });
+    }
+});
+
+// Lưu vị trí nhạc trước khi chuyển trang để tiếp tục mượt mà
+window.addEventListener('beforeunload', () => {
+    if (musicController && musicController.audio && musicController.audio.currentTime > 0) {
+        localStorage.setItem('musicPosition', musicController.audio.currentTime);
+        console.log('💾 Saved music position before page unload:', musicController.audio.currentTime);
     }
 });

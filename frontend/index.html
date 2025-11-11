@@ -795,6 +795,11 @@
 
                     // QUAN TRỌNG: Auto-play background music NGAY LẬP TỨC khi click
                     // Phải gọi ngay trong user interaction để browser không block
+
+                    // Đánh dấu người dùng đã tương tác (cho phép autoplay ở các trang khác)
+                    localStorage.setItem('musicUserInteracted', 'true');
+                    console.log('✅ User interaction recorded for future autoplay');
+
                     if (window.MusicController) {
                         console.log('🎵 Starting background music...');
                         window.MusicController.play();
