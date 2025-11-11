@@ -1302,6 +1302,148 @@ def get_fallback_quiz_data():
     }
 
 
+# ==================== ERROR HANDLERS ====================
+
+@app.errorhandler(404)
+def not_found(error):
+    """Handle 404 errors with user-friendly message"""
+    # Check if request is API call or HTML page
+    if request.path.startswith('/api/'):
+        return jsonify({
+            'error': 'Không tìm thấy endpoint này',
+            'path': request.path
+        }), 404
+    else:
+        # For HTML requests, redirect to home page
+        return """
+        <!DOCTYPE html>
+        <html lang="vi">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>404 - Không tìm thấy trang</title>
+            <style>
+                body {
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    min-height: 100vh;
+                    margin: 0;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    text-align: center;
+                    padding: 20px;
+                }
+                .error-container {
+                    max-width: 500px;
+                }
+                h1 { font-size: 120px; margin: 0; animation: bounce 1s ease-in-out; }
+                h2 { font-size: 32px; margin: 20px 0; }
+                p { font-size: 18px; margin: 20px 0; opacity: 0.9; }
+                a {
+                    display: inline-block;
+                    margin-top: 20px;
+                    padding: 12px 30px;
+                    background: white;
+                    color: #667eea;
+                    text-decoration: none;
+                    border-radius: 25px;
+                    font-weight: 600;
+                    transition: transform 0.2s;
+                }
+                a:hover { transform: translateY(-2px); }
+                @keyframes bounce {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-20px); }
+                }
+            </style>
+        </head>
+        <body>
+            <div class="error-container">
+                <h1>404</h1>
+                <h2>Trang không tồn tại</h2>
+                <p>Xin lỗi, chúng tôi không tìm thấy trang bạn đang tìm kiếm.</p>
+                <a href="/">Về Trang Chủ</a>
+            </div>
+        </body>
+        </html>
+        """, 404
+
+
+@app.errorhandler(500)
+def server_error(error):
+    """Handle 500 errors with user-friendly message"""
+    print(f"[ERROR] 500 Internal Server Error: {str(error)}")
+
+    # Check if request is API call or HTML page
+    if request.path.startswith('/api/'):
+        return jsonify({
+            'error': 'Đã xảy ra lỗi máy chủ',
+            'message': 'Vui lòng thử lại sau'
+        }), 500
+    else:
+        return """
+        <!DOCTYPE html>
+        <html lang="vi">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>500 - Lỗi máy chủ</title>
+            <style>
+                body {
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    min-height: 100vh;
+                    margin: 0;
+                    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                    color: white;
+                    text-align: center;
+                    padding: 20px;
+                }
+                .error-container {
+                    max-width: 500px;
+                }
+                h1 { font-size: 120px; margin: 0; }
+                h2 { font-size: 32px; margin: 20px 0; }
+                p { font-size: 18px; margin: 20px 0; opacity: 0.9; }
+                a {
+                    display: inline-block;
+                    margin-top: 20px;
+                    padding: 12px 30px;
+                    background: white;
+                    color: #f5576c;
+                    text-decoration: none;
+                    border-radius: 25px;
+                    font-weight: 600;
+                    transition: transform 0.2s;
+                }
+                a:hover { transform: translateY(-2px); }
+            </style>
+        </head>
+        <body>
+            <div class="error-container">
+                <h1>500</h1>
+                <h2>Lỗi máy chủ</h2>
+                <p>Xin lỗi, đã xảy ra lỗi. Chúng tôi đang khắc phục.</p>
+                <a href="/">Về Trang Chủ</a>
+            </div>
+        </body>
+        </html>
+        """, 500
+
+
+@app.errorhandler(429)
+def rate_limit_error(error):
+    """Handle rate limit errors"""
+    return jsonify({
+        'error': 'Bạn đã gửi quá nhiều yêu cầu',
+        'message': 'Vui lòng đợi một chút trước khi thử lại'
+    }), 429
+
+
 if __name__ == '__main__':
     # Set console encoding to UTF-8 for Windows
     import sys
