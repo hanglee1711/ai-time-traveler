@@ -10,6 +10,7 @@ class BackgroundMusicController {
         this.isPlaying = false;
         this.volume = 0.3; // Default 30% volume
         this.musicFile = '/traditional-music-vietnam.mp3';
+        this.shouldAutoPlay = false; // Flag for first-time autoplay
 
         // Load saved state from localStorage
         this.loadState();
@@ -20,10 +21,8 @@ class BackgroundMusicController {
         // Create UI controls
         this.createMusicControl();
 
-        // Auto-play if was playing before
-        if (this.isPlaying) {
-            this.play();
-        }
+        // DON'T auto-play here - browser will block it
+        // Will be triggered by user interaction (loading button click)
     }
 
     initAudio() {

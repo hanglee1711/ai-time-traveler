@@ -697,6 +697,9 @@
         </div>
     </div>
 
+    <!-- Background Music Controller - LOAD TRƯỚC để có thể dùng ngay -->
+    <script src="js/background-music.js"></script>
+
     <!-- INLINE SCRIPT để đảm bảo loading screen hoạt động -->
     <script>
 
@@ -790,13 +793,22 @@
                     sessionStorage.setItem('hasSeenLoadingScreen', 'true');
                     console.log('💾 Saved to sessionStorage - will not show again in this session');
 
-                    // Auto-play background music khi bắt đầu hành trình
-                    setTimeout(() => {
-                        if (window.MusicController && !window.MusicController.isPlaying) {
-                            window.MusicController.play();
-                            console.log('🎵 Background music auto-started!');
-                        }
-                    }, 1500); // Sau 1.5s (sau khi warp effect xong)
+                    // QUAN TRỌNG: Auto-play background music NGAY LẬP TỨC khi click
+                    // Phải gọi ngay trong user interaction để browser không block
+                    if (window.MusicController) {
+                        console.log('🎵 Starting background music...');
+                        window.MusicController.play();
+                        console.log('✅ Music started successfully!');
+                    } else {
+                        console.warn('⚠️ MusicController not ready yet, will retry...');
+                        // Retry sau 100ms nếu chưa ready
+                        setTimeout(() => {
+                            if (window.MusicController) {
+                                window.MusicController.play();
+                                console.log('✅ Music started (retry successful)!');
+                            }
+                        }, 100);
+                    }
 
                     hideLoadingScreen();
                 });
@@ -955,8 +967,5 @@
     <script src="js/auth.js"></script>
     <script src="js/main.js"></script>
     <script src="js/home.js"></script>
-
-    <!-- Background Music Controller -->
-    <script src="js/background-music.js"></script>
 </body>
 </html>
