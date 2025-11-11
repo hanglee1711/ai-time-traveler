@@ -187,12 +187,12 @@ def serve_data(filename):
 @app.route('/hero-image.png')
 def serve_hero_image():
     """Serve hero image"""
-    return send_from_directory(str(base_dir / 'frontend'), 'hero-image.png')
+    return send_from_directory(str(base_dir / 'frontend'), 'hero-image.png', mimetype='image/png')
 
 @app.route('/hero-character.png')
 def serve_hero_character():
     """Serve hero character image"""
-    return send_from_directory(str(base_dir / 'frontend'), 'hero-character.png')
+    return send_from_directory(str(base_dir / 'frontend'), 'hero-character.png', mimetype='image/png')
 
 @app.route('/background-music.mp3')
 def serve_background_music():

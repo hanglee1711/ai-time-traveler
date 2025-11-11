@@ -2,7 +2,7 @@ services:
   - type: web
     name: viet-su-ky
     env: python
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install -r requirements.txt && python init_database.py && python create_test_user.py
     startCommand: gunicorn --bind 0.0.0.0:$PORT backend.app:app
     envVars:
       - key: AI_PROVIDER
