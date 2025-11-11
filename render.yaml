@@ -3,7 +3,7 @@ services:
     name: viet-su-ky
     env: python
     buildCommand: pip install -r requirements.txt && python init_database.py && python create_test_user.py
-    startCommand: gunicorn --bind 0.0.0.0:$PORT backend.app:app
+    startCommand: gunicorn --bind 0.0.0.0:$PORT --worker-class gevent --workers 2 --timeout 120 --keep-alive 5 backend.app:app
     envVars:
       - key: AI_PROVIDER
         value: gemini
