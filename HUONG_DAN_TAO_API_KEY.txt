@@ -1,0 +1,62 @@
+═══════════════════════════════════════════════════════════
+   VẤN ĐỀ: API KEY GEMINI KHÔNG HỢP LỆ
+═══════════════════════════════════════════════════════════
+
+Lỗi: 404 models not found for API version v1beta
+
+Nguyên nhân: API key trong file .env đã hết hạn hoặc không có quyền truy cập models.
+
+═══════════════════════════════════════════════════════════
+   GIẢI PHÁP: TẠO API KEY MỚI (MIỄN PHÍ)
+═══════════════════════════════════════════════════════════
+
+BƯỚC 1: Truy cập Google AI Studio
+----------------------------------
+Mở trình duyệt và vào:
+👉 https://aistudio.google.com/apikey
+
+BƯỚC 2: Đăng nhập Google Account
+----------------------------------
+• Đăng nhập bằng tài khoản Google của bạn
+• (Miễn phí, không cần thẻ tín dụng!)
+
+BƯỚC 3: Tạo API Key
+--------------------
+• Click nút "Create API Key"
+• Chọn "Create API key in new project"  
+• Copy API key (dạng: AIzaSy...)
+
+BƯỚC 4: Cập nhật file .env
+---------------------------
+• Mở file: C:\MINDX\.env
+• Tìm dòng: GEMINI_API_KEY=...
+• Thay bằng API key mới vừa copy
+• Lưu file
+
+VÍ DỤ:
+GEMINI_API_KEY=AIzaSyC_YOUR_NEW_API_KEY_HERE
+GEMINI_MODEL=gemini-1.5-flash
+
+BƯỚC 5: Restart Backend
+------------------------
+• Đóng terminal backend đang chạy (Ctrl+C)
+• Chạy lại: python backend/app.py
+• Hoặc double-click: start_chatbot.bat
+
+═══════════════════════════════════════════════════════════
+   LƯU Ý QUAN TRỌNG:
+═══════════════════════════════════════════════════════════
+
+✅ Gemini API MIỄN PHÍ với giới hạn:
+   • 60 requests/minute
+   • 1500 requests/day
+   • Đủ để phát triển và test
+
+✅ Các models miễn phí:
+   • gemini-1.5-flash (nhanh nhất, khuyến nghị)
+   • gemini-1.5-flash-8b (siêu nhanh, nhỏ gọn)
+   • gemini-1.5-pro (tốt nhất, nhưng chậm hơn)
+
+⚠️  KHÔNG chia sẻ API key công khai!
+
+═══════════════════════════════════════════════════════════

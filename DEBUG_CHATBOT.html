@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Debug Chatbot</title>
+</head>
+<body>
+    <h1>Debug Chatbot</h1>
+    <div id="status">Checking...</div>
+    <div id="figures"></div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:5000/api';
+
+        // Test API
+        async function testAPI() {
+            const status = document.getElementById('status');
+            const figuresDiv = document.getElementById('figures');
+
+            try {
+                // Test health
+                const healthRes = await fetch(`${API_BASE_URL}/health`);
+                console.log('Health:', await healthRes.json());
+
+                // Test figures
+                const figuresRes = await fetch(`${API_BASE_URL}/figures`);
+                const data = await figuresRes.json();
+                console.log('Figures:', data);
+
+                status.innerHTML = `<h2 style="color: green;">✅ Backend OK!</h2>`;
+                figuresDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                status.innerHTML = `<h2 style="color: red;">❌ Error: ${error.message}</h2>`;
+                console.error(error);
+            }
+        }
+
+        testAPI();
+    </script>
+</body>
+</html>

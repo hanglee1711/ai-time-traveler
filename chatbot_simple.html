@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot - VIỆT SỬ KÝ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #eee;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .header {
+            background: #0f3460;
+            padding: 1rem 2rem;
+            border-bottom: 2px solid #FFD700;
+        }
+
+        .header h1 {
+            color: #FFD700;
+            font-size: 1.5rem;
+        }
+
+        .container {
+            display: flex;
+            height: calc(100vh - 70px);
+        }
+
+        .sidebar {
+            width: 300px;
+            background: #16213e;
+            border-right: 2px solid #0f3460;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .sidebar h2 {
+            color: #FFD700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .figure-item {
+            background: #0f3460;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .figure-item:hover {
+            background: #1a4d7a;
+            transform: translateX(5px);
+        }
+
+        .figure-item.active {
+            border-color: #FFD700;
+            background: #1a4d7a;
+        }
+
+        .figure-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .figure-name {
+            font-weight: bold;
+            color: #FFD700;
+            margin-bottom: 0.3rem;
+        }
+
+        .figure-period {
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .chat-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #1a1a2e;
+        }
+
+        .chat-header {
+            background: #0f3460;
+            padding: 1rem;
+            border-bottom: 2px solid #FFD700;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .message {
+            margin: 1rem 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-bubble {
+            max-width: 70%;
+            padding: 1rem;
+            border-radius: 12px;
+        }
+
+        .message.user .message-bubble {
+            background: #FFD700;
+            color: #000;
+        }
+
+        .message.assistant .message-bubble {
+            background: #0f3460;
+            color: #eee;
+        }
+
+        .chat-input-area {
+            padding: 1rem;
+            background: #16213e;
+            border-top: 2px solid #0f3460;
+            display: flex;
+            gap: 1rem;
+        }
+
+        #chat-input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #0f3460;
+            border-radius: 8px;
+            background: #1a1a2e;
+            color: #eee;
+            font-size: 1rem;
+            resize: none;
+        }
+
+        #send-btn {
+            padding: 1rem 2rem;
+            background: #FFD700;
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        #send-btn:hover {
+            background: #FFA500;
+            transform: scale(1.05);
+        }
+
+        #send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #FFD700;
+        }
+
+        .spinner {
+            border: 3px solid #0f3460;
+            border-top: 3px solid #FFD700;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: #ef4444;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem;
+        }
+
+        .welcome {
+            text-align: center;
+            padding: 2rem;
+            color: #999;
+        }
+
+        .welcome h2 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .typing {
+            display: inline-block;
+            padding: 0.5rem;
+        }
+
+        .typing span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #FFD700;
+            margin: 0 2px;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>⏳ VIỆT SỬ KÝ - Chatbot</h1>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <h2>👥 Nhân Vật Lịch Sử</h2>
+            <div id="figures-list">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Đang tải nhân vật...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-area">
+            <div class="chat-header">
+                <div id="current-figure">
+                    <h2>💬 Chọn một nhân vật để bắt đầu</h2>
+                </div>
+            </div>
+
+            <div class="chat-messages" id="chat-messages">
+                <div class="welcome">
+                    <h2>✨ Chào mừng đến với Việt Sử Ký!</h2>
+                    <p>Hãy chọn một nhân vật lịch sử bên trái để bắt đầu trò chuyện.</p>
+                    <p>Bạn có thể hỏi về cuộc đời, sự nghiệp, và những sự kiện lịch sử quan trọng.</p>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <textarea
+                    id="chat-input"
+                    placeholder="Nhập tin nhắn của bạn..."
+                    rows="2"
+                    disabled
+                ></textarea>
+                <button id="send-btn" disabled>Gửi ➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== CONFIG ====================
+        const API_BASE_URL = 'http://localhost:5000/api';
+
+        // ==================== STATE ====================
+        let currentFigure = null;
+        let figures = [];
+
+        // ==================== DOM ELEMENTS ====================
+        const figuresList = document.getElementById('figures-list');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const sendBtn = document.getElementById('send-btn');
+        const currentFigureDiv = document.getElementById('current-figure');
+
+        // ==================== INIT ====================
+        console.log('🚀 Chatbot initialized');
+        console.log('API URL:', API_BASE_URL);
+        loadFigures();
+
+        // ==================== LOAD FIGURES ====================
+        async function loadFigures() {
+            console.log('📡 Loading figures from API...');
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/figures`);
+                console.log('Response status:', response.status);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log('✅ Received data:', data);
+
+                figures = data.figures || [];
+                console.log(`✅ Loaded ${figures.length} figures`);
+
+                displayFigures();
+
+            } catch (error) {
+                console.error('❌ Error loading figures:', error);
+                figuresList.innerHTML = `
+                    <div class="error">
+                        <strong>Lỗi tải danh sách nhân vật!</strong>
+                        <p>${error.message}</p>
+                        <button onclick="location.reload()" style="margin-top: 10px; padding: 10px; background: #FFD700; border: none; border-radius: 5px; cursor: pointer;">
+                            Thử lại
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        // ==================== DISPLAY FIGURES ====================
+        function displayFigures() {
+            console.log('🎨 Displaying figures...');
+
+            if (figures.length === 0) {
+                figuresList.innerHTML = '<div class="error">Không có nhân vật nào</div>';
+                return;
+            }
+
+            let html = '';
+            figures.forEach((figure, index) => {
+                html += `
+                    <div class="figure-item" onclick="selectFigure(${index})">
+                        <div class="figure-icon">${figure.icon || '👤'}</div>
+                        <div class="figure-name">${figure.name}</div>
+                        <div class="figure-period">${figure.period}</div>
+                    </div>
+                `;
+            });
+
+            figuresList.innerHTML = html;
+            console.log('✅ Figures displayed');
+        }
+
+        // ==================== SELECT FIGURE ====================
+        function selectFigure(index) {
+            console.log('👤 Selected figure:', figures[index].name);
+            currentFigure = figures[index];
+
+            // Update active state
+            document.querySelectorAll('.figure-item').forEach((item, i) => {
+                if (i === index) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+
+            // Update header
+            currentFigureDiv.innerHTML = `
+                <h2>${currentFigure.icon} ${currentFigure.name}</h2>
+                <p style="color: #999; font-size: 0.9rem;">${currentFigure.period}</p>
+            `;
+
+            // Clear chat
+            chatMessages.innerHTML = `
+                <div class="welcome">
+                    <h2>Bắt đầu trò chuyện với ${currentFigure.name}</h2>
+                    <p>Hãy đặt câu hỏi về cuộc đời, sự nghiệp, hoặc những sự kiện lịch sử mà ${currentFigure.name} đã tham gia.</p>
+                </div>
+            `;
+
+            // Enable input
+            chatInput.disabled = false;
+            sendBtn.disabled = false;
+            chatInput.focus();
+
+            // Send greeting
+            sendGreeting();
+        }
+
+        // ==================== SEND GREETING ====================
+        async function sendGreeting() {
+            const greetingMessage = `Xin chào ${currentFigure.name}! Tôi rất vinh dự được trò chuyện với ngài.`;
+
+            addMessage('user', greetingMessage);
+            showTyping();
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/chat`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: greetingMessage,
+                        figure: currentFigure.name
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                hideTyping();
+                addMessage('assistant', data.message);
+
+            } catch (error) {
+                console.error('❌ Chat error:', error);
+                hideTyping();
+                addMessage('assistant', `Xin chào! Ta là ${currentFigure.name}. Rất vui được gặp ngươi. Hãy hỏi ta về điều gì đó!`);
+            }
+        }
+
+        // ==================== SEND MESSAGE ====================
+        async function sendMessage() {
+            const message = chatInput.value.trim();
+
+            if (!message || !currentFigure) {
+                return;
+            }
+
+            console.log('📤 Sending message:', message);
+
+            // Clear input
+            chatInput.value = '';
+            chatInput.disabled = true;
+            sendBtn.disabled = true;
+
+            // Add user message
+            addMessage('user', message);
+            showTyping();
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/chat`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        figure: currentFigure.name
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log('✅ Received response');
+
+                hideTyping();
+                addMessage('assistant', data.message);
+
+            } catch (error) {
+                console.error('❌ Chat error:', error);
+                hideTyping();
+                addMessage('assistant', 'Xin lỗi, có lỗi xảy ra. Vui lòng thử lại!');
+            } finally {
+                chatInput.disabled = false;
+                sendBtn.disabled = false;
+                chatInput.focus();
+            }
+        }
+
+        // ==================== ADD MESSAGE ====================
+        function addMessage(role, content) {
+            // Remove welcome message
+            const welcome = chatMessages.querySelector('.welcome');
+            if (welcome) {
+                welcome.remove();
+            }
+
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${role}`;
+
+            const bubble = document.createElement('div');
+            bubble.className = 'message-bubble';
+            bubble.textContent = content;
+
+            messageDiv.appendChild(bubble);
+            chatMessages.appendChild(messageDiv);
+
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // ==================== TYPING INDICATOR ====================
+        let typingDiv = null;
+
+        function showTyping() {
+            typingDiv = document.createElement('div');
+            typingDiv.className = 'message assistant';
+            typingDiv.id = 'typing-indicator';
+
+            const bubble = document.createElement('div');
+            bubble.className = 'message-bubble';
+            bubble.innerHTML = '<div class="typing"><span></span><span></span><span></span></div>';
+
+            typingDiv.appendChild(bubble);
+            chatMessages.appendChild(typingDiv);
+
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function hideTyping() {
+            if (typingDiv) {
+                typingDiv.remove();
+                typingDiv = null;
+            }
+        }
+
+        // ==================== EVENT LISTENERS ====================
+        sendBtn.addEventListener('click', sendMessage);
+
+        chatInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // ==================== DEBUG ====================
+        console.log('========================================');
+        console.log('🧪 SIMPLE CHATBOT READY');
+        console.log('Current URL:', window.location.href);
+        console.log('API Base URL:', API_BASE_URL);
+        console.log('========================================');
+    </script>
+</body>
+</html>

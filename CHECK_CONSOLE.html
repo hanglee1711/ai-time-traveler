@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra Console Errors</title>
+    <script>
+        // Capture all errors
+        window.onerror = function(msg, url, line, col, error) {
+            alert('LỖI PHÁT HIỆN:\n' + msg + '\nLine: ' + line);
+            return false;
+        };
+
+        window.onload = function() {
+            alert('Trang đã load thành công!\n\nBước tiếp theo:\n1. Nhấn F12 mở Console\n2. Chơi game\n3. Xem có lỗi màu đỏ không\n4. Chụp màn hình console gửi cho tôi');
+        };
+    </script>
+</head>
+<body>
+    <h1>Kiểm tra xem JavaScript có lỗi không</h1>
+    <p>Đang redirect sang game...</p>
+    <script>
+        setTimeout(() => {
+            window.location.href = '/quiz-battle.html';
+        }, 3000);
+    </script>
+</body>
+</html>

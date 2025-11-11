@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Chatbot</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        #result { margin-top: 20px; }
+        .figure { padding: 10px; border: 1px solid #ccc; margin: 5px; cursor: pointer; }
+        .figure:hover { background: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <h1>Test Chatbot VIỆT SỬ KÝ</h1>
+    <div id="status">Loading...</div>
+    <div id="figures"></div>
+    <hr>
+    <h2>Chat Test</h2>
+    <input type="text" id="message" placeholder="Nhập tin nhắn..." style="width:400px">
+    <button onclick="sendMessage()">Gửi</button>
+    <div id="response" style="margin-top:10px; padding:10px; border:1px solid #ddd;"></div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:5000/api';
+        let selectedFigure = null;
+
+        // Load figures
+        fetch(`${API_BASE_URL}/figures`)
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('status').innerHTML = `<strong style="color:green">✅ Loaded ${data.figures.length} figures</strong>`;
+                const figuresDiv = document.getElementById('figures');
+                data.figures.forEach(fig => {
+                    const div = document.createElement('div');
+                    div.className = 'figure';
+                    div.innerHTML = `<strong>${fig.icon} ${fig.name}</strong><br><small>${fig.period}</small>`;
+                    div.onclick = () => {
+                        selectedFigure = fig.name;
+                        alert('Đã chọn: ' + fig.name);
+                    };
+                    figuresDiv.appendChild(div);
+                });
+            })
+            .catch(err => {
+                document.getElementById('status').innerHTML = `<strong style="color:red">❌ Error: ${err.message}</strong>`;
+            });
+
+        function sendMessage() {
+            const message = document.getElementById('message').value;
+            const responseDiv = document.getElementById('response');
+            responseDiv.innerHTML = '<em>Đang gửi...</em>';
+
+            fetch(`${API_BASE_URL}/chat`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    message: message,
+                    figure: selectedFigure,
+                    provider: 'gemini'
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                responseDiv.innerHTML = `<strong>${data.figure || 'Bot'}:</strong><br>${data.message}`;
+            })
+            .catch(err => {
+                responseDiv.innerHTML = `<strong style="color:red">Lỗi:</strong> ${err.message}`;
+            });
+        }
+    </script>
+</body>
+</html>
