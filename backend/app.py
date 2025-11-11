@@ -239,6 +239,11 @@ def serve_background_music():
     """Serve background music"""
     return send_from_directory(str(base_dir / 'frontend'), 'background-music.mp3', mimetype='audio/mpeg')
 
+@app.route('/traditional-music-vietnam.mp3')
+def serve_traditional_music():
+    """Serve traditional Vietnamese music"""
+    return send_from_directory(str(base_dir / 'frontend'), 'traditional-music-vietnam.mp3', mimetype='audio/mpeg')
+
 @app.route('/images/<path:filename>')
 def serve_images(filename):
     """Serve image files"""
