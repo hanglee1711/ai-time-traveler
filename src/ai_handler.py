@@ -113,6 +113,42 @@ class AIHandler:
         if not self.api_url:
             raise ValueError("LLAMA_API_URL not found in environment variables")
 
+    def _generate_fallback_response(self, system_prompt: str, user_message: str) -> str:
+        """
+        Generate fallback response when Gemini blocks content
+        Uses simple templates based on common questions
+        """
+        import re
+
+        # Extract figure name from system prompt
+        figure_match = re.search(r'về (.+?),', system_prompt)
+        figure_name = figure_match.group(1) if figure_match else "nhân vật lịch sử"
+
+        user_lower = user_message.lower()
+
+        # Template responses for common questions
+        if "xin chào" in user_lower or "chào" in user_lower:
+            return f"Xin chào! Ta là {figure_name}. Rất vui được gặp ngươi. Ngươi muốn tìm hiểu về cuộc đời và sự nghiệp của ta chứ?"
+
+        elif "là ai" in user_lower or "giới thiệu" in user_lower:
+            return f"Ta là {figure_name}, một trong những nhân vật nổi bật trong lịch sử Việt Nam. Cuộc đời ta gắn liền với những sự kiện quan trọng của dân tộc."
+
+        elif "chuyện đời" in user_lower or "cuộc đời" in user_lower or "tiểu sử" in user_lower:
+            return f"Cuộc đời ta {figure_name} là cả một chặng đường dài với nhiều thử thách. Ta đã cống hiến trọn đời cho đất nước và dân tộc. Ngươi muốn biết về giai đoạn nào trong cuộc đời ta?"
+
+        elif "triết lý" in user_lower or "suy nghĩ" in user_lower or "quan điểm" in user_lower:
+            return f"Triết lý sống của ta {figure_name} là luôn đặt lợi ích dân tộc lên trên hết. Ta tin rằng mỗi con người đều có trách nhiệm với tổ quốc và thế hệ mai sau."
+
+        elif "chiến thuật" in user_lower or "quân sự" in user_lower or "chiến tranh" in user_lower:
+            return f"Về mặt quân sự, ta {figure_name} đã học hỏi và áp dụng nhiều chiến lược khác nhau để bảo vệ đất nước. Thành công không chỉ đến từ võ lực mà còn từ trí tuệ và lòng dũng cảm."
+
+        elif "sự kiện" in user_lower or "thành tựu" in user_lower or "đóng góp" in user_lower:
+            return f"Ta {figure_name} đã tham gia và chứng kiến nhiều sự kiện lịch sử quan trọng. Những đóng góp của ta hy vọng sẽ được ghi nhớ qua các thế hệ."
+
+        else:
+            # Default response
+            return f"Câu hỏi của ngươi rất thú vị! Ta {figure_name} sẽ cố gắng trả lời. Tuy nhiên, có thể ngươi nên hỏi cụ thể hơn về cuộc đời, triết lý sống, hoặc những sự kiện mà ta đã trải qua?"
+
     def generate_response(
         self,
         system_prompt: str,
@@ -200,8 +236,9 @@ class AIHandler:
                     finish_reason = candidate.finish_reason
 
                     if finish_reason == 2:  # SAFETY
-                        print(f"[SAFETY] Content blocked by Gemini safety filters")
-                        return "Xin lỗi, câu hỏi về lịch sử này đã chạm đến giới hạn an toàn của hệ thống. Bạn có thể thử đặt câu hỏi theo cách khác hoặc chọn chủ đề khác nhé! 😊"
+                        print(f"[SAFETY] Content blocked by Gemini safety filters - USING FALLBACK")
+                        # FALLBACK: Generate simple response without AI
+                        return self._generate_fallback_response(system_prompt, user_message)
 
                     elif finish_reason == 3:  # RECITATION
                         print(f"[RECITATION] Content blocked by recitation check")
@@ -224,26 +261,26 @@ class AIHandler:
                 if hasattr(candidate.content, 'parts') and candidate.content.parts:
                     return candidate.content.parts[0].text
 
-            # If we get here, something went wrong
-            print(f"[ERROR] No valid response from Gemini")
-            return "Xin lỗi, không nhận được câu trả lời. Hãy thử lại nhé!"
+            # If we get here, something went wrong - use fallback
+            print(f"[ERROR] No valid response from Gemini - USING FALLBACK")
+            return self._generate_fallback_response(system_prompt, user_message)
 
         except AttributeError as e:
-            # Handle the specific "response.text requires valid Part" error
-            print(f"[ERROR] Gemini response structure error: {str(e)}")
-            return "Xin lỗi, câu hỏi này gặp vấn đề với bộ lọc an toàn. Bạn có thể thử hỏi theo cách khác không? 😊"
+            # Handle the specific "response.text requires valid Part" error - use fallback
+            print(f"[ERROR] Gemini response structure error: {str(e)} - USING FALLBACK")
+            return self._generate_fallback_response(system_prompt, user_message)
 
         except Exception as e:
             error_msg = str(e).lower()
             print(f"[ERROR] Gemini API: {str(e)}")
 
-            # Provide helpful error messages
-            if "blocked" in error_msg or "safety" in error_msg or "finish_reason" in error_msg:
-                return "Xin lỗi, câu hỏi về lịch sử này đã chạm đến giới hạn an toàn của hệ thống. Hãy thử hỏi theo cách khác nhé! 😊"
-            elif "quota" in error_msg or "limit" in error_msg:
+            # Use fallback for all errors except quota
+            if "quota" in error_msg or "limit" in error_msg:
                 return "Xin lỗi, hệ thống đang quá tải. Vui lòng thử lại sau ít phút."
             else:
-                return "Xin lỗi, đang gặp chút vấn đề kỹ thuật. Hãy thử lại nhé!"
+                # For all other errors (including safety), use fallback
+                print(f"[ERROR] Using fallback due to Gemini error")
+                return self._generate_fallback_response(system_prompt, user_message)
 
     def _generate_llama(
         self,
@@ -346,28 +383,34 @@ class AIHandler:
                 elif hasattr(chunk, 'candidates') and chunk.candidates:
                     candidate = chunk.candidates[0]
                     if hasattr(candidate, 'finish_reason') and candidate.finish_reason == 2:
-                        yield "Xin lỗi, câu hỏi về lịch sử này đã chạm đến giới hạn an toàn của hệ thống. Hãy thử hỏi theo cách khác nhé! 😊"
+                        print(f"[SAFETY] Streaming blocked - USING FALLBACK")
+                        # Use fallback response instead of error message
+                        yield self._generate_fallback_response(system_prompt, user_message)
                         return
 
-            # If no content was yielded, it might have been blocked
+            # If no content was yielded, it might have been blocked - use fallback
             if not has_content:
-                yield "Xin lỗi, không nhận được câu trả lời. Câu hỏi có thể đã bị chặn bởi bộ lọc an toàn. Hãy thử hỏi theo cách khác nhé! 😊"
+                print(f"[NO_CONTENT] No content received - USING FALLBACK")
+                yield self._generate_fallback_response(system_prompt, user_message)
 
         except AttributeError as e:
-            print(f"[ERROR] Gemini streaming response structure error: {str(e)}")
-            yield "Xin lỗi, câu hỏi này gặp vấn đề với bộ lọc an toàn. Bạn có thể thử hỏi theo cách khác không? 😊"
+            print(f"[ERROR] Gemini streaming response structure error: {str(e)} - USING FALLBACK")
+            yield self._generate_fallback_response(system_prompt, user_message)
 
         except Exception as e:
             error_msg = str(e).lower()
             print(f"[ERROR] Gemini Streaming API: {str(e)}")
 
-            # Provide helpful error messages
+            # Use fallback for safety/blocked errors
             if "blocked" in error_msg or "safety" in error_msg or "finish_reason" in error_msg:
-                yield "Xin lỗi, câu hỏi về lịch sử này đã chạm đến giới hạn an toàn của hệ thống. Hãy thử hỏi theo cách khác nhé! 😊"
+                print(f"[SAFETY_ERROR] Using fallback due to safety block")
+                yield self._generate_fallback_response(system_prompt, user_message)
             elif "quota" in error_msg or "limit" in error_msg:
                 yield "Xin lỗi, hệ thống đang quá tải. Vui lòng thử lại sau ít phút."
             else:
-                yield "Xin lỗi, đang gặp chút vấn đề kỹ thuật. Hãy thử lại nhé!"
+                # For other errors, still use fallback
+                print(f"[GENERAL_ERROR] Using fallback due to error")
+                yield self._generate_fallback_response(system_prompt, user_message)
 
     def _generate_openai_stream(
         self,
