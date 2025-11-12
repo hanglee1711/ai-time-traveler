@@ -1004,3 +1004,109 @@
         font-size: 1.15rem;
     }
 }
+
+/* ===== COMMUNITY SECTION (NO ICONS) ===== */
+.community-stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.community-stat-item .stat-value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--gold);
+}
+
+.community-stat-item .stat-label {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+}
+
+/* ===== FOOTER REDESIGN (CLEAN) ===== */
+.footer-brand-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.footer-slogan {
+    font-size: 1rem;
+    color: var(--text-gray);
+    margin-bottom: 1.5rem;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.footer-social-link {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 6px;
+    color: var(--text-gray);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.footer-social-link:hover {
+    background: rgba(255, 215, 0, 0.1);
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-2px);
+}
+
+.footer-social-link.facebook:hover {
+    border-color: #1877f2;
+    color: #1877f2;
+}
+
+.footer-social-link.youtube:hover {
+    border-color: #ff0000;
+    color: #ff0000;
+}
+
+.footer-social-link.tiktok:hover {
+    border-color: #00f2ea;
+    color: #00f2ea;
+}
+
+.footer-text {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 0.5rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.footer-bottom p {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-brand-title {
+        font-size: 1.5rem;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+}
