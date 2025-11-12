@@ -132,7 +132,6 @@ class BackgroundMusicController {
             </div>
             <div class="music-control-panel" id="musicPanel">
                 <div class="music-panel-header">
-                    <span>Nhạc nền truyền thống</span>
                     <button class="music-close-btn" id="musicCloseBtn">×</button>
                 </div>
                 <div class="music-panel-body">
@@ -215,15 +214,13 @@ class BackgroundMusicController {
             }
 
             .music-panel-header {
-                padding: 12px 16px;
+                padding: 8px 12px;
                 background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
                 color: white;
                 border-radius: 12px 12px 0 0;
                 display: flex;
-                justify-content: space-between;
+                justify-content: flex-end;
                 align-items: center;
-                font-size: 14px;
-                font-weight: 600;
             }
 
             .music-close-btn {
@@ -416,12 +413,11 @@ class BackgroundMusicController {
     autoPlayIfNeeded() {
         // Kiểm tra xem người dùng đã cho phép autoplay chưa (đã click button ở trang chủ)
         const hasInteracted = localStorage.getItem('musicUserInteracted');
-        const shouldBePlaying = localStorage.getItem('musicPlaying') === 'true';
 
-        console.log('🎵 Auto-play check:', { hasInteracted, shouldBePlaying });
+        console.log('🎵 Auto-play check:', { hasInteracted });
 
-        if (hasInteracted === 'true' && shouldBePlaying) {
-            // Người dùng đã tương tác trước đó và nhạc đang bật
+        if (hasInteracted === 'true') {
+            // Người dùng đã tương tác trước đó - luôn phát nhạc
             console.log('🎵 Attempting to auto-play music...');
 
             // Đợi một chút để đảm bảo audio đã load
@@ -429,7 +425,7 @@ class BackgroundMusicController {
                 this.play();
             }, 100);
         } else {
-            console.log('ℹ️ Music will not auto-play (no prior interaction or music was paused)');
+            console.log('ℹ️ Music will not auto-play (no prior interaction)');
         }
     }
 }

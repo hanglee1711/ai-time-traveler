@@ -374,7 +374,7 @@ function checkSelectedFigure() {
  * Send greeting message
  */
 async function sendGreeting() {
-    const greetingMessage = `Xin chào ${currentFigure.name}! Tôi rất vinh dự được trò chuyện với ngài.`;
+    const greetingMessage = `Kính bái kiến ngài ${currentFigure.name}! Con/cháu xin được học hỏi từ ngài.`;
 
     // Add user message
     addMessage('user', greetingMessage);

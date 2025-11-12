@@ -145,17 +145,28 @@ class AIHandler:
         temperature: float,
         max_tokens: int
     ) -> str:
-        """Generate response using Google Gemini - ULTRA SIMPLIFIED"""
+        """Generate response using Google Gemini - OPTIMIZED"""
         try:
-            # ULTRA SIMPLE - Just combine prompt and question
+            # Combine prompt and question
             full_prompt = f"""{system_prompt}
 
 {user_message}"""
 
-            # SIMPLE API call - no complex config
-            response = self.client.generate_content(full_prompt)
+            # OPTIMIZED: Add generation config for faster response
+            generation_config = {
+                'temperature': temperature,
+                'max_output_tokens': max_tokens,
+                'top_p': 0.95,
+                'top_k': 40,
+            }
 
-            # Get text from response - simple and direct
+            # API call with optimized config
+            response = self.client.generate_content(
+                full_prompt,
+                generation_config=generation_config
+            )
+
+            # Get text from response
             return response.text
 
         except Exception as e:

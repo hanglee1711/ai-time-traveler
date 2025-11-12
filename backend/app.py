@@ -388,8 +388,8 @@ def chat():
             response_text = ai_handler.generate_response(
                 system_prompt=system_prompt,
                 user_message=user_message,
-                temperature=0.9,   # Higher temp = faster generation
-                max_tokens=200     # Optimized: 200 tokens ≈ 2-4 sentences (faster!)
+                temperature=1.0,   # Max temp = fastest generation
+                max_tokens=150     # Optimized: 150 tokens = 2-3 sentences (faster!)
             )
 
         elif year:
@@ -400,8 +400,8 @@ def chat():
             response_text = ai_handler.generate_response(
                 system_prompt=system_prompt,
                 user_message=user_message,
-                temperature=0.9,   # Higher temp = faster generation
-                max_tokens=200     # Optimized: faster responses
+                temperature=1.0,   # Max temp = fastest generation
+                max_tokens=150     # Optimized: faster responses
             )
 
         else:
@@ -411,8 +411,8 @@ def chat():
             response_text = ai_handler.generate_response(
                 system_prompt=system_prompt,
                 user_message=user_message,
-                temperature=0.9,  # Higher temp = faster generation
-                max_tokens=200    # Optimized: faster responses
+                temperature=1.0,  # Max temp = fastest generation
+                max_tokens=150    # Optimized: faster responses
             )
 
         # Cache the response if it's a figure conversation (and not an error)
@@ -516,8 +516,8 @@ def chat_stream():
                 for chunk in ai_handler.generate_response_stream(
                     system_prompt=system_prompt,
                     user_message=user_message,
-                    temperature=0.9,
-                    max_tokens=200
+                    temperature=1.0,
+                    max_tokens=150
                 ):
                     yield f"data: {json.dumps({'type': 'chunk', 'content': chunk})}\n\n"
 
@@ -529,8 +529,8 @@ def chat_stream():
                 for chunk in ai_handler.generate_response_stream(
                     system_prompt=system_prompt,
                     user_message=user_message,
-                    temperature=0.9,
-                    max_tokens=200
+                    temperature=1.0,
+                    max_tokens=150
                 ):
                     yield f"data: {json.dumps({'type': 'chunk', 'content': chunk})}\n\n"
 
@@ -541,8 +541,8 @@ def chat_stream():
                 for chunk in ai_handler.generate_response_stream(
                     system_prompt=system_prompt,
                     user_message=user_message,
-                    temperature=0.9,
-                    max_tokens=200
+                    temperature=1.0,
+                    max_tokens=150
                 ):
                     yield f"data: {json.dumps({'type': 'chunk', 'content': chunk})}\n\n"
 
