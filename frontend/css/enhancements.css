@@ -550,3 +550,361 @@
         font-size: 1rem;
     }
 }
+
+/* ===== ENHANCED TEAM SECTION ===== */
+.team-section {
+    background: linear-gradient(180deg, var(--primary-bg) 0%, rgba(20, 30, 50, 0.95) 50%, var(--primary-bg) 100%);
+    padding: 5rem 0;
+}
+
+.team-intro {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    text-align: center;
+}
+
+.team-philosophy {
+    font-size: 1.3rem;
+    line-height: 2;
+    color: #ddd;
+    margin-bottom: 1.5rem;
+}
+
+.founder-profile {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 4rem;
+    padding: 3rem;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.03), rgba(0, 224, 255, 0.03));
+    border: 2px solid rgba(255, 215, 0, 0.2);
+    border-radius: 20px;
+}
+
+.founder-image-container {
+    position: relative;
+}
+
+.founder-image {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.founder-image:hover {
+    transform: scale(1.05);
+}
+
+.founder-image-glow {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(0, 224, 255, 0.3));
+    border-radius: 20px;
+    z-index: -1;
+    filter: blur(20px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.founder-image-container:hover .founder-image-glow {
+    opacity: 1;
+}
+
+.founder-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.founder-title {
+    font-size: 2rem;
+    color: var(--gold);
+    margin: 0;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.founder-position {
+    font-size: 1.2rem;
+    color: var(--accent-blue);
+    margin: -0.5rem 0 0 0;
+    font-weight: 600;
+}
+
+.founder-quote {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #ddd;
+    font-style: italic;
+    padding: 1.5rem 2rem;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 4px solid var(--gold);
+    border-radius: 8px;
+    position: relative;
+}
+
+.founder-quote::before {
+    content: '"';
+    font-size: 4rem;
+    color: var(--gold);
+    opacity: 0.2;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    font-family: Georgia, serif;
+}
+
+.founder-quote strong {
+    color: var(--gold);
+}
+
+.quote-author {
+    font-size: 1rem;
+    color: #aaa;
+    font-style: italic;
+    text-align: right;
+    margin: -0.5rem 0 0 0;
+}
+
+.roles-title,
+.vision-title {
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+}
+
+.roles-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.roles-list li {
+    padding-left: 1.5rem;
+    position: relative;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.roles-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+    font-weight: bold;
+}
+
+.vision-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #ddd;
+    font-style: italic;
+    padding-left: 1rem;
+    border-left: 3px solid var(--accent-blue);
+}
+
+.collaboration-section {
+    margin-bottom: 4rem;
+}
+
+.collaboration-title {
+    font-size: 1.5rem;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.collaboration-teams {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.collab-team {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(0, 224, 255, 0.05));
+    border: 2px solid rgba(255, 215, 0, 0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.collab-team:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 215, 0, 0.5);
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.15);
+}
+
+.collab-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.collab-name {
+    font-size: 1.2rem;
+    color: var(--accent-blue);
+    margin-bottom: 0.75rem;
+}
+
+.collab-desc {
+    color: #aaa;
+    line-height: 1.6;
+}
+
+.team-message {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    text-align: center;
+    padding: 3rem;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(0, 224, 255, 0.05));
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    border-radius: 20px;
+}
+
+.message-title {
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+}
+
+.message-text {
+    font-size: 1.2rem;
+    line-height: 2;
+    color: #ddd;
+    margin-bottom: 1.5rem;
+}
+
+.message-cta-text {
+    font-size: 1.3rem;
+    color: var(--accent-blue);
+    margin-top: 2rem;
+    font-weight: 600;
+}
+
+.team-ctas {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+/* Responsive for Enhanced Team Section */
+@media (max-width: 1024px) {
+    .founder-profile {
+        grid-template-columns: 250px 1fr;
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .collaboration-teams {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-philosophy {
+        font-size: 1.1rem;
+    }
+
+    .founder-profile {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .founder-image-container {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .founder-title {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .founder-position {
+        text-align: center;
+    }
+
+    .founder-quote {
+        font-size: 1rem;
+        padding: 1rem 1.5rem;
+    }
+
+    .quote-author {
+        text-align: center;
+    }
+
+    .message-text {
+        font-size: 1.1rem;
+    }
+
+    .team-ctas {
+        flex-direction: column;
+    }
+
+    .team-ctas .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-intro {
+        margin-bottom: 2rem;
+    }
+
+    .team-philosophy {
+        font-size: 1rem;
+    }
+
+    .founder-profile {
+        padding: 1.5rem;
+    }
+
+    .founder-title {
+        font-size: 1.4rem;
+    }
+
+    .founder-position {
+        font-size: 1rem;
+    }
+
+    .founder-quote {
+        font-size: 0.95rem;
+    }
+
+    .collaboration-title {
+        font-size: 1.3rem;
+    }
+
+    .collab-team {
+        padding: 1.5rem;
+    }
+
+    .collab-icon {
+        font-size: 2.5rem;
+    }
+
+    .team-message {
+        padding: 2rem 1.5rem;
+    }
+
+    .message-title {
+        font-size: 1.4rem;
+    }
+
+    .message-text {
+        font-size: 1rem;
+    }
+
+    .message-cta-text {
+        font-size: 1.1rem;
+    }
+}
