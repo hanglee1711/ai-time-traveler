@@ -8,22 +8,22 @@
         "Hai Bà"
       ],
       "period": "Thời Đông Hán (40-43)",
-      "role": "Nữ tướng, lãnh đạo khởi nghĩa chống Bắc thuộc",
-      "personality": "Dũng cảm, kiên cường, yêu nước, quyết liệt",
+      "role": "Nữ tướng, lãnh tụ dân tộc thời Bắc thuộc",
+      "personality": "Dũng cảm, kiên cường, yêu nước, ý chí mạnh mẽ",
       "icon": "⚔️",
       "image": "https://via.placeholder.com/150/FFD700/000000?text=HBT",
-      "description": "Anh hùng dân tộc - Hai nữ tướng dũng mãnh khởi nghĩa chống Đông Hán",
-      "biography": "Hai Bà Trưng là hai chị em Trưng Trắc và Trưng Nhị, sinh ra trong gia đình võ tướng tại Mê Linh (nay thuộc Hà Nội). Năm 40, sau khi chồng Trưng Trắc là Thi Sách bị Tô Định giết hại, hai chị em đã phát động cuộc khởi nghĩa chống ách đô hộ của nhà Hán. Cuộc khởi nghĩa nhanh chóng lan rộng, giải phóng 65 thành trì và lập nên nước tự chủ trong 3 năm. Hai Bà đã trở thành biểu tượng của lòng yêu nước và tinh thần bất khuất của phụ nữ Việt Nam.",
+      "description": "Anh hùng dân tộc - Hai nữ tướng đứng lên giải phóng đất nước",
+      "biography": "Hai Bà Trưng là hai chị em Trưng Trắc và Trưng Nhị, sinh ra trong gia đình võ tướng tại Mê Linh (nay thuộc Hà Nội). Năm 40, hai chị em đã đứng lên lãnh đạo phong trào giải phóng dân tộc. Phong trào nhanh chóng lan rộng, thu phục 65 thành trì và lập nên nước tự chủ trong 3 năm. Hai Bà đã trở thành biểu tượng của lòng yêu nước và tinh thần kiên cường của phụ nữ Việt Nam.",
       "achievements": [
-        "Lãnh đạo khởi nghĩa chống Đông Hán năm 40",
-        "Giải phóng 65 thành trì miền Bắc Việt Nam",
-        "Lập nước tự chủ và tự xưng là Nữ Vương",
-        "Biểu tượng tinh thần chống ngoại xâm và quyền phụ nữ"
+        "Lãnh đạo phong trào giải phóng năm 40",
+        "Thu phục 65 thành trì miền Bắc Việt Nam",
+        "Lập nước tự chủ và trở thành Nữ Vương",
+        "Biểu tượng tinh thần dân tộc và quyền phụ nữ"
       ],
       "famous_quotes": [
-        "Tôi chỉ muốn cưỡi cơn gió mạnh, đạp luồng sóng dữ, chém cá kình ở biển Đông, quét sạch bờ cõi để cứu dân ra khỏi nơi đầm lầy, há để mình cúi đầu, còng lưng làm tì thiếp cho người sao!"
+        "Tôi chỉ muốn cưỡi cơn gió mạnh, đạp luồng sóng dữ, băng qua biển Đông, giải cứu dân tộc ra khỏi nơi đầm lầy, há để mình cúi đầu, còng lưng làm tì thiếp cho người sao!"
       ],
-      "context": "Lãnh đạo cuộc khởi nghĩa chống nhà Hán năm 40, giành độc lập cho Việt Nam trong 3 năm. Sau khi thất bại, hai bà đã hy sinh tiết nghĩa tại sông Hát (Hà Tây)."
+      "context": "Lãnh đạo phong trào giải phóng năm 40, giành độc lập cho Việt Nam trong 3 năm. Hai bà đã để lại di sản tinh thần kiên cường cho các thế hệ sau."
     },
     {
       "name": "Ngô Quyền",
@@ -36,16 +36,16 @@
       "personality": "Dũng mãnh, sáng suốt, tài ba trong binh pháp",
       "icon": "🛡️",
       "image": "https://via.placeholder.com/150/4169E1/FFFFFF?text=NQ",
-      "description": "Anh hùng chấm dứt 1000 năm Bắc thuộc",
-      "biography": "Ngô Quyền sinh ra trong một gia đình quý tộc tại Đường Lâm (Hà Tây). Năm 938, ông chỉ huy cuộc chiến trên sông Bạch Đằng, sử dụng chiến thuật cọc ngầm xuất sắc để đánh bại hoàn toàn đội quân Nam Hán do Lưu Hoằng Tháo chỉ huy. Chiến thắng này đã chấm dứt 1000 năm Bắc thuộc, mở ra kỷ nguyên độc lập cho Việt Nam. Năm 939, Ngô Quyền lên ngôi vua, lập nên nhà nước phong kiến độc lập đầu tiên.",
+      "description": "Anh hùng mở ra kỷ nguyên độc lập sau 1000 năm",
+      "biography": "Ngô Quyền sinh ra trong một gia đình quý tộc tại Đường Lâm (Hà Tây). Năm 938, ông chỉ huy chiến dịch lịch sử trên sông Bạch Đằng, sử dụng chiến thuật cọc ngầm xuất sắc để giành thắng lợi vang dội trước quân Nam Hán. Thắng lợi này đã chấm dứt 1000 năm Bắc thuộc, mở ra kỷ nguyên độc lập cho Việt Nam. Năm 939, Ngô Quyền lên ngôi vua, lập nên nhà nước phong kiến độc lập đầu tiên.",
       "achievements": [
-        "Đánh thắng quân Nam Hán tại Bạch Đằng năm 938",
+        "Chiến thắng lịch sử tại Bạch Đằng năm 938",
         "Chấm dứt 1000 năm Bắc thuộc",
         "Lập nên nhà nước phong kiến độc lập",
-        "Phát minh chiến thuật cọc ngầm nổi tiếng"
+        "Sáng tạo chiến thuật cọc ngầm nổi tiếng"
       ],
       "famous_quotes": [],
-      "context": "Đánh thắng quân Nam Hán tại sông Bạch Đằng năm 938 bằng chiến thuật cọc ngầm, chấm dứt 1000 năm Bắc thuộc và mở ra kỷ nguyên độc lập."
+      "context": "Chiến thắng vang dội tại sông Bạch Đằng năm 938 bằng chiến thuật cọc ngầm, chấm dứt 1000 năm Bắc thuộc và mở ra kỷ nguyên độc lập."
     },
     {
       "name": "Lý Công Uẩn",

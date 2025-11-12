@@ -80,7 +80,7 @@ class AIHandler:
 
             # RELAXED SAFETY SETTINGS - Allow educational historical content
             # This prevents blocking of Vietnamese history topics like wars, rebellions, etc.
-            safety_settings = [
+            self.safety_settings = [
                 {
                     "category": "HARM_CATEGORY_HARASSMENT",
                     "threshold": "BLOCK_NONE"
@@ -101,7 +101,7 @@ class AIHandler:
 
             self.client = genai.GenerativeModel(
                 model_name=self.model_name,
-                safety_settings=safety_settings
+                safety_settings=self.safety_settings
             )
         except ImportError:
             raise ImportError("Google Generative AI package not installed. Run: pip install google-generativeai")
@@ -183,10 +183,11 @@ class AIHandler:
                 'top_k': 40,
             }
 
-            # API call with optimized config
+            # API call with optimized config AND safety settings
             response = self.client.generate_content(
                 full_prompt,
-                generation_config=generation_config
+                generation_config=generation_config,
+                safety_settings=self.safety_settings
             )
 
             # IMPORTANT: Check finish_reason before accessing text
@@ -326,10 +327,11 @@ class AIHandler:
                 'top_k': 40,
             }
 
-            # Call Gemini API with streaming enabled
+            # Call Gemini API with streaming enabled AND safety settings
             response = self.client.generate_content(
                 full_prompt,
                 generation_config=generation_config,
+                safety_settings=self.safety_settings,
                 stream=True
             )
 
