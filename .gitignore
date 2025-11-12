@@ -42,6 +42,7 @@ nul
 
 # Media files
 *.mp3
+!frontend/*.mp3
 *.jpg
 *.jpeg
 *.png
