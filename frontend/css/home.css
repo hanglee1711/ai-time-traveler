@@ -1793,6 +1793,113 @@ body.entered .features-section {
     }
 }
 
+/* ===== TEAM SECTION ===== */
+.team-section {
+    background: linear-gradient(180deg, var(--primary-bg) 0%, rgba(20, 30, 50, 0.95) 100%);
+    padding: 5rem 0;
+}
+
+.team-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.team-member-card {
+    max-width: 400px;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(0, 224, 255, 0.05));
+    border: 2px solid rgba(255, 215, 0, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.team-member-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(255, 215, 0, 0.5);
+    box-shadow: 0 20px 60px rgba(255, 215, 0, 0.2);
+}
+
+.team-member-image {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.team-member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.4s ease;
+}
+
+.team-member-card:hover .team-member-image img {
+    transform: scale(1.05);
+}
+
+.team-member-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(15, 22, 40, 0.9), transparent);
+    pointer-events: none;
+}
+
+.team-member-info {
+    padding: 2rem;
+    text-align: center;
+}
+
+.team-member-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.team-member-role {
+    font-size: 1.1rem;
+    color: var(--accent-blue);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.team-member-description {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #ccc;
+}
+
+/* Responsive for Team Section */
+@media (max-width: 768px) {
+    .team-member-card {
+        max-width: 90%;
+    }
+
+    .team-member-image {
+        height: 350px;
+    }
+
+    .team-member-name {
+        font-size: 1.5rem;
+    }
+
+    .team-member-role {
+        font-size: 1rem;
+    }
+
+    .team-member-description {
+        font-size: 0.95rem;
+    }
+}
+
 @media (max-width: 480px) {
     /* Hero section - height nhỏ hơn cho màn hình nhỏ */
     .hero-section {

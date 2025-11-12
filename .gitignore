@@ -45,6 +45,7 @@ nul
 !frontend/*.mp3
 *.jpg
 *.jpeg
+!frontend/*.jpg
 *.png
 !frontend/hero*.png
 !frontend/assets/**/*.png
