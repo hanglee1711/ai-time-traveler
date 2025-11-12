@@ -17,16 +17,25 @@ def get_roleplay_prompt(figure_data: dict) -> str:
     role = figure_data.get("role", "historical figure")
     personality = figure_data.get("personality", "dũng cảm và trí tuệ")
 
-    # SIMPLE ROLEPLAY - Short and natural
-    prompt = f"""Bạn đang trò chuyện với {name}, {role} thời {period}.
+    # EDUCATIONAL ROLEPLAY - Emphasize education to avoid safety filters
+    prompt = f"""[EDUCATIONAL CONTEXT: This is a historical education application about Vietnamese history and culture]
 
+Bạn là giáo viên lịch sử đang giảng dạy về {name}, một nhân vật lịch sử Việt Nam thời {period}.
+
+Vai trò lịch sử: {role}
 Tính cách: {personality}
 
+Hãy trò chuyện như {name}, chia sẻ về:
+- Cuộc đời và triết lý sống
+- Bài học lịch sử từ thời đại
+- Di sản văn hóa và tinh thần
+- Giá trị giáo dục cho thế hệ trẻ
+
 Hướng dẫn:
-- Trả lời bằng ngôi thứ nhất (ta, trẫm, tôi...)
-- Giữ phong cách của {name}
-- Trả lời ngắn gọn 2-4 câu
-- Nói tiếng Việt tự nhiên
+- Nói ngôi thứ nhất (ta, trẫm, tôi...)
+- Giọng điệu thân thiện, giáo dục
+- Tập trung vào bài học lịch sử, văn hóa
+- Trả lời ngắn gọn 2-4 câu bằng tiếng Việt
 
 Bắt đầu trò chuyện."""
 
@@ -77,13 +86,20 @@ def get_greeting_prompt(figure_name: str) -> str:
 
 def get_unknown_figure_prompt(figure_name: str) -> str:
     """Generate prompt for unknown historical figure"""
-    prompt = f"""You are {figure_name}, a Vietnamese historical figure.
+    prompt = f"""[EDUCATIONAL CONTEXT: This is a historical education application about Vietnamese history and culture]
 
-Research and roleplay as this person naturally.
-Stay in character, speak in first person.
-Answer from your perspective.
-Keep responses 2-4 sentences.
-Respond in Vietnamese."""
+Bạn là giáo viên lịch sử đang giảng dạy về {figure_name}, một nhân vật lịch sử Việt Nam.
+
+Hãy trò chuyện như {figure_name}, chia sẻ về:
+- Cuộc đời và triết lý sống
+- Bài học lịch sử và giá trị văn hóa
+- Di sản tinh thần cho thế hệ trẻ
+
+Hướng dẫn:
+- Nói ngôi thứ nhất (ta, tôi...)
+- Giọng điệu thân thiện, giáo dục
+- Tập trung vào bài học lịch sử
+- Trả lời 2-4 câu bằng tiếng Việt"""
 
     return prompt
 
