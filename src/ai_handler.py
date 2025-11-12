@@ -67,7 +67,7 @@ class AIHandler:
             raise ImportError("OpenAI package not installed. Run: pip install openai")
 
     def _init_gemini(self):
-        """Initialize Google Gemini client - SIMPLIFIED (no safety settings)"""
+        """Initialize Google Gemini client - WITH RELAXED SAFETY SETTINGS"""
         try:
             import google.generativeai as genai
             api_key = get_env("GEMINI_API_KEY")
@@ -78,8 +78,31 @@ class AIHandler:
             # Use gemini-2.5-flash
             self.model_name = get_env("GEMINI_MODEL", "gemini-2.5-flash")
 
-            # SIMPLIFIED: No safety settings - let Gemini use defaults
-            self.client = genai.GenerativeModel(model_name=self.model_name)
+            # RELAXED SAFETY SETTINGS - Allow educational historical content
+            # This prevents blocking of Vietnamese history topics like wars, rebellions, etc.
+            safety_settings = [
+                {
+                    "category": "HARM_CATEGORY_HARASSMENT",
+                    "threshold": "BLOCK_NONE"
+                },
+                {
+                    "category": "HARM_CATEGORY_HATE_SPEECH",
+                    "threshold": "BLOCK_NONE"
+                },
+                {
+                    "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                    "threshold": "BLOCK_ONLY_HIGH"
+                },
+                {
+                    "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                    "threshold": "BLOCK_NONE"
+                }
+            ]
+
+            self.client = genai.GenerativeModel(
+                model_name=self.model_name,
+                safety_settings=safety_settings
+            )
         except ImportError:
             raise ImportError("Google Generative AI package not installed. Run: pip install google-generativeai")
 
