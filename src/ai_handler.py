@@ -145,7 +145,7 @@ class AIHandler:
         temperature: float,
         max_tokens: int
     ) -> str:
-        """Generate response using Google Gemini - OPTIMIZED"""
+        """Generate response using Google Gemini - WITH SAFETY HANDLING"""
         try:
             # Combine prompt and question
             full_prompt = f"""{system_prompt}
@@ -166,16 +166,56 @@ class AIHandler:
                 generation_config=generation_config
             )
 
-            # Get text from response
-            return response.text
+            # IMPORTANT: Check finish_reason before accessing text
+            # finish_reason: 1=STOP (normal), 2=SAFETY (blocked), 3=RECITATION, 4=MAX_TOKENS
+            if hasattr(response, 'candidates') and response.candidates:
+                candidate = response.candidates[0]
+
+                # Check if response was blocked by safety filters
+                if hasattr(candidate, 'finish_reason'):
+                    finish_reason = candidate.finish_reason
+
+                    if finish_reason == 2:  # SAFETY
+                        print(f"[SAFETY] Content blocked by Gemini safety filters")
+                        return "Xin lỗi, câu hỏi về lịch sử này đã chạm đến giới hạn an toàn của hệ thống. Bạn có thể thử đặt câu hỏi theo cách khác hoặc chọn chủ đề khác nhé! 😊"
+
+                    elif finish_reason == 3:  # RECITATION
+                        print(f"[RECITATION] Content blocked by recitation check")
+                        return "Xin lỗi, câu trả lời có thể vi phạm bản quyền. Hãy thử hỏi theo cách khác nhé!"
+
+                    elif finish_reason == 4:  # MAX_TOKENS
+                        print(f"[MAX_TOKENS] Response truncated")
+                        # Still try to get partial text
+                        if hasattr(candidate.content, 'parts') and candidate.content.parts:
+                            return candidate.content.parts[0].text
+                        return "Câu trả lời quá dài. Hãy thử hỏi chi tiết hơn nhé!"
+
+            # Normal case: get text from response
+            if hasattr(response, 'text'):
+                return response.text
+
+            # Fallback: try to extract from parts
+            if hasattr(response, 'candidates') and response.candidates:
+                candidate = response.candidates[0]
+                if hasattr(candidate.content, 'parts') and candidate.content.parts:
+                    return candidate.content.parts[0].text
+
+            # If we get here, something went wrong
+            print(f"[ERROR] No valid response from Gemini")
+            return "Xin lỗi, không nhận được câu trả lời. Hãy thử lại nhé!"
+
+        except AttributeError as e:
+            # Handle the specific "response.text requires valid Part" error
+            print(f"[ERROR] Gemini response structure error: {str(e)}")
+            return "Xin lỗi, câu hỏi này gặp vấn đề với bộ lọc an toàn. Bạn có thể thử hỏi theo cách khác không? 😊"
 
         except Exception as e:
             error_msg = str(e).lower()
             print(f"[ERROR] Gemini API: {str(e)}")
 
             # Provide helpful error messages
-            if "blocked" in error_msg or "safety" in error_msg:
-                return "Xin lỗi, câu hỏi này có vấn đề với hệ thống. Hãy thử hỏi theo cách khác nhé!"
+            if "blocked" in error_msg or "safety" in error_msg or "finish_reason" in error_msg:
+                return "Xin lỗi, câu hỏi về lịch sử này đã chạm đến giới hạn an toàn của hệ thống. Hãy thử hỏi theo cách khác nhé! 😊"
             elif "quota" in error_msg or "limit" in error_msg:
                 return "Xin lỗi, hệ thống đang quá tải. Vui lòng thử lại sau ít phút."
             else:
@@ -248,28 +288,57 @@ class AIHandler:
         temperature: float,
         max_tokens: int
     ):
-        """Generate streaming response using Google Gemini"""
+        """Generate streaming response using Google Gemini - WITH SAFETY HANDLING"""
         try:
             # Combine prompt and question
             full_prompt = f"""{system_prompt}
 
 {user_message}"""
 
+            # Generation config for streaming
+            generation_config = {
+                'temperature': temperature,
+                'max_output_tokens': max_tokens,
+                'top_p': 0.95,
+                'top_k': 40,
+            }
+
             # Call Gemini API with streaming enabled
-            response = self.client.generate_content(full_prompt, stream=True)
+            response = self.client.generate_content(
+                full_prompt,
+                generation_config=generation_config,
+                stream=True
+            )
 
             # Yield each chunk as it arrives
+            has_content = False
             for chunk in response:
-                if chunk.text:
+                # Check if chunk has valid text
+                if hasattr(chunk, 'text') and chunk.text:
+                    has_content = True
                     yield chunk.text
+                # Check for safety blocks in streaming
+                elif hasattr(chunk, 'candidates') and chunk.candidates:
+                    candidate = chunk.candidates[0]
+                    if hasattr(candidate, 'finish_reason') and candidate.finish_reason == 2:
+                        yield "Xin lỗi, câu hỏi về lịch sử này đã chạm đến giới hạn an toàn của hệ thống. Hãy thử hỏi theo cách khác nhé! 😊"
+                        return
+
+            # If no content was yielded, it might have been blocked
+            if not has_content:
+                yield "Xin lỗi, không nhận được câu trả lời. Câu hỏi có thể đã bị chặn bởi bộ lọc an toàn. Hãy thử hỏi theo cách khác nhé! 😊"
+
+        except AttributeError as e:
+            print(f"[ERROR] Gemini streaming response structure error: {str(e)}")
+            yield "Xin lỗi, câu hỏi này gặp vấn đề với bộ lọc an toàn. Bạn có thể thử hỏi theo cách khác không? 😊"
 
         except Exception as e:
             error_msg = str(e).lower()
             print(f"[ERROR] Gemini Streaming API: {str(e)}")
 
             # Provide helpful error messages
-            if "blocked" in error_msg or "safety" in error_msg:
-                yield "Xin lỗi, câu hỏi này có vấn đề với hệ thống. Hãy thử hỏi theo cách khác nhé!"
+            if "blocked" in error_msg or "safety" in error_msg or "finish_reason" in error_msg:
+                yield "Xin lỗi, câu hỏi về lịch sử này đã chạm đến giới hạn an toàn của hệ thống. Hãy thử hỏi theo cách khác nhé! 😊"
             elif "quota" in error_msg or "limit" in error_msg:
                 yield "Xin lỗi, hệ thống đang quá tải. Vui lòng thử lại sau ít phút."
             else:
