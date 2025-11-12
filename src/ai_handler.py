@@ -115,8 +115,8 @@ class AIHandler:
 
     def _generate_fallback_response(self, system_prompt: str, user_message: str) -> str:
         """
-        Generate fallback response when Gemini blocks content
-        Uses simple templates based on common questions
+        ENHANCED Fallback: Always responds with meaningful content
+        Covers 20+ question patterns for ALL historical figures
         """
         import re
 
@@ -126,28 +126,60 @@ class AIHandler:
 
         user_lower = user_message.lower()
 
-        # Template responses for common questions
-        if "xin chào" in user_lower or "chào" in user_lower:
-            return f"Xin chào! Ta là {figure_name}. Rất vui được gặp ngươi. Ngươi muốn tìm hiểu về cuộc đời và sự nghiệp của ta chứ?"
+        # === GREETING & INTRODUCTION ===
+        if any(word in user_lower for word in ["xin chào", "chào", "hello", "hi"]):
+            return f"Xin chào! Ta là {figure_name}. Rất vui được gặp ngươi. Ngươi muốn tìm hiểu điều gì về ta?"
 
-        elif "là ai" in user_lower or "giới thiệu" in user_lower:
-            return f"Ta là {figure_name}, một trong những nhân vật nổi bật trong lịch sử Việt Nam. Cuộc đời ta gắn liền với những sự kiện quan trọng của dân tộc."
+        elif any(word in user_lower for word in ["là ai", "ai", "giới thiệu", "bạn là"]):
+            return f"Ta là {figure_name}, một nhân vật trong lịch sử Việt Nam. Cuộc đời ta gắn liền với những thời khắc quan trọng của dân tộc. Ngươi muốn biết về giai đoạn nào?"
 
-        elif "chuyện đời" in user_lower or "cuộc đời" in user_lower or "tiểu sử" in user_lower:
-            return f"Cuộc đời ta {figure_name} là cả một chặng đường dài với nhiều thử thách. Ta đã cống hiến trọn đời cho đất nước và dân tộc. Ngươi muốn biết về giai đoạn nào trong cuộc đời ta?"
+        # === BIOGRAPHY & LIFE ===
+        elif any(word in user_lower for word in ["chuyện đời", "cuộc đời", "tiểu sử", "câu chuyện", "kể", "sinh ra", "lớn lên", "tuổi thơ"]):
+            return f"Cuộc đời ta là một hành trình đầy thử thách và ý nghĩa. Từ những ngày đầu cho đến những quyết định quan trọng, mỗi giai đoạn đều để lại dấu ấn sâu đậm. Ngươi muốn nghe về phần nào trong cuộc đời ta?"
 
-        elif "triết lý" in user_lower or "suy nghĩ" in user_lower or "quan điểm" in user_lower:
-            return f"Triết lý sống của ta {figure_name} là luôn đặt lợi ích dân tộc lên trên hết. Ta tin rằng mỗi con người đều có trách nhiệm với tổ quốc và thế hệ mai sau."
+        # === PHILOSOPHY & BELIEFS ===
+        elif any(word in user_lower for word in ["triết lý", "suy nghĩ", "quan điểm", "niềm tin", "giá trị", "lý tưởng", "mục tiêu"]):
+            return f"Triết lý sống của ta là luôn đặt lợi ích chung lên trên hết. Ta tin vào sức mạnh của ý chí, lòng kiên trì và tinh thần đoàn kết. Mỗi quyết định ta đưa ra đều xuất phát từ trái tim và lý trí."
 
-        elif "chiến thuật" in user_lower or "quân sự" in user_lower or "chiến tranh" in user_lower:
-            return f"Về mặt quân sự, ta {figure_name} đã học hỏi và áp dụng nhiều chiến lược khác nhau để bảo vệ đất nước. Thành công không chỉ đến từ võ lực mà còn từ trí tuệ và lòng dũng cảm."
+        # === MILITARY & STRATEGY ===
+        elif any(word in user_lower for word in ["chiến thuật", "quân sự", "chiến tranh", "chiến lược", "võ thuật", "binh pháp", "trận", "chiến đấu"]):
+            return f"Trong lĩnh vực quân sự, ta học hỏi từ nhiều nguồn và áp dụng linh hoạt. Chiến thắng không chỉ đến từ sức mạnh mà còn từ trí tuệ, sự chuẩn bị kỹ lưỡng và tinh thần của toàn quân."
 
-        elif "sự kiện" in user_lower or "thành tựu" in user_lower or "đóng góp" in user_lower:
-            return f"Ta {figure_name} đã tham gia và chứng kiến nhiều sự kiện lịch sử quan trọng. Những đóng góp của ta hy vọng sẽ được ghi nhớ qua các thế hệ."
+        # === ACHIEVEMENTS & CONTRIBUTIONS ===
+        elif any(word in user_lower for word in ["sự kiện", "thành tựu", "đóng góp", "công lao", "thành công", "di sản", "để lại", "ảnh hưởng"]):
+            return f"Những đóng góp của ta là kết quả của sự nỗ lực không ngừng và lòng tận tụy. Ta hy vọng những gì mình làm sẽ để lại giá trị tích cực cho thế hệ sau và cho đất nước."
 
+        # === FAMILY & PERSONAL LIFE ===
+        elif any(word in user_lower for word in ["gia đình", "vợ", "chồng", "con", "cha", "mẹ", "anh em", "người thân"]):
+            return f"Gia đình luôn là nguồn động lực quan trọng với ta. Những người thân yêu là lý do để ta tiếp tục phấn đấu và vượt qua mọi khó khăn trong cuộc đời."
+
+        # === HISTORICAL PERIOD & CONTEXT ===
+        elif any(word in user_lower for word in ["thời đại", "thời kỳ", "bối cảnh", "hoàn cảnh", "lúc đó", "năm", "thời"]):
+            return f"Thời đại mà ta sống là giai đoạn đầy biến động trong lịch sử. Hoàn cảnh thúc đẩy ta và nhiều người cùng thời phải đưa ra những quyết định quan trọng cho vận mệnh chung."
+
+        # === LESSONS & WISDOM ===
+        elif any(word in user_lower for word in ["bài học", "lời khuyên", "kinh nghiệm", "rút ra", "học hỏi", "dạy"]):
+            return f"Từ những trải nghiệm của mình, ta nhận ra rằng: kiên trì, dũng cảm và lòng nhân ái là những giá trị không bao giờ lỗi thời. Hy vọng thế hệ sau sẽ học hỏi và phát huy những điều tốt đẹp này."
+
+        # === CHALLENGES & DIFFICULTIES ===
+        elif any(word in user_lower for word in ["khó khăn", "thử thách", "vượt qua", "đối mặt", "khổ", "gian khó"]):
+            return f"Cuộc đời ai cũng có những thử thách riêng. Ta đã trải qua nhiều khó khăn, nhưng chính những điều đó tôi luyện ý chí và làm ta trưởng thành hơn."
+
+        # === RELATIONSHIPS & COLLEAGUES ===
+        elif any(word in user_lower for word in ["bạn bè", "đồng minh", "cộng sự", "người", "quan hệ", "gặp"]):
+            return f"Trong cuộc đời, ta may mắn được gặp nhiều người tài đức. Những mối quan hệ đó không chỉ là sự hỗ trợ mà còn là nguồn cảm hứng để ta tiếp tục con đường mình đã chọn."
+
+        # === LEGACY & MEMORY ===
+        elif any(word in user_lower for word in ["di sản", "nhớ", "ghi nhớ", "sau này", "mai sau", "tương lai"]):
+            return f"Ta hy vọng những gì mình làm sẽ được ghi nhớ không vì danh vọng, mà vì giá trị mà nó mang lại cho cộng đồng và đất nước. Đó mới là di sản thực sự."
+
+        # === INSPIRATION & MOTIVATION ===
+        elif any(word in user_lower for word in ["cảm hứng", "động lực", "truyền cảm", "khích lệ", "tại sao", "vì sao"]):
+            return f"Động lực lớn nhất của ta là tình yêu quê hương và trách nhiệm với dân tộc. Mỗi khi gặp khó khăn, ta nghĩ đến những người đang tin tưởng và mình lại có thêm sức mạnh."
+
+        # === DEFAULT: OPEN-ENDED RESPONSE ===
         else:
-            # Default response
-            return f"Câu hỏi của ngươi rất thú vị! Ta {figure_name} sẽ cố gắng trả lời. Tuy nhiên, có thể ngươi nên hỏi cụ thể hơn về cuộc đời, triết lý sống, hoặc những sự kiện mà ta đã trải qua?"
+            return f"Đây là một câu hỏi hay! Là {figure_name}, ta sẵn sàng chia sẻ với ngươi. Ngươi có thể hỏi ta về: cuộc đời, triết lý sống, những sự kiện lịch sử, bài học rút ra, hoặc bất cứ điều gì ngươi quan tâm. Ta đang lắng nghe."
 
     def generate_response(
         self,
