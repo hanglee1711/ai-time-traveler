@@ -118,45 +118,98 @@
     box-shadow: 0 10px 40px rgba(255, 215, 0, 0.15);
 }
 
-.level-progression {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.level-badge {
+.level-tiers {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 215, 0, 0.3);
+    gap: 1rem;
+}
+
+.level-tier {
+    background: linear-gradient(135deg, rgba(20, 30, 48, 0.7), rgba(30, 40, 60, 0.7));
+    border: 2px solid rgba(212, 175, 55, 0.3);
     border-radius: 12px;
+    padding: 1.5rem;
     transition: all 0.3s ease;
 }
 
-.level-badge:hover {
-    transform: translateY(-5px);
-    border-color: var(--gold);
-    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+.level-tier:hover {
+    transform: translateX(8px);
+    border-color: rgba(212, 175, 55, 0.6);
+    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.2);
 }
 
-.level-icon {
-    font-size: 2.5rem;
+/* Tier-specific colors */
+.tier-bronze {
+    border-left: 4px solid #CD7F32;
 }
 
-.level-name {
-    font-size: 0.95rem;
-    color: #ccc;
-    font-weight: 500;
+.tier-silver {
+    border-left: 4px solid #C0C0C0;
 }
 
-.level-arrow {
-    font-size: 1.5rem;
-    color: var(--accent-blue);
+.tier-gold {
+    border-left: 4px solid #FFD700;
+}
+
+.tier-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.tier-name {
+    font-size: 1.25rem;
+    color: #ffd700;
+    margin: 0;
+    font-weight: 700;
+}
+
+.tier-range {
+    font-size: 0.9rem;
+    color: #b8c5d6;
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+}
+
+.tier-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.tier-xp {
+    font-size: 1rem;
+    color: #5dd9ff;
+    font-weight: 600;
+    margin: 0;
+}
+
+.tier-perks {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.tier-perks li {
+    font-size: 0.9rem;
+    color: #d1dce6;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.tier-perks li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #5dd9ff;
+    font-weight: bold;
 }
 
 .leaderboard-list {
