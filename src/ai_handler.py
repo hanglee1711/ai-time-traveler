@@ -145,9 +145,55 @@ class AIHandler:
         user_lower = user_message.lower()
 
         # === SPECIFIC EVENTS - Check for specific historical events FIRST ===
-        # Ngô Quyền - Trận Bạch Đằng
-        if figure_name == "Ngô Quyền" and any(word in user_lower for word in ["bạch đằng", "bach dang", "trận"]):
+        # COMPREHENSIVE EVENT MAPPING for all major figures
+
+        # Ngô Quyền - Trận Bạch Đằng 938
+        if figure_name == "Ngô Quyền" and any(word in user_lower for word in ["bạch đằng", "bach dang", "trận", "chiến thắng", "938"]):
             return """Trận Bạch Đằng năm 938 là chiến công lớn nhất đời ta! Khi quân Nam Hán do Lưu Hoằng Tháo kéo sang xâm lược, ta đã sử dụng chiến thuật cọc ngầm xuất sắc trên sông Bạch Đằng. Ta cho đóng hàng nghìn cọc sắt nhọn dưới lòng sông, chờ thủy triều lên để địch vào sâu, rồi đánh úp khi nước rút. Chiến thắng vang dội này chấm dứt 1000 năm Bắc thuộc, mở ra kỷ nguyên độc lập cho dân tộc ta!"""
+
+        # Hai Bà Trưng - Khởi nghĩa năm 40
+        elif figure_name == "Hai Bà Trưng" and any(word in user_lower for word in ["khởi nghĩa", "nổi dậy", "đánh nhau", "trung quốc", "hán", "40"]):
+            return """Năm 40, chúng tôi đã lãnh đạo cuộc khởi nghĩa lớn chống ách đô hộ của nhà Hán. Khi Tô Định làm hại chồng chị Trắc, chúng tôi không thể chịu đựng được nữa! Chúng tôi đã tập hợp 80,000 quân, giải phóng 65 thành trì, tự xưng là Trưng Nữ Vương và cai trị đất nước trong 3 năm. Dù sau đó thất bại, tinh thần chúng tôi đã truyền cảm hứng cho các thế hệ sau về ý chí bất khuất của phụ nữ Việt Nam!"""
+
+        # Trần Hưng Đạo - Chiến thắng Mông Cổ
+        elif figure_name == "Trần Hưng Đạo" and any(word in user_lower for word in ["mông cổ", "nguyên", "bạch đằng", "1288", "chiến thuật", "cọc ngầm", "trận"]):
+            return """Ba lần đánh Mông Cổ (1258, 1285, 1288) là những chiến công vẻ vang nhất đời ta! Đặc biệt trận Bạch Đằng năm 1288, ta đã tái hiện chiến thuật cọc ngầm của tiền bối Ngô Quyền. Quân Nguyên-Mông 500,000 người tưởng mình bất khả chiến bại, nhưng ta đã dùng trí tuệ - đánh úp bằng cọc ngầm, phục binh, và tinh thần quyết tử cho tổ quốc. "Giặc đến nhà, không đánh thì phải chăng?" - đó là lời ta hô hào toàn quân!"""
+
+        # Lê Lợi - Khởi nghĩa Lam Sơn
+        elif figure_name == "Lê Lợi" and any(word in user_lower for word in ["lam sơn", "khởi nghĩa", "minh", "trung quốc", "10 năm", "chiến tranh"]):
+            return """Khởi nghĩa Lam Sơn (1418-1428) là 10 năm gian khổ nhất cuộc đời ta! Từ vùng núi Thanh Hóa với chỉ vài trăm người, ta và quân sư Nguyễn Trãi đã kiên trì đánh du kích, tập hợp lực lượng. Dù nhiều lần suýt bị tiêu diệt, ta không bao giờ từ bỏ. Cuối cùng, ta đã đánh thắng 200,000 quân Minh tại Chi Lăng năm 1427, giành lại độc lập cho đất nước và lập nên triều Lê!"""
+
+        # Quang Trung (Nguyễn Huệ) - Ngọc Hồi Đống Đa
+        elif figure_name == "Quang Trung" and any(word in user_lower for word in ["ngọc hồi", "đống đa", "thanh", "trung quốc", "tết", "1789"]):
+            return """Trận Ngọc Hồi - Đống Đa (Tết 1789) là chiến công làm rung chuyển cả Đông Á! Khi quân Thanh 290,000 người tràn vào Thăng Long ngồi ăn Tết, ta đã hành quân thần tốc từ Phú Xuân ra Bắc chỉ trong 7 ngày. Đêm 30 Tết, ta phát động tổng tấn công - 100,000 quân Tây Sơn như hổ xuống núi, đánh tan quân Thanh chỉ trong 5 ngày. Đây là chiến thắng vĩ đại nhất trong lịch sử chống Bắc xâm!"""
+
+        # Hồ Chí Minh - Tuyên ngôn độc lập, Cách mạng
+        elif figure_name == "Hồ Chí Minh" and any(word in user_lower for word in ["tuyên ngôn", "độc lập", "cách mạng", "1945", "ba đình", "2/9"]):
+            return """Ngày 2/9/1945 tại Quảng trường Ba Đình là khoảnh khắc lịch sử! Tôi đã đọc Tuyên ngôn Độc lập trước 500,000 đồng bào: "Nước Việt Nam có quyền hưởng tự do và độc lập..." - khẳng định chủ quyền dân tộc sau gần 100 năm Pháp thuộc. Đó là kết quả của cả đời tôi cống hiến cho cách mạng, từ khi rời bến cảng Nhà Rồng năm 1911 tìm đường cứu nước!"""
+
+        # Võ Nguyên Giáp - Điện Biên Phủ
+        elif figure_name == "Võ Nguyên Giáp" and any(word in user_lower for word in ["điện biên phủ", "dien bien phu", "pháp", "1954", "chiến dịch", "thắng lợi"]):
+            return """Chiến dịch Điện Biên Phủ (1954) là "Điện Biên" lừng lẫy trong lịch sử quân sự thế giới! Tôi đã chỉ huy 50,000 quân vây ải địch kiên cố nhất của Pháp. Chúng tôi khiêng pháo lên núi, đào hào chiến đấu, bao vây từng ngày. 56 ngày đêm giao tranh ác liệt, cuối cùng cờ Tổ quốc tung bay trên boong-ke De Castries. Chiến thắng này chấm dứt 80 năm thực dân Pháp, mở đường cho hòa bình Đông Dương!"""
+
+        # Lý Thường Kiệt - Đánh Tống
+        elif figure_name == "Lý Thường Kiệt" and any(word in user_lower for word in ["tống", "như mộng", "thần đạo", "chiến tranh", "thành", "1075", "1076"]):
+            return """Cuộc chiến chống Tống (1075-1077) là chiến công lớn đời ta! Năm 1075, ta đã chủ động tiến đánh vào đất Tống, chiếm Ung Châu và Khâm Châu. Khi quân Tống phản công, ta viết bài thơ "Nam quốc sơn hà" - tuyên bố chủ quyền lãnh thổ nước ta. Ta đã dùng chiến thuật đánh úp, mai phục, giữ vững biên cương phía Bắc cho triều Lý!"""
+
+        # Nguyễn Trãi - Bình Ngô Đại Cáo
+        elif figure_name == "Nguyễn Trãi" and any(word in user_lower for word in ["bình ngô", "đại cáo", "văn", "thơ", "quân sư", "lam sơn"]):
+            return """Ta là quân sư của Lê Lợi trong khởi nghĩa Lam Sơn. Nhưng công việc lớn nhất của ta là viết "Bình Ngô Đại Cáo" - văn bản tuyên bố độc lập năm 1428, khẳng định: "Việc nhân nghĩa đã định đoạt, quân hung bạo phải thua." Ta muốn chứng minh rằng trí tuệ và văn chương cũng quan trọng như chiến tranh trong việc xây dựng đất nước!"""
+
+        # Bà Triệu - Nữ tướng chống Đông Ngô
+        elif figure_name == "Bà Triệu" and any(word in user_lower for word in ["khởi nghĩa", "ngô", "đông ngô", "nữ tướng", "248"]):
+            return """Năm 248, ta chỉ 19 tuổi đã lãnh đạo khởi nghĩa chống Đông Ngô! Ta nói với anh trai: "Tôi muốn cưỡi gió, giẫm sóng lớn, chém cá kình trong biển Đông, đánh đuổi quân Ngô, giải phóng bách tính, há chịu khom lưng làm tì thiếp người ta sao?" Dù sau 6 tháng thất bại, tinh thần kiên cường của ta vẫn sống mãi trong lòng người Việt!"""
+
+        # Đinh Bộ Lĩnh - Thống nhất đất nước
+        elif figure_name == "Đinh Bộ Lĩnh" and any(word in user_lower for word in ["thống nhất", "12 sứ quân", "loạn", "đại cồ việt", "968"]):
+            return """Sau khi Ngô Quyền mất, nước ta rơi vào loạn 12 Sứ quân (938-968). Ta đã từng bước đánh dẹp các sứ quân, thống nhất đất nước năm 968, lập nên nhà Đinh với quốc hiệu "Đại Cồ Việt". Ta còn thiết lập hệ thống quân đội chặt chẽ với 10 đạo quân để bảo vệ biên cương!"""
+
+        # Lý Công Uẩn - Dời đô Thăng Long
+        elif figure_name == "Lý Công Uẩn" and any(word in user_lower for word in ["dời đô", "thăng long", "hà nội", "chiếu dời đô", "1010"]):
+            return """Năm 1010, ta đã quyết định dời đô từ Hoa Lư về Đại La (nay là Hà Nội) và đặt tên là Thăng Long. Ta viết "Chiếu dời đô": "Thành này đất rộng người đông, sông núi vững vàng, thật là đất Rồng bay Phượng múa..." Đây là quyết sách quan trọng nhất đời ta, mở ra thời kỳ thịnh trị của nhà Lý!"""
 
         # === GREETING & INTRODUCTION ===
         elif any(word in user_lower for word in ["xin chào", "chào", "hello", "hi"]):
@@ -164,8 +210,21 @@ class AIHandler:
 
         # === BIOGRAPHY & LIFE ===
         elif any(word in user_lower for word in ["chuyện đời", "cuộc đời", "tiểu sử", "câu chuyện", "kể", "sinh ra", "lớn lên", "tuổi thơ"]):
-            if figure_data and figure_data.get('biography'):
-                return figure_data['biography'][:300] + "... Ngươi muốn biết thêm về giai đoạn nào?"
+            if figure_data:
+                # Try biography first
+                if figure_data.get('biography'):
+                    return figure_data['biography'][:300] + "... Ngươi muốn biết thêm về giai đoạn nào?"
+                # If no biography, use context or description + achievements
+                elif figure_data.get('context'):
+                    context = figure_data.get('context', '')
+                    role = figure_data.get('role', '')
+                    period = figure_data.get('period', '')
+                    return f"Ta là {role} thời {period}. {context} Ngươi muốn tìm hiểu gì về ta?"
+                elif figure_data.get('achievements'):
+                    achievements = figure_data.get('achievements', [])
+                    role = figure_data.get('role', 'nhân vật lịch sử')
+                    period = figure_data.get('period', '')
+                    return f"Ta là {role} thời {period}. Cuộc đời ta gắn liền với: {', '.join(achievements[:3])}. Đây là những di sản ta để lại cho thế hệ sau!"
             return f"Cuộc đời ta là một hành trình đầy thử thách và ý nghĩa. Từ những ngày đầu cho đến những quyết định quan trọng, mỗi giai đoạn đều để lại dấu ấn sâu đậm. Ngươi muốn nghe về phần nào trong cuộc đời ta?"
 
         # === PHILOSOPHY & BELIEFS ===
