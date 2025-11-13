@@ -113,28 +113,59 @@ class AIHandler:
         if not self.api_url:
             raise ValueError("LLAMA_API_URL not found in environment variables")
 
-    def _generate_fallback_response(self, system_prompt: str, user_message: str) -> str:
+    def _generate_fallback_response(self, system_prompt: str, user_message: str, figure_data: dict = None) -> str:
         """
-        ENHANCED Fallback: Always responds with meaningful content
-        Covers 20+ question patterns for ALL historical figures
+        ENHANCED Fallback: Always responds with meaningful content using REAL data
+        Covers 20+ question patterns with specific information from database
         """
         import re
+        import json
+        from pathlib import Path
 
         # Extract figure name from system prompt
         figure_match = re.search(r'về (.+?),', system_prompt)
         figure_name = figure_match.group(1) if figure_match else "nhân vật lịch sử"
 
+        # Load figure data if not provided
+        if not figure_data:
+            try:
+                base_dir = Path(__file__).parent.parent
+                figures_path = base_dir / 'data' / 'historical_figures.json'
+                with open(figures_path, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                    figures_list = data.get('figures', [])
+                    for fig in figures_list:
+                        if fig.get('name') == figure_name:
+                            figure_data = fig
+                            break
+            except Exception as e:
+                print(f"[ERROR] Failed to load figure data: {e}")
+                figure_data = None
+
         user_lower = user_message.lower()
 
+        # === SPECIFIC EVENTS - Check for specific historical events FIRST ===
+        # Ngô Quyền - Trận Bạch Đằng
+        if figure_name == "Ngô Quyền" and any(word in user_lower for word in ["bạch đằng", "bach dang", "trận"]):
+            return """Trận Bạch Đằng năm 938 là chiến công lớn nhất đời ta! Khi quân Nam Hán do Lưu Hoằng Tháo kéo sang xâm lược, ta đã sử dụng chiến thuật cọc ngầm xuất sắc trên sông Bạch Đằng. Ta cho đóng hàng nghìn cọc sắt nhọn dưới lòng sông, chờ thủy triều lên để địch vào sâu, rồi đánh úp khi nước rút. Chiến thắng vang dội này chấm dứt 1000 năm Bắc thuộc, mở ra kỷ nguyên độc lập cho dân tộc ta!"""
+
         # === GREETING & INTRODUCTION ===
-        if any(word in user_lower for word in ["xin chào", "chào", "hello", "hi"]):
+        elif any(word in user_lower for word in ["xin chào", "chào", "hello", "hi"]):
+            if figure_data and figure_data.get('description'):
+                return f"Xin chào! Ta là {figure_name} - {figure_data['description']}. Rất vui được gặp ngươi!"
             return f"Xin chào! Ta là {figure_name}. Rất vui được gặp ngươi. Ngươi muốn tìm hiểu điều gì về ta?"
 
         elif any(word in user_lower for word in ["là ai", "ai", "giới thiệu", "bạn là"]):
+            if figure_data:
+                role = figure_data.get('role', 'nhân vật lịch sử')
+                period = figure_data.get('period', 'lịch sử Việt Nam')
+                return f"Ta là {figure_name}, {role} thời {period}. Cuộc đời ta gắn liền với những thời khắc quan trọng của dân tộc. Ngươi muốn biết điều gì?"
             return f"Ta là {figure_name}, một nhân vật trong lịch sử Việt Nam. Cuộc đời ta gắn liền với những thời khắc quan trọng của dân tộc. Ngươi muốn biết về giai đoạn nào?"
 
         # === BIOGRAPHY & LIFE ===
         elif any(word in user_lower for word in ["chuyện đời", "cuộc đời", "tiểu sử", "câu chuyện", "kể", "sinh ra", "lớn lên", "tuổi thơ"]):
+            if figure_data and figure_data.get('biography'):
+                return figure_data['biography'][:300] + "... Ngươi muốn biết thêm về giai đoạn nào?"
             return f"Cuộc đời ta là một hành trình đầy thử thách và ý nghĩa. Từ những ngày đầu cho đến những quyết định quan trọng, mỗi giai đoạn đều để lại dấu ấn sâu đậm. Ngươi muốn nghe về phần nào trong cuộc đời ta?"
 
         # === PHILOSOPHY & BELIEFS ===
@@ -142,11 +173,19 @@ class AIHandler:
             return f"Triết lý sống của ta là luôn đặt lợi ích chung lên trên hết. Ta tin vào sức mạnh của ý chí, lòng kiên trì và tinh thần đoàn kết. Mỗi quyết định ta đưa ra đều xuất phát từ trái tim và lý trí."
 
         # === MILITARY & STRATEGY ===
-        elif any(word in user_lower for word in ["chiến thuật", "quân sự", "chiến tranh", "chiến lược", "võ thuật", "binh pháp", "trận", "chiến đấu"]):
+        elif any(word in user_lower for word in ["chiến thuật", "quân sự", "chiến tranh", "chiến lược", "võ thuật", "binh pháp", "chiến đấu"]):
+            if figure_data and figure_data.get('achievements'):
+                achievements = figure_data['achievements']
+                military_achievements = [a for a in achievements if any(w in a.lower() for w in ['chiến', 'thắng', 'quân', 'trận'])]
+                if military_achievements:
+                    return f"Về quân sự, ta tự hào với: {', '.join(military_achievements[:2])}. Chiến thắng đến từ trí tuệ và sự chuẩn bị kỹ lưỡng!"
             return f"Trong lĩnh vực quân sự, ta học hỏi từ nhiều nguồn và áp dụng linh hoạt. Chiến thắng không chỉ đến từ sức mạnh mà còn từ trí tuệ, sự chuẩn bị kỹ lưỡng và tinh thần của toàn quân."
 
         # === ACHIEVEMENTS & CONTRIBUTIONS ===
         elif any(word in user_lower for word in ["sự kiện", "thành tựu", "đóng góp", "công lao", "thành công", "di sản", "để lại", "ảnh hưởng"]):
+            if figure_data and figure_data.get('achievements'):
+                achievements = figure_data['achievements'][:2]  # First 2 achievements
+                return f"Những thành tựu của ta bao gồm: {', '.join(achievements)}. Ta hy vọng những đóng góp này sẽ có giá trị cho thế hệ sau!"
             return f"Những đóng góp của ta là kết quả của sự nỗ lực không ngừng và lòng tận tụy. Ta hy vọng những gì mình làm sẽ để lại giá trị tích cực cho thế hệ sau và cho đất nước."
 
         # === FAMILY & PERSONAL LIFE ===
