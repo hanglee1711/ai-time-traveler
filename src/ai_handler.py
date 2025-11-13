@@ -196,12 +196,13 @@ class AIHandler:
             return """Năm 1010, ta đã quyết định dời đô từ Hoa Lư về Đại La (nay là Hà Nội) và đặt tên là Thăng Long. Ta viết "Chiếu dời đô": "Thành này đất rộng người đông, sông núi vững vàng, thật là đất Rồng bay Phượng múa..." Đây là quyết sách quan trọng nhất đời ta, mở ra thời kỳ thịnh trị của nhà Lý!"""
 
         # === GREETING & INTRODUCTION ===
-        elif any(word in user_lower for word in ["xin chào", "chào", "hello", "hi"]):
+        # Check greeting with specific patterns to avoid false matches
+        elif user_lower.startswith(("xin chào", "chào ", "hello", "hi ", "chúc ", "kính ")):
             if figure_data and figure_data.get('description'):
                 return f"Xin chào! Ta là {figure_name} - {figure_data['description']}. Rất vui được gặp ngươi!"
             return f"Xin chào! Ta là {figure_name}. Rất vui được gặp ngươi. Ngươi muốn tìm hiểu điều gì về ta?"
 
-        elif any(word in user_lower for word in ["là ai", "ai", "giới thiệu", "bạn là"]):
+        elif any(word in user_lower for word in ["là ai", " ai ", "giới thiệu", "bạn là"]):
             if figure_data:
                 role = figure_data.get('role', 'nhân vật lịch sử')
                 period = figure_data.get('period', 'lịch sử Việt Nam')
@@ -275,9 +276,79 @@ class AIHandler:
         elif any(word in user_lower for word in ["cảm hứng", "động lực", "truyền cảm", "khích lệ", "tại sao", "vì sao"]):
             return f"Động lực lớn nhất của ta là tình yêu quê hương và trách nhiệm với dân tộc. Mỗi khi gặp khó khăn, ta nghĩ đến những người đang tin tưởng và mình lại có thêm sức mạnh."
 
-        # === DEFAULT: OPEN-ENDED RESPONSE ===
+        # === LITERATURE & ARTS (văn học, nghệ thuật) ===
+        elif any(word in user_lower for word in ["văn học", "thơ", "văn", "viết", "tác phẩm", "sáng tác", "kiều", "nghệ thuật"]):
+            if figure_data and figure_data.get('achievements'):
+                achievements = figure_data['achievements']
+                literary = [a for a in achievements if any(w in a.lower() for w in ['văn', 'thơ', 'tác phẩm', 'kiều', 'sách', 'viết'])]
+                if literary:
+                    return f"Về văn chương, ta tự hào với: {', '.join(literary[:2])}. Văn học là cách ta ghi lại tâm tư và truyền tải giá trị cho thế hệ sau!"
+            return f"Văn học và nghệ thuật là phương tiện để ta thể hiện tư tưởng và cảm xúc. Qua những tác phẩm, ta muốn để lại di sản tinh thần cho dân tộc."
+
+        # === EDUCATION & LEARNING ===
+        elif any(word in user_lower for word in ["học", "giáo dục", "dạy", "trường", "tri thức", "kiến thức"]):
+            return f"Học hỏi và giáo dục là nền tảng của một dân tộc. Ta luôn tin rằng tri thức là sức mạnh, và giáo dục tốt sẽ tạo nên những con người tốt cho đất nước."
+
+        # === POLITICS & GOVERNANCE ===
+        elif any(word in user_lower for word in ["chính trị", "cai trị", "quản lý", "nhà nước", "triều đình", "vua", "quan"]):
+            if figure_data:
+                role = figure_data.get('role', '')
+                if any(w in role.lower() for w in ['vua', 'hoàng', 'vương', 'tông']):
+                    return f"Là {role}, ta hiểu rằng cai trị đất nước là trách nhiệm nặng nề. Ta luôn cố gắng làm sao để dân được no ấm, nước được thái bình."
+            return f"Trong chính trị, ta tin vào sự công bằng và đặt lợi ích nhân dân lên hàng đầu. Một nhà lãnh đạo tốt phải biết lắng nghe và hành động vì dân."
+
+        # === DEATH & END OF LIFE ===
+        elif any(word in user_lower for word in ["chết", "mất", "qua đời", "cuối đời", "lúc chết", "trước khi chết"]):
+            return f"Cái chết là điều tất yếu của mọi người. Quan trọng không phải là sống bao lâu, mà là sống như thế nào - có để lại điều gì có ý nghĩa cho thế hệ sau hay không."
+
+        # === PERSONAL QUALITIES & CHARACTER ===
+        elif any(word in user_lower for word in ["tính cách", "con người", "thế nào", "như thế nào", "ra sao"]):
+            if figure_data:
+                personality = figure_data.get('personality', 'kiên cường và trung thành')
+                return f"Người ta nói ta là người {personality}. Ta cố gắng sống đúng với những giá trị mà ta tin tưởng và luôn hết lòng vì đất nước."
+            return f"Ta là một người bình thường với những ưu điểm và khuyết điểm. Nhưng ta luôn cố gắng làm điều đúng đắn và sống có ý nghĩa."
+
+        # === RELIGION & SPIRITUALITY ===
+        elif any(word in user_lower for word in ["tôn giáo", "đạo", "phật", "thiền", "tu hành", "tâm linh"]):
+            return f"Tâm linh là phần quan trọng giúp ta tìm thấy bình an và sự cân bằng trong cuộc sống. Ta tôn trọng các giá trị tâm linh và đạo đức của dân tộc."
+
+        # === FAVORITES & PREFERENCES ===
+        elif any(word in user_lower for word in ["thích", "yêu", "ưa", "thú", "sở thích", "đam mê"]):
+            if figure_data and figure_data.get('achievements'):
+                achievements = figure_data['achievements'][0] if figure_data['achievements'] else ''
+                return f"Ta đam mê với công việc của mình. Đặc biệt, ta tự hào với thành tựu: {achievements}. Đó là niềm vui và ý nghĩa cuộc đời ta!"
+            return f"Ta thích những việc mang lại giá trị cho đất nước và nhân dân. Mỗi ngày được cống hiến là một niềm hạnh phúc với ta."
+
+        # === COMPARISON & OPINION ===
+        elif any(word in user_lower for word in ["so với", "khác với", "giống với", "hơn so với", "nghĩ về", "ý kiến về", "nhận xét"]):
+            return f"Mỗi người, mỗi thời đại đều có hoàn cảnh và cách làm riêng. Ta tôn trọng những người đi trước và học hỏi từ họ, đồng thời cố gắng làm tốt vai trò của mình."
+
+        # === REGRETS & MISTAKES ===
+        elif any(word in user_lower for word in ["hối hận", "tiếc", "sai lầm", "lỗi", "ân hận"]):
+            return f"Ai cũng có những quyết định không hoàn hảo. Quan trọng là ta học được gì từ những sai lầm và cố gắng làm tốt hơn trong tương lai."
+
+        # === ADVICE TO YOUTH ===
+        elif any(word in user_lower for word in ["thế hệ trẻ", "giới trẻ", "thanh niên", "lời khuyên cho"]):
+            return f"Ta khuyên thế hệ trẻ hãy: học tập không ngừng, giữ gìn truyền thống dân tộc, đồng thời cởi mở với tiến bộ. Hãy sống có ý nghĩa và cống hiến cho xã hội."
+
+        # === DEFAULT: SMART RESPONSE based on context ===
         else:
-            return f"Đây là một câu hỏi hay! Là {figure_name}, ta sẵn sàng chia sẻ với ngươi. Ngươi có thể hỏi ta về: cuộc đời, triết lý sống, những sự kiện lịch sử, bài học rút ra, hoặc bất cứ điều gì ngươi quan tâm. Ta đang lắng nghe."
+            # Try to extract context from the question and give meaningful response
+            if figure_data:
+                # Use figure's role and context to give relevant answer
+                role = figure_data.get('role', 'nhân vật lịch sử')
+                period = figure_data.get('period', '')
+                context = figure_data.get('context', '')
+
+                # Provide contextual response
+                if context:
+                    return f"Ngươi hỏi điều thú vị! Là {role} thời {period}, ta có thể nói rằng: {context[:200]}. Ngươi muốn biết thêm về khía cạnh nào?"
+                elif figure_data.get('achievements'):
+                    achievements = ', '.join(figure_data['achievements'][:2])
+                    return f"Câu hỏi hay đấy! Là {role}, ta đã có những đóng góp như: {achievements}. Ngươi có muốn tìm hiểu sâu hơn về điều nào không?"
+
+            # Ultimate fallback - encourage to ask more specific questions
+            return f"Đây là một câu hỏi hay! Là {figure_name}, ta sẵn sàng chia sẻ với ngươi. Ngươi có thể hỏi ta về: cuộc đời, triết lý sống, những sự kiện lịch sử, thành tựu, bài học rút ra, hoặc bất cứ điều gì cụ thể hơn. Ta đang lắng nghe!"
 
     def generate_response(
         self,
