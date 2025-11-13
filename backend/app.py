@@ -234,6 +234,11 @@ def serve_hero_character():
     """Serve hero character image"""
     return send_from_directory(str(base_dir / 'frontend'), 'hero-character.png', mimetype='image/png')
 
+@app.route('/founder-hang.jpg')
+def serve_founder_image():
+    """Serve founder image"""
+    return send_from_directory(str(base_dir / 'frontend'), 'founder-hang.jpg', mimetype='image/jpeg')
+
 @app.route('/background-music.mp3')
 def serve_background_music():
     """Serve background music"""
