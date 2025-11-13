@@ -244,7 +244,7 @@
 
         // ==================== SEND GREETING ====================
         async function sendGreeting() {
-            const message = `Xin chào ${currentFigure.name}!`;
+            const message = `Kính thưa ngài ${currentFigure.name}, con/cháu xin được hầu chuyện và học hỏi từ ngài.`;
 
             addMessage('user', message);
             showTyping();
@@ -262,7 +262,7 @@
             } catch (error) {
                 console.error('Chat error:', error);
                 hideTyping();
-                addMessage('assistant', `Xin chào! Ta là ${currentFigure.name}. Hãy hỏi ta điều gì!`);
+                addMessage('assistant', `Ta là ${currentFigure.name}. Rất hân hạnh được gặp ngươi. Ngươi muốn học hỏi điều gì từ ta?`);
             }
         }
 

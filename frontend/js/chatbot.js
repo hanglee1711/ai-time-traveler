@@ -374,7 +374,7 @@ function checkSelectedFigure() {
  * Send greeting message
  */
 async function sendGreeting() {
-    const greetingMessage = `Kính bái kiến ngài ${currentFigure.name}! Con/cháu xin được học hỏi từ ngài.`;
+    const greetingMessage = `Kính thưa ngài ${currentFigure.name}, con/cháu xin được hầu chuyện và học hỏi từ ngài.`;
 
     // Add user message
     addMessage('user', greetingMessage);
@@ -400,7 +400,7 @@ async function sendGreeting() {
         removeTypingIndicator(typingId);
 
         // Fallback response
-        const fallbackResponse = `Xin chào! Ta là ${currentFigure.name}. Rất vui được gặp ngươi. Ngươi muốn hỏi ta về điều gì?`;
+        const fallbackResponse = `Ta là ${currentFigure.name}. Rất hân hạnh được gặp ngươi. Ngươi muốn học hỏi điều gì từ ta?`;
         addMessage('assistant', fallbackResponse);
     }
 }
@@ -613,7 +613,7 @@ async function sendMessage() {
                 // Show error message if no content was streamed
                 if (!streamedText) {
                     const fallbackResponse = currentFigure
-                        ? `Xin chào! Ta là ${currentFigure.name}. Xin lỗi, ta gặp chút vấn đề kỹ thuật. Hãy thử lại sau nhé!`
+                        ? `Ta là ${currentFigure.name}. Xin lỗi, ta đang gặp chút vấn đề. Ngươi hãy thử lại sau nhé.`
                         : 'Xin lỗi, hệ thống đang gặp sự cố. Vui lòng thử lại sau!';
                     addMessage('assistant', fallbackResponse);
                 }
@@ -626,7 +626,7 @@ async function sendMessage() {
 
         // Fallback response
         const fallbackResponse = currentFigure
-            ? `Xin chào! Ta là ${currentFigure.name}. Xin lỗi, ta gặp chút vấn đề kỹ thuật. Hãy thử lại sau nhé!`
+            ? `Ta là ${currentFigure.name}. Xin lỗi, ta đang gặp chút vấn đề. Ngươi hãy thử lại sau nhé.`
             : 'Xin lỗi, hệ thống đang gặp sự cố. Vui lòng thử lại sau!';
         addMessage('assistant', fallbackResponse);
     } finally {
