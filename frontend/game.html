@@ -151,23 +151,23 @@
                     </button>
                 </div>
 
-                <!-- NEW FEATURE 1: Historical Card Collection -->
-                <div class="game-card" style="border: 2px solid rgba(138, 43, 226, 0.5); background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(75, 0, 130, 0.05));">
-                    <div class="game-icon">🎴</div>
-                    <h3 class="game-title" style="color: #9b59b6;">Thẻ Bài Lịch Sử</h3>
-                    <p class="game-description">Thu thập thẻ bài về các nhân vật lịch sử! Lật thẻ may mắn, xem bộ sưu tập và đổi thẻ với bạn bè.</p>
-                    <button class="btn-quiz btn-primary" onclick="openCardCollection()">
-                        Mở bộ sưu tập
+                <!-- NEW FEATURE 1: Timeline Explorer -->
+                <div class="game-card" style="border: 2px solid rgba(52, 152, 219, 0.5); background: linear-gradient(135deg, rgba(52, 152, 219, 0.15), rgba(41, 128, 185, 0.08));">
+                    <div class="game-icon">⏳</div>
+                    <h3 class="game-title" style="color: #3498db;">Du Hành Dòng Thời Gian</h3>
+                    <p class="game-description">Khám phá 3000+ năm lịch sử Việt Nam! Click vào các sự kiện lớn, xem video, làm quiz ngay tại từng mốc thời gian!</p>
+                    <button class="btn-quiz btn-primary" onclick="openTimeline()" style="background: linear-gradient(135deg, #3498db, #2980b9);">
+                        🚀 Bắt đầu khám phá
                     </button>
                 </div>
 
-                <!-- NEW FEATURE 2: Historical Music Quiz -->
-                <div class="game-card" style="border: 2px solid rgba(255, 105, 180, 0.5); background: linear-gradient(135deg, rgba(255, 105, 180, 0.1), rgba(255, 20, 147, 0.05));">
-                    <div class="game-icon">🎵</div>
-                    <h3 class="game-title" style="color: #ff69b4;">Âm Nhạc Lịch Sử</h3>
-                    <p class="game-description">Đoán tên ca khúc lịch sử, khám phá nhạc của từng thời kỳ và thử thách karaoke lịch sử!</p>
-                    <button class="btn-quiz btn-primary" onclick="openMusicQuiz()">
-                        Bắt đầu chơi
+                <!-- NEW FEATURE 2: Debate Arena -->
+                <div class="game-card" style="border: 2px solid rgba(231, 76, 60, 0.5); background: linear-gradient(135deg, rgba(231, 76, 60, 0.15), rgba(192, 57, 43, 0.08));">
+                    <div class="game-icon">⚡</div>
+                    <h3 class="game-title" style="color: #e74c3c;">Đấu Trường Tranh Luận</h3>
+                    <p class="game-description">Chứng kiến tranh luận TRỰC TIẾP giữa các anh hùng! AI tái hiện cuộc đối thoại sống động giữa Trần Hưng Đạo vs Quang Trung!</p>
+                    <button class="btn-quiz btn-primary" onclick="openDebateArena()" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">
+                        ⚔️ Vào đấu trường
                     </button>
                 </div>
             </div>
@@ -339,78 +339,94 @@
         </div>
     </div>
 
-    <!-- Card Collection Modal -->
-    <div id="cardCollectionModal" class="card-modal" style="display: none;">
-        <div class="card-modal-content">
+    <!-- Timeline Explorer Modal -->
+    <div id="timelineModal" class="card-modal" style="display: none;">
+        <div class="card-modal-content" style="max-width: 1200px;">
             <div class="card-modal-header">
-                <h2>🎴 Bộ Sưu Tập Thẻ Lịch Sử</h2>
-                <button class="card-close-btn" onclick="closeCardCollection()">×</button>
+                <h2>⏳ Du Hành Dòng Thời Gian</h2>
+                <button class="card-close-btn" onclick="closeTimeline()">×</button>
             </div>
 
-            <div class="card-stats">
+            <div class="timeline-stats">
                 <div class="stat">
-                    <span class="stat-value" id="totalCards">0</span>
-                    <span class="stat-label">Tổng thẻ</span>
+                    <span class="stat-value" id="eventsExplored">0</span>
+                    <span class="stat-label">Sự kiện khám phá</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-value" id="uniqueCards">0</span>
-                    <span class="stat-label">Duy nhất</span>
+                    <span class="stat-value" id="timelineXP">0</span>
+                    <span class="stat-label">XP nhận được</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-value" id="cardPacks">3</span>
-                    <span class="stat-label">Gói thẻ còn lại</span>
+                    <span class="stat-value" id="currentPeriod">Cổ đại</span>
+                    <span class="stat-label">Thời kỳ hiện tại</span>
                 </div>
             </div>
 
-            <div class="card-actions">
-                <button class="btn-quiz btn-primary" onclick="openCardPack()">
-                    🎁 Mở gói thẻ (5 thẻ)
-                </button>
-            </div>
-
-            <div id="cardGrid" class="card-grid">
-                <!-- Cards will be rendered here -->
+            <div class="timeline-container" id="timelineContent">
+                <!-- Timeline will be rendered here -->
             </div>
         </div>
     </div>
 
-    <!-- Music Quiz Modal -->
-    <div id="musicQuizModal" class="card-modal" style="display: none;">
-        <div class="card-modal-content">
+    <!-- Debate Arena Modal -->
+    <div id="debateModal" class="card-modal" style="display: none;">
+        <div class="card-modal-content" style="max-width: 1000px;">
             <div class="card-modal-header">
-                <h2>🎵 Âm Nhạc Lịch Sử</h2>
-                <button class="card-close-btn" onclick="closeMusicQuiz()">×</button>
+                <h2>⚡ Đấu Trường Tranh Luận</h2>
+                <button class="card-close-btn" onclick="closeDebateArena()">×</button>
             </div>
 
-            <div class="music-quiz-container">
-                <div class="music-quiz-header">
-                    <div class="music-score">
-                        <span>🎯 Điểm:</span>
-                        <span id="musicScore">0</span>
-                    </div>
-                    <div class="music-round">
-                        <span>Bài:</span>
-                        <span id="musicRound">1/5</span>
-                    </div>
+            <!-- Debate Setup Screen -->
+            <div id="debateSetup" style="display: block;">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="color: var(--text-gray); font-size: 1.1rem; line-height: 1.6;">
+                        Chọn 2 nhân vật lịch sử để họ tranh luận về một chủ đề. AI sẽ tái hiện cuộc đối thoại dựa trên tính cách và tư tưởng của họ!
+                    </p>
                 </div>
 
-                <div class="music-question">
-                    <div class="music-icon">🎼</div>
-                    <p id="musicQuestionText">Ca khúc này thuộc thời kỳ nào?</p>
-                    <div class="music-player">
-                        <button class="music-play-btn" id="playMusicBtn" onclick="playMusic()">
-                            ▶️ Phát nhạc
-                        </button>
+                <div class="debate-selection">
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="color: var(--gold); margin-bottom: 1rem;">Chọn Đấu Thủ 1:</h3>
+                        <select id="fighter1" class="debate-select">
+                            <option value="">-- Chọn nhân vật --</option>
+                        </select>
                     </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="color: var(--gold); margin-bottom: 1rem;">Chọn Đấu Thủ 2:</h3>
+                        <select id="fighter2" class="debate-select">
+                            <option value="">-- Chọn nhân vật --</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="color: var(--gold); margin-bottom: 1rem;">Chủ Đề Tranh Luận:</h3>
+                        <select id="debateTopic" class="debate-select">
+                            <option value="">-- Chọn chủ đề --</option>
+                            <option value="Chiến thuật nào tốt nhất để bảo vệ đất nước?">Chiến thuật nào tốt nhất để bảo vệ đất nước?</option>
+                            <option value="Làm sao để trở thành một vị vua anh minh?">Làm sao để trở thành một vị vua anh minh?</option>
+                            <option value="Vai trò của người phụ nữ trong lịch sử Việt Nam">Vai trò của người phụ nữ trong lịch sử Việt Nam</option>
+                            <option value="Kháng chiến hay ngoại giao - phương án nào hiệu quả hơn?">Kháng chiến hay ngoại giao - phương án nào hiệu quả hơn?</option>
+                        </select>
+                    </div>
+
+                    <button class="btn-quiz btn-primary" onclick="startDebate()" style="width: 100%; padding: 1rem; font-size: 1.2rem;">
+                        ⚔️ Bắt đầu tranh luận!
+                    </button>
+                </div>
+            </div>
+
+            <!-- Debate Arena Screen -->
+            <div id="debateArena" style="display: none;">
+                <div id="debateContent" class="debate-content">
+                    <!-- Debate conversation will appear here -->
                 </div>
 
-                <div class="music-options" id="musicOptions">
-                    <!-- Options will be rendered here -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn-quiz btn-secondary" onclick="resetDebate()">
+                        ← Chọn lại đấu thủ
+                    </button>
                 </div>
-
-                <button id="nextMusicBtn" class="btn-quiz btn-primary" onclick="nextMusicQuestion()" style="display: none; margin-top: 2rem;">
-                    Tiếp theo →
-                </button>
             </div>
         </div>
     </div>
@@ -419,8 +435,8 @@
     <script src="js/auth.js"></script>
     <script src="js/main.js"></script>
     <script src="js/game.js"></script>
-    <script src="js/card-collection.js"></script>
-    <script src="js/music-quiz.js"></script>
+    <script src="js/timeline-explorer.js"></script>
+    <script src="js/debate-arena.js"></script>
 
     <style>
         /* Animation keyframes */
