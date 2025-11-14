@@ -408,8 +408,8 @@ def chat():
             response_text = ai_handler.generate_response(
                 system_prompt=system_prompt,
                 user_message=user_message,
-                temperature=0.6,   # IMMERSIVE: Higher temp for emotional, natural storytelling
-                max_tokens=500     # IMMERSIVE: Enough for detailed stories with emotions
+                temperature=0.7,   # IMMERSIVE: Higher temp for emotional, natural storytelling
+                max_tokens=400     # COMPACT: Shorter for faster, more reliable responses
             )
 
             # DEBUG: Log AI response
