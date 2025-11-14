@@ -408,7 +408,7 @@ def chat():
             response_text = ai_handler.generate_response(
                 system_prompt=system_prompt,
                 user_message=user_message,
-                temperature=0.7,   # FIXED: Lower temp for better focus and consistency
+                temperature=0.4,   # OPTIMIZED: Lower temp for consistent, focused roleplay
                 max_tokens=400     # FIXED: More tokens for detailed, immersive storytelling
             )
 
@@ -420,7 +420,7 @@ def chat():
             response_text = ai_handler.generate_response(
                 system_prompt=system_prompt,
                 user_message=user_message,
-                temperature=0.7,   # FIXED: Lower temp for better focus
+                temperature=0.4,   # OPTIMIZED: Lower temp for consistent roleplay
                 max_tokens=400     # FIXED: More tokens for detailed responses
             )
 
@@ -431,7 +431,7 @@ def chat():
             response_text = ai_handler.generate_response(
                 system_prompt=system_prompt,
                 user_message=user_message,
-                temperature=0.7,  # FIXED: Lower temp for better focus
+                temperature=0.4,  # OPTIMIZED: Lower temp for consistent roleplay
                 max_tokens=400    # FIXED: More tokens for detailed responses
             )
 
@@ -536,7 +536,7 @@ def chat_stream():
                 for chunk in ai_handler.generate_response_stream(
                     system_prompt=system_prompt,
                     user_message=user_message,
-                    temperature=0.7,   # FIXED: Lower temp for consistency
+                    temperature=0.4,   # OPTIMIZED: Lower temp for consistent roleplay
                     max_tokens=400     # FIXED: More tokens for detail
                 ):
                     yield f"data: {json.dumps({'type': 'chunk', 'content': chunk})}\n\n"
@@ -549,7 +549,7 @@ def chat_stream():
                 for chunk in ai_handler.generate_response_stream(
                     system_prompt=system_prompt,
                     user_message=user_message,
-                    temperature=0.7,   # FIXED: Lower temp for consistency
+                    temperature=0.4,   # OPTIMIZED: Lower temp for consistent roleplay
                     max_tokens=400     # FIXED: More tokens for detail
                 ):
                     yield f"data: {json.dumps({'type': 'chunk', 'content': chunk})}\n\n"
@@ -561,7 +561,7 @@ def chat_stream():
                 for chunk in ai_handler.generate_response_stream(
                     system_prompt=system_prompt,
                     user_message=user_message,
-                    temperature=0.7,   # FIXED: Lower temp for consistency
+                    temperature=0.4,   # OPTIMIZED: Lower temp for consistent roleplay
                     max_tokens=400     # FIXED: More tokens for detail
                 ):
                     yield f"data: {json.dumps({'type': 'chunk', 'content': chunk})}\n\n"
