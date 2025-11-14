@@ -412,6 +412,14 @@ def chat():
                 max_tokens=600     # EDUCATIONAL: More tokens for detailed explanations to students
             )
 
+            # DEBUG: Log AI response
+            print(f"[DEBUG] AI Response for {figure_name}: type={type(response_text)}, value={repr(response_text[:100] if response_text else None)}")
+
+            # CRITICAL: Validate response is not None, empty, or "undefined"
+            if not response_text or response_text.strip() == "" or response_text.strip().lower() == "undefined":
+                print(f"[ERROR] Invalid response from AI for {figure_name}: {response_text}")
+                response_text = f"Xin lỗi các em, hiện tại {figure_name if figure_name else 'ta'} không thể trả lời câu hỏi này. Các em thử hỏi lại nhé!"
+
         elif year:
             # Time travel mode
             event_data = detector.get_event_by_year(year)
@@ -424,6 +432,11 @@ def chat():
                 max_tokens=400     # FIXED: More tokens for detailed responses
             )
 
+            # CRITICAL: Validate response
+            if not response_text or response_text.strip() == "":
+                print(f"[ERROR] Empty response from AI for year {year}")
+                response_text = "Xin lỗi, hiện tại không thể kể về thời kỳ này. Thử hỏi lại nhé!"
+
         else:
             # General mode
             system_prompt = get_general_prompt()
@@ -434,6 +447,11 @@ def chat():
                 temperature=0.4,  # OPTIMIZED: Lower temp for consistent roleplay
                 max_tokens=400    # FIXED: More tokens for detailed responses
             )
+
+            # CRITICAL: Validate response
+            if not response_text or response_text.strip() == "":
+                print(f"[ERROR] Empty response from AI in general mode")
+                response_text = "Xin lỗi, hiện tại không thể trả lời câu hỏi này. Thử hỏi lại nhé!"
 
         # Cache the response if it's a figure conversation (and not an error)
         if figure_name and not any(err in response_text.lower() for err in ['xin lỗi', 'lỗi', 'error', 'quota']):
