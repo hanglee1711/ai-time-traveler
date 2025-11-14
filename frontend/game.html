@@ -150,6 +150,26 @@
                         Xem bảng xếp hạng
                     </button>
                 </div>
+
+                <!-- NEW FEATURE 1: Historical Card Collection -->
+                <div class="game-card" style="border: 2px solid rgba(138, 43, 226, 0.5); background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(75, 0, 130, 0.05));">
+                    <div class="game-icon">🎴</div>
+                    <h3 class="game-title" style="color: #9b59b6;">Thẻ Bài Lịch Sử</h3>
+                    <p class="game-description">Thu thập thẻ bài về các nhân vật lịch sử! Lật thẻ may mắn, xem bộ sưu tập và đổi thẻ với bạn bè.</p>
+                    <button class="btn-quiz btn-primary" onclick="openCardCollection()">
+                        Mở bộ sưu tập
+                    </button>
+                </div>
+
+                <!-- NEW FEATURE 2: Historical Music Quiz -->
+                <div class="game-card" style="border: 2px solid rgba(255, 105, 180, 0.5); background: linear-gradient(135deg, rgba(255, 105, 180, 0.1), rgba(255, 20, 147, 0.05));">
+                    <div class="game-icon">🎵</div>
+                    <h3 class="game-title" style="color: #ff69b4;">Âm Nhạc Lịch Sử</h3>
+                    <p class="game-description">Đoán tên ca khúc lịch sử, khám phá nhạc của từng thời kỳ và thử thách karaoke lịch sử!</p>
+                    <button class="btn-quiz btn-primary" onclick="openMusicQuiz()">
+                        Bắt đầu chơi
+                    </button>
+                </div>
             </div>
 
             <!-- Daily Missions Section -->
@@ -319,10 +339,88 @@
         </div>
     </div>
 
+    <!-- Card Collection Modal -->
+    <div id="cardCollectionModal" class="card-modal" style="display: none;">
+        <div class="card-modal-content">
+            <div class="card-modal-header">
+                <h2>🎴 Bộ Sưu Tập Thẻ Lịch Sử</h2>
+                <button class="card-close-btn" onclick="closeCardCollection()">×</button>
+            </div>
+
+            <div class="card-stats">
+                <div class="stat">
+                    <span class="stat-value" id="totalCards">0</span>
+                    <span class="stat-label">Tổng thẻ</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="uniqueCards">0</span>
+                    <span class="stat-label">Duy nhất</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="cardPacks">3</span>
+                    <span class="stat-label">Gói thẻ còn lại</span>
+                </div>
+            </div>
+
+            <div class="card-actions">
+                <button class="btn-quiz btn-primary" onclick="openCardPack()">
+                    🎁 Mở gói thẻ (5 thẻ)
+                </button>
+            </div>
+
+            <div id="cardGrid" class="card-grid">
+                <!-- Cards will be rendered here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Music Quiz Modal -->
+    <div id="musicQuizModal" class="card-modal" style="display: none;">
+        <div class="card-modal-content">
+            <div class="card-modal-header">
+                <h2>🎵 Âm Nhạc Lịch Sử</h2>
+                <button class="card-close-btn" onclick="closeMusicQuiz()">×</button>
+            </div>
+
+            <div class="music-quiz-container">
+                <div class="music-quiz-header">
+                    <div class="music-score">
+                        <span>🎯 Điểm:</span>
+                        <span id="musicScore">0</span>
+                    </div>
+                    <div class="music-round">
+                        <span>Bài:</span>
+                        <span id="musicRound">1/5</span>
+                    </div>
+                </div>
+
+                <div class="music-question">
+                    <div class="music-icon">🎼</div>
+                    <p id="musicQuestionText">Ca khúc này thuộc thời kỳ nào?</p>
+                    <div class="music-player">
+                        <button class="music-play-btn" id="playMusicBtn" onclick="playMusic()">
+                            ▶️ Phát nhạc
+                        </button>
+                    </div>
+                </div>
+
+                <div class="music-options" id="musicOptions">
+                    <!-- Options will be rendered here -->
+                </div>
+
+                <button id="nextMusicBtn" class="btn-quiz btn-primary" onclick="nextMusicQuestion()" style="display: none; margin-top: 2rem;">
+                    Tiếp theo →
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="js/auth.js"></script>
     <script src="js/main.js"></script>
     <script src="js/game.js"></script>
+    <script src="js/card-collection.js"></script>
+    <script src="js/music-quiz.js"></script>
 
     <style>
         /* Animation keyframes */
@@ -346,6 +444,225 @@
                 transform: translateX(100%);
                 opacity: 0;
             }
+        }
+
+        /* Card Collection & Music Quiz Styles */
+        .card-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+        }
+
+        .card-modal-content {
+            background: var(--card-bg);
+            border: 2px solid var(--gold);
+            border-radius: 1rem;
+            padding: 2rem;
+            width: 90%;
+            max-width: 1200px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .card-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .card-modal-header h2 {
+            font-size: 2rem;
+            color: var(--gold);
+            margin: 0;
+        }
+
+        .card-close-btn {
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 2.5rem;
+            cursor: pointer;
+            line-height: 1;
+            transition: all 0.3s;
+        }
+
+        .card-close-btn:hover {
+            transform: rotate(90deg);
+            color: var(--accent-red);
+        }
+
+        .card-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .card-stats .stat {
+            flex: 1;
+            text-align: center;
+            background: rgba(212, 175, 55, 0.1);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .stat-value {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-top: 0.5rem;
+        }
+
+        .card-actions {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .history-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(255, 165, 0, 0.05));
+            border: 2px solid var(--gold);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .history-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .card-rarity {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-period {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        /* Music Quiz Styles */
+        .music-quiz-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 0.5rem;
+        }
+
+        .music-score, .music-round {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .music-question {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .music-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        #musicQuestionText {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        .music-player {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .music-play-btn {
+            background: var(--gold);
+            color: var(--bg-dark);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .music-play-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .music-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .music-option {
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid var(--gold);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .music-option:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .music-option.correct {
+            background: rgba(76, 175, 80, 0.3);
+            border-color: #4caf50;
+        }
+
+        .music-option.wrong {
+            background: rgba(244, 67, 54, 0.3);
+            border-color: #f44336;
         }
     </style>
     <!-- Background Music Controller -->
