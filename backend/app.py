@@ -408,8 +408,8 @@ def chat():
             response_text = ai_handler.generate_response(
                 system_prompt=system_prompt,
                 user_message=user_message,
-                temperature=0.4,   # OPTIMIZED: Lower temp for consistent, focused roleplay
-                max_tokens=400     # FIXED: More tokens for detailed, immersive storytelling
+                temperature=0.4,   # EDUCATIONAL: Lower temp for consistent, accurate teaching
+                max_tokens=600     # EDUCATIONAL: More tokens for detailed explanations to students
             )
 
         elif year:
