@@ -239,6 +239,21 @@ def serve_founder_image():
     """Serve founder image"""
     return send_from_directory(str(base_dir / 'frontend'), 'founder-hang.jpg', mimetype='image/jpeg')
 
+@app.route('/facebook.jpg')
+def serve_facebook_logo():
+    """Serve Facebook logo"""
+    return send_from_directory(str(base_dir / 'frontend'), 'facebook.jpg', mimetype='image/jpeg')
+
+@app.route('/youtube.png')
+def serve_youtube_logo():
+    """Serve YouTube logo"""
+    return send_from_directory(str(base_dir / 'frontend'), 'youtube.png', mimetype='image/png')
+
+@app.route('/tiktok.webp')
+def serve_tiktok_logo():
+    """Serve TikTok logo"""
+    return send_from_directory(str(base_dir / 'frontend'), 'tiktok.webp', mimetype='image/webp')
+
 @app.route('/background-music.mp3')
 def serve_background_music():
     """Serve background music"""
