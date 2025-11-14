@@ -408,17 +408,49 @@ def chat():
             response_text = ai_handler.generate_response(
                 system_prompt=system_prompt,
                 user_message=user_message,
-                temperature=0.7,   # IMMERSIVE: Higher temp for emotional, natural storytelling
-                max_tokens=400     # COMPACT: Shorter for faster, more reliable responses
+                temperature=0.85,  # IMMERSIVE: Very high temp for deep roleplay & emotional storytelling
+                max_tokens=500     # IMMERSIVE: Enough tokens for detailed, vivid responses
             )
 
             # DEBUG: Log AI response
             print(f"[DEBUG] AI Response for {figure_name}: type={type(response_text)}, value={repr(response_text[:100] if response_text else None)}")
 
             # CRITICAL: Validate response is not None, empty, or "undefined"
-            if not response_text or response_text.strip() == "" or response_text.strip().lower() == "undefined":
-                print(f"[ERROR] Invalid response from AI for {figure_name}: {response_text}")
+            if not response_text or response_text.strip() == "":
+                print(f"[ERROR] Empty response from AI for {figure_name}")
                 response_text = f"Xin lỗi các em, hiện tại {figure_name if figure_name else 'ta'} không thể trả lời câu hỏi này. Các em thử hỏi lại nhé!"
+
+            # ANTI-PATTERN: Reject generic responses
+            generic_patterns = [
+                "ta là nhân vật lịch sử",
+                "nhân vật lịch sử",
+                "cuộc đời ta gắn liền",
+                "một nhân vật trong lịch sử",
+                "rất hân hạnh được gặp"
+            ]
+
+            response_lower = response_text.lower()
+            if any(pattern in response_lower for pattern in generic_patterns):
+                print(f"[WARNING] Generic response detected for {figure_name}: {response_text[:100]}")
+                # Retry with stronger prompt
+                retry_prompt = f"""CẢNH BÁO: Câu trả lời trước KHÔNG ĐÚNG!
+
+BẠN KHÔNG ĐƯỢC NÓI: "Ta là nhân vật lịch sử"
+
+BẠN PHẢI NÓI: "{figure_data.get('name', 'Tên nhân vật')} là..."
+
+HÃY TRẢ LỜI LẠI ĐÚNG CÁCH!
+
+{system_prompt}"""
+
+                response_text = ai_handler.generate_response(
+                    system_prompt=retry_prompt,
+                    user_message=user_message,
+                    temperature=0.9,  # Even higher for retry
+                    max_tokens=500
+                )
+
+                print(f"[DEBUG] Retry response: {response_text[:100]}")
 
         elif year:
             # Time travel mode
