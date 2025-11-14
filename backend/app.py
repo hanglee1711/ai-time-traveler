@@ -408,8 +408,8 @@ def chat():
             response_text = ai_handler.generate_response(
                 system_prompt=system_prompt,
                 user_message=user_message,
-                temperature=0.4,   # EDUCATIONAL: Lower temp for consistent, accurate teaching
-                max_tokens=600     # EDUCATIONAL: More tokens for detailed explanations to students
+                temperature=0.6,   # IMMERSIVE: Higher temp for emotional, natural storytelling
+                max_tokens=500     # IMMERSIVE: Enough for detailed stories with emotions
             )
 
             # DEBUG: Log AI response
@@ -428,12 +428,12 @@ def chat():
             response_text = ai_handler.generate_response(
                 system_prompt=system_prompt,
                 user_message=user_message,
-                temperature=0.4,   # OPTIMIZED: Lower temp for consistent roleplay
-                max_tokens=400     # FIXED: More tokens for detailed responses
+                temperature=0.6,   # IMMERSIVE: Higher temp for vivid time travel storytelling
+                max_tokens=500     # IMMERSIVE: Enough for detailed historical narratives
             )
 
             # CRITICAL: Validate response
-            if not response_text or response_text.strip() == "":
+            if not response_text or response_text.strip() == "" or response_text.strip().lower() == "undefined":
                 print(f"[ERROR] Empty response from AI for year {year}")
                 response_text = "Xin lỗi, hiện tại không thể kể về thời kỳ này. Thử hỏi lại nhé!"
 
@@ -444,12 +444,12 @@ def chat():
             response_text = ai_handler.generate_response(
                 system_prompt=system_prompt,
                 user_message=user_message,
-                temperature=0.4,  # OPTIMIZED: Lower temp for consistent roleplay
-                max_tokens=400    # FIXED: More tokens for detailed responses
+                temperature=0.6,  # IMMERSIVE: Higher temp for engaging historical discussions
+                max_tokens=500    # IMMERSIVE: Enough for detailed historical responses
             )
 
             # CRITICAL: Validate response
-            if not response_text or response_text.strip() == "":
+            if not response_text or response_text.strip() == "" or response_text.strip().lower() == "undefined":
                 print(f"[ERROR] Empty response from AI in general mode")
                 response_text = "Xin lỗi, hiện tại không thể trả lời câu hỏi này. Thử hỏi lại nhé!"
 
