@@ -156,7 +156,16 @@ async function generateDebate() {
         // Round 1: Fighter 1 opening statement
         const opening1 = await getDebateResponse(
             currentDebate.fighter1.name,
-            `Đây là cuộc tranh luận về chủ đề: "${currentDebate.topic}". Hãy trình bày quan điểm của ${currentDebate.fighter1.name} một cách ngắn gọn (3-4 câu).`
+            `Ngài đang tham gia tranh luận về: "${currentDebate.topic}"
+
+Hãy trình bày quan điểm của ngài (${currentDebate.fighter1.name}) dựa trên kinh nghiệm thực tế và tư tưởng của ngài.
+
+YÊU CẦU:
+- Nói ngắn gọn 3-4 câu
+- Dùng ví dụ từ trận chiến/sự kiện lịch sử mà ngài đã trải qua
+- Thể hiện tính cách và phong cách riêng của ngài
+
+Hãy bắt đầu phát biểu!`
         );
 
         currentDebate.messages.push({
@@ -168,12 +177,22 @@ async function generateDebate() {
         renderDebateMessages();
 
         // Delay for dramatic effect
-        await delay(2000);
+        await delay(3000);
 
         // Round 2: Fighter 2 opening statement
         const opening2 = await getDebateResponse(
             currentDebate.fighter2.name,
-            `Đây là cuộc tranh luận về chủ đề: "${currentDebate.topic}". ${currentDebate.fighter1.name} vừa nói: "${opening1}". Hãy trình bày quan điểm của ${currentDebate.fighter2.name} và phản bác nếu cần (3-4 câu).`
+            `Ngài đang tham gia tranh luận về: "${currentDebate.topic}"
+
+${currentDebate.fighter1.name} vừa nói:
+"${opening1}"
+
+Hãy trình bày quan điểm của ngài (${currentDebate.fighter2.name}):
+- Có thể đồng ý hoặc phản bác ${currentDebate.fighter1.name}
+- Nêu kinh nghiệm/chiến công của chính ngài
+- 3-4 câu, thể hiện phong cách riêng
+
+Ngài phản hồi như thế nào?`
         );
 
         currentDebate.messages.push({
@@ -184,12 +203,23 @@ async function generateDebate() {
 
         renderDebateMessages();
 
-        await delay(2000);
+        await delay(3000);
 
         // Round 3: Fighter 1 counter-argument
         const counter1 = await getDebateResponse(
             currentDebate.fighter1.name,
-            `Trong cuộc tranh luận về "${currentDebate.topic}", ${currentDebate.fighter2.name} vừa nói: "${opening2}". Hãy đưa ra lập luận phản bác hoặc bổ sung quan điểm của ${currentDebate.fighter1.name} (3-4 câu).`
+            `Tiếp tục tranh luận về "${currentDebate.topic}"
+
+${currentDebate.fighter2.name} vừa phản hồi:
+"${opening2}"
+
+Hãy đưa ra lập luận phản bác hoặc bổ sung:
+- Bảo vệ quan điểm của ngài
+- Hoặc chỉ ra điểm yếu trong lý lẽ của ${currentDebate.fighter2.name}
+- Dùng ví dụ lịch sử cụ thể
+- 3-4 câu
+
+Ngài nói gì?`
         );
 
         currentDebate.messages.push({
@@ -200,12 +230,23 @@ async function generateDebate() {
 
         renderDebateMessages();
 
-        await delay(2000);
+        await delay(3000);
 
         // Round 4: Fighter 2 closing statement
         const closing2 = await getDebateResponse(
             currentDebate.fighter2.name,
-            `Kết thúc cuộc tranh luận về "${currentDebate.topic}". ${currentDebate.fighter1.name} vừa nói: "${counter1}". Hãy đưa ra lời kết của ${currentDebate.fighter2.name} (3-4 câu).`
+            `Vòng cuối - Kết luận tranh luận về "${currentDebate.topic}"
+
+${currentDebate.fighter1.name} vừa phản bác:
+"${counter1}"
+
+Hãy đưa ra lời kết của ngài:
+- Tổng hợp lại quan điểm chính
+- Thừa nhận điểm hay của đối phương (nếu có)
+- Nhấn mạnh bài học lịch sử
+- 3-4 câu, kết thúc đanh thép!
+
+Lời cuối của ngài:`
         );
 
         currentDebate.messages.push({
@@ -252,6 +293,8 @@ async function generateDebate() {
 // Get debate response from AI
 async function getDebateResponse(fighterName, promptText) {
     try {
+        console.log(`[Debate] Fetching response from ${fighterName}...`);
+
         const response = await fetch('/api/chat', {
             method: 'POST',
             headers: {
@@ -263,17 +306,35 @@ async function getDebateResponse(fighterName, promptText) {
             })
         });
 
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const data = await response.json();
+        console.log(`[Debate] Response from ${fighterName}:`, data);
 
         if (data.success && data.response) {
             return data.response;
         } else {
-            throw new Error('Invalid response from API');
+            throw new Error('Invalid response from API: ' + JSON.stringify(data));
         }
     } catch (error) {
         console.error('Error getting debate response:', error);
-        // Fallback response
-        return `${fighterName} đang suy nghĩ về vấn đề này...`;
+        // Better fallback with context
+        const fallbackResponses = {
+            "Hai Bà Trưng": "Thiếp cho rằng bảo vệ đất nước cần cả quyết tâm lẫn chiến thuật. Dân ta đã chống quân Hán bằng ý chí sắt đá!",
+            "Ngô Quyền": "Ta tin rằng chiến thuật thông minh là chìa khóa. Nhìn trận Bạch Đằng là biết!",
+            "Trần Hưng Đạo": "Lấy dân làm gốc! Không có dân, làm sao có quân? Đó là bài học ta rút ra qua ba lần chống Nguyên.",
+            "Quang Trung": "Tốc chiến tốc thắng! Đánh địch khi chúng chưa kịp chuẩn bị, đó là nghệ thuật dụng binh!",
+            "Lê Lợi": "Nhân nghĩa phải đi đôi với dũng lược. Ta đánh Minh không chỉ bằng gươm giáo mà còn bằng lòng dân!",
+            "Hồ Chí Minh": "Không có gì quý hơn độc lập tự do. Nhưng để giữ được, cần đoàn kết toàn dân!",
+            "Võ Nguyên Giáp": "Chiến tranh nhân dân, từng bước tiến lên! Điện Biên Phủ là minh chứng cho chiến lược đúng đắn.",
+            "Bà Triệu": "Phụ nữ cũng có thể cầm đầu nghĩa quân! Ta muốn cưỡi voi chỉ huy, chứ không cam chịu nhục!",
+            "Lý Thường Kiệt": "Sông núi nước Nam vua Nam ở! Đất nước này là của dân ta, không ai được xâm phạm!",
+            "Nguyễn Trãi": "Văn và võ phải song hành. Bình Ngô Đại Cáo là minh chứng cho sức mạnh của ngòi bút!"
+        };
+
+        return fallbackResponses[fighterName] || `${fighterName}: Về vấn đề này, ta cần suy nghĩ kỹ hơn...`;
     }
 }
 

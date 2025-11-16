@@ -408,8 +408,8 @@ def chat():
             response_text = ai_handler.generate_response(
                 system_prompt=system_prompt,
                 user_message=user_message,
-                temperature=0.85,  # IMMERSIVE: Very high temp for deep roleplay & emotional storytelling
-                max_tokens=500     # IMMERSIVE: Enough tokens for detailed, vivid responses
+                temperature=0.92,  # PREMIUM: Very high for creative, emotional, detailed storytelling
+                max_tokens=650     # PREMIUM: Enough for detailed 3-5 sentence responses with examples
             )
 
             # DEBUG: Log AI response
@@ -426,28 +426,61 @@ def chat():
                 "nhân vật lịch sử",
                 "cuộc đời ta gắn liền",
                 "một nhân vật trong lịch sử",
-                "rất hân hạnh được gặp"
+                "rất hân hạnh được gặp",
+                "ngươi muốn tìm hiểu",
+                "ta sẵn sàng chia sẻ",
+                "các em có thể hỏi ta",
+                "rất vui được gặp ngươi"
+            ]
+
+            # DETECT WRONG IDENTITY: Check if AI is using wrong name (like location name)
+            wrong_identity_patterns = [
+                "ta là đại la",
+                "ta là thăng long",
+                "ta là bạch đằng",
+                "ta là mê linh"
             ]
 
             response_lower = response_text.lower()
-            if any(pattern in response_lower for pattern in generic_patterns):
-                print(f"[WARNING] Generic response detected for {figure_name}: {response_text[:100]}")
-                # Retry with stronger prompt
-                retry_prompt = f"""CẢNH BÁO: Câu trả lời trước KHÔNG ĐÚNG!
 
-BẠN KHÔNG ĐƯỢC NÓI: "Ta là nhân vật lịch sử"
+            # Check for generic or wrong identity responses
+            is_generic = any(pattern in response_lower for pattern in generic_patterns)
+            is_wrong_identity = any(pattern in response_lower for pattern in wrong_identity_patterns)
 
-BẠN PHẢI NÓI: "{figure_data.get('name', 'Tên nhân vật')} là..."
+            if is_generic or is_wrong_identity:
+                error_type = "WRONG IDENTITY" if is_wrong_identity else "GENERIC"
+                print(f"[WARNING] {error_type} response detected for {figure_name}: {response_text[:100]}")
 
-HÃY TRẢ LỜI LẠI ĐÚNG CÁCH!
+                # Retry with ULTRA-STRONG prompt
+                retry_prompt = f"""⚠️ CẢNH BÁO: Câu trả lời trước SAI HOÀN TOÀN!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+BẠN LÀ: {figure_data.get('name', 'Tên nhân vật').upper()}
+KHÔNG PHẢI: Địa danh, sự kiện, hay "nhân vật lịch sử"
+
+VÍ DỤ ĐÚNG:
+"Trẫm là Lý Công Uẩn, xuất thân từ chùa Cổ Pháp, Bắc Ninh.
+Năm 1009, sau khi nhà Lê suy tàn, quần thần suy tôn trẫm lên ngôi.
+Năm 1010, trẫm dời đô về Đại La - nơi long mạch hội tụ, đặt tên là Thăng Long."
+
+KHÔNG ĐƯỢC NÓI:
+❌ "Ta là nhân vật lịch sử"
+❌ "Ta là Đại La" (Đại La là địa danh!)
+❌ "Cuộc đời ta gắn liền"
+❌ "Rất vui được gặp"
+
+HÃY TRẢ LỜI NGAY VỚI TÊN THẬT, VAI TRÒ CỤ THỂ, VÀ SỰ KIỆN LỊCH SỬ!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 {system_prompt}"""
 
                 response_text = ai_handler.generate_response(
                     system_prompt=retry_prompt,
                     user_message=user_message,
-                    temperature=0.9,  # Even higher for retry
-                    max_tokens=500
+                    temperature=0.95,  # MAXIMUM: Force AI to be creative and specific
+                    max_tokens=650     # PREMIUM: Match main response length
                 )
 
                 print(f"[DEBUG] Retry response: {response_text[:100]}")
@@ -460,14 +493,14 @@ HÃY TRẢ LỜI LẠI ĐÚNG CÁCH!
             response_text = ai_handler.generate_response(
                 system_prompt=system_prompt,
                 user_message=user_message,
-                temperature=0.6,   # IMMERSIVE: Higher temp for vivid time travel storytelling
-                max_tokens=500     # IMMERSIVE: Enough for detailed historical narratives
+                temperature=0.88,  # PREMIUM: Very high for vivid, immersive time travel
+                max_tokens=650     # PREMIUM: Detailed historical narratives
             )
 
             # CRITICAL: Validate response
             if not response_text or response_text.strip() == "" or response_text.strip().lower() == "undefined":
                 print(f"[ERROR] Empty response from AI for year {year}")
-                response_text = "Xin lỗi, hiện tại không thể kể về thời kỳ này. Thử hỏi lại nhé!"
+                response_text = f"Xin lỗi các em, hiện tại không thể đưa các em về năm {year}. Các em thử hỏi về năm khác nhé!"
 
         else:
             # General mode
@@ -476,14 +509,14 @@ HÃY TRẢ LỜI LẠI ĐÚNG CÁCH!
             response_text = ai_handler.generate_response(
                 system_prompt=system_prompt,
                 user_message=user_message,
-                temperature=0.6,  # IMMERSIVE: Higher temp for engaging historical discussions
-                max_tokens=500    # IMMERSIVE: Enough for detailed historical responses
+                temperature=0.85,  # PREMIUM: High temp for engaging historical discussions
+                max_tokens=650     # PREMIUM: Detailed, informative responses
             )
 
             # CRITICAL: Validate response
             if not response_text or response_text.strip() == "" or response_text.strip().lower() == "undefined":
                 print(f"[ERROR] Empty response from AI in general mode")
-                response_text = "Xin lỗi, hiện tại không thể trả lời câu hỏi này. Thử hỏi lại nhé!"
+                response_text = "Xin lỗi các em, hiện tại không thể trả lời câu hỏi này. Các em thử hỏi theo cách khác nhé! Hoặc chọn một nhân vật để trò chuyện."
 
         # Cache the response if it's a figure conversation (and not an error)
         if figure_name and not any(err in response_text.lower() for err in ['xin lỗi', 'lỗi', 'error', 'quota']):
@@ -586,8 +619,8 @@ def chat_stream():
                 for chunk in ai_handler.generate_response_stream(
                     system_prompt=system_prompt,
                     user_message=user_message,
-                    temperature=0.4,   # OPTIMIZED: Lower temp for consistent roleplay
-                    max_tokens=400     # FIXED: More tokens for detail
+                    temperature=0.9,   # PREMIUM: High temp for engaging streaming responses
+                    max_tokens=650     # PREMIUM: Match non-streaming mode
                 ):
                     yield f"data: {json.dumps({'type': 'chunk', 'content': chunk})}\n\n"
 
@@ -599,8 +632,8 @@ def chat_stream():
                 for chunk in ai_handler.generate_response_stream(
                     system_prompt=system_prompt,
                     user_message=user_message,
-                    temperature=0.4,   # OPTIMIZED: Lower temp for consistent roleplay
-                    max_tokens=400     # FIXED: More tokens for detail
+                    temperature=0.85,  # PREMIUM: High temp for vivid time travel
+                    max_tokens=650     # PREMIUM: Detailed historical narratives
                 ):
                     yield f"data: {json.dumps({'type': 'chunk', 'content': chunk})}\n\n"
 
@@ -611,8 +644,8 @@ def chat_stream():
                 for chunk in ai_handler.generate_response_stream(
                     system_prompt=system_prompt,
                     user_message=user_message,
-                    temperature=0.4,   # OPTIMIZED: Lower temp for consistent roleplay
-                    max_tokens=400     # FIXED: More tokens for detail
+                    temperature=0.8,   # PREMIUM: High temp for engaging discussions
+                    max_tokens=650     # PREMIUM: Detailed responses
                 ):
                     yield f"data: {json.dumps({'type': 'chunk', 'content': chunk})}\n\n"
 
@@ -660,11 +693,17 @@ def get_figures():
                 'avatar': get_avatar_for_figure(figure['name'], figure, use_initials=False)
             })
 
-        return jsonify({'figures': formatted_figures})
+        return jsonify({
+            'success': True,
+            'figures': formatted_figures
+        })
 
     except Exception as e:
         print(f"Error in get_figures endpoint: {str(e)}")
-        return jsonify({'error': str(e)}), 500
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
 
 
 @app.route('/api/timeline', methods=['GET'])
