@@ -204,6 +204,11 @@ def serve_frontend(filename):
     """Serve frontend static files"""
     return send_from_directory(str(base_dir / 'frontend'), filename)
 
+@app.route('/portraits/<path:filename>')
+def serve_portraits(filename):
+    """Serve character portrait images"""
+    return send_from_directory(str(base_dir / 'portraits'), filename)
+
 @app.route('/css/<path:filename>')
 def serve_css(filename):
     """Serve CSS files"""
