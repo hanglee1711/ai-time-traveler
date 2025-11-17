@@ -122,8 +122,13 @@ class AIHandler:
         import json
         from pathlib import Path
 
-        # Extract figure name from system prompt
-        figure_match = re.search(r'về (.+?),', system_prompt)
+        # Extract figure name from system prompt - FIXED REGEX!
+        # NEW PROMPT FORMAT: "YOUR NAME IS: {name} ({role})"
+        figure_match = re.search(r'YOUR NAME IS:\s*(.+?)\s*\(', system_prompt)
+        if not figure_match:
+            # Fallback: try old format "về (.+?),"
+            figure_match = re.search(r'về (.+?),', system_prompt)
+
         figure_name = figure_match.group(1) if figure_match else "nhân vật lịch sử"
 
         # Load figure data if not provided
