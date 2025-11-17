@@ -101,25 +101,36 @@ class AIHandler:
 
             # GROUNDING with Google Search - For accessing real-time information
             # This allows AI to search for historical facts and recent information
+            #
+            # 🔍 GOOGLE SEARCH GROUNDING (OPTIONAL):
+            # - Allows AI to search Google for real-time info
+            # - May require specific API access or billing tier
+            # - To enable: Set ENABLE_GROUNDING=true in .env (default: false)
+            # - Note: AI already has comprehensive historical knowledge WITHOUT grounding
+            #
             try:
-                # Enable grounding if supported
-                enable_grounding = get_env("ENABLE_GROUNDING", "true").lower() == "true"
+                # Enable grounding if supported (default: disabled for stability)
+                enable_grounding = get_env("ENABLE_GROUNDING", "false").lower() == "true"
 
                 if enable_grounding:
                     # Try to create with grounding (Google Search)
-                    # Note: Grounding may require specific API access/billing
+                    # Using Tool for Gemini 2.0+ API
+                    from google.generativeai.types import Tool, GoogleSearchRetrieval
+
+                    search_tool = Tool(google_search_retrieval=GoogleSearchRetrieval())
+
                     self.client = genai.GenerativeModel(
                         model_name=self.model_name,
                         safety_settings=self.safety_settings,
-                        # tools=['google_search_retrieval']  # Enable Google Search grounding
+                        tools=[search_tool]  # Enable Google Search grounding
                     )
-                    print("[INFO] Gemini initialized with Google Search grounding enabled")
+                    print("[INFO] ✅ Gemini initialized WITH Google Search grounding")
                 else:
                     self.client = genai.GenerativeModel(
                         model_name=self.model_name,
                         safety_settings=self.safety_settings
                     )
-                    print("[INFO] Gemini initialized without grounding")
+                    print("[INFO] ℹ️  Gemini initialized WITHOUT grounding (AI uses built-in knowledge)")
             except Exception as e:
                 # Fallback: Initialize without grounding if not supported
                 print(f"[WARNING] Grounding not available: {e}. Continuing without grounding...")
