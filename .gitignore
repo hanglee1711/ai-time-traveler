@@ -46,6 +46,9 @@ nul
 *.jpg
 *.jpeg
 !frontend/*.jpg
+!portraits/*.jpg
+!portraits/*.jpeg
+!portraits/*.webp
 *.png
 !frontend/hero*.png
 !frontend/assets/**/*.png

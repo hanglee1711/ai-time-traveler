@@ -67,11 +67,11 @@ def get_character_avatar(character_name: str) -> str:
         return None
 
     # Check if file exists
-    avatar_path = Path(__file__).parent.parent / "chân dung" / filename
+    avatar_path = Path(__file__).parent.parent / "portraits" / filename
 
     if avatar_path.exists():
         # Return relative path from project root for Streamlit
-        return str(Path("chân dung") / filename)
+        return str(Path("portraits") / filename)
     else:
         # File doesn't exist yet - return None to use fallback
         return None
