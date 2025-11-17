@@ -578,7 +578,9 @@ Ta đang lắng nghe câu hỏi tiếp theo của các em!"""
                     finish_reason = candidate.finish_reason
 
                     if finish_reason == 2:  # SAFETY
-                        print(f"[SAFETY] Content blocked by Gemini safety filters - USING FALLBACK")
+                        print(f"\n⚠️  [SAFETY BLOCK] Gemini blocked the response due to safety filters")
+                        print(f"   User question: {user_message[:100]}...")
+                        print(f"   Using intelligent fallback to maintain character\n")
                         # FALLBACK: Generate simple response without AI
                         return self._generate_fallback_response(system_prompt, user_message, conversation_history=conversation_history)
 
@@ -604,12 +606,17 @@ Ta đang lắng nghe câu hỏi tiếp theo của các em!"""
                     return candidate.content.parts[0].text
 
             # If we get here, something went wrong - use fallback
-            print(f"[ERROR] No valid response from Gemini - USING FALLBACK")
+            print(f"\n⚠️  [NO VALID RESPONSE] Gemini returned no valid text")
+            print(f"   This might indicate a safety block or API issue")
+            print(f"   User question: {user_message[:100]}...")
+            print(f"   Using intelligent fallback\n")
             return self._generate_fallback_response(system_prompt, user_message, conversation_history=conversation_history)
 
         except AttributeError as e:
             # Handle the specific "response.text requires valid Part" error - use fallback
-            print(f"[ERROR] Gemini response structure error: {str(e)} - USING FALLBACK")
+            print(f"\n⚠️  [RESPONSE STRUCTURE ERROR] {str(e)}")
+            print(f"   User question: {user_message[:100]}...")
+            print(f"   Using intelligent fallback\n")
             return self._generate_fallback_response(system_prompt, user_message, conversation_history=conversation_history)
 
         except Exception as e:

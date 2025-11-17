@@ -189,18 +189,19 @@ def setup_sidebar():
             "Độ sáng tạo",
             min_value=0.0,
             max_value=1.0,
-            value=0.8,
-            step=0.1,
-            help="Cao hơn = sáng tạo hơn"
+            value=0.95,
+            step=0.05,
+            help="Cao hơn = sáng tạo hơn, tự nhiên hơn (khuyến nghị: 0.9-0.95)"
         )
 
         # Max tokens
         max_tokens = st.slider(
             "Độ dài phản hồi",
             min_value=100,
-            max_value=2000,
-            value=1000,
-            step=100
+            max_value=3000,
+            value=1500,
+            step=100,
+            help="Tăng lên nếu câu trả lời bị cắt ngắn"
         )
 
         st.markdown("---")
