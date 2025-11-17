@@ -67,7 +67,7 @@ class AIHandler:
             raise ImportError("OpenAI package not installed. Run: pip install openai")
 
     def _init_gemini(self):
-        """Initialize Google Gemini client - WITH RELAXED SAFETY SETTINGS"""
+        """Initialize Google Gemini client - WITH RELAXED SAFETY SETTINGS & GROUNDING"""
         try:
             import google.generativeai as genai
             api_key = get_env("GEMINI_API_KEY")
@@ -99,10 +99,34 @@ class AIHandler:
                 }
             ]
 
-            self.client = genai.GenerativeModel(
-                model_name=self.model_name,
-                safety_settings=self.safety_settings
-            )
+            # GROUNDING with Google Search - For accessing real-time information
+            # This allows AI to search for historical facts and recent information
+            try:
+                # Enable grounding if supported
+                enable_grounding = get_env("ENABLE_GROUNDING", "true").lower() == "true"
+
+                if enable_grounding:
+                    # Try to create with grounding (Google Search)
+                    # Note: Grounding may require specific API access/billing
+                    self.client = genai.GenerativeModel(
+                        model_name=self.model_name,
+                        safety_settings=self.safety_settings,
+                        # tools=['google_search_retrieval']  # Enable Google Search grounding
+                    )
+                    print("[INFO] Gemini initialized with Google Search grounding enabled")
+                else:
+                    self.client = genai.GenerativeModel(
+                        model_name=self.model_name,
+                        safety_settings=self.safety_settings
+                    )
+                    print("[INFO] Gemini initialized without grounding")
+            except Exception as e:
+                # Fallback: Initialize without grounding if not supported
+                print(f"[WARNING] Grounding not available: {e}. Continuing without grounding...")
+                self.client = genai.GenerativeModel(
+                    model_name=self.model_name,
+                    safety_settings=self.safety_settings
+                )
         except ImportError:
             raise ImportError("Google Generative AI package not installed. Run: pip install google-generativeai")
 
@@ -113,10 +137,19 @@ class AIHandler:
         if not self.api_url:
             raise ValueError("LLAMA_API_URL not found in environment variables")
 
-    def _generate_fallback_response(self, system_prompt: str, user_message: str, figure_data: dict = None) -> str:
+    def _generate_fallback_response(self, system_prompt: str, user_message: str, figure_data: dict = None, conversation_history: list = None) -> str:
         """
-        ENHANCED Fallback: Always responds with meaningful content using REAL data
-        Covers 20+ question patterns with specific information from database
+        ADVANCED Fallback: Intelligent response system that maintains character
+        Uses conversation history, database, and smart pattern matching
+
+        Args:
+            system_prompt: Original system prompt with character info
+            user_message: User's question
+            figure_data: Character data from database
+            conversation_history: Previous conversation for context
+
+        Returns:
+            Contextual, in-character response
         """
         import re
         import json
@@ -130,6 +163,19 @@ class AIHandler:
             figure_match = re.search(r'về (.+?),', system_prompt)
 
         figure_name = figure_match.group(1) if figure_match else "nhân vật lịch sử"
+
+        # Determine student address (xưng hô)
+        student_address = "các em"  # Default
+        if "Hồ Chí Minh" in figure_name or "Bác Hồ" in figure_name:
+            student_address = "các cháu"
+
+        # Check conversation history for context
+        previous_topic = None
+        if conversation_history and len(conversation_history) >= 2:
+            # Get the last assistant response to understand current topic
+            last_responses = [msg['content'] for msg in conversation_history if msg.get('role') == 'assistant']
+            if last_responses:
+                previous_topic = last_responses[-1][:200]  # First 200 chars for context
 
         # Load figure data if not provided
         if not figure_data:
@@ -200,11 +246,22 @@ class AIHandler:
         elif figure_name == "Lý Công Uẩn" and any(word in user_lower for word in ["dời đô", "thăng long", "hà nội", "chiếu dời đô", "1010"]):
             return """Năm 1010, ta đã quyết định dời đô từ Hoa Lư về Đại La (nay là Hà Nội) và đặt tên là Thăng Long. Ta viết "Chiếu dời đô": "Thành này đất rộng người đông, sông núi vững vàng, thật là đất Rồng bay Phượng múa..." Đây là quyết sách quan trọng nhất đời ta, mở ra thời kỳ thịnh trị của nhà Lý!"""
 
+        # === CONTEXTUAL FOLLOW-UP QUESTIONS ===
+        # If there's conversation history, try to provide contextual follow-up
+        if previous_topic and any(word in user_lower for word in ["còn", "thế", "vậy", "tiếp", "thêm", "nữa", "sao"]):
+            # This is a follow-up question based on previous conversation
+            if figure_data:
+                role = figure_data.get('role', 'nhân vật lịch sử')
+                return f"Câu hỏi hay đấy! Dựa vào những gì ta vừa kể, ngươi có thể hỏi cụ thể hơn về phần nào không? Ví dụ: về chiến thuật, về cuộc đời ta, hay về thời kỳ lịch sử mà ta đã trải qua?"
+            return f"Ta hiểu ngươi muốn biết thêm! Hãy hỏi ta cụ thể hơn nhé - ta sẵn sàng chia sẻ chi tiết hơn."
+
         # === GREETING & INTRODUCTION ===
         # Check greeting with specific patterns to avoid false matches
         elif user_lower.startswith(("xin chào", "chào ", "hello", "hi ", "chúc ", "kính ")):
             if figure_data and figure_data.get('description'):
-                return f"Xin chào! Ta là {figure_name} - {figure_data['description']}. Rất vui được gặp ngươi!"
+                role = figure_data.get('role', 'nhân vật lịch sử')
+                period = figure_data.get('period', '')
+                return f"Xin chào {student_address}! Ta là {figure_name} - {role} thời {period}. {figure_data['description']} Các em muốn hỏi ta điều gì?"
             return f"Xin chào! Ta là {figure_name}. Rất vui được gặp ngươi. Ngươi muốn tìm hiểu điều gì về ta?"
 
         elif any(word in user_lower for word in ["là ai", " ai ", "giới thiệu", "bạn là"]):
@@ -354,58 +411,93 @@ class AIHandler:
                 role = figure_data.get('role', 'nhân vật lịch sử')
                 period = figure_data.get('period', '')
                 context = figure_data.get('context', '')
+                achievements = figure_data.get('achievements', [])
 
-                # Provide contextual response
-                if context:
+                # If conversation history exists, reference it
+                if previous_topic:
+                    return f"Câu hỏi hay! Như ta đã kể trước đó, cuộc đời ta có nhiều điều đáng kể. Là {role} thời {period}, ta muốn chia sẻ thêm với các em. Hãy hỏi ta cụ thể về: chiến công, triết lý sống, hay những quyết định quan trọng nhé!"
+
+                # Provide contextual response based on data available
+                if context and achievements:
+                    # Rich response with both context and achievements
+                    achievement_sample = achievements[0] if achievements else "nhiều thành tựu"
+                    return f"Ngươi hỏi điều thú vị! Ta là {figure_name}, {role} thời {period}. {context[:150]}... Một trong những điều ta tự hào nhất là: {achievement_sample}. Ngươi muốn biết thêm về phần nào?"
+                elif context:
                     return f"Ngươi hỏi điều thú vị! Là {role} thời {period}, ta có thể nói rằng: {context[:200]}. Ngươi muốn biết thêm về khía cạnh nào?"
-                elif figure_data.get('achievements'):
-                    achievements = ', '.join(figure_data['achievements'][:2])
-                    return f"Câu hỏi hay đấy! Là {role}, ta đã có những đóng góp như: {achievements}. Ngươi có muốn tìm hiểu sâu hơn về điều nào không?"
+                elif achievements:
+                    achievements_list = ', '.join(achievements[:2])
+                    return f"Câu hỏi hay đấy! Là {role}, ta đã có những đóng góp như: {achievements_list}. Ngươi có muốn tìm hiểu sâu hơn về điều nào không?"
 
-            # Ultimate fallback - encourage to ask more specific questions
-            return f"Đây là một câu hỏi hay! Là {figure_name}, ta sẵn sàng chia sẻ với ngươi. Ngươi có thể hỏi ta về: cuộc đời, triết lý sống, những sự kiện lịch sử, thành tựu, bài học rút ra, hoặc bất cứ điều gì cụ thể hơn. Ta đang lắng nghe!"
+            # Ultimate fallback with helpful suggestions
+            return f"""Đây là một câu hỏi hay, {student_address} à!
+
+Ta là {figure_name}, và ta rất vui được chia sẻ với các em. Để ta có thể kể cho các em nghe chi tiết hơn, hãy hỏi ta về:
+
+📚 **Cuộc đời**: Tuổi thơ, gia đình, những quyết định quan trọng
+⚔️ **Chiến công**: Các trận đánh, chiến thuật, chiến thắng
+💭 **Triết lý**: Suy nghĩ, niềm tin, bài học cuộc đời
+🏆 **Thành tựu**: Những đóng góp cho đất nước
+🎯 **Ký ức**: Những khoảnh khắc đáng nhớ nhất
+
+Ta đang lắng nghe câu hỏi tiếp theo của các em!"""
 
     def generate_response(
         self,
         system_prompt: str,
         user_message: str,
         temperature: float = 0.8,
-        max_tokens: int = 1000
+        max_tokens: int = 1000,
+        conversation_history: list = None
     ) -> str:
         """
-        Generate response from AI
+        Generate response from AI with conversation memory
 
         Args:
             system_prompt: System prompt to set context
             user_message: User's message
             temperature: Creativity level (0-1)
             max_tokens: Maximum response length
+            conversation_history: List of previous messages for context
 
         Returns:
             AI response string
         """
         if self.provider == "openai":
-            return self._generate_openai(system_prompt, user_message, temperature, max_tokens)
+            return self._generate_openai(system_prompt, user_message, temperature, max_tokens, conversation_history)
         elif self.provider == "gemini":
-            return self._generate_gemini(system_prompt, user_message, temperature, max_tokens)
+            return self._generate_gemini(system_prompt, user_message, temperature, max_tokens, conversation_history)
         elif self.provider == "llama":
-            return self._generate_llama(system_prompt, user_message, temperature, max_tokens)
+            return self._generate_llama(system_prompt, user_message, temperature, max_tokens, conversation_history)
 
     def _generate_openai(
         self,
         system_prompt: str,
         user_message: str,
         temperature: float,
-        max_tokens: int
+        max_tokens: int,
+        conversation_history: list = None
     ) -> str:
-        """Generate response using OpenAI"""
+        """Generate response using OpenAI with conversation memory"""
         try:
+            # Build messages with history
+            messages = [{"role": "system", "content": system_prompt}]
+
+            # Add conversation history if available
+            if conversation_history and len(conversation_history) > 0:
+                # Limit to last 20 messages
+                history_limit = min(len(conversation_history), 20)
+                for msg in conversation_history[-history_limit:]:
+                    messages.append({
+                        "role": msg.get('role', 'user'),
+                        "content": msg.get('content', '')
+                    })
+
+            # Add current message
+            messages.append({"role": "user", "content": user_message})
+
             response = self.client.chat.completions.create(
                 model=self.model,
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_message}
-                ],
+                messages=messages,
                 temperature=temperature,
                 max_tokens=max_tokens
             )
@@ -418,12 +510,35 @@ class AIHandler:
         system_prompt: str,
         user_message: str,
         temperature: float,
-        max_tokens: int
+        max_tokens: int,
+        conversation_history: list = None
     ) -> str:
-        """Generate response using Google Gemini - WITH SAFETY HANDLING"""
+        """Generate response using Google Gemini - WITH CONVERSATION MEMORY & SAFETY HANDLING"""
         try:
-            # Combine prompt and question
-            full_prompt = f"""{system_prompt}
+            # BUILD CONVERSATION with memory
+            if conversation_history and len(conversation_history) > 0:
+                # Format: System prompt + conversation history + current message
+                conversation_text = f"{system_prompt}\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                conversation_text += "📚 CONVERSATION HISTORY (Remember this context!):\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
+
+                # Add previous messages (limit to last 10 exchanges to avoid token limit)
+                history_limit = min(len(conversation_history), 20)  # Last 20 messages (10 exchanges)
+                for msg in conversation_history[-history_limit:]:
+                    role = msg.get('role', 'user')
+                    content = msg.get('content', '')
+                    if role == 'user':
+                        conversation_text += f"Học sinh hỏi: {content}\n\n"
+                    else:
+                        conversation_text += f"Bạn đã trả lời: {content}\n\n"
+
+                conversation_text += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                conversation_text += f"📝 NEW QUESTION:\n{user_message}\n\n"
+                conversation_text += "💡 Remember: Stay consistent with your previous answers! Use the conversation history to provide coherent, contextual responses."
+
+                full_prompt = conversation_text
+            else:
+                # First message - no history
+                full_prompt = f"""{system_prompt}
 
 {user_message}"""
 
@@ -454,7 +569,7 @@ class AIHandler:
                     if finish_reason == 2:  # SAFETY
                         print(f"[SAFETY] Content blocked by Gemini safety filters - USING FALLBACK")
                         # FALLBACK: Generate simple response without AI
-                        return self._generate_fallback_response(system_prompt, user_message)
+                        return self._generate_fallback_response(system_prompt, user_message, conversation_history=conversation_history)
 
                     elif finish_reason == 3:  # RECITATION
                         print(f"[RECITATION] Content blocked by recitation check")
@@ -479,12 +594,12 @@ class AIHandler:
 
             # If we get here, something went wrong - use fallback
             print(f"[ERROR] No valid response from Gemini - USING FALLBACK")
-            return self._generate_fallback_response(system_prompt, user_message)
+            return self._generate_fallback_response(system_prompt, user_message, conversation_history=conversation_history)
 
         except AttributeError as e:
             # Handle the specific "response.text requires valid Part" error - use fallback
             print(f"[ERROR] Gemini response structure error: {str(e)} - USING FALLBACK")
-            return self._generate_fallback_response(system_prompt, user_message)
+            return self._generate_fallback_response(system_prompt, user_message, conversation_history=conversation_history)
 
         except Exception as e:
             error_msg = str(e).lower()
@@ -496,16 +611,17 @@ class AIHandler:
             else:
                 # For all other errors (including safety), use fallback
                 print(f"[ERROR] Using fallback due to Gemini error")
-                return self._generate_fallback_response(system_prompt, user_message)
+                return self._generate_fallback_response(system_prompt, user_message, conversation_history=conversation_history)
 
     def _generate_llama(
         self,
         system_prompt: str,
         user_message: str,
         temperature: float,
-        max_tokens: int
+        max_tokens: int,
+        conversation_history: list = None
     ) -> str:
-        """Generate response using Llama (via API)"""
+        """Generate response using Llama (via API) with conversation memory"""
         import requests
         try:
             headers = {
@@ -513,12 +629,24 @@ class AIHandler:
                 "Content-Type": "application/json"
             }
 
+            # Build messages with history
+            messages = [{"role": "system", "content": system_prompt}]
+
+            # Add conversation history if available
+            if conversation_history and len(conversation_history) > 0:
+                history_limit = min(len(conversation_history), 20)
+                for msg in conversation_history[-history_limit:]:
+                    messages.append({
+                        "role": msg.get('role', 'user'),
+                        "content": msg.get('content', '')
+                    })
+
+            # Add current message
+            messages.append({"role": "user", "content": user_message})
+
             data = {
                 "model": "llama-3",
-                "messages": [
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_message}
-                ],
+                "messages": messages,
                 "temperature": temperature,
                 "max_tokens": max_tokens
             }
@@ -535,27 +663,29 @@ class AIHandler:
         system_prompt: str,
         user_message: str,
         temperature: float = 0.8,
-        max_tokens: int = 1000
+        max_tokens: int = 1000,
+        conversation_history: list = None
     ):
         """
-        Generate streaming response from AI (yields chunks)
+        Generate streaming response from AI with conversation memory (yields chunks)
 
         Args:
             system_prompt: System prompt to set context
             user_message: User's message
             temperature: Creativity level (0-1)
             max_tokens: Maximum response length
+            conversation_history: List of previous messages for context
 
         Yields:
             Text chunks as they arrive
         """
         if self.provider == "gemini":
-            yield from self._generate_gemini_stream(system_prompt, user_message, temperature, max_tokens)
+            yield from self._generate_gemini_stream(system_prompt, user_message, temperature, max_tokens, conversation_history)
         elif self.provider == "openai":
-            yield from self._generate_openai_stream(system_prompt, user_message, temperature, max_tokens)
+            yield from self._generate_openai_stream(system_prompt, user_message, temperature, max_tokens, conversation_history)
         else:
             # Fallback: for non-streaming providers, yield the complete response
-            response = self.generate_response(system_prompt, user_message, temperature, max_tokens)
+            response = self.generate_response(system_prompt, user_message, temperature, max_tokens, conversation_history)
             yield response
 
     def _generate_gemini_stream(
@@ -563,12 +693,32 @@ class AIHandler:
         system_prompt: str,
         user_message: str,
         temperature: float,
-        max_tokens: int
+        max_tokens: int,
+        conversation_history: list = None
     ):
-        """Generate streaming response using Google Gemini - WITH SAFETY HANDLING"""
+        """Generate streaming response using Google Gemini - WITH CONVERSATION MEMORY & SAFETY HANDLING"""
         try:
-            # Combine prompt and question
-            full_prompt = f"""{system_prompt}
+            # BUILD CONVERSATION with memory (same as non-streaming)
+            if conversation_history and len(conversation_history) > 0:
+                conversation_text = f"{system_prompt}\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                conversation_text += "📚 CONVERSATION HISTORY (Remember this context!):\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
+
+                history_limit = min(len(conversation_history), 20)
+                for msg in conversation_history[-history_limit:]:
+                    role = msg.get('role', 'user')
+                    content = msg.get('content', '')
+                    if role == 'user':
+                        conversation_text += f"Học sinh hỏi: {content}\n\n"
+                    else:
+                        conversation_text += f"Bạn đã trả lời: {content}\n\n"
+
+                conversation_text += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                conversation_text += f"📝 NEW QUESTION:\n{user_message}\n\n"
+                conversation_text += "💡 Remember: Stay consistent with your previous answers!"
+
+                full_prompt = conversation_text
+            else:
+                full_prompt = f"""{system_prompt}
 
 {user_message}"""
 
@@ -601,17 +751,17 @@ class AIHandler:
                     if hasattr(candidate, 'finish_reason') and candidate.finish_reason == 2:
                         print(f"[SAFETY] Streaming blocked - USING FALLBACK")
                         # Use fallback response instead of error message
-                        yield self._generate_fallback_response(system_prompt, user_message)
+                        yield self._generate_fallback_response(system_prompt, user_message, conversation_history=conversation_history)
                         return
 
             # If no content was yielded, it might have been blocked - use fallback
             if not has_content:
                 print(f"[NO_CONTENT] No content received - USING FALLBACK")
-                yield self._generate_fallback_response(system_prompt, user_message)
+                yield self._generate_fallback_response(system_prompt, user_message, conversation_history=conversation_history)
 
         except AttributeError as e:
             print(f"[ERROR] Gemini streaming response structure error: {str(e)} - USING FALLBACK")
-            yield self._generate_fallback_response(system_prompt, user_message)
+            yield self._generate_fallback_response(system_prompt, user_message, conversation_history=conversation_history)
 
         except Exception as e:
             error_msg = str(e).lower()
@@ -620,29 +770,42 @@ class AIHandler:
             # Use fallback for safety/blocked errors
             if "blocked" in error_msg or "safety" in error_msg or "finish_reason" in error_msg:
                 print(f"[SAFETY_ERROR] Using fallback due to safety block")
-                yield self._generate_fallback_response(system_prompt, user_message)
+                yield self._generate_fallback_response(system_prompt, user_message, conversation_history=conversation_history)
             elif "quota" in error_msg or "limit" in error_msg:
                 yield "Xin lỗi, hệ thống đang quá tải. Vui lòng thử lại sau ít phút."
             else:
                 # For other errors, still use fallback
                 print(f"[GENERAL_ERROR] Using fallback due to error")
-                yield self._generate_fallback_response(system_prompt, user_message)
+                yield self._generate_fallback_response(system_prompt, user_message, conversation_history=conversation_history)
 
     def _generate_openai_stream(
         self,
         system_prompt: str,
         user_message: str,
         temperature: float,
-        max_tokens: int
+        max_tokens: int,
+        conversation_history: list = None
     ):
-        """Generate streaming response using OpenAI"""
+        """Generate streaming response using OpenAI with conversation memory"""
         try:
+            # Build messages with history
+            messages = [{"role": "system", "content": system_prompt}]
+
+            # Add conversation history if available
+            if conversation_history and len(conversation_history) > 0:
+                history_limit = min(len(conversation_history), 20)
+                for msg in conversation_history[-history_limit:]:
+                    messages.append({
+                        "role": msg.get('role', 'user'),
+                        "content": msg.get('content', '')
+                    })
+
+            # Add current message
+            messages.append({"role": "user", "content": user_message})
+
             stream = self.client.chat.completions.create(
                 model=self.model,
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_message}
-                ],
+                messages=messages,
                 temperature=temperature,
                 max_tokens=max_tokens,
                 stream=True

@@ -348,7 +348,8 @@ def generate_response(user_input: str, provider: str, temperature: float, max_to
                     system_prompt=system_prompt,
                     user_message=user_input,
                     temperature=temperature,
-                    max_tokens=max_tokens
+                    max_tokens=max_tokens,
+                    conversation_history=st.session_state.messages  # Pass conversation history
                 )
 
                 # Add context indicator for unknown figure
@@ -367,7 +368,8 @@ def generate_response(user_input: str, provider: str, temperature: float, max_to
                     system_prompt=system_prompt,
                     user_message=user_input,
                     temperature=temperature,
-                    max_tokens=max_tokens
+                    max_tokens=max_tokens,
+                    conversation_history=st.session_state.messages  # Pass conversation history
                 )
 
                 # Add context indicator
