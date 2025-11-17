@@ -273,8 +273,18 @@ class AIHandler:
         elif any(word in user_lower for word in ["bạn bè", "đồng minh", "cộng sự", "người", "quan hệ", "gặp"]):
             return f"Trong cuộc đời, ta may mắn được gặp nhiều người tài đức. Những mối quan hệ đó không chỉ là sự hỗ trợ mà còn là nguồn cảm hứng để ta tiếp tục con đường mình đã chọn."
 
-        # === LEGACY & MEMORY ===
-        elif any(word in user_lower for word in ["di sản", "nhớ", "ghi nhớ", "sau này", "mai sau", "tương lai"]):
+        # === MEMORIES & PERSONAL RECOLLECTIONS ===
+        elif any(phrase in user_lower for phrase in ["nhớ nhất", "kỷ niệm", "ký ức", "đáng nhớ", "không quên", "còn nhớ", "ấn tượng"]):
+            # Personal memories - should be EMOTIONAL and SPECIFIC
+            if figure_data:
+                achievements = figure_data.get('achievements', [])
+                period = figure_data.get('period', '')
+                if achievements:
+                    return f"Nhớ nhất ư? Có lẽ là khoảnh khắc khi {achievements[0].lower()}. Lúc đó, tim ta đập thình thịch, vừa lo lắng vừa phấn khởi! Nhìn thấy kết quả, ta không cầm được nước mắt - đó là nước mắt hạnh phúc, là nước mắt của người đã hoàn thành trách nhiệm! Những khoảnh khắc ấy, dù đã qua bao lâu, vẫn sống mãi trong ta!"
+            return f"Ký ức đáng nhớ nhất với ta là những khoảnh khắc đầy cảm xúc - lúc vui mừng vỡ òa khi thành công, lúc đau đớn tột cùng khi mất mát. Những khoảnh khắc ấy đã làm nên con người ta hôm nay."
+
+        # === LEGACY & WHAT TO LEAVE BEHIND ===
+        elif any(word in user_lower for word in ["di sản", "ghi nhớ", "để lại", "sau này", "mai sau", "tương lai", "thế hệ sau"]):
             return f"Ta hy vọng những gì mình làm sẽ được ghi nhớ không vì danh vọng, mà vì giá trị mà nó mang lại cho cộng đồng và đất nước. Đó mới là di sản thực sự."
 
         # === INSPIRATION & MOTIVATION ===
