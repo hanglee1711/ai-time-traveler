@@ -9,6 +9,9 @@ from typing import Optional, Dict
 from functools import lru_cache
 import os
 
+# PROMPT VERSION - Increment this when prompts change to invalidate cache
+PROMPT_VERSION = "v3.0"  # Updated: biographical injection + direct answers
+
 class APIProtection:
     """Protect API from overuse with multiple strategies"""
 
@@ -90,10 +93,16 @@ class APIProtection:
         return True, None
 
     def get_cache_key(self, figure_name: str, user_message: str) -> str:
-        """Generate cache key from figure and message"""
+        """
+        Generate cache key from figure, message, and prompt version
+
+        IMPORTANT: Cache will be automatically invalidated when PROMPT_VERSION changes!
+        This ensures users get responses from new/updated prompts.
+        """
         # Normalize message (lowercase, strip)
         normalized = user_message.lower().strip()
-        combined = f"{figure_name}:{normalized}"
+        # Include version to invalidate cache when prompts change
+        combined = f"{PROMPT_VERSION}:{figure_name}:{normalized}"
         return hashlib.md5(combined.encode()).hexdigest()
 
     def get_cached_response(self, figure_name: str, user_message: str) -> Optional[str]:

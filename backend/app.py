@@ -405,11 +405,15 @@ def chat():
                 # Unknown figure
                 system_prompt = get_unknown_figure_prompt(figure_name)
 
+            # Get conversation history from request (if provided)
+            conversation_history = data.get('conversation_history', [])
+
             response_text = ai_handler.generate_response(
                 system_prompt=system_prompt,
                 user_message=user_message,
-                temperature=0.92,  # PREMIUM: Very high for creative, emotional, detailed storytelling
-                max_tokens=650     # PREMIUM: Enough for detailed 3-5 sentence responses with examples
+                temperature=0.95,  # ULTRA PREMIUM: Maximum creativity for natural, human-like responses
+                max_tokens=1500,   # ULTRA PREMIUM: Long responses for detailed storytelling (was 650, increased for biographical answers)
+                conversation_history=conversation_history  # NEW: Pass conversation for context awareness
             )
 
             # DEBUG: Log AI response
@@ -564,6 +568,7 @@ def chat_stream():
             figure_name = data.get('figure')
             year = data.get('year')
             provider = data.get('provider', DEFAULT_PROVIDER)
+            conversation_history = data.get('conversation_history', [])
 
             if not user_message:
                 yield f"data: {json.dumps({'error': 'Message is required'})}\n\n"
@@ -619,8 +624,9 @@ def chat_stream():
                 for chunk in ai_handler.generate_response_stream(
                     system_prompt=system_prompt,
                     user_message=user_message,
-                    temperature=0.9,   # PREMIUM: High temp for engaging streaming responses
-                    max_tokens=650     # PREMIUM: Match non-streaming mode
+                    temperature=0.95,  # ULTRA PREMIUM: Maximum creativity for natural roleplay
+                    max_tokens=1500,   # ULTRA PREMIUM: Detailed biographical answers
+                    conversation_history=conversation_history
                 ):
                     yield f"data: {json.dumps({'type': 'chunk', 'content': chunk})}\n\n"
 
@@ -632,8 +638,9 @@ def chat_stream():
                 for chunk in ai_handler.generate_response_stream(
                     system_prompt=system_prompt,
                     user_message=user_message,
-                    temperature=0.85,  # PREMIUM: High temp for vivid time travel
-                    max_tokens=650     # PREMIUM: Detailed historical narratives
+                    temperature=0.95,  # ULTRA PREMIUM: Maximum creativity for immersive time travel
+                    max_tokens=1500,   # ULTRA PREMIUM: Rich historical narratives
+                    conversation_history=conversation_history
                 ):
                     yield f"data: {json.dumps({'type': 'chunk', 'content': chunk})}\n\n"
 
@@ -644,8 +651,9 @@ def chat_stream():
                 for chunk in ai_handler.generate_response_stream(
                     system_prompt=system_prompt,
                     user_message=user_message,
-                    temperature=0.8,   # PREMIUM: High temp for engaging discussions
-                    max_tokens=650     # PREMIUM: Detailed responses
+                    temperature=0.95,  # ULTRA PREMIUM: Maximum creativity for engaging discussions
+                    max_tokens=1500,   # ULTRA PREMIUM: Comprehensive responses
+                    conversation_history=conversation_history
                 ):
                     yield f"data: {json.dumps({'type': 'chunk', 'content': chunk})}\n\n"
 
