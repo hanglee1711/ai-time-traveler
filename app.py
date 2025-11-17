@@ -23,6 +23,7 @@ from src.prompts import (
     get_quiz_generation_prompt
 )
 from src.quiz_handler import generate_quiz, display_quiz, display_quiz_results
+from src.utils import get_character_avatar, get_character_initials
 
 
 # Page configuration
@@ -113,6 +114,82 @@ st.markdown("""
     /* Compact sliders and selectboxes */
     .stSlider, .stSelectbox {
         font-size: 0.9rem;
+    }
+
+    /* Character Avatar Styling */
+    .character-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center 20%;  /* Focus on face - slight upward */
+        border: 3px solid #667eea;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        margin-right: 12px;
+        vertical-align: middle;
+    }
+
+    .character-avatar-small {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center 25%;  /* Focus on face */
+        border: 2px solid #667eea;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        margin-right: 8px;
+        vertical-align: middle;
+    }
+
+    /* Avatar fallback (when no image) */
+    .avatar-fallback {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        font-weight: bold;
+        font-size: 1.5rem;
+        border: 3px solid #667eea;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        margin-right: 12px;
+    }
+
+    .avatar-fallback-small {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        font-weight: bold;
+        font-size: 1rem;
+        border: 2px solid #667eea;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        margin-right: 8px;
+    }
+
+    /* Character info box with avatar */
+    .character-info-box {
+        display: flex;
+        align-items: center;
+        background: linear-gradient(90deg, #e3f2fd 0%, #bbdefb 100%);
+        border-radius: 15px;
+        padding: 12px;
+        margin: 10px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .character-info-text {
+        flex: 1;
+        font-size: 0.95rem;
+        color: #1565c0;
+        font-weight: 500;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -303,6 +380,43 @@ def setup_sidebar():
         return provider, temperature, max_tokens
 
 
+def get_avatar_html(character_name: str, character_period: str = "", size: str = "normal") -> str:
+    """
+    Generate HTML for character avatar with info
+
+    Args:
+        character_name: Name of the character
+        character_period: Period/era of the character
+        size: 'normal' or 'small'
+
+    Returns:
+        HTML string for avatar display
+    """
+    avatar_path = get_character_avatar(character_name)
+    avatar_class = "character-avatar" if size == "normal" else "character-avatar-small"
+    fallback_class = "avatar-fallback" if size == "normal" else "avatar-fallback-small"
+
+    if avatar_path:
+        # Has avatar image
+        avatar_html = f'<img src="{avatar_path}" class="{avatar_class}" alt="{character_name}">'
+    else:
+        # Fallback to initials
+        initials = get_character_initials(character_name)
+        avatar_html = f'<div class="{fallback_class}">{initials}</div>'
+
+    # Build info text
+    info_text = f"💭 Đang trò chuyện với: <strong>{character_name}</strong>"
+    if character_period:
+        info_text += f" ({character_period})"
+
+    return f"""
+    <div class="character-info-box">
+        {avatar_html}
+        <div class="character-info-text">{info_text}</div>
+    </div>
+    """
+
+
 def display_chat_history():
     """Display chat history"""
     for message in st.session_state.messages:
@@ -354,7 +468,7 @@ def generate_response(user_input: str, provider: str, temperature: float, max_to
                 )
 
                 # Add context indicator for unknown figure
-                st.info(f"💭 Đang trò chuyện với: **{data['name']}** (AI tự động nhập vai)")
+                st.markdown(get_avatar_html(data['name'], "AI tự động nhập vai"), unsafe_allow_html=True)
             else:
                 # Known figure in database - use detailed prompt
                 # Check if this is first greeting
@@ -373,8 +487,8 @@ def generate_response(user_input: str, provider: str, temperature: float, max_to
                     conversation_history=st.session_state.messages  # Pass conversation history
                 )
 
-                # Add context indicator
-                st.info(f"💭 Đang trò chuyện với: **{data['name']}** ({data['period']})")
+                # Add context indicator with avatar
+                st.markdown(get_avatar_html(data['name'], data['period']), unsafe_allow_html=True)
 
         elif intent == 'year':
             # Time travel mode
